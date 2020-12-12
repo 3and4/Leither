@@ -6,5 +6,5 @@ bin目录保存的是系统的可执行文件
 opt是可选的文件
 
 
-项目的相关信息的ppt参考链接
+项目的相关信息的ppt链接
 https://zhuanlan.zhihu.com/p/330261216
