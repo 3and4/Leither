@@ -19,5 +19,5 @@ opt是可选的文件
 项目的相关信息的ppt链接
 https://zhuanlan.zhihu.com/p/330261216
 
-Leither可以提供PasS模式的服务
+可以提供PasS模式的服务
 https://github.com/3and4/Leither/blob/main/PaaS.md
