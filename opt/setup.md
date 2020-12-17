@@ -1,6 +1,7 @@
 ## 设置节点的基础运行环境
 1. **获取Leither执行程序**
 Leither可执行程序大约6MB，可以从Leither/bin下载，根据所用硬件选择正确版本
+
 2. **设置Leither参数**
 在SystemVars.json设置运行参数，一般只需要设置ServicePort, Gateway, FixedAddr
 { "ServicePort":9000,
