@@ -25,5 +25,7 @@ Leither运行成功后，继续用Leither命令行执行一系列操作，比如
   d. 生成登录用passport(ppt)  
   ./Leither lssl signppt -c my.cert -m "CertFor=Self" -o mylogin.ppt  
   
-  
+5. **发布**  
+
+
 service目录下建立RequestService，把mimei.lua放进去
