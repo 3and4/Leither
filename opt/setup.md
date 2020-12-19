@@ -34,7 +34,7 @@ Leither运行成功后，继续用Leither命令行执行一系列操作，比如
 5. **发布**  
   a. 在目标节点上申请弥媒权限  
   ./Leither lssl reqservice -c my.cert -m RequestService=mimei -n http://192.168.3.29:4800/  
-  b. 发布代码
+  b. 发布代码到目标节点  
   ./Leither deploy uploadapp -p mylogin.ppt ./lapp -n http://192.168.3.29:4800
 
 service目录下建立RequestService，把mimei.lua放进去
