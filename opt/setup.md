@@ -18,7 +18,8 @@ Leither运行成功后，继续用Leither命令行执行一系列操作，比如
 
 生成测试用户，可以在命令行运行脚本  
 ./Leither lssl runscript -s "local auth=require('auth'); return auth.Register('lsb', '123456');"  
-
+授权新用户访问mimei  
+./Leither lssl runscript -s "local node=require('mimei'); return node.MMSetRight(request.sid, 'mmroot', '', 0x07276707);"  
   
 4. **生成信用证**  
   a. 生成key  
