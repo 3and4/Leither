@@ -13,6 +13,7 @@ Leither可执行程序大约6MB，可以从Leither/bin下载，根据所用硬�
   
 3. **运行Leither**  
 > ./Leither &  
+初次安装Leither启动成功后，可以查看一下 http://localhost:service_port/ 会看到无法找到页面的提示。
 Leither运行成功后，继续用Leither命令行执行一系列操作，比如下一步的信用证。  
   
 4. **生成信用证**  
