@@ -25,7 +25,7 @@ Leither运行成功后，继续用Leither命令行执行一系列操作，比如
   a. 生成key  
   ./Leither lssl genkey -o my.key  
   b. 生成ca  
-  ./Leither lssl genca -l my.key -m "name=my" -o my.ca   # -m message 可以省略  
+  ./Leither lssl genca -k my.key -m "name=my" -o my.ca   # -m message 可以省略  
   c. 生成自签名cert  
   ./Leither lssl gencert -k my.key -c my.ca -m "name=forapp" -o my.cert  
   d. 生成登录用passport(ppt)  
