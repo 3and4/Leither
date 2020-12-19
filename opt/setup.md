@@ -18,12 +18,12 @@ Leither运行成功后，继续用Leither命令行执行一系列操作，比如
 4. **生成信用证**  
   a. 生成key  
   ./Leither lssl genkey -o my.key  
-  b. 生成ca
+  b. 生成ca  
   ./Leither lssl genca -l my.key -m "name=my" -o my.ca   # -m message 可以省略  
   c. 生成自签名cert  
   ./Leither lssl gencert -k my.key -c my.ca -m "name=forapp" -o my.cert  
   d. 生成登录用passport(ppt)  
-  ./Leither lssl signppt -c my.cert -m "CertFor=Self" -o mylogin.ppt
+  ./Leither lssl signppt -c my.cert -m "CertFor=Self" -o mylogin.ppt  
   
   
 service目录下建立RequestService，把mimei.lua放进去
