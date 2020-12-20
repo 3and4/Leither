@@ -18,12 +18,11 @@ Leither运行成功后，会在本地创建多个目录，包括service，WebDav
 4. **生成测试用户，测试程序**  
 继续用Leither命令行运行脚本，生成一个测试用户  
 ./Leither lssl runscript -s "local auth=require('auth'); return auth.Register('lsb', '123456');"  
-授权新用户访问mimei  
+授权新用户访问mimei。在service目录下建立RequestService，把mimei.lua放进去。允许在节点上操作弥媒。    
 ./Leither lssl runscript -s "local node=require('mimei'); return node.MMSetRight(request.sid, 'mmroot', '', 0x07276707);"  
   
 生成测试用户并授权后，可以在./WebDav目录下放一些图片视频，下面的测试应用会显示这些文件列表。  
 在Leither同目录下创建一个应用程序目录，目录名即默认为测试应用名，本示例测试应用名为./lapp  
-？service目录下建立RequestService，把mimei.lua放进去？  
 
 5. **生成信用证**  
   用以准备发布代码数据到服务节点上
