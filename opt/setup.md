@@ -8,7 +8,7 @@ Leither可执行程序大约6MB，可以从Leither/bin下载，根据所用硬�
   "LogAdapter":"file",  
   "LogConfig":"{\"filename\":\"Leither.log\",\"level\":1}",  
   "Gateway":["18.222.243.60","121.40.244.135","112.126.60.40"],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#Leither域名节点  
-  "FixedAddr":["121.40.213.15"],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#有固定公网IP的情况  
+  "FixedAddr":["121.40.213.15"],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#有固定公网IP的情况，没有公网地址不需要设置，会通过其他线上的节点自动识别本机节点  
   "NOStart":["checkmac"]}  
   
 3. **运行Leither**  
