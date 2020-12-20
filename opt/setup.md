@@ -20,9 +20,10 @@ Leither运行成功后，会在本地创建多个目录，包括service，WebDav
 ./Leither lssl runscript -s "local auth=require('auth'); return auth.Register('lsb', '123456');"  
 授权新用户访问mimei  
 ./Leither lssl runscript -s "local node=require('mimei'); return node.MMSetRight(request.sid, 'mmroot', '', 0x07276707);"  
-
-生成测试用户并授权后，可以在/WebDav目录下放一些图片视频，下面的测试应用会显示这些文件列表。
-在
+  
+生成测试用户并授权后，可以在./WebDav目录下放一些图片视频，下面的测试应用会显示这些文件列表。  
+在Leither同目录下创建一个应用程序目录，目录名即默认为测试应用名，本示例测试应用名为./lapp  
+service目录下建立RequestService，把mimei.lua放进去  
 
 5. **生成信用证**  
   用以准备发布代码数据到服务节点上
@@ -43,11 +44,12 @@ Leither运行成功后，会在本地创建多个目录，包括service，WebDav
   c. 发布
   ./Leither.exe deploy backup -a lapp -p mylogin.ppt -n http://192.168.3.29:4800/
 
-7. **绑定域名URL**  
-  a. 内网地址绑定公网url。需要在路由器设置NAT端口转发  
+7. **绑定Leither外网域名**  
+  a. 内网URL绑定Leither公网URL。需要在路由器设置NAT端口转发  
   ./Leither.exe deploy setdomain -d fangpi.leither.cn -n http://192.168.3.29:4800/ -a lapp -p mylogin.ppt -m gwaddr=leither.cn  
+  fangpi是开发者创建的Leither二级域名，lapp是测试应用名称
   b. 固化：在多个版本的应用中选定当前版本，默认为最新版  
   ./Leither.exe deploy backup -a lapp -p mylogin.ppt -n http://192.168.3.29:4800/  
 
+至此，应用发布完成，可以在外网访问 http://fangpi.leither.cn, 其结果与内网访问 http://192.168.3.29:4800 相同。  
 
-service目录下建立RequestService，把mimei.lua放进去
