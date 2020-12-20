@@ -13,17 +13,18 @@ Leither可执行程序大约6MB，可以从Leither/bin下载，根据所用硬�
   
 3. **运行Leither**  
 ./Leither &&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#多个Leither可同时运行  
-初次安装Leither启动成功后，可以查看一下 http://localhost:service_port/ 会看到无法找到页面的提示。
-Leither运行成功后，继续用Leither命令行执行一系列操作，比如下一步的生成信用证。  
-
-生成测试用户，可以在命令行运行脚本  
+Leither运行成功后，会在本地创建多个目录，包括service，WebDav等。  
+ 
+4. **生成测试用户，测试程序**  
+继续用Leither命令行运行脚本，生成一个测试用户  
 ./Leither lssl runscript -s "local auth=require('auth'); return auth.Register('lsb', '123456');"  
 授权新用户访问mimei  
 ./Leither lssl runscript -s "local node=require('mimei'); return node.MMSetRight(request.sid, 'mmroot', '', 0x07276707);"  
 
-生成测试用户并授权后，可以在
+生成测试用户并授权后，可以在/WebDav目录下放一些图片视频，下面的测试应用会显示这些文件列表。
+在
 
-4. **生成信用证**  
+5. **生成信用证**  
   用以准备发布代码数据到服务节点上
   a. 生成key  
   ./Leither lssl genkey -o my.key  
@@ -34,13 +35,19 @@ Leither运行成功后，继续用Leither命令行执行一系列操作，比如
   d. 生成登录用passport(ppt)  
   ./Leither lssl signppt -c my.cert -m "CertFor=Self" -o mylogin.ppt  
   
-5. **发布**  
+6. **发布到Leither服务节点**  
   a. 在目标节点上申请弥媒权限  
   ./Leither lssl reqservice -c my.cert -m RequestService=mimei -n http://192.168.3.29:4800/  
-  b. 上传代码到目标节点  
+  b. 上传代码  
   ./Leither deploy uploadapp -p mylogin.ppt -i ./lapp -n http://192.168.3.29:4800
   c. 发布
   ./Leither.exe deploy backup -a lapp -p mylogin.ppt -n http://192.168.3.29:4800/
+
+7. **绑定域名URL**  
+  a. 内网地址绑定公网url。需要在路由器设置NAT端口转发  
+  ./Leither.exe deploy setdomain -d fangpi.leither.cn -n http://192.168.3.29:4800/ -a lapp -p mylogin.ppt -m gwaddr=leither.cn  
+  b. 固化：在多个版本的应用中选定当前版本，默认为最新版  
+  ./Leither.exe deploy backup -a lapp -p mylogin.ppt -n http://192.168.3.29:4800/  
 
 
 service目录下建立RequestService，把mimei.lua放进去
