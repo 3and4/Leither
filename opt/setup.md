@@ -3,7 +3,7 @@
 Leither可执行程序大约6MB，可以从Leither/bin下载，根据所用硬件选择正确版本。Leither即是云操作系统，也是功能强大的命令行工具。下述内容默认的系统构成是Leither云服务节点一台，开发机一台。开发机上执行命令行前也需要启动Leither，并在后台运行。本文描述开发机的设置和使用。
   
 2. **设置Leither参数**  
-在SystemVars.json文件跟Leither可执行文件放同目录下。设置运行参数，一般只需要设置ServicePort, Gateway, FixedAddr  
+SystemVars.json文件跟Leither可执行文件放同一目录下。设置运行参数，一般只需要设置ServicePort, Gateway, FixedAddr  
 { "ServicePort":8000,  
   "LogAdapter":"file",  
   "LogConfig":"{\"filename\":\"Leither.log\",\"level\":1}",  
