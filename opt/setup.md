@@ -46,7 +46,7 @@ Leither运行成功后，会在本地创建多个目录，包括service，WebDav
 7. **绑定Leither外网域名**  
   a. 内网URL绑定Leither公网URL。需要在路由器设置NAT端口转发  
   ./Leither.exe deploy setdomain -d fangpi.leither.cn -n http://192.168.3.29:4800/ -a lapp -p mylogin.ppt -m gwaddr=leither.cn  
-  fangpi是开发者创建的Leither二级域名，lapp是测试应用名称
+  fangpi是开发者创建的Leither二级域名，lapp是测试应用名称  
   b. 固化：在多个版本的应用中选定当前版本，默认为最新版  
   ./Leither.exe deploy backup -a lapp -p mylogin.ppt -n http://192.168.3.29:4800/  
 
