@@ -39,9 +39,9 @@ Leither运行成功后，会在本地创建多个目录，包括service，WebDav
   a. 在目标节点上申请弥媒权限  
   ./Leither lssl reqservice -c my.cert -m RequestService=mimei -n http://192.168.3.29:4800/  
   b. 上传代码  
-  ./Leither deploy uploadapp -p mylogin.ppt -i ./lapp -n http://192.168.3.29:4800
-  c. 发布
-  ./Leither.exe deploy backup -a lapp -p mylogin.ppt -n http://192.168.3.29:4800/
+  ./Leither deploy uploadapp -p mylogin.ppt -i ./lapp -n http://192.168.3.29:4800  
+  c. 发布  
+  ./Leither.exe deploy backup -a lapp -p mylogin.ppt -n http://192.168.3.29:4800/  
 
 7. **绑定Leither外网域名**  
   a. 内网URL绑定Leither公网URL。需要在路由器设置NAT端口转发  
