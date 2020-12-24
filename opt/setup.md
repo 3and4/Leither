@@ -1,6 +1,6 @@
 ## 设置节点的基础运行环境
 1. **获取Leither执行程序**  
-Leither可执行程序大约6MB，可以从Leither/bin下载，根据所用硬件选择正确版本。Leither即是云操作系统，也是功能强大的命令行工具。下述内容默认的系统构成是Leither云服务节点一台，开发机一台。开发机上执行命令行前也需要启动Leither，并在后台运行。本文描述开发机的设置和使用。
+Leither可执行程序大约6MB，可以从Leither/bin下载，根据所用硬件选择正确版本。Leither即是云操作系统，也是功能强大的命令行工具。下述内容默认的系统构成是Leither云服务节点一台，开发机一台，域名节点一个。开发机上执行命令行前也需要启动Leither，并在后台运行。本文描述开发机的设置和使用。
   
 2. **设置Leither参数**  
 SystemVars.json文件跟Leither可执行文件放同一目录下。设置运行参数，一般只需要设置ServicePort, Gateway, FixedAddr  
@@ -40,14 +40,12 @@ Leither运行成功后，会在本地创建多个目录，包括service，WebDav
   ./Leither lssl reqservice -c my.cert -m RequestService=mimei -n http://192.168.3.29:4800/  
   b. 上传代码  
   ./Leither deploy uploadapp -p mylogin.ppt -i ./lapp -n http://192.168.3.29:4800  
-  c. 发布  
-  ./Leither.exe deploy backup -a lapp -p mylogin.ppt -n http://192.168.3.29:4800/  
 
 7. **绑定Leither外网域名**  
   a. 内网URL绑定Leither公网URL。需要在路由器设置NAT端口转发  
   ./Leither.exe deploy setdomain -d fangpi.leither.cn -n http://192.168.3.29:4800/ -a lapp -p mylogin.ppt -m gwaddr=leither.cn  
   fangpi是开发者创建的Leither二级域名，lapp是测试应用名称  
-  b. 固化：在多个版本的应用中选定当前版本，默认为最新版  
+  b. 固化发布：，把版本号的cur内容入库，并更新版本号，第一个版本为1，第二个版本为2，last通常为最后版，也可以是指定版本。  
   ./Leither.exe deploy backup -a lapp -p mylogin.ppt -n http://192.168.3.29:4800/  
 
 至此，应用发布完成，可以在外网访问 http://fangpi.leither.cn, 其结果与内网访问 http://192.168.3.29:4800 相同。  
