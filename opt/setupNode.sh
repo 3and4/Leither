@@ -34,7 +34,6 @@ echo "Credential files created"
 
 ./Leither lssl reqservice -c $KEYFILE.cert -m RequestService=mimei -n $URL
 ./Leither deploy uploadapp -p ${KEYFILE}login.ppt -i ./$MYAPP -n $URL
-./Leither.exe deploy backup -a $MYAPP -p ${KEYFILE}login.ppt -n $URL
 echo "APP uploaded to service node"
 
 ./Leither.exe deploy setdomain -d $MYDOMAIN.$GWADDR -n $URL -a $MYAPP -p mylogin.ppt -m gwaddr=$GWADDR
