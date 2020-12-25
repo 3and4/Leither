@@ -10,11 +10,10 @@ function readInput {
     echo Please input $2 "(default: ${!t})"
     local i
     read i
-    if [ -z "$i" ]; then
-        echo Use default $2: ${!t}
-    else
-        echo $2: $i
+    if [ -n "$i" ]; then
+        eval $1=$i
     fi
+    echo $2: ${!t}
 }
 readInput USER "User Name"
 readInput PASSWORD "Password"
