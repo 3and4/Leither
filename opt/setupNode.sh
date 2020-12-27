@@ -1,6 +1,6 @@
 #!/bin/bash
 USER=lsb; PASSWORD=123456; KEYFILE=my
-URL=http://192.168.3.29:4800/
+URL=192.168.3.29:4800
 MYDOMAIN=fangpi; GWADDR=leither.cn
 MYAPP=lapp
 
@@ -31,6 +31,7 @@ echo "User "$USER" created and authorized"
 ./Leither lssl signppt -c $KEYFILE.cert -m "CertFor=Self" -o ${KEYFILE}login.ppt
 echo "Credential files created"
 
+URL=http://$URL/
 ./Leither lssl reqservice -c $KEYFILE.cert -m RequestService=mimei -n $URL
 ./Leither deploy uploadapp -p ${KEYFILE}login.ppt -i ./$MYAPP -n $URL
 echo "APP uploaded to service node"
