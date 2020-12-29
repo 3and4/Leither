@@ -16,8 +16,12 @@ opt是可选的文件
   
   
   
-项目的相关信息的ppt链接
-https://zhuanlan.zhihu.com/p/330261216
+项目的相关信息的ppt链接  
+<https://zhuanlan.zhihu.com/p/330261216>
 
-可以提供PasS模式的服务
-https://github.com/3and4/Leither/blob/main/PaaS.md
+下载地址  
+<a href="./bin/"> 下载/</a>
+<https://github.com/3and4/Leither/tree/main/bin>
+  
+可以提供PasS模式的服务  
+<https://github.com/3and4/Leither/blob/main/PaaS.md>
