@@ -20,6 +20,12 @@
 
 ### 配置文件 SystemVars.json
 文件格式为json  
+**ServicePort**  
+服务端口  
+不设置的情况，系统缺省值为9000，对于家用节点，不可以设置80，8080端口。通常是被运营商封掉了  
+配置示例  
+"ServicePort":80,
+
 **FixedAddr**   
 域名或固定的ip  
 用于有独立ip的云主机
@@ -27,20 +33,22 @@
 配置示例  
 "FixedAddr":"121.44.244.138",
 
-**ServicePort** 
-
-服务端口  
-不设置的情况，系统缺省值为9000，对于家用节点，不可以设置80，8080端口。通常是被运营商封掉了  
-配置示例  
-"ServicePort":80,
-
 **LogConfig**  
 日志配置  
-配置示例
-文件日志
-"LogConfig":"{\"filename\":\"Leither.log\",\"level\":1}",
-控制台日志
+配置示例  
+1、文件日志  
+"LogConfig":"{\"filename\":\"Leither.log\",\"level\":1}",  
+2、控制台日志  
 "console":"{\"level\":1}",  
+
+**LAN**  
+多网卡的情况下，绑定服务的网卡  
+配置示例   
+1、绑定Mac  
+"LAN":"98-5F-D3-46-17-A8",
+
+2、绑定IP  
+"LAN":"192.168.1.24",
 
 ### 密钥文件 hostkey.cfg  
 存放当前节点的密钥  
