@@ -20,20 +20,21 @@
 
 ### 配置文件 SystemVars.json
 文件格式为json  
-#### FixedAddr 
+**FixedAddr**   
 域名或固定的ip  
 用于有独立ip的云主机
 不设置的情况，程序会通过网关或好友节点自动探查自己的外网地址  
 配置示例  
 "FixedAddr":"121.44.244.138",
 
-#### ServicePort 
+**ServicePort** 
+
 服务端口  
 不设置的情况，系统缺省值为9000，对于家用节点，不可以设置80，8080端口。通常是被运营商封掉了  
 配置示例  
 "ServicePort":80,
 
-#### LogConfig  
+**LogConfig**  
 日志配置  
 配置示例
 文件日志
