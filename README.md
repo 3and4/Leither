@@ -19,9 +19,13 @@ opt是可选的文件
 项目的相关信息的ppt链接  
 <https://zhuanlan.zhihu.com/p/330261216>
 
+各版本的应用下载  
+<a href="./bin/"> 点击下载</a>  
   
-<a href="./bin/"> 下载地址</a>  
-  
+目录结构  
+<a href="./Directory.md"> 目录结构介绍</a>  
+
+
 可以提供PasS模式的服务  
 <a href="./PaaS.md"> PaaS介绍</a>  
 
