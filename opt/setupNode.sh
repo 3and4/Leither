@@ -20,6 +20,7 @@ readInput PASSWORD "Password"
 readInput KEYFILE "key file name"
 readInput MYAPP "local APP directory"
 readInput URL "local URL"
+readInput MYDOMAIN "user domain"
 
 ./Leither lssl runscript -s "local auth=require('auth'); return auth.Register('$USER', '$PASSWORD');"
 ./Leither lssl runscript -s "local node=require('mimei'); return node.MMSetRight(request.sid, 'mmroot', '', 0x07276707);"
