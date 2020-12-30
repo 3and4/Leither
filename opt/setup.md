@@ -10,9 +10,9 @@ SystemVars.json文件跟Leither可执行文件放同一目录下。设置运行�
   "Gateway":["18.222.243.60","121.40.244.135","112.126.60.40"],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#Leither域名节点  
   "FixedAddr":"121.40.213.15",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#有固定公网IP的情况，没有公网地址不需要设置，会通过其他线上的节点自动识别本机节点  
   "NOStart":["checkmac"],  
-  "LAN":"c0-84-7d-6b-1c-33"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#指定本地网卡，在多网卡的情况下
+  "LAN":"c0-84-7d-6b-1c-33"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#指定本地网卡，在多网卡的情况下  
 }  
-*如果遇到多网卡导致Leither无法识别正确识别本地IP的情况，可以在FixedAddr里直接加上所用网卡的mac。
+*如果遇到多网卡导致Leither无法识别正确识别本地IP的情况，可以在LAN里直接加上所用网卡的mac。
   
 3. **运行Leither**  
 ./Leither &&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#多个Leither可同时运行  
