@@ -21,10 +21,12 @@ opt是可选的文件
 
 各版本的应用下载  
 <a href="./bin/"> 点击下载</a>  
-  
-目录结构  
-<a href="./Directory.md"> 目录结构介绍</a>  
 
+目录结构  
+<a href="./Directory.md"> 目录结构</a>  
+
+节点和应用安装  
+<a href="./Setup.md"> 节点和应用安装</a>  
 
 可以提供PasS模式的服务  
 <a href="./PaaS.md"> PaaS介绍</a>  
