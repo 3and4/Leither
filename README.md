@@ -14,8 +14,6 @@ Leither是一个超轻量级的去中心化的云操作系统
 bin目录保存的是系统的可执行文件  
 opt是可选的文件  
   
-  
-  
 项目的相关信息的ppt链接  
 <https://zhuanlan.zhihu.com/p/330261216>
 
