@@ -1,15 +1,20 @@
 (function(global) {
 //缺省的地址，用于本地调试程序
+//节点如果在本地，打开index.html便可以调试程序
+//下面是本地节点地址信息，可以手工调整
 var hosturl = "ws://127.0.0.1:4800/ws/"
 var baseurl = "http://127.0.0.1:4800/"
 
 //获取节点链接
 if (window.getParam != null){
+    //下面代码兼容代码转发的情况
     p=window.getParam()
     console.log("p=", p)
     hosturl = "ws://" + p["ips"][p.CurNode] + "/ws/"
     baseurl = "http://" + p["ips"][p.CurNode] + "/"
 } else if (window.location.host != ""){
+    //代码可以复制到html目录中直接执行。
+    //下面两行代码兼容这种情况
     hosturl = "ws://" + window.location.host + "/ws/"
     baseurl = "http://" +  window.location.host + "/"
 }
