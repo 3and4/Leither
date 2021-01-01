@@ -243,6 +243,7 @@ Leither(.exe), SystemVar.json
 
 ## 应用发布  
 下载要发布的测试应用  <a href="./opt/dav.zip"> 点击下载</a>  
+应用代码目录 <a href="./opt/dav/"> 应用代码</a>  
 在开发的工作目录中展开压缩包，目录名就是测试应用名，当前的应用名就是“dav”,可以手工修改  
 
 ```bash  
@@ -263,14 +264,16 @@ Leither deploy uploadapp -p mylogin.ppt -i 应用路径 -n http://192.168.3.29:4
 通常路由器都屏蔽了局域网内的设备，这时候可以通过配置端口转发使外网可以访问到节点
 
 2. 域名设置  
-```bash  
-./Leither.exe deploy setdomain -d fangpi.leither.cn -n http://192.168.3.29:4800/ -a dav -p mylogin.ppt -m gwaddr=leither.cn  
-```  
-fangpi是开发者创建的Leither二级域名，dav是测试应用名称  
-```bash  
-
-也可设置自己的域名，需要把域名解析指向域名节点的ip便可
+    ```bash  
+    ./Leither.exe deploy setdomain -d fangpi.leither.cn -n http://192.168.3.29:4800/ -a dav -p mylogin.ppt -m gwaddr=leither.cn  
+    ```  
+    fangpi是开发者创建的Leither二级域名，dav是测试应用名称  
+  
+    也可设置自己的域名，需要把域名解析指向域名节点的ip便可
 
 至此，应用发布完成，可以在外网访问 http://fangpi.leither.cn, 其结果与内网访问 http://192.168.3.29:4800 相同。  
-如果从内网访问发布后的公网URL，同时又开启VPN的话，可能会出现网页无法打开。此时关闭vpn即可。
+如果从内网访问发布后的公网URL，同时又开启VPN的话，可能会出现网页无法打开。此时关闭vpn即可。  
 
+## 复制文件  
+可以在Webdav目录中创建目录，复制文件，通过域名便可以访问到这些信息。
+webdav目录也可以映射到电脑里的资源管理器中  
