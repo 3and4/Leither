@@ -2,25 +2,25 @@
 //缺省的地址，用于本地调试程序
 //节点如果在本地，打开index.html便可以调试程序
 //下面是本地节点地址信息，可以手工调整
-var hosturl = "ws://127.0.0.1:4800/ws/"
+var apiUrl = "ws://127.0.0.1:4800/ws/"
 var baseurl = "http://127.0.0.1:4800/"
 
 //获取节点链接
 if (window.getParam != null){
-    //下面代码兼容代码转发的情况
+    //下面代码兼容（域名）节点转发的情况
     p=window.getParam()
     console.log("p=", p)
-    hosturl = "ws://" + p["ips"][p.CurNode] + "/ws/"
+    apiUrl = "ws://" + p["ips"][p.CurNode] + "/ws/"
     baseurl = "http://" + p["ips"][p.CurNode] + "/"
 } else if (window.location.host != ""){
-    //代码可以复制到html目录中直接执行。
+    //代码可以复制到html目录中直接执行。相当于传统主机模式
     //下面两行代码兼容这种情况
-    hosturl = "ws://" + window.location.host + "/ws/"
+    apiUrl = "ws://" + window.location.host + "/ws/"
     baseurl = "http://" +  window.location.host + "/"
 }
 
 //生成操作句柄
-var client = hprose.Client.create(hosturl, 
+var client = hprose.Client.create(apiUrl, 
     ["Login","MFOpenByPath", "MFStat","MFReaddir", "MFGetData", "MFGetMimeType"]);
 
 console.log("client=", client);
@@ -166,7 +166,7 @@ function showFileByFileData(content, mimeType) {
     }
 	//使用blob的方式优点在于可以同时向多个节点请求数据
 	//同时向多个节点请求数据，可以超越一个节点的带宽
-	//可以主备的方式清求数据，从而实现冗错功能
+	//可以主备的方式请求数据，从而实现冗错功能
     var blob = new Blob([content], {type: mimeType});         
     //添加一个框架，用于显示和下载（微信不支持新窗口下载和显示）
     // {
@@ -220,7 +220,8 @@ function showFileByFileData(content, mimeType) {
 function showFile(stub, mmfsid, filePath){
 //    console.log("showFile")
     //读出文件类型，暂时串行执行
-	//这个api是通过解析文件内容获取文件的类型，也可以根据扩展名进行识别
+	//这个api是通过解析文件内容获取文件的类型
+	//也可以根据扩展名进行识别,可以少一个请求
     stub.MFGetMimeType(mmfsid).then(function(mimeType){   
         //这里加入文件方式
         console.log("mimeType=  ", mimeType)
