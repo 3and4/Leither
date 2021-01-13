@@ -2,20 +2,22 @@
 直接运行便可
 确保有相关权限
 
+MacOS amd64芯片，通常是服务器  
+<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.54-windows-amd64.zip>  
 
 Linux amd64芯片，通常是服务器  
-<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.48-windows-amd64.zip>  
+<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.54-windows-amd64.zip>  
 
 linux arm6芯片，通常是nas和树莓派  
-<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.48-linux-arm6.zip>
+<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.54-linux-arm6.zip>
 
 linux arm7芯片，通常是nas和树莓派  
-<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.48-linux-arm7.zip>
+<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.54-linux-arm7.zip>
 
 windows x86 64位芯片 适合常见的pc和笔记本  
-<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.48-windows-amd64.zip>
+<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.54-windows-amd64.zip>
 
 windows x86 64位芯片 开发者版本
 和普通版本的差别是有控制台，可以命令行进行交互
-<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.49-windows-amd64-dev.zip>  
+<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.54-windows-amd64-dev.zip>  
 
