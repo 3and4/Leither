@@ -23,6 +23,9 @@ opt是可选的文件
 目录结构  
 <a href="./Directory.md"> 目录结构</a>  
 
+Pki体系和相关命令行  
+<a href="./Pki.md"> Pki</a>  
+
 节点和应用安装  
 <a href="./Setup.md"> 节点和应用安装</a>  
   
