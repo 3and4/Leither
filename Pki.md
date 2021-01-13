@@ -18,8 +18,8 @@
 对于确定的文件或内容，我们对之取摘要，再转化成可视的28字节字符串，可以用来标识一个确定内容的对象。  
   
 **身份标识**  
-一对密钥代表一个身份，密钥为二进制，也过长，不适合去标识
-公钥可以取摘要再转化成可视的28字节字符串
+一对密钥代表一个身份，密钥为二进制，也过长，不适合去标识  
+公钥可以取摘要再转化成可视的28字节字符串  
 这个ID唯一标识了密钥对。可以用来表示用户或节点的身份。  
 以上是参考了比特币钱包的方式。  
   
@@ -60,7 +60,7 @@ create key to file [new.key] ok
 
 ```  
 
-**生成公钥**  
+**导出公钥**  
 ```bash  
 Leither lpki genpk -i new.key -o new.pub
 ```  
@@ -113,7 +113,7 @@ KAAECUGsBCgAAACX_ggIg2T1U4-IUMfYpppIcPi8ITJazt8I2PpOI8W1jctmm1HsA"
 Leither lpki gencert -k certkey.key -c ca.cert -m "name=weixin" -o output.cert
 ```    
 
-**生成对外的公钥证书**  
+**导出对外的公钥证书**  
 公钥证书是发给其他人，用于验证签发的信息
 ```bash  
 Leither lpki gencert -k new.key -m "name=weixin" -o o
