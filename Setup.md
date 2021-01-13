@@ -157,7 +157,7 @@ Leither(.exe), SystemVar.json
 1. 三个节点用户  
    对应管理三个节点，密钥存放在节点程序的根目录,文件名为hostkey.cfg。
 2. 开发者用户  
-   开发者用户开发维护并发布程序,密钥需要通过Leither lssl 命令单独生成，单独保存  
+   开发者用户开发维护并发布程序,密钥需要通过Leither lpki 命令单独生成，单独保存  
    
 3. 数据所有者用户  
    应用数据的所有者  
@@ -176,16 +176,16 @@ Leither(.exe), SystemVar.json
 测试用户指的是上文中的数据查看者用户。  
 在应用节点根目录下，用Leither命令行运行脚本，生成一个测试用户"lsb"  
 ```lua  
-./Leither lssl runscript -s "local auth=require('auth'); return auth.Register('lsb', '123456');"  
+./Leither lpki runscript -s "local auth=require('auth'); return auth.Register('lsb', '123456');"  
 ```  
 在这个目录下执行命令，缺省会使用当前节点信息，使用当前节点身份，连接当前节点进行操作
-本例中，lssl是安全相关的命行集，Register是认证API中的用户注册
+本例中，lpki是安全相关的命行集，Register是认证API中的用户注册
 
 **授权测试用户访问权限**  
 设置数据目录权限  
 后面应用中操作的数据目录是webdav目录，对应的名称是“mmroot”,缺省是不对外开放的。 需要修改对外权限  
 ```bash  
-./Leither lssl runscript -s "local node=require('mimei'); return node.MMSetRight(request.sid, 'mmroot', '', 0x07276707);"  
+./Leither lpki runscript -s "local node=require('mimei'); return node.MMSetRight(request.sid, 'mmroot', '', 0x07276707);"  
 ```  
 生成测试用户并授权后，lsb用户便可以查看这个目录下的数据。  
 可以在WebDav目录下放一些图片视频，下面的测试应用会显示这些文件列表。  
@@ -197,21 +197,21 @@ Leither(.exe), SystemVar.json
 +  生成key  
 包含公钥和私钥，公钥取摘要生成代表用户身份的唯一id  
     ```bash  
-    Leither lssl genkey -o my.key  
+    Leither lpki genkey -o my.key  
     ```  
 + 生成ca  
     ```bash  
-    Leither lssl genca -k my.key -m "name=my" -o my.ca
+    Leither lpki genca -k my.key -m "name=my" -o my.ca
     ```  
     -m message 可以省略  
 + 生成自签名cert  
     ```bash  
-    Leither lssl gencert -k my.key -c my.ca -m "name=forapp" -o my.cert  
+    Leither lpki gencert -k my.key -c my.ca -m "name=forapp" -o my.cert  
     ```  
 + 生成登录用passport(ppt)  
     通行证中包含了一个时效信息,缺省72小时
     ```bash  
-    Leither lssl signppt -c my.cert -m "CertFor=Self" -o mylogin.ppt  
+    Leither lpki signppt -c my.cert -m "CertFor=Self" -o mylogin.ppt  
     ```  
   
 **开发者获取权限**  
@@ -237,7 +237,7 @@ Leither(.exe), SystemVar.json
     -c 后面是开发者的通行证  
     -n 后面是申请的节点地址，包括本地调试程序的开发节点或实际运行的应用节点  
     ```bash  
-    ./Leither lssl reqservice -c my.cert -m RequestService=mimei -n http://192.168.3.29:4800/  
+    ./Leither lpki reqservice -c my.cert -m RequestService=mimei -n http://192.168.3.29:4800/  
     ```
 
 ## 应用发布  
