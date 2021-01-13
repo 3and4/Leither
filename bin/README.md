@@ -1,9 +1,10 @@
 程序解压复制到目录中
 直接运行便可
 确保有相关权限
+最新版本V0.10.54
 
 MacOS amd64芯片，通常是服务器  
-<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.54-windows-amd64.zip>  
+<https://github.com/3and4/Leither/blob/main/bin/Leither0.10.54-darwin-amd64.zip>  
 
 Linux amd64芯片，通常是服务器  
 <https://github.com/3and4/Leither/blob/main/bin/Leither0.10.54-windows-amd64.zip>  
