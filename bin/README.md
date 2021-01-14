@@ -3,7 +3,7 @@
 确保有相关权限
 最新版本V0.10.54
 
-MacOS amd64芯片，通常是服务器  
+MacOS amd64芯片，通常是苹果电脑或笔记本 
 <https://github.com/3and4/Leither/blob/main/bin/Leither0.10.54-darwin-amd64.zip>  
 
 Linux amd64芯片，通常是服务器  
