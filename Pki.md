@@ -110,7 +110,6 @@ id= h3PPmr6HVHrmaV_WAbnEP6t3x87
 {"CertPK":"CQwABnNvZGl1bSn_gQMBAQ1Tb2RpdW1LZXlQYWlyAf-CAAECAQJTawE
 KAAECUGsBCgAAACX_ggIg2T1U4-IUMfYpppIcPi8ITJazt8I2PpOI8W1jctmm1HsA"
 ,"CertPKID":"h3PPmr6HVHrmaV_WAbnEP6t3x87","name":"weixin"}
-Leither lpki gencert -k certkey.key -c ca.cert -m "name=weixin" -o output.cert
 ```    
 
 **导出对外的公钥证书**  
@@ -157,3 +156,15 @@ Version : 1
 
 genpkcert public key Cert[out.pkcert] ok!
 ```  
+
+## 生成通行证  
+```bash  
+Leither lpki signppt -c ca.cert -p 720 -m "CertFor=Self,Userid=h3PPmr6HVHrmaV_WAbnEP6t3x87," -o test.ppt
+```
+-p 通行证的有效期，单位小时
+-m 通行证信息。信息中的内容定义基于业务
+-c 为通行证信息背书的证书  
+
+
+输出结果如下:
+略   
