@@ -41,6 +41,10 @@
 
 
 ## 生成key  
+节点的密钥放在根目录，名称为hostkey.cfg  
+Leither第一次启动时，系统检查根目录，如果没有这个文件会自动生成一个。   
+在根目录下执行lpki命令，参数中需要key,如果不特别指定，缺省使用节点密钥。  
+
 **生成密钥对**  
 ```bash  
 Leither lpki genkey -o my.key   
@@ -168,3 +172,29 @@ Leither lpki signppt -c ca.cert -p 720 -m "CertFor=Self,Userid=h3PPmr6HVHrmaV_WA
 
 输出结果如下:
 略   
+
+## 申请服务  
+向节点申请权限  
+用户登录之后，在使用节点资源前，先要申请服务访问权限  
+  
+命令行示例：
+```bash  
+Leither lpki reqservice -c my.cert -m RequestService=mimei -n http://192.168.3.29:4800/  
+```
+-c 后面是申请者的通行证,证明申请者的身份  
+-n 后面是申请的节点地址，包括本地调试程序的开发节点或实际运行的应用节点  
+-m 服务的内容  
+格式：RequestService=服务1(属性1:数值&属性2),服务2(属性1&属性2)；
+
+节点处理服务权限的角本都放在“根目录/service/RequestService”,参考结构如下  
+根目录  
+｜  
+｜--service---------------服务目录,存放服务端角本  
+｜   ｜----RequestService--处理服务请求的角本  
+  
+服务定义  
+```golang  
+Service_DNS            = "dns"            //查找节点，域名解析
+Service_Tunnel         = "tunnel"         //隧道
+Service_Mimei          = "mimei"          //弥媒
+```  
