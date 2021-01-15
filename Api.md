@@ -143,15 +143,19 @@ param为参数，定义参考附件中的用户信息项
 SetUserInfo(sid string, param map[string]string) error
 ```
 
-<!--
-### 5.申请服务  
-```golang
-	RequestService(ppt string) (map[string]map[string]string, error) //服务清求
-```
 
+### 5.申请服务  
+用户向节点申请服务   
+ppt是申请者自己签的ppt,附加申请的服务内容和申请者身份   
+返回值中第一层map的key是服务名，第二重是服务的属性参数  
+```golang
+RequestService(ppt string) (map[string]map[string]string, error) //服务清求
+```  
+
+<!--
 ### 6.签发通行证  
 ```golang
-	SignPPT(sid string, info string, period int) (string, error)
+SignPPT(sid string, info string, period int) (string, error)
 ```
 -->
 ### 附件
