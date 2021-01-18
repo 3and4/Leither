@@ -58,7 +58,7 @@ Leither第一次启动时，系统检查根目录，如果没有这个文件会�
 在根目录下执行lpki命令，参数中需要key,如果不特别指定，缺省使用节点密钥。  
 
 **生成密钥对**  
-<a href="../api/LPki.md#genkey"> 命令行生成密钥对</a>  
+<a href="../api/LPki.md#user-content-genkey"> 命令行生成密钥对</a>  
 ```bash  
 Leither lpki genkey -o my.key   
 ```  
@@ -176,7 +176,7 @@ genpkcert public key Cert[out.pkcert] ok!
 
 ## 生成通行证  
 **命令行生成**  
-<a href="../api/LPki.md#signppt"> 命令行生成通行证</a>  
+<a href="../api/LPki.md#user-content-signppt"> 命令行生成通行证</a>  
 
 ```bash  
 Leither lpki signppt -c ca.cert -p 720 -m "CertFor=Self,Userid=h3PPmr6HVHrmaV_WAbnEP6t3x87," -o test.ppt
