@@ -1,11 +1,10 @@
 目录结构
 ========
-<a id="rootdir"></a> 
-根目录  
+根目录  <div id="rootdir"></div> 
 ｜Leither-----------------系统程序   
-｜SystemVars.json---------配置文件  
-｜hostkey.cfg-------------节点密钥  
-｜temp.html---------------域名模板  
+｜SystemVars.json---------[配置文件](#systemvars)  
+｜hostkey.cfg-------------[节点密钥](#hostkey)  
+｜temp.html---------------[域名模板](#temp)  
 ｜Leither.log-------------日志文件  
 ｜--filestore-------------硬盘或外部存储映射在这里  
 ｜--mac-------------------存放基础文件，文件名为摘要  
@@ -18,8 +17,8 @@
 ｜   ｜----mmdb------------弥媒数据库动态数据  
 ｜--temp------------------临时文件目录  
   
-
-### 配置文件 SystemVars.json
+  
+### 配置文件 SystemVars.json<div id="systemvars"></div>
 文件格式为json  
 **ServicePort**  
 服务端口  
@@ -57,11 +56,11 @@
 "121.40.244.135"   
 
 
-### 密钥文件 hostkey.cfg  
+### 密钥文件 hostkey.cfg<div id="hostkey"></div>  
 存放当前节点的密钥  
 第一次运行时，如果没有这个文件，系统会自动生成一个  
 在当前目录如果执行Leither lssl命令，不指定密钥文件时，缺省使用这个文件，表示以节点系统用户身份执行命令  
 
-### 域名模板 temp.html
+### 域名模板 temp.html<div id="temp"></div>  
 用于域名解析,只针对域名节点有效  
 在帮其它用户解析域名时，节点读出域名对应的相关信息，写入模板，生成html文件返回，浏览器在解析这个html文件时，会引导到用户指定的节点，执行节点上的相关应用或数据  
