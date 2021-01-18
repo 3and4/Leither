@@ -21,7 +21,7 @@ opt是可选的文件
 
 <a href="./doc/Directory.md"> 目录结构</a>  
 
-<a href="./doc/Pki.md"> Pki体系和相关命令行</a>  
+<a href="./doc/Pki.md"> Pki体系</a>  
 
 <a href="./doc/Setup.md"> 节点和应用安装</a>  
   
