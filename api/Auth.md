@@ -1,22 +1,76 @@
-<!--
-    AuthStub      //认证部分
-	NetStub       //网络部分	TunnelStub，	DNSStub,NodeStub
-	AppStub       //应用部分
-	TaskStub      //任务管理
-	MsgStub       //消息
-	MiMeiStub     //弥媒
-	VarActStub    //封装了大批Api
-	UserGroupStub //用户组
-	DataRightStub //数据权限
-	SystemStub    //废弃的都放这里了
--->
+## 认证Api  
+认证体系的主要功能是去定义一个用户和节点，定义节点服务和权限机制，定义节点之间的访问机制。  
 
-以下Api使用Golang格式，其它语言的参数和调用格式类似  
+### 1、访问节点  
+用户可以通过多种方式登录访问节点：  
++ Guest方式登录
++ 通行证方式登录
++ 用户名密码方式
++ 其他兼容拓展方式  
+  
+登录函数  
+登录函数会返回一个会话id，会话id代表用户的身份和权限，通过会话id可以访问绝大多数API，会话id也代表用户操作的上下文。
 
-## 一、认证部分  
-### 1.用户生成  
-用户可以通过
-### 1.1 通过命令行生成
+Login  
+```golang
+Login(pa ...string) (*LoginReply, error)
+type LoginReply struct {
+	Sid string  //Session ID，用于绝大多数Api
+	Uid string  //当前用户的ID,用户的身份标识
+}
+```
+
+#### 1.1 Guest登录模式  
+对于Guest用户，可以不登录以sid为空的方式访问节点。但是没有sid, 就没有上下文，节点没办法把用户当成一个完整的用户来对待，相关操作会受很大限制。
+
+```golang
+reply, err := Login()
+if err != nil{
+    fmt.Println("Login err=%s", err.Error())
+    return
+}
+fmt.Println("sid=%s, uid=%s", reply.Sid, reply.Uid)
+```
+
+#### 1.2 通行证登录模式  
+通行证有多种获取方式：
++ 密钥和证书生成ppt，包含用户信息
++ 节点签发的Mac通行证,包含内网用户的设备信息
++ 微信节点签发的微信通行证，包含代表微信用户的唯一身份
++ 其它代表用户身份的唯一信息
+没有包含用户信息的通行证，需要Register或SetUserInfo绑定一下用户方可登录。  
+系统中有用于测试的mac通行证，后续测试案例中会使用相关信息进行测试。  
+
+```golang
+//strPPT为代表用户身份的通行证
+reply, err := Login(strPPT) 
+if err != nil{
+    fmt.Println("Login err=%s", err.Error())
+    return
+}
+fmt.Println("sid=%s, uid=%s", reply.Sid, reply.Uid)
+```
+
+#### 1.3 用户名密码登录模式  
+这种方式用户的密钥保存在当前节点中，通过用户名密码进行保护。 通常这个节点是用户自己的节点或者高度可信的节点。  
+```golang
+//strPPT为代表用户身份的通行证
+reply, err := Login("lsb", "123456") 
+if err != nil{
+    fmt.Println("Login err=%s", err.Error())
+    return
+}
+fmt.Println("sid=%s, uid=%s", reply.Sid, reply.Uid)
+```
+
+#### 1.4 兼容拓展模式  
+略  
+  
+  
+### 2.用户生成  
+使用Login函数的前提是拥有一个用户。  
+
+### 2.1 密钥生成用户
 用户可以通过lpki命令生成,所有的身份信息都保存在密钥中。  
 <a href="./Pki.md"> 更完整的命令行信息在这里</a>  
 +  生成key  
@@ -34,7 +88,7 @@
     Leither lpki signppt -c ca.cert -p 720 -m "CertFor=Self,Userid=h3PPmr6HVHrmaV_WAbnEP6t3x87," -o test.ppt
     ```  
 
-### 1.2 通过Register生成
+### 2.2 通过Register生成
 也可以通过Register函数生成，这时生成的密钥保存在用户节点中，需要对这个节点绝对信任。
 Register  
 注册用户，返回值是用户id和错误
@@ -43,7 +97,7 @@ Register
 Register(par ...string) (string, error)
 ```
 
-#### 1.2.1 用户名密码注册模式  
+#### 2.2.1 用户名密码注册模式  
 ```golang
 name := "lsb"
 pass := "123456"
@@ -73,51 +127,6 @@ if err != nil{
 fmt.Println("userid=%s", userid)
 ```
 
-
-### 2.用户登录  
-Login  
-```golang
-Login(pa ...string) (*LoginReply, error)
-type LoginReply struct {
-	Sid string  //Session ID，用于绝大多数Api
-	Uid string  //当前用户的ID,用户的身份标识
-}
-```
-
-#### 1.1 Guest登录模式  
-```golang
-reply, err := Login()
-if err != nil{
-    fmt.Println("Login err=%s", err.Error())
-    return
-}
-fmt.Println("sid=%s, uid=%s", reply.Sid, reply.Uid)
-```
-
-#### 1.2 通行证登录模式  
-```golang
-//strPPT为代表用户身份的通行证
-reply, err := Login(strPPT) 
-if err != nil{
-    fmt.Println("Login err=%s", err.Error())
-    return
-}
-fmt.Println("sid=%s, uid=%s", reply.Sid, reply.Uid)
-```
-
-#### 1.3 用户名密码登录模式  
-```golang
-//strPPT为代表用户身份的通行证
-reply, err := Login("lsb", "123456") 
-if err != nil{
-    fmt.Println("Login err=%s", err.Error())
-    return
-}
-fmt.Println("sid=%s, uid=%s", reply.Sid, reply.Uid)
-```
-
-#### 1.4 兼容拓展模式  
-略
 
 
 ### 3.退出登录  

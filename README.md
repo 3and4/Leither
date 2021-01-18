@@ -19,15 +19,15 @@ opt是可选的文件
 
 <a href="./bin/"> 各版本的应用下载</a>  
 
-<a href="./Directory.md"> 目录结构</a>  
+<a href="./doc/Directory.md"> 目录结构</a>  
 
-<a href="./Pki.md"> Pki体系和相关命令行</a>  
+<a href="./doc/Pki.md"> Pki体系和相关命令行</a>  
 
-<a href="./Setup.md"> 节点和应用安装</a>  
+<a href="./doc/Setup.md"> 节点和应用安装</a>  
   
 <a href="./opt/dav/"> 示例应用代码目录</a>  
   
-<a href="./Api.md"> Api文档（doing）</a>  
+<a href="./api/Api.md"> Api文档（doing）</a>  
   
-<a href="./PaaS.md"> 可以提供PasS模式的服务</a>  
+<a href="./doc/PaaS.md"> 可以提供PasS模式的服务</a>  
 

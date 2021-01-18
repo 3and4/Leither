@@ -187,7 +187,7 @@ Leither lpki signppt -c ca.cert -p 720 -m "CertFor=Self,Userid=h3PPmr6HVHrmaV_WA
 略   
 
 **获取Mac通行证**  
-
+可以通过Rpc或http两种Api方式获取Mac通行证
 
 
 ## 申请服务  
