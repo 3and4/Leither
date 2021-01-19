@@ -138,12 +138,24 @@ ppt是申请者自己签的ppt,附加申请的服务内容和申请者身份
 RequestService(ppt string) (map[string]map[string]string, error) //服务清求
 ```  
 
-<!--
+
 ### 6.签发通行证  
+当前用户签发通行证  
+info中的内容基于业务定义  
 ```golang
-SignPPT(sid string, info string, period int) (string, error)
+SignPPT(sid string, info map[string]string, period int) (string, error)
 ```
--->
+登录通行证示例：  
+```golang
+info := map[string]string{
+    "CertFor":"Self",//为自己签发
+    "NodeId": nodeid,//用于访问的的节点，可不填
+}
+period := 7 //单位小时
+ppt, _ := wa.SignPPT(sid, info, period) (string, error)
+```
+上面生成的通行证有当前节点的背书, 可以在指定时间内通过Login访问设置的节点，前提是指定节点许可。  
+
 ### 附件
 #### 用户信息项
 用于Api参数（Register,SetUserInfo）  

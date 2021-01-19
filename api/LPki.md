@@ -25,7 +25,7 @@ create key to file [new.key] ok
 ```  
     
 **2、导出公钥**    
-
+<a id="genpk"></a> 
 ```bash  
 Leither lpki genpk -i new.key -o new.pub
 ```  
@@ -44,6 +44,7 @@ genpk public key [new.pub] ok!
 ```  
 
 **3、生成私钥证书**  
+<a id="gencert"></a> 
 ```bash  
 Leither lpki gencert -k new.key -m "name=weixin" -o o
 utput.cert
@@ -76,10 +77,9 @@ KAAECUGsBCgAAACX_ggIg2T1U4-IUMfYpppIcPi8ITJazt8I2PpOI8W1jctmm1HsA"
 ```    
 
 **4、导出公钥证书**  
+<a id="genpkcert"></a> 
 公钥证书是发给其他人，用于验证签发的信息
 ```bash  
-Leither lpki gencert -k new.key -m "name=weixin" -o o
-utput.cert
 Leither lpki genpkcert -i in.cert -o out.pkcert
 ```
 

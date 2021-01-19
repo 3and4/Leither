@@ -10,6 +10,9 @@ Leither是一个超轻量级的去中心化的云操作系统
 两个节点，可以进行互助，包含不限于数据互备、容错和均衡，域名解析和路由  
 多个节点，能够以去中化心化的方式实现常见的互联网应用。  
 
+系统用于云服务，相较于虚拟主机和docker，CPU内存带宽等方面成本有数量级的降低。
+<a href="./doc/PaaS.md"> 点击查看详情</a>  
+
 
 bin目录保存的是系统的可执行文件  
 opt是可选的文件  
@@ -17,9 +20,9 @@ opt是可选的文件
 项目的相关信息的ppt链接  
 <https://zhuanlan.zhihu.com/p/330261216>
 
-<a href="./bin/"> 各版本的应用下载</a>  
+<a href="./doc/Directory.md"> 系统目录结构</a>  
 
-<a href="./doc/Directory.md"> 目录结构</a>  
+<a href="./bin/"> 各版本的应用下载</a>  
 
 <a href="./doc/Pki.md"> Pki体系</a>  
 
@@ -29,5 +32,4 @@ opt是可选的文件
   
 <a href="./api/Api.md"> Api文档（doing）</a>  
   
-<a href="./doc/PaaS.md"> 可以提供PasS模式的服务</a>  
 
