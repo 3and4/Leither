@@ -4,7 +4,7 @@ lpki是Leither关于安全认证的命令集
 
 用户可以通过lpki命令生成,所有的身份信息都保存在密钥中。  
 
-**生成密钥对**  
+**1、生成密钥对**  
 <a id="genkey"></a> 
 ```bash  
 Leither lpki genkey -o my.key   
@@ -23,8 +23,9 @@ _CIopjnhdyjs0rzR_2lR948lg==
 create key to file [new.key] ok
 
 ```  
+    
+**2、导出公钥**    
 
-**导出公钥**  
 ```bash  
 Leither lpki genpk -i new.key -o new.pub
 ```  
@@ -42,9 +43,7 @@ Public Key = pk=2T1U4-IUMfYpppIcPi8ITJazt8I2PpOI8W1jctmm1Hs=
 genpk public key [new.pub] ok!
 ```  
 
-## 生成证书  
-
-**生成包含私钥的证书**  
+**3、生成私钥证书**  
 ```bash  
 Leither lpki gencert -k new.key -m "name=weixin" -o o
 utput.cert
@@ -76,7 +75,7 @@ KAAECUGsBCgAAACX_ggIg2T1U4-IUMfYpppIcPi8ITJazt8I2PpOI8W1jctmm1HsA"
 ,"CertPKID":"h3PPmr6HVHrmaV_WAbnEP6t3x87","name":"weixin"}
 ```    
 
-**导出对外的公钥证书**  
+**4、导出公钥证书**  
 公钥证书是发给其他人，用于验证签发的信息
 ```bash  
 Leither lpki gencert -k new.key -m "name=weixin" -o o
@@ -121,8 +120,7 @@ Version : 1
 genpkcert public key Cert[out.pkcert] ok!
 ```  
 
-## 生成通行证  
-**命令行生成**  
+**4、生成通行证**  
 <a id="signppt"></a>
 ```bash  
 Leither lpki signppt -c ca.cert -p 720 -m "CertFor=Self,Userid=h3PPmr6HVHrmaV_WAbnEP6t3x87," -o test.ppt
@@ -134,3 +132,31 @@ Leither lpki signppt -c ca.cert -p 720 -m "CertFor=Self,Userid=h3PPmr6HVHrmaV_WA
 
 输出结果如下:
 略   
+
+**5、验证通行证**  
+<a id="verifyppt"></a>
+```bash  
+$ ./Leither8000.exe lpki verifyppt -c ca.cert  -i test.ppt
+```
+-c 为通行证信息背书的证书  
+
+
+输出结果如下:
+略   
+
+**6、显示对象**  
+<a id="show"></a>  
+```bash  
+Leither lpki show -i in.cert
+```
+-i 输入文件
+
+输出结果如下:
+```bash  
+show
+file type is Key
+id= h7Nkwe4rfb1d15En8yQ65Lhhq9b
+pk=yPrZX6l9AWNwNVwpOh10a1Mdas56i6nEmV3LUNOjFZg=
+sk=G3p1HaeaR0kuvNVrB-YxDV0s3VpwjCuXweFIQySLa5LI-tlfq
+X0BY3A1XCk6HXRrUx1qznqLqcSZXctQ06MVmA==
+```
