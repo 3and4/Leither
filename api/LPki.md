@@ -160,3 +160,24 @@ pk=yPrZX6l9AWNwNVwpOh10a1Mdas56i6nEmV3LUNOjFZg=
 sk=G3p1HaeaR0kuvNVrB-YxDV0s3VpwjCuXweFIQySLa5LI-tlfq
 X0BY3A1XCk6HXRrUx1qznqLqcSZXctQ06MVmA==
 ```
+
+**7、运行角本**  
+在指定的节点上执行角本
+<a id="runscript"></a>  
+```bash  
+Leither lpki runscript -s "local var=require('var'); local ver = var.GetVar(request.sid, 'ver'); return ver"  
+```  
+-s 执行的角本，缺省是lua类型
+-i 执行的角本文件，扩展名是类型
+-r 参数。key value格式，key是可以在角本中使用的变量名
+    程序执行时会预处理，如果有变量中有用户名和密码或者通行证，会预登录  
+-p 登录节点使用的通行证，角本中可以使用sid变量获取用户信息。在系统目录中缺省使用节点身份运行。
+-n 节点地址。在系统目录中缺省使用当前目录下的节点地址。
+  
+输出结果如下:
+```bash  
+RunScript ret= V0.10.57
+```
+
+**8、Shell**  
+略  

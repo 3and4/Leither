@@ -144,7 +144,7 @@ window.download =  function(filename){
         var filepath = getFilePath(filename)
         console.log("download", filepath);
         runApi(function(stub, sid) {
-            console.log("download MFOpenByPath sid:", sid, " filePath=", filePath); 
+            console.log("download MFOpenByPath sid:", sid, " filePath=", filepath); 
             stub.MFOpenByPath(sid, "mmroot", filepath, 0).then(function(mmfsid) {
             //console.log("MFOpenByPath ok mmfssid=", mmfsid)
             //读出文件类型，暂时串行执行
