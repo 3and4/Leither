@@ -63,13 +63,26 @@ Leither lapp uninstall -a appName -v vers  -p pptfile -n address`
 ```bash  
 Leither lapp showapp -a appName -v version -p pptfile -n address`
 ```  
+
 -a 应用名。同一个开发者，应用不能重名。 如果为空，显示所有应用    
 -p 应用开发者的通告证。在系统目录中缺省使用节点身份运行。  
 -n 节点地址。在系统目录中缺省使用当前目录下的节点地址。  
 -v 要显示的应用版本信息  
 
 **5、域名设置**   
-**6、版本备份** 
+<a id="setdomain"></a>  
+显示应用信息  
+```bash  
+Leither lapp setdomain -a appName -d domain -m message -p pptfile -n address`  
+Leither lapp setdomain -d homepi.leither.cn -n http://192.168.1.7:8000/ -a dav -p newuserforlogin.ppt -m gwaddr=leither.cn
+```  
+-a 应用名。同一个开发者，应用不能重名。 如果为空，显示所有应用    
+-p 应用开发者的通告证。在系统目录中缺省使用节点身份运行。  
+-n 节点地址。在系统目录中缺省使用当前目录下的节点地址。  
+-d 要设置的域名  
+-m 用逗号分开的键值的序列，包含网关地址版本信息等  
+  
+**6、版本备份**  
 把当前版本生成一个版本号进行备份，同时把last版本指向这个版本
 <a id="backup"></a>  
 ```bash  
