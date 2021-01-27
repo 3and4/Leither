@@ -246,7 +246,7 @@ Leither(.exe), SystemVar.json
 在开发的工作目录中展开压缩包，目录名就是测试应用名，当前的应用名就是“dav”,可以手工修改  
 
 ```bash  
-Leither deploy uploadapp -p mylogin.ppt -i 应用路径 -n http://192.168.3.29:4800  
+Leither lapp uploadapp -p mylogin.ppt -i 应用路径 -n http://192.168.3.29:4800  
 ```
 -i 后面是要发布的应用路径  
 -n 后面是要发布的节点链接，可以是应用节点，也可以是开发节点
@@ -254,7 +254,7 @@ Leither deploy uploadapp -p mylogin.ppt -i 应用路径 -n http://192.168.3.29:4
 固化发布  
 把版本号的cur内容入库，并更新版本号，第一个版本为1，第二个版本为2，last通常为最后版，也可以是指定版本。  
 ```bash  
-./Leither.exe deploy backup -a dav -p mylogin.ppt -n http://192.168.3.29:4800/  
+./Leither lapp backup -a dav -p mylogin.ppt -n http://192.168.3.29:4800/  
 ```
 
 ## 绑定外网域名  
@@ -264,7 +264,7 @@ Leither deploy uploadapp -p mylogin.ppt -i 应用路径 -n http://192.168.3.29:4
 
 2. 域名设置  
     ```bash  
-    ./Leither.exe deploy setdomain -d fangpi.leither.cn -n http://192.168.3.29:4800/ -a dav -p mylogin.ppt -m gwaddr=leither.cn  
+    ./Leither lapp setdomain -d fangpi.leither.cn -n http://192.168.3.29:4800/ -a dav -p mylogin.ppt -m gwaddr=leither.cn  
     ```  
     fangpi是开发者创建的Leither二级域名，dav是测试应用名称  
   
