@@ -225,10 +225,10 @@ function showFile(stub, mmfsid, filePath){
     stub.MFGetMimeType(mmfsid).then(function(mimeType){   
         //这里加入文件方式
         console.log("mimeType=  ", mimeType)
-		//下面两段代码（mp4和jpg）是通过链接方式读取对象,优点是简单快速。
-		//用bolb方式实现类似性能要复杂很多，但也不具备bolb方式的相关优点
-        if (mimeType == "video/mp4"){
-            console.log("mimeType=", mimeType)
+	//下面两段代码（mp4和jpg）是通过链接方式读取对象,优点是简单快速。
+	//用bolb方式实现类似性能要复杂很多，但也不具备bolb方式的相关优点
+	var ext = filePath.substr(filePath.lastIndexOf('.')+1)
+        if (mimeType=="video/mp4" || ['mp4','mkv','mov','avi','divx','wmv'].includes(ext.toLowerCase())){
             objUrl = baseurl + "mf" + filePath + "?mmsid="+ mmfsid
             console.log("mimeType is video", objUrl);  
             strVideo = '<video controls autoplay style="width:100%" id= "media" name="media"><source src="' + objUrl+ '" type="video/mp4"> </video>'
@@ -236,12 +236,18 @@ function showFile(stub, mmfsid, filePath){
             document.getElementById('LeitherBody').innerHTML = strVideo    
             //console.log("video ok html=", strVideo);  
             return
-        }   
-        if (mimeType == "image/jpeg"){
+        } else if (mimeType=="image/jpeg"){
             objUrl = baseurl + "mf" + filePath + "?mmsid="+ mmfsid
             strImage = '<img style="width:100%" src="' + objUrl+ '">'
             strImage = strImage + strinfo
             document.getElementById('LeitherBody').innerHTML = strImage    
+            return
+        } else if (mimeType=="application/pdf") {
+            objUrl = baseurl + "mf" + filePath + "?mmsid=" + mmfsid
+	    // min-height:100vh，全屏高度展示PDF文件
+            strImage = '<embed type="application/pdf" src="' + objUrl + '" style="min-height:100vh;width:100%"></embed>'
+            strImage = strImage + strinfo
+            document.getElementById('LeitherBody').innerHTML = strImage
             return
         }
 
