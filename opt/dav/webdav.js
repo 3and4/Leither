@@ -108,7 +108,7 @@ function getFilePath(fileName){
 }
 
 function show(stub, sid){
-    var filePath = getFilePathFromHash()
+    var filePath = window.decodeURIComponent(getFilePathFromHash())	//处理中文文件名
     //console.log("filePath=", filePath);  
 
     console.log("show MFOpenByPath sid:", sid, " filePath=", filePath); 
