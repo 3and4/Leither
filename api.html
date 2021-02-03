@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>API文档</title>
+    <style>
+        body{ margin: 0; background: rgb(252, 253, 245); overflow-y: auto; height: 100%; } /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/ ::-webkit-scrollbar { width: 8px; height: 8px; background-color: #F5F5F5; } *{margin:0;padding: 0;box-sizing: border-box;} /*定义滚动条轨道 内阴影+圆角*/ ::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(135, 132, 132, 0.30); border-radius: 0px; background-color: #F5F5F5; } /*定义滑块 内阴影+圆角*/ ::-webkit-scrollbar-thumb { border-radius: 10px; -webkit-box-shadow: inset 0 0 6px rgba(144, 142, 142, 0.29); background-color: rgb(217, 213, 213); } .sidebar{ overflow: hidden; width: 228px; position: fixed; padding-top:50px; top: 0; left: 0; bottom: 0; background-color: rgb(245, 245, 245); height:100%; box-sizing: border-box; } .sidebar>ul{ padding: 0px 20px 20px; height: 100%; overflow-y: auto; } .sidebar>ul>li{ list-style-type: none; } .sidebar>ul>li>a{ display: block; margin: 0; padding: 2px 0; border: 0; font-family: "Source Sans Pro", sans-serif; font-weight: 400; font-size: 14px; color: #000; text-decoration: none; } .sidebar>ul>li>a[data-num="1"]{ font-size: 18px; font-weight: 600; padding-left: 0; } .sidebar>ul>li>a[data-num="2"]{ padding-left: 10px; } .sidebar>ul>li>a[data-num="3"]{ padding-left: 20px; } .sidebar>ul>li>a[data-num="4"]{ padding-left: 30px; } .sidebar>ul>li>a[data-num="5"]{ padding-left: 40px; } .sidebar>ul>li>a[data-num="6"]{ padding-left: 50px; } .slidebar>ul>li>a:visited{ background-color: #0088cc; color: #ffffff; } .markdown-body{ max-width: 60em; z-Index: -1; margin-left: 270px; padding: 2.5em; word-wrap: break-word; font-size: 16px; line-height: 1.5; } p, blockquote, ul, ol, dl, pre { margin-top: 0; margin-bottom: 16px; overflow: auto; } h1 { padding-bottom: 0.3em; font-size: 2em; border-bottom: 1px solid #eaecef } h2 { padding-bottom: 0.3em; font-size: 1.5em; border-bottom: 1px solid #eaecef } h3 { font-size: 1.25em } h4 { font-size: 1em } h5 { font-size: 0.875em } h6 { font-size: 0.85em; color: #6a737d } hr { height: 0.25em; padding: 0; margin: 24px 0; background-color: #e1e4e8; border: 0 } blockquote { padding: 0 1em; color: #6a737d; border-left: 0.25em solid #dfe2e5 } blockquote>:first-child { margin-top: 0 } blockquote>:last-child { margin-bottom: 0 } kbd { display: inline-block; padding: 3px 5px; font-size: 11px; line-height: 10px; color: #444d56; vertical-align: middle; background-color: #fafbfc; border: solid 1px #c6cbd1; border-bottom-color: #959da5; border-radius: 3px; box-shadow: inset 0 -1px 0 #959da5 } ul, ol { padding-left: 2em } ul ul, ul ol, ol ol, ol ul { margin-top: 0; margin-bottom: 0 } li { word-wrap: break-word; list-style: inherit } li>p { margin-top: 16px } li+li { margin-top: 0.25em } ol ol ul, ol ul ul, ul ol ul, ul ul ul { list-style-type: square } ol ul, ul ul { list-style-type: circle } ul { list-style-type: disc } ol { list-style: decimal } img { max-width: 100% } pre, xmp, plaintext, listing { padding: 1em; background-color: #dfebf5; } tt, code, kbd, samp { background-color: #dfebf5; } code{ font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace; } a { color: #0366d6; text-decoration: none; } a:hover { color: #1a03d6; } a:active { color: #ba23d6; } dl { padding: 0; } dl dt { padding: 10px 0; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; } dl dd { padding: 0 16px; margin-bottom: 16px; } dd { margin-left: 0; } table { border-spacing: 0; width: 100%; } table { border: solid #ccc 1px; border-radius: 6px; margin: 1em 0; } table tr:hover { background: #fbf8e9; transition: all 0.1s ease-in-out; } table td, table th { border-left: 1px solid #ccc; border-top: 1px solid #ccc; padding: 10px; text-align: left; } table th { background-color: #dce9f9; background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9)); border-top: none; text-shadow: 0 1px 0 rgba(255,255,255,.5); padding: 5px; } table td:first-child, table th:first-child { border-left: none; } table th:first-child { border-radius: 6px 0 0 0; } table th:last-child { border-radius: 0 6px 0 0; } table th:only-child{ border-radius: 6px 6px 0 0; } table tr:last-child td:first-child { border-radius: 0 0 0 6px; } table tr:last-child td:last-child { border-radius: 0 0 6px 0; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+<li><a href="#api-data-about" alt="关于" data-num="1" >关于</a></li>
+<li><a href="#api-data-deal" alt="使用说明" data-num="1" >使用说明</a></li>
+<li><a href="#api-data-deal-install" alt="安装" data-num="2" >安装</a></li>
+<li><a href="#api-data-deal-install" alt="引入及初始化" data-num="2" >引入及初始化</a></li>
+<li><a href="#api-data-deal-method" alt="API使用方法" data-num="2" >API使用方法</a></li>
+<li><a href="#api-param-explain" alt="通用API参数说明" data-num="2" >通用API参数说明</a></li>
+<li><a href="#api-system-Usrinfo" alt="用户API" data-num="1" >用户API</a></li>
+<li><a href="#getvarbycontext" alt="getVarByContext" data-num="2" >getVarByContext</a></li>
+<li><a href="#register" alt="register" data-num="2" >register</a></li>
+<li><a href="#login" alt="login" data-num="2" >login</a></li>
+<li><a href="#logout" alt="logout" data-num="2" >logout</a></li>
+<li><a href="#setuserinfo" alt="setUserInfo" data-num="2" >setUserInfo</a></li>
+<!--li><a href="#api-data-stub-key" alt="数据库API-键命令" data-num="1" >数据库API-键命令</a></li>
+<li><a href="#set" alt="set" data-num="2" >set</a></li>
+<li><a href="#get" alt="get" data-num="2" >get</a></li>
+<li><a href="#strlen" alt="strLen" data-num="2" >strLen</a></li>
+<li><a href="#del" alt="del" data-num="2" >del</a></li>
+<li><a href="#setdata" alt="setData" data-num="2" >setData</a></li>
+<li><a href="#incr" alt="incr" data-num="2" >incr</a></li>
+<li><a href="#api-data-stub-hash" alt="数据库API-hash表" data-num="1" >数据库API-hash表</a></li>
+<li><a href="#hset" alt="hSet" data-num="2" >hSet</a></li>
+<li><a href="#hdel" alt="hDel" data-num="2" >hDel</a></li>
+<li><a href="#hlen" alt="hLen" data-num="2" >hLen</a></li>
+<li><a href="#hget" alt="hGet" data-num="2" >hGet</a></li>
+<li><a href="#hgetall" alt="hGetAll" data-num="2" >hGetAll</a></li>
+<li><a href="#hkeys" alt="hKeys" data-num="2" >hKeys</a></li>
+<li><a href="#hmset" alt="hMSet" data-num="2" >hMSet</a></li>
+<li><a href="#hmget" alt="hMGet" data-num="2" >hMGet</a></li>
+<li><a href="#hmclear" alt="hMClear" data-num="2" >hMClear</a></li>
+<li><a href="#hincrby" alt="hIncrBy" data-num="2" >hIncrBy</a></li>
+<li><a href="#hscan-" alt="hScan(不对外暴露)" data-num="2" >hScan(不对外暴露)</a></li>
+<li><a href="#hrevscan-" alt="hRevScan(不对外暴露)" data-num="2" >hRevScan(不对外暴露)</a></li>
+<li><a href="#api-data-stub-list" alt="数据库API-List命令" data-num="1" >数据库API-List命令</a></li>
+<li><a href="#lpush" alt="lPush" data-num="2" >lPush</a></li>
+<li><a href="#lpop" alt="lPop" data-num="2" >lPop</a></li>
+<li><a href="#rpush" alt="rPush" data-num="2" >rPush</a></li>
+<li><a href="#rpop" alt="rPop" data-num="2" >rPop</a></li>
+<li><a href="#lrange" alt="lRange" data-num="2" >lRange</a></li>
+<li><a href="#lclear" alt="lClear" data-num="2" >lClear</a></li>
+<li><a href="#lmclear" alt="lMClear" data-num="2" >lMClear</a></li>
+<li><a href="#lindex" alt="lIndex" data-num="2" >lIndex</a></li>
+<li><a href="#llen" alt="lLen" data-num="2" >lLen</a></li>
+<li><a href="#lset" alt="lSet" data-num="2" >lSet</a></li>
+<li><a href="#api-data-stub-set" alt="数据库API-集合" data-num="1" >数据库API-集合</a></li>
+<li><a href="#sadd" alt="sAdd" data-num="2" >sAdd</a></li>
+<li><a href="#scard" alt="sCard" data-num="2" >sCard</a></li>
+<li><a href="#sclear" alt="sClear" data-num="2" >sClear</a></li>
+<li><a href="#sdiff" alt="sDiff" data-num="2" >sDiff</a></li>
+<li><a href="#sinter" alt="sInter" data-num="2" >sInter</a></li>
+<li><a href="#smclear" alt="sMClear" data-num="2" >sMClear</a></li>
+<li><a href="#smembers" alt="sMembers" data-num="2" >sMembers</a></li>
+<li><a href="#srem" alt="sRem" data-num="2" >sRem</a></li>
+<li><a href="#sunion" alt="sUnion" data-num="2" >sUnion</a></li>
+<li><a href="#api-data-stub-sorted" alt="数据库API-有序集合" data-num="1" >数据库API-有序集合</a></li>
+<li><a href="#zadd" alt="zAdd" data-num="2" >zAdd</a></li>
+<li><a href="#zcard" alt="zCard" data-num="2" >zCard</a></li>
+<li><a href="#zcount" alt="zCount" data-num="2" >zCount</a></li>
+<li><a href="#zrem" alt="zRem" data-num="2" >zRem</a></li>
+<li><a href="#zscore" alt="zScore" data-num="2" >zScore</a></li>
+<li><a href="#zrank" alt="zRank" data-num="2" >zRank</a></li>
+<li><a href="#zrange" alt="zRange" data-num="2" >zRange</a></li>
+<li><a href="#zrangebyscore" alt="zRangeByScore" data-num="2" >zRangeByScore</a></li>
+<li><a href="#zremrangebyscore" alt="zRemRangeByScore" data-num="2" >zRemRangeByScore</a></li>
+<li><a href="#zmclear" alt="zMClear" data-num="2" >zMClear</a></li>
+<li><a href="#zclear" alt="zClear" data-num="2" >zClear</a></li>
+<li><a href="#api-data-file" alt="文件API" data-num="1" >文件API</a></li>
+<li><a href="#opentempfile" alt="openTempFile" data-num="2" >openTempFile</a></li>
+<li><a href="#setlfiledata" alt="setLFileData" data-num="2" >setLFileData</a></li>
+<li><a href="#temp2lfile" alt="temp2LFile" data-num="2" >temp2LFile</a></li>
+<li><a href="#uploadapp" alt="uploadApp" data-num="2" >uploadApp</a></li>
+<li><a href="#uploadappfile" alt="uploadAppFile" data-num="2" >uploadAppFile</a></li>
+<li><a href="#createfilebydata" alt="createFileByData" data-num="2" >createFileByData</a></li>
+<li><a href="#api-data-app" alt="应用API" data-num="1" >应用API</a></li>
+<li><a href="#version" alt="version" data-num="2" >version</a></li>
+<li><a href="#uninstallapp" alt="unInstallApp" data-num="2" >unInstallApp</a></li>
+<li><a href="#appinfo" alt="appinfo" data-num="2" >appinfo</a></li>
+<li><a href="#appversions" alt="appversions" data-num="2" >appversions</a></li>
+<li><a href="#apppackage" alt="apppackage" data-num="2" >apppackage</a></li>
+<li><a href="#appids" alt="appids" data-num="2" >appids</a></li>
+<li><a href="#appinfos" alt="appinfos" data-num="2" >appinfos</a></li-->
+
+
+</ul>
+
+    </div>
+    <div class="markdown-body">
+        <h1 id="api-data-about">关于</h1>
+Leither是一个轻量级的云操作系统<br><br>
+<p><b>Html5功能强大</b>。它是互联网的核心标准和规范,目前互联网上大量常见的应用形态都是基于Html5完成.应用包括网站、App、公众号、小程序等。</p>
+<p><b>Html5并不完整</b>。它并不是一个完整的互联网应用解决方案。Html5标准中只提供了本地化存储方案（Web Storage与IndexedDB），并没有为后端数据和业务逻辑制定标准。这造成了常见的互联网应用需要大量依赖后端来实现业务逻辑和数据存储。因为不触碰核心的业务逻辑和底层数据，前端程序员通常在各种开发人员中处于歧视链的底层。</p>
+<p><b>Leither补足了Html5的短板</b>。 Leither提供用户和安全认证机制，提供了应用体系，提供了云端的文件系统和数据库系统，提供了去中心的域名解析机制，冗错及负载均衡机制。</p>
+补足短板之后，常见互联网应用绝大部分工作可以通过Html5来完成，本文提供了操作Leither系统的流程和相关API<br><br>
+<h1 id="api-data-deal">使用说明</h1>
+
+<h2 id="api-data-deal-install">安装</h2>
+
+<ol>
+<li><p>脚手架安装</p>
+<pre><code> npm install @leither/l-api</code></pre></li>
+<li><p>静态页面，点击下载文件</p>
+</li>
+</ol>
+<h2 id="api-data-deal-install">引入及初始化</h2>
+
+<ol>
+<li>脚手架环境初始化 <blockquote>
+<p>initLAPI( &#39;http://+url+/webapi/&#39;);</p>
+</blockquote>
+</li>
+</ol>
+<pre><code>参数说明：
+   url：leither所在服务器的ip地址，类型String</code></pre><pre><code>例：import { initLAPI } from &quot;@leither/l-api&quot;;
+    const G = {};
+    const api = initLAPI(&#39;http://192.168.1.1/webapi/&#39;);
+    G.api=api;
+</code></pre><ol start="2">
+<li>静态页面，初始化<blockquote>
+<p>initLAPI(&#39;http://+url+/webapi/&#39;);</p>
+</blockquote>
+</li>
+</ol>
+<pre><code>参数说明：
+   url：leither所在服务器的ip地址，类型String</code></pre><pre><code>例：&lt;script src=&#39;./l-api.browser.js&#39;&gt;&lt;/script&gt;
+   &lt;script&gt;
+        window.G ={};
+        let api = QxzLApi.initLAPI(&#39;http://192.168.1.1/webapi/&#39;)
+        window.G.api=api;
+   &lt;/script&gt;
+</code></pre><h2 id="api-data-deal-method">API使用方法</h2>
+
+<pre><code>    G.api.请求方式(参数1,参数2,参数3...);
+注:本api请求均为异步请求,返回的数据均为promise对象,如需同步请求需在请求函数前加async,
+如:async function(){G.api处理函数};
+G.api前需加await,如:await G.api来接收返回的对象,或者可以使用
+promise自带的.then和.catch方法!</code></pre><ol>
+<li>通过回调函数来处理<pre><code> 例：G.api.test(sid, &#39;test&#39;, data =&gt; {
+         console.log(&#39;成功的回调&#39;, &#39;返回的数据是：&#39; + data)
+     }, (name, err) =&gt; {
+         console.log(&#39;失败的回调&#39;, &#39;API 名称是：&#39; + name, &#39;返回的错误信息是：&#39; + err)
+     })</code></pre></li>
+<li>通过处理 Promise 的方式来处理<pre><code> 例：G.api.test(sid, &#39;test&#39;).then(data =&gt; {
+         console.log(&#39;成功的回调&#39;, &#39;返回的数据是：&#39; + data)
+     }).catch((name, err) =&gt; {
+         console.log(&#39;失败的回调&#39;, &#39;API 名称是：&#39; + name, &#39;返回的错误信息是：&#39; + err)
+     })</code></pre></li>
+</ol>
+<h2 id="api-param-explain">通用API参数说明</h2>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sid</td>
+<td>String</td>
+<td>用户登录后返回的后续操作凭证</td>
+</tr>
+<tr>
+<td>DATA_ID</td>
+<td>String</td>
+<td>数据区的id,通过 G.api.usergroupgetinfo(&#39;&#39;, &#39;用户组id&#39;,&#39;DATA_ID&#39;)获取</td>
+</tr>
+</tbody></table>
+<h1 id="api-system-Usrinfo">用户API</h1>
+
+<h2 id="getvarbycontext">getVarByContext</h2>
+<ul>
+<li>G.api.getVarByContext(null, name, mapOpt)<blockquote>
+<p>获取硬件对应的签名。</p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>String</td>
+<td>正式发布：name=&#39;ppt&#39;，测试环境：name=&#39;ppttest&#39; or &#39;ppttest2&#39;</td>
+</tr>
+<tr>
+<td>mapOpt</td>
+<td>Object</td>
+<td>传入不同的对象会返回不同的签名，对象里属性对应的值必须为 String</td>
+</tr>
+</tbody></table>
+<pre><code>例：G.api.getVarByContext(null, &#39;ppt&#39;, {type: &#39;PC&#39;})    // 获取 PC 端的硬件签名</code></pre><h2 id="register">register</h2>
+<ul>
+<li>G.api.register(JSON.stringify(userinfo))<blockquote>
+<p>注册用户</p>
+</blockquote>
+</li>
+</ul>
+<pre><code>参数说明：
+    userinfo：包含用户信息的JSON对象
+    其中的参数包括：
+        &quot;name&quot; //用户名，必须有
+        &quot;pass&quot; //密码，必须有
+        &quot;ppt&quot; //硬件签名
+        &quot;father&quot; //用户的父级</code></pre><pre><code>例：注册一个用户名为小黄，密码为123456的用户
+    G.api.register(JSON.stringify({
+            name:&#39;小黄&#39;,
+            pass:&#39;123456&#39;
+        }))</code></pre><h2 id="login">login</h2>
+<ol>
+<li><p>G.api.login(name, pass, &#39;byname&#39;)</p>
+<blockquote>
+<p>通过用户名密码登录</p>
+</blockquote>
+</li>
+<li><p>G.api.login(ppt,&#39;&#39;,&#39;byppt2&#39;)</p>
+<blockquote>
+<p>通过ppt的方式登录</p>
+</blockquote>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>String</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>pass</td>
+<td>String</td>
+<td>用户密码</td>
+</tr>
+<tr>
+<td>ppt</td>
+<td>String（JSON）</td>
+<td>硬件对应的签名</td>
+</tr>
+</tbody></table>
+<pre><code>例：登陆小黄的账户
+    G.api.login(&#39;小黄&#39;, &#39;123456&#39;, &#39;byname&#39;)</code></pre><h2 id="logout">logout</h2>
+<ul>
+<li>G.api.logout(sid,info)<blockquote>
+<p>用户登出，使用户的sid失效</p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sid</td>
+<td>String</td>
+<td>用户登录凭证，用户的 sid，登录时返回的 sid。</td>
+</tr>
+<tr>
+<td>info</td>
+<td>String</td>
+<td>用户信息，一般为空</td>
+</tr>
+</tbody></table>
+<pre><code>例：登出小黄的账户
+    G.api.logout(sid,null)</code></pre><h2 id="setuserinfo">setUserInfo</h2>
+<ul>
+<li>G.api.setUserInfo(sid, JSON.stringify(userinfo))<blockquote>
+<p>设置用户信息 </p>
+</blockquote>
+</li>
+</ul>
+<pre><code>参数说明：
+    userinfo：包含用户信息的JSON对象,必须要有验证信息（用户名、密码或者ppt的方式验证）,
+    在属性前加上 new 用于设置、加上 del 用于删除。
+    其中的参数包括：
+        &quot;name&quot; //用户名
+        &quot;pass&quot; //密码
+        &quot;ppt&quot; //硬件签名
+        &quot;userid&quot; //用户id，当前操作用户的id，针对无鉴权信息的用户
+        &quot;newname&quot; //新的用户名，设置用
+        &quot;newpass&quot; //新的密码，设置用
+        &quot;newppt&quot; //新的通行证，设置用
+        &quot;delppt&quot; //通行证Bindinfo，删除用
+        &quot;father&quot; //用户的父级</code></pre><pre><code>例: 将小黄的密码修改为1234567
+    let userInfo={
+        name:&#39;小黄&#39;, //用户名
+        pass:&#39;123456&#39;, //密码
+        newpass:&#39;1234567&#39; //新密码
+    }
+    G.api.setUserInfo(sid,JSON.stringify(userinfo))</code></pre>
+
+
+
+<!--h1 id="api-usergroup-stub">用户组API</h1>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>gid</td>
+<td>String</td>
+<td>用户组id，生成用户组返回的id</td>
+</tr>
+<tr>
+<td>groupname</td>
+<td>String</td>
+<td>组名称，如果为空，则使用用户名</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>Number</td>
+<td>过期时间，单位 s</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>String</td>
+<td>用户的id</td>
+</tr>
+<tr>
+<td>verify</td>
+<td>String</td>
+<td>验证码，通过 <code>G.api.ugVerifyCode(sid, gid, timeout)</code> 生成</td>
+</tr>
+</tbody></table>
+<h2 id="usergroup">usergroup</h2>
+<ul>
+<li>G.api.getVar(&#39;&#39;, &#39;usergroup&#39;, groupname, &#39;name&#39;) </li>
+</ul>
+<blockquote>
+<p>查询用户组信息</p>
+</blockquote>
+<pre><code>例：查询名为MY_TEST用户组的组信息
+    G.api.getVar(&#39;&#39;, &#39;usergroup&#39;, &#39;MY_TEST&#39;, &#39;name&#39;,data=&gt;{
+        console.log(&#39;用户组信息&#39;,data);
+    })</code></pre><h2 id="usergroupcreate">userGroupCreate</h2>
+<ul>
+<li>G.api.userGroupCreate(sid, groupname)</li>
+</ul>
+<blockquote>
+<p>生成用户组</p>
+</blockquote>
+<pre><code>例：生成名为MY_TEST的用户组，并返回组id
+    G.api.userGroupCreate(sid, &#39;MY_TEST&#39;,gid=&gt;{
+        console.log(&#39;用户组ID&#39;,gid);
+    }) </code></pre><h2 id="usergroupdestroy">userGroupDestroy</h2>
+<ul>
+<li>G.api.userGroupDestroy(sid, gid)<blockquote>
+<p>销毁用户组</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="usergroupaddmanager">userGroupAddManager</h2>
+<ul>
+<li>G.api.userGroupAddManager(sid, gid, userid)<blockquote>
+<p>添加管理员</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="usergroupdelmanager">userGroupDelManager</h2>
+<ul>
+<li>G.api.userGroupDelManager(sid, gid, userid)<blockquote>
+<p>删除管理员</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="usergroupaddmember">userGroupAddMember</h2>
+<ul>
+<li>G.api.userGroupAddMember(sid, gid, userid)<blockquote>
+<p>添加成员</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="usergroupdelmember">userGroupDelMember</h2>
+<ul>
+<li>G.api.userGroupDelMember(sid, gid, userid)<blockquote>
+<p>删除数据组成员</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="ugverifycode">ugVerifyCode</h2>
+<ul>
+<li>G.api.ugVerifyCode(sid, gid, timeout)<blockquote>
+<p>创建加入的验证码,如果原有的未过期，则返回，并设置新的 timeout</p>
+</blockquote>
+</li>
+</ul>
+<pre><code>例：管理员在用户组生成一个时长为30分钟的验证码。
+    G.api.ugVerifyCode(sid, gid,1800, verify =&gt; {
+        console.log(&#39;验证码&#39;,verify);
+    })</code></pre><h2 id="usergroupjoin">userGroupJoin</h2>
+<ul>
+<li>G.api.userGroupJoin(sid, gid, verify)</li>
+</ul>
+<blockquote>
+<p>加入用户组</p>
+</blockquote>
+<pre><code> 例：用户通过验证码加入用户组
+    G.api.userGroupJoin(sid, gid,verify)</code></pre><h2 id="usergroupsetinfo">userGroupSetInfo</h2>
+<ul>
+<li>G.api.userGroupSetInfo(sid, gid, k,v)</li>
+</ul>
+<blockquote>
+<p>设置组信息</p>
+</blockquote>
+<pre><code>参数说明:
+    k:数据区名
+    v:数据区id</code></pre><pre><code>例:把名为DATA_ID的数据区的id设置为abcdefg
+    G.api.userGroupSetInfo(sid, gid,&#39;DATA_ID&#39;,&#39;abcdefg&#39;)</code></pre><h2 id="usergroupgetinfo">userGroupGetInfo</h2>
+<ul>
+<li>G.api.userGroupGetInfo(sid, gid, k)</li>
+</ul>
+<blockquote>
+<p>获取组信息</p>
+</blockquote>
+<pre><code>参数说明:
+    k:数据区名</code></pre><pre><code>例：获取名为DATA_ID的数据区的id
+    G.api.userGroupGetInfo(&#39;&#39;, gid,&#39;DATA_ID&#39;)
+</code></pre><h2 id="grant-">grant(以后会删除这个接口)</h2>
+<ul>
+<li>G.api.grant(sid,key,fileId,gid,right)</li>
+</ul>
+<blockquote>
+<p>数据块授权</p>
+</blockquote>
+<pre><code>参数说明:
+    key:主键，&#39;&#39;代表全部
+    fileId:数据区id,&#39;&#39;代表全部
+    right:liunx下的权限表达式,该参数不是字符串，是计算结果 ，一般为 256 * 7 + 7  
+   256代表管理员  7代表全权限   后面的7表示用户的权限   0代表没有权限，4读取，1执行，2写入，7全权限1+2+4=7</code></pre><pre><code>例:把该用户下名为TEST的表的全部权限赋值给用户组
+    G.api.grant(sid,&#39;TEST&#39;,&#39;&#39; gid,256 * 7 + 7)</code></pre><h2 id="checkright-">checkRight(以后会删除这个接口)</h2>
+<ul>
+<li>G.api.checkRight(sid,gid,key,fileId,right)</li>
+</ul>
+<blockquote>
+<p>检查对数据区操作权限</p>
+</blockquote>
+<pre><code>参数说明:
+    key:主键，&#39;&#39;代表全部
+    fileId:数据区id,&#39;&#39;代表全部
+    right:liunx下的权限表达式,该参数不是字符串，是计算结果 ，一般为 256 * 7 + 7  
+   256代表管理员  7代表全权限   后面的7表示用户的权限   0代表没有权限，4读取，1执行，2写入，7全权限1+2+4=7</code></pre><pre><code>例:检查本用户是否对TEST表具有操作权限
+    G.api.checkRight(sid,gid,&#39;TEST&#39;,&#39;&#39;,7)</code></pre><h1 id="api-data-stub-key">数据库API-键命令</h1>
+
+<blockquote>
+<p>设置指定 key 的值</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>key</td>
+<td>String</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>value</td>
+<td>String (JSON)</td>
+<td>指定字段的值</td>
+</tr>
+</tbody></table>
+<h2 id="set">set</h2>
+<ul>
+<li>G.api.set(sid, DATA_ID, key, value)</li>
+</ul>
+<pre><code>例：将小黄的信息存在主键中
+    let userinfo={
+        userid:&#39;a123456&#39;,
+        name:&#39;小黄&#39;,
+        age:&#39;20&#39;,
+        sex:&#39;男&#39;
+    }
+    userinfo=JSON.stringify(userinfo)
+    G.api.set(sid, DATA_ID, &#39;小黄&#39;,userinfo)</code></pre><h2 id="get">get</h2>
+<ul>
+<li>G.api.get(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>获取指定 key 的值</p>
+</blockquote>
+<pre><code>例：获取小黄的用户信息
+    G.api.get(sid, DATA_ID, &#39;小黄&#39;,userinfo=&gt;{
+        console.log(&#39;小黄的信息&#39;,userinfo);
+    })</code></pre><h2 id="strlen">strLen</h2>
+<ul>
+<li>G.api.strLen(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>返回 key 所储存的字符串值的长度。</p>
+</blockquote>
+<pre><code>例：查询小黄的用户信息字符的长度
+    G.api.strLen(sid, DATA_ID, &#39;小黄&#39;,len=&gt;{
+        console.log(&#39;信息的长度&#39;,len);
+    })
+</code></pre><h2 id="del">del</h2>
+<ul>
+<li>G.api.del(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>该命令用于在 key 存在时删除 key</p>
+</blockquote>
+<pre><code>例：删除小黄的用户信息
+    G.api.del(sid, DATA_ID, &#39;小黄&#39;)</code></pre><h2 id="setdata">setData</h2>
+<ul>
+<li>G.api.setData(sid, DATA_ID, value)</li>
+</ul>
+<blockquote>
+<p>该命令用于将数据存于数据库中并返回key</p>
+</blockquote>
+<pre><code>例：将小黄的信息存于数据库中
+    let userinfo={
+        userid:&#39;a123456&#39;,
+        name:&#39;小黄&#39;,
+        age:&#39;20&#39;,
+        sex:&#39;男&#39;
+    }
+    userinfo=JSON.stringify(userinfo)
+    G.api.setData(sid, DATA_ID, userinfo,id=&gt;{
+        console.log(&#39;数据id&#39;,id);
+    })</code></pre><h2 id="incr">incr</h2>
+<ul>
+<li>G.api.incr(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>将 key 中储存的数字值增一</p>
+</blockquote>
+<pre><code>例：将小黄的信息存于数据库中
+    let userinfo={
+        userid:&#39;a123456&#39;,
+        name:&#39;小黄&#39;,
+        age:&#39;20&#39;,
+        sex:&#39;男&#39;
+    }
+    userinfo=JSON.stringify(userinfo)
+    G.api.setData(sid, DATA_ID, userinfo,id=&gt;{
+    console.log(&#39;数据id&#39;,id);
+ })
+</code></pre><h1 id="api-data-stub-hash">数据库API-hash表</h1>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>key</td>
+<td>String</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>keys</td>
+<td>Array</td>
+<td>key的数组</td>
+</tr>
+<tr>
+<td>field</td>
+<td>String</td>
+<td>字段</td>
+</tr>
+<tr>
+<td>fields</td>
+<td>Array</td>
+<td>field的数组</td>
+</tr>
+<tr>
+<td>value</td>
+<td>String (JSON)</td>
+<td>指定字段的值</td>
+</tr>
+</tbody></table>
+<h2 id="hset">hSet</h2>
+<ul>
+<li>G.api.hSet(sid, DATA_ID, key, field, value)</li>
+</ul>
+<blockquote>
+<p>设置键值</p>
+</blockquote>
+<pre><code>例：将用户的信息存到MY_USERINFO的表中
+    let userinfo={
+        userid:&#39;a123456&#39;,
+        name:&#39;小黄&#39;,
+        age:&#39;20&#39;,
+        sex:&#39;男&#39;
+    }
+    let field=userinfo.userid;
+    userinfo=JSON.stringify(userinfo)
+    G.api.hSet(sid, DATA_ID, &#39;MY_USERINFO&#39;, field, userinfo)//如果没有MY_USERINFO表将会自动创建</code></pre><h2 id="hdel">hDel</h2>
+<ul>
+<li>G.api.hDel(sid, DATA_ID, key,field)</li>
+</ul>
+<blockquote>
+<p>删除一个哈希表字段</p>
+</blockquote>
+<pre><code>例：将MY_USERINFO的表中小黄的信息删除掉
+    let field=&#39;a123456&#39;;
+    G.api.hDel(sid, DATA_ID, &#39;MY_USERINFO&#39;, field)</code></pre><h2 id="hlen">hLen</h2>
+<ul>
+<li>G.api.hLen(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>获取哈希表中字段的数量</p>
+</blockquote>
+<pre><code>例：获取MY_USERINFO的表中用户的个数
+    G.api.hLen(sid, DATA_ID, &#39;MY_USERINFO&#39;,length=&gt;{
+        console.log(&#39;用户个数&#39;,length);
+    })</code></pre><h2 id="hget">hGet</h2>
+<ul>
+<li>G.api.hGet(sid, DATA_ID, key, field)</li>
+</ul>
+<blockquote>
+<p>获取存储在哈希表中指定字段的值</p>
+</blockquote>
+<pre><code>例：获取MY_USERINFO的表中小黄的用户信息
+    let field=&#39;a123456&#39;;
+    G.api.hGet(sid, DATA_ID, &#39;MY_USERINFO&#39;,field,userinfo=&gt;{
+        console.log(&#39;用户信息&#39;,userinfo);
+    })</code></pre><h2 id="hgetall">hGetAll</h2>
+<ul>
+<li>G.api.hGetAll(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>获取在哈希表中指定 key 的所有字段和值</p>
+</blockquote>
+<pre><code>例：获取MY_USERINFO的表中所有用户信息
+    G.api.hGetAll(sid, DATA_ID, &#39;MY_USERINFO&#39;,userinfoArr=&gt;{
+        console.log(&#39;用户信息的数组&#39;,userinfoArr);
+    })</code></pre><h2 id="hkeys">hKeys</h2>
+<ul>
+<li>G.api.hKeys(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>获取所有哈希表中的字段</p>
+</blockquote>
+<pre><code>例：获取MY_USERINFO的表中所有的字段
+    G.api.hKeys(sid, DATA_ID, &#39;MY_USERINFO&#39;,fieldArr=&gt;{
+        console.log(&#39;表中的所有字段&#39;,fieldArr);
+    })
+</code></pre><h2 id="hmset">hMSet</h2>
+<ul>
+<li>G.api.hMSet(sid, DATA_ID, key, field)</li>
+</ul>
+<blockquote>
+<p>同时将多个 field-value (域-值)对设置到哈希表 key 中。</p>
+</blockquote>
+<pre><code>例：将二黄和三黄的用户信息添加到MY_USERINFO表中
+    let userinfo1={
+        userid:&#39;b123456&#39;,
+        name:&#39;二黄&#39;,
+        age:&#39;21&#39;,
+        sex:&#39;男&#39;
+    }
+    let userinfo2={
+        userid:&#39;c123456&#39;,
+        name:&#39;三黄&#39;,
+        age:&#39;22&#39;,
+        sex:&#39;男&#39;
+    }
+    let userinfoArr=[];
+    userinfoArr.push({field:userinfo1.userid,value:JSON.stringify(userinfo1)})
+    userinfoArr.push({field:userinfo2.userid,value:JSON.stringify(userinfo2)})
+    G.api.hMSet(sid, DATA_ID, &#39;MY_USERINFO&#39;,...userinfoArr)</code></pre><h2 id="hmget">hMGet</h2>
+<ul>
+<li>G.api.hMGet(sid, DATA_ID, key, ...fields)</li>
+</ul>
+<blockquote>
+<p>获取所有给定字段的值</p>
+</blockquote>
+<pre><code>例：获取MY_USERINFO的表中二黄和三黄的用户信息
+    let field1=&#39;b123456&#39;;
+    let field2=&#39;c123456&#39;;
+    let arr=[field1,field2];
+    G.api.hMGet(sid, DATA_ID, &#39;MY_USERINFO&#39;,...arr,userinfoArr=&gt;{
+    console.log(&#39;用户信息的数组&#39;,userinfoArr);
+ })</code></pre><h2 id="hmclear">hMClear</h2>
+<ul>
+<li>G.api.hMClear(sid, DATA_ID, ...keys)</li>
+</ul>
+<blockquote>
+<p>清空哈希表</p>
+</blockquote>
+<pre><code>例1：清空MY_USERINFO的表中所有的用户信息
+    G.api.hMClear(sid, DATA_ID, &#39;MY_USERINFO&#39;)
+
+例2：清空MY_USERINFO和MY_USERINFO1表
+    let arr=[&#39;MY_USERINFO&#39;,&#39;MY_USERINFO1&#39;]
+    G.api.hMClear(sid, DATA_ID, ...arr)</code></pre><h2 id="hincrby">hIncrBy</h2>
+<ul>
+<li>G.api.hIncrBy(sid, DATA_ID, key,delta)</li>
+</ul>
+<blockquote>
+<p>为哈希表 key 中的指定字段的整数值加上增量 。</p>
+<pre><code>参数说明：
+    delta:</code></pre></blockquote>
+<pre><code>例：建立一张MY_STORE表格，记录苹果的个数是100，又进货了100个苹果
+    G.api.hSet(sid, DATA_ID, &#39;MY_STORE&#39;, &#39;apple&#39;, 100)
+    G.api.hIncrBy(sid, DATA_ID,&#39;MY_STORE&#39;, &#39;apple&#39;, 100)</code></pre><h2 id="hscan-">hScan(不对外暴露)</h2>
+<ul>
+<li>G.api.hScan(sid, DATA_ID, key,beginfield,match,count,inclusive)</li>
+</ul>
+<blockquote>
+<p>通过正则表达式从前往后匹配fileId，查找需要的值</p>
+</blockquote>
+<pre><code>参数说明：
+    beginfield:开始匹配的位置，类型为String，为空时，从第一个开始匹配
+    match:正则匹配的内容，类型为String,空为不进行正则匹配
+    count:查找的数量，类型为number，整数，0为查找全部符合条件的内容
+    inclusive:查找是否包含与match一样的内容，true 包含，false 不包含，类型Boolearn</code></pre><pre><code>例：查找MY_USERINFO的表中带有黄字的用户信息
+    G.api.hScan(sid, DATA_ID, &#39;MY_USERINFO&#39;,&#39;&#39;,&#39;黄&#39;,null,true,userinfoArr=&gt;{
+        console.log(&#39;带有黄字的全部用户信息&#39;,userinfoArr)
+    })</code></pre><h2 id="hrevscan-">hRevScan(不对外暴露)</h2>
+<ul>
+<li>G.api.hRevScan(sid, DATA_ID, key,beginfield,match,count,inclusive)</li>
+</ul>
+<blockquote>
+<p>通过正则表达式从后往前匹配fileId，查找需要的值</p>
+</blockquote>
+<pre><code>参数说明：
+    beginfield:开始匹配的位置，类型为String
+    match:正则匹配的内容，类型为String,空为不进行正则匹配
+    count:查找的数量，类型为number，整数，空为查找全部符合条件的内容
+    inclusive:查找是否包含与match一样的内容，true 包含，false 不包含，类型Boolearn</code></pre><pre><code>例：查找MY_USERINFO的表中最后一个带有黄字的用户信息
+    G.api.hRevScan(sid, DATA_ID, &#39;MY_USERINFO&#39;,&#39;&#39;,&#39;黄&#39;,1,true,userinfoArr=&gt;{
+        console.log(&#39;最后一个带有黄字的用户&#39;,userinfoArr)
+    })</code></pre><h1 id="api-data-stub-list">数据库API-List命令</h1>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DATA_ID</td>
+<td>String</td>
+<td>数据区的id,通过 G.api.usergroupgetinfo(&#39;&#39;, &#39;用户组id&#39;,&#39;DATA_ID&#39;)获取。</td>
+</tr>
+<tr>
+<td>key</td>
+<td>String</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>keys</td>
+<td>Array</td>
+<td>主键的数组</td>
+</tr>
+<tr>
+<td>index</td>
+<td>number</td>
+<td>列表索引</td>
+</tr>
+<tr>
+<td>value</td>
+<td>String (JSON)</td>
+<td>指定字段的值</td>
+</tr>
+</tbody></table>
+<h2 id="lpush">lPush</h2>
+<ul>
+<li>G.api.lPush(sid, DATA_ID, key,value)</li>
+</ul>
+<blockquote>
+<p>将一个或多个值插入到列表头部</p>
+</blockquote>
+<pre><code>例：将小黄的信息存到名为TEST的列表中
+    let userinfo={
+        userid:&#39;b123456&#39;,
+        name:&#39;小黄&#39;,
+        age:&#39;21&#39;,
+        sex:&#39;男&#39;
+    }
+    userinfo=JSON.stringify(userinfo)}
+    G.api.lPush(sid, DATA_ID,&#39;TEST&#39;,userinfo)</code></pre><h2 id="lpop">lPop</h2>
+<ul>
+<li>G.api.lPop(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>移出并获取列表的第一个元素</p>
+</blockquote>
+<pre><code>例：获取TEST列表中第一元素的值，并删除
+    G.api.lPush(sid, DATA_ID, &#39;TEST&#39;,data=&gt;{
+        console.log(&#39;TEST列表中的第一个元素&#39;,data)
+    })</code></pre><h2 id="rpush">rPush</h2>
+<ul>
+<li>G.api.rPush(sid, DATA_ID, key,value)</li>
+</ul>
+<blockquote>
+<p>在列表中添加一个或多个值</p>
+</blockquote>
+<pre><code>例：将二黄和三黄的用户信息添加到TEST列表中
+    let userinfo1={
+        userid:&#39;b123456&#39;,
+        name:&#39;二黄&#39;,
+        age:&#39;21&#39;,
+        sex:&#39;男&#39;
+    }
+    let userinfo2={
+        userid:&#39;c123456&#39;,
+        name:&#39;三黄&#39;,
+        age:&#39;22&#39;,
+        sex:&#39;男&#39;
+    }
+    let userinfoArr=[];
+    userinfoArr.push(JSON.stringify(userinfo1))
+    userinfoArr.push(JSON.stringify(userinfo2))
+    G.api.rPush(sid, DATA_ID, &#39;TEST&#39;,...userinfoArr)</code></pre><h2 id="rpop">rPop</h2>
+<ul>
+<li>G.api.rPop(sid, DATA_ID, key,value)</li>
+</ul>
+<blockquote>
+<p>移除并获取列表最后一个元素</p>
+</blockquote>
+<pre><code>例：获取并删除TEST列表中的最后一个元素
+    G.api.rPop(sid, DATA_ID, &#39;TEST&#39;,data=&gt;{
+        console.log(&#39;TEST列表中的最后一个元素&#39;,data)
+    })</code></pre><h2 id="lrange">lRange</h2>
+<ul>
+<li>G.api.lRange(sid, DATA_ID, key,start,stop)</li>
+</ul>
+<blockquote>
+<p>获取列表指定范围内的元素</p>
+</blockquote>
+<pre><code>参数说明：
+    start:开始的索引号，类型number
+    stop:结束的索引号，类型number</code></pre><pre><code>例：获取TEST列表中第1个到第3个元素
+    G.api.lRange(sid, DATA_ID, &#39;TEST&#39;,0,2,dataArr=&gt;{
+        console.log(&#39;TEST列表中第1个到第3个元素的值为&#39;,dataArr);
+    })</code></pre><h2 id="lclear">lClear</h2>
+<ul>
+<li>G.api.lClear(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>清空列表中的值</p>
+</blockquote>
+<pre><code>例：清空TEST列表
+    G.api.lClear(sid, DATA_ID, &#39;TEST&#39;)</code></pre><h2 id="lmclear">lMClear</h2>
+<ul>
+<li>G.api.lMClear(sid, DATA_ID, ...keys)</li>
+</ul>
+<blockquote>
+<p>清空列表中的值</p>
+</blockquote>
+<pre><code>例：清空TEST列表和TEST1列表
+    let arr=[&#39;TEST&#39;,&#39;TEST1&#39;];
+    G.api.lMClear(sid, DATA_ID, ...arr)</code></pre><h2 id="lindex">lIndex</h2>
+<ul>
+<li>G.api.lIndex(sid, DATA_ID, key,index)</li>
+</ul>
+<blockquote>
+<p>通过索引获取列表中的元素</p>
+</blockquote>
+<pre><code>例：获取TEST列表中索引为1的元素
+    G.api.lIndex(sid, DATA_ID, &#39;TEST&#39;,1,data=&gt;{
+        console.log(&#39;索引为1元素值为&#39;,data)
+    })</code></pre><h2 id="llen">lLen</h2>
+<ul>
+<li>G.api.lLen(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>获取列表长度</p>
+</blockquote>
+<pre><code>例：获取TEST列表的长度
+    G.api.lIndex(sid, DATA_ID, &#39;TEST&#39;,1,len=&gt;{
+        console.log(&#39;列表的长度&#39;,len)
+    })</code></pre><h2 id="lset">lSet</h2>
+<ul>
+<li>G.api.lSet(sid, DATA_ID, key,index,value)</li>
+</ul>
+<blockquote>
+<p>通过索引设置列表元素的值</p>
+</blockquote>
+<pre><code>参数说明：
+    index:为整数，且必须该索引是存在的</code></pre><pre><code>例：把小黄的信息设置在TEST列表中索引为1的元素
+    let userinfo={
+        userid:&#39;b123456&#39;,
+        name:&#39;小黄&#39;,
+        age:&#39;22&#39;,
+        sex:&#39;男&#39;
+    }
+    userinfo=JSON.stringify(userinfo)}
+    G.api.lSet(sid, DATA_ID,&#39;TEST&#39;,1,userinfo)</code></pre><h1 id="api-data-stub-set">数据库API-集合</h1>
+
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DATA_ID</td>
+<td>String</td>
+<td>数据区的id,通过 G.api.usergroupgetinfo(&#39;&#39;, &#39;用户组id&#39;,&#39;DATA_ID&#39;)获取。</td>
+</tr>
+<tr>
+<td>key</td>
+<td>String</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>keys</td>
+<td>Array</td>
+<td>主键的数组</td>
+</tr>
+<tr>
+<td>value</td>
+<td>String (JSON)</td>
+<td>指定字段的值</td>
+</tr>
+<tr>
+<td>values</td>
+<td>Array</td>
+<td>value的数组</td>
+</tr>
+</tbody></table>
+<h2 id="sadd">sAdd</h2>
+<ul>
+<li>G.api.sAdd(sid, DATA_ID, key, ...values)</li>
+</ul>
+<blockquote>
+<p>将一个或多个元素加入到集合当中</p>
+</blockquote>
+<pre><code>例：将小黄和二黄的分数，加入到TEST集合中
+    let userInfo1={name:&#39;小黄&#39;,score:80}
+    let userInfo2={name:&#39;二黄&#39;,score:90}
+    userInfo1=JSON.stringify(userInfo1)
+    userInfo2=JSON.stringify(userInfo2)
+    let arr=[userInfo1,userInfo2]
+    G.api.sAdd(sid, DATA_ID, &#39;TEST&#39;,...arr)</code></pre><h2 id="scard">sCard</h2>
+<ul>
+<li>G.api.sCard(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>返回集合中元素的数量。</p>
+</blockquote>
+<pre><code>例：获取TEST集合中元素的数量
+    G.api.sCard(sid, DATA_ID, &#39;TEST&#39;,len=&gt;{
+        console.log(&#39;EST集合中元素的数量&#39;,len)
+    })</code></pre><h2 id="sclear">sClear</h2>
+<ul>
+<li>G.api.sClear(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>清空集合</p>
+</blockquote>
+<pre><code>例：清空TEST集合中
+    G.api.sClear(sid, DATA_ID, &#39;TEST&#39;)</code></pre><h2 id="sdiff">sDiff</h2>
+<ul>
+<li>G.api.sDiff(sid, DATA_ID,...keys)</li>
+</ul>
+<blockquote>
+<p>返回一个集合的全部成员，该集合是所有给定集合之间的差集。</p>
+</blockquote>
+<pre><code>例：获取TEST1和TEST2集合不同的元素
+    let arr=[&#39;TEST1&#39;,&#39;TEST2&#39;]
+    G.api.sClear(sid, DATA_ID, ...arr,dataArr=&gt;{
+        console.log(&#39;两个集合中不同的元素&#39;,dataArr)
+    })</code></pre><h2 id="sinter">sInter</h2>
+<ul>
+<li>G.api.sInter(sid, DATA_ID, ...keys)</li>
+</ul>
+<blockquote>
+<p>返回一个集合的全部成员，该集合是所有给定集合的交集。</p>
+</blockquote>
+<pre><code>例：获取TEST1和TEST2两个集合中相同的元素
+    let arr=[&#39;TEST1&#39;,&#39;TEST2&#39;]
+    G.api.sInter(sid, DATA_ID, ...arr,dataArr=&gt;{
+        console.log(&#39;两个集合中相同的元素&#39;,dataArr)
+    })</code></pre><h2 id="smclear">sMClear</h2>
+<ul>
+<li>G.api.sMClear(sid, DATA_ID, ...keys)</li>
+</ul>
+<blockquote>
+<p>将一个或多个集合清空</p>
+</blockquote>
+<pre><code>例：清空TEST1和TEST2两个集合
+    let arr=[&#39;TEST1&#39;,&#39;TEST2&#39;]
+    G.api.sMClear(sid, DATA_ID, ...arr)</code></pre><h2 id="smembers">sMembers</h2>
+<ul>
+<li>G.api.sMembers(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>返回集合中的所有成员。</p>
+</blockquote>
+<pre><code>例：获取TEST集合中全部的元素
+    G.api.sMembers(sid, DATA_ID,&#39;TEST&#39;,dataArr=&gt;{
+        console.log(&#39;EST集合中全部的元素&#39;,dataArr)
+    })</code></pre><h2 id="srem">sRem</h2>
+<ul>
+<li>G.api.sRem(sid, DATA_ID, key, ...values)</li>
+</ul>
+<blockquote>
+<p>移除集合中的一个或多个元素，不存在的 元素会被忽略。</p>
+</blockquote>
+<pre><code>例：将小黄和二黄从TEST集合中移除
+    let userInfo1={name:&#39;小黄&#39;,score:80}
+    let userInfo2={name:&#39;二黄&#39;,score:90}
+    userInfo1=JSON.stringify(userInfo1)
+    userInfo2=JSON.stringify(userInfo2)
+    let arr=[userInfo1,userInfo2]
+    G.api.sRem(sid, DATA_ID, &#39;TEST&#39;,...arr)
+</code></pre><h2 id="sunion">sUnion</h2>
+<ul>
+<li>G.api.sUnion(sid, DATA_ID,...keys)</li>
+</ul>
+<blockquote>
+<p>返回一个集合的全部成员，该集合是所有给定集合的并集。</p>
+</blockquote>
+<pre><code>例：获取TEST1和TEST2两个集合全部的元素
+    let arr=[&#39;TEST1&#39;,&#39;TEST2&#39;]
+    G.api.sUnion(sid, DATA_ID, ...arr,dataArr=&gt;{
+        console.log(&#39;两个集合全部的元素&#39;,dataArr)
+    })
+</code></pre><h1 id="api-data-stub-sorted">数据库API-有序集合</h1>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DATA_ID</td>
+<td>String</td>
+<td>数据区的id,通过 G.api.usergroupgetinfo(&#39;&#39;, &#39;用户组id&#39;,&#39;DATA_ID&#39;)获取。</td>
+</tr>
+<tr>
+<td>key</td>
+<td>String</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>keys</td>
+<td>Array</td>
+<td>主键的数组</td>
+</tr>
+<tr>
+<td>index</td>
+<td>Number</td>
+<td>列表索引</td>
+</tr>
+<tr>
+<td>ScorePair</td>
+<td>Function</td>
+<td>构造函数 function ScorePair(){this.score=&#39;&#39;;this.member=&#39;&#39;}</td>
+</tr>
+<tr>
+<td>member</td>
+<td>String</td>
+<td>构造函数ScorePair中的参数</td>
+</tr>
+<tr>
+<td>member</td>
+<td>String</td>
+<td>member的数组</td>
+</tr>
+</tbody></table>
+<h2 id="zadd">zAdd</h2>
+<ul>
+<li>G.api.zAdd(sid, DATA_ID, key, ...ScorePair)</li>
+</ul>
+<blockquote>
+<p>向有序集合添加一个或多个成员，或者更新已存在成员的分数</p>
+</blockquote>
+<pre><code>例：将小黄和二黄的分数，加入到TEST有序集合中
+    function ScorePair(){
+    }
+
+    let userInfo1=new ScorePair();
+    let userInfo2=new ScorePair();
+    userInfo1.member=&#39;小黄&#39;;
+    userInfo1.score=&#39;80;
+    userInfo2.member=&#39;二黄&#39;;
+    userInfo2.score=90;
+
+    G.api.zAdd(sid, DATA_ID, &#39;TEST&#39;,userInfo1)
+
+
+    let arr=[userInfo1,userInfo2]
+    G.api.zAdd(sid, DATA_ID, &#39;TEST&#39;,...arr)
+</code></pre><h2 id="zcard">zCard</h2>
+<ul>
+<li>G.api.zCard(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>获取有序集合的成员数</p>
+</blockquote>
+<pre><code>例：获取TEST有序集合的成员数
+    G.api.zCard(sid, DATA_ID, &#39;TEST&#39;,len=&gt;{
+        console.log(&#39;有序集合的成员数&#39;,len)
+    })</code></pre><h2 id="zcount">zCount</h2>
+<ul>
+<li>G.api.zCount(sid, DATA_ID, key,min,max)</li>
+</ul>
+<blockquote>
+<p>计算在有序集合中指定区间分数的成员数</p>
+</blockquote>
+<pre><code>参数说明：
+    min:最小值，类型number
+    max：最大值，类型number</code></pre><pre><code>例：获取TEST有序集合中分数80到100之间的成员数
+    G.api.zCount(sid, DATA_ID, &#39;TEST&#39;,80,100,len=&gt;{
+        console.log(&#39;列表的长度&#39;,len)
+    })</code></pre><h2 id="zrem">zRem</h2>
+<ul>
+<li>G.api.zRem(sid, DATA_ID,key, ...members)</li>
+</ul>
+<blockquote>
+<p>移除有序集合中的一个或多个成员</p>
+</blockquote>
+<pre><code>例：移除TEST有序集合中的小黄
+    let member1=&#39;小黄&#39;;
+    let arr=[member1];
+    G.api.zRem(sid, DATA_ID, &#39;TEST&#39;,...arr)</code></pre><h2 id="zscore">zScore</h2>
+<ul>
+<li>G.api.zScore(sid, DATA_ID, key,member)</li>
+</ul>
+<blockquote>
+<p>返回有序集中，成员的分数值</p>
+</blockquote>
+<pre><code>例：获取小黄的分数
+    G.api.zScore(sid, DATA_ID, &#39;TEST&#39;,&#39;小黄&#39;,score=&gt;{
+        console.log(&#39;小黄的分数&#39;,score)
+    })
+</code></pre><h2 id="zrank">zRank</h2>
+<ul>
+<li>G.api.zRank(sid, DATA_ID, key,member)</li>
+</ul>
+<blockquote>
+<p>返回有序集合中指定成员的索引</p>
+</blockquote>
+<pre><code>例：获取小黄在TEST有序集合中的位置
+    G.api.zRank(sid, DATA_ID, &#39;TEST&#39;,&#39;小黄&#39;,index=&gt;{
+        console.log(&#39;小黄的位置编号&#39;,index)
+    })</code></pre><h2 id="zrange">zRange</h2>
+<ul>
+<li>G.api.zRange(sid, DATA_ID, key,min,max)</li>
+</ul>
+<blockquote>
+<p>通过索引区间返回有序集合成指定区间内的成员</p>
+</blockquote>
+<pre><code>参数说明：
+    min:最小值，类型number
+    max：最大值，类型number</code></pre><pre><code>例：获取[0,1]区间的数据
+    G.api.zRange(sid, DATA_ID, &#39;TEST&#39;,0,1,dataArr=&gt;{
+        console.log(&#39;区间的数据&#39;,dataArr)
+    })</code></pre><h2 id="zrangebyscore">zRangeByScore</h2>
+<ul>
+<li>G.api.zRangeByScore(sid, DATA_ID, key,min,max,offset,count)</li>
+</ul>
+<blockquote>
+<p>返回有序集合中给定的分数区间的所有成员</p>
+</blockquote>
+<pre><code>参数说明：
+    min:最小值，类型number
+    max:最大值，类型number
+    offset:偏移值，一般为0，
+    count:获取成员的个数，-1为获取全部</code></pre><pre><code>例：获取70分到80分的数据 
+    G.api.zRangeByScore(sid, DATA_ID, &#39;TEST&#39;,70,80,0,-1,dataArr=&gt;{
+        console.log(&#39;0分到80分的数据&#39;,dataArr)
+    })
+</code></pre><h2 id="zremrangebyscore">zRemRangeByScore</h2>
+<ul>
+<li>G.api.zRemRangeByScore(sid, DATA_ID, key,min,max)</li>
+</ul>
+<blockquote>
+<p>返回有序集合中给定的分数区间的所有成员</p>
+</blockquote>
+<pre><code>参数说明：
+    min:最小值，类型number
+    max：最大值，类型number</code></pre><pre><code>例：获取70分到80分的数据
+    G.api.zRemRangeByScore(sid, DATA_ID, &#39;TEST&#39;,70,80,dataArr=&gt;{
+        console.log(&#39;0分到80分的数据&#39;,dataArr)
+    })</code></pre><h2 id="zmclear">zMClear</h2>
+<ul>
+<li>G.api.zMClear(sid, DATA_ID, ...keys)</li>
+</ul>
+<blockquote>
+<p>清除有序集合</p>
+</blockquote>
+<pre><code>例：清空TEST集合和TEST1集合
+    let arr=[&#39;TEST&#39;,&#39;TEST1&#39;];
+    G.api.zMClear(sid, DATA_ID,...arr)</code></pre><h2 id="zclear">zClear</h2>
+<ul>
+<li>G.api.zClear(sid, DATA_ID, key)</li>
+</ul>
+<blockquote>
+<p>清除有序集合</p>
+</blockquote>
+<pre><code>例：清空TEST集合
+    G.api.zClear(sid, DATA_ID, &#39;TEST&#39;)</code></pre><!-- 
+不对外公开
+* G.api.copyblock(sid, DATA_ID,from)
+
+> 将备份数据库
+
+* G.api.scan(sid, DATA_ID, begin, match,count,inclusive,tp)
+
+> 迭代当前数据库中的数据库键。 -- >
+
+<h1 id="api-data-file">文件API</h1>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tempFileId</td>
+<td>String</td>
+<td>文件临时ID</td>
+</tr>
+<tr>
+<td>fileId</td>
+<td>String</td>
+<td>正式文件id</td>
+</tr>
+<tr>
+<td>fileName</td>
+<td>String</td>
+<td>文件名称</td>
+</tr>
+<tr>
+<td>start</td>
+<td>Number</td>
+<td>数据开始写入的位置，一般为0</td>
+</tr>
+<tr>
+<td>FileData</td>
+<td>二进制文件</td>
+<td>二进制文件</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>文件类型  tar or zip</td>
+</tr>
+<tr>
+<td>appName</td>
+<td>String</td>
+<td>应用名称</td>
+</tr>
+</tbody></table>
+<h2 id="opentempfile">openTempFile</h2>
+<ul>
+<li>G.api.openTempFile(sid)</li>
+</ul>
+<blockquote>
+<p>申请临时文件id</p>
+</blockquote>
+<h2 id="setlfiledata">setLFileData</h2>
+<ul>
+<li>G.api.setLFileData(sid,tempFileId, start, FileData)</li>
+</ul>
+<blockquote>
+<p>生成临时文件，生成使用空间</p>
+</blockquote>
+<h2 id="temp2lfile">temp2LFile</h2>
+<ul>
+<li>G.api.temp2LFile(sid,tempFileId)</li>
+</ul>
+<blockquote>
+<p>生成正式文件id</p>
+</blockquote>
+<h2 id="uploadapp">uploadApp</h2>
+<ul>
+<li>G.api.uploadApp(sid, fileId,type)</li>
+</ul>
+<blockquote>
+<p>发布应用,返回应用信息</p>
+</blockquote>
+<pre><code>例：上传test应用，并发布
+    let file;//原生文件
+    let type;//文件类型 tar or zip
+    upload();
+    async upload function(){
+        let tempFileId=await G.api.openTempFile(sid);//申请临时文件id
+        let FileData=await readBlob(file); //将原文件转换成二进制
+        await G.api.setLFileData(sid,tempFileId, 0, FileData); //生成临时文件，生成使用空间
+        let fileId=await G.api.temp2LFile(sid,tempFileId); //生成正式文件id
+        G.api.uploadApp(sid, fileId,type) //发布应用
+    }
+
+    readBlob(blob) {
+        const reader = new FileReader()
+        return new Promise(resolve =&gt; {
+            reader.onloadend = () =&gt; {
+                resolve(reader.result)
+            }
+            reader.readAsArrayBuffer(blob)
+        })
+    }</code></pre><h2 id="uploadappfile">uploadAppFile</h2>
+<ul>
+<li>G.api.uploadAppFile(sid, appName, fileName, fileId)</li>
+</ul>
+<blockquote>
+<p>更新应用中部分的源文件</p>
+</blockquote>
+<pre><code>例：更新test应用中main.html文件
+    let file;//上传的main.html文件
+    uploadfile();
+    async uploadfile function(){
+        let tempFileId=await G.api.openTempFile(sid);//申请临时文件id
+        let FileData=await readBlob(file); //将原文件转换成二进制
+        await G.api.setLFileData(sid,tempFileId, 0, FileData); //生成临时文件，生成使用空间
+        let fileId=await G.api.temp2LFile(sid,tempFileId); //生成正式文件id
+        G.api.uploadApp(sid, &#39;test&#39;,&#39;main.html&#39;,fileId) //更新文件
+    }
+
+    readBlob(blob) {
+        const reader = new FileReader()
+        return new Promise(resolve =&gt; {
+            reader.onloadend = () =&gt; {
+                resolve(reader.result)
+            }
+            reader.readAsArrayBuffer(blob)
+        })
+    }</code></pre><h2 id="createfilebydata">createFileByData</h2>
+<ul>
+<li>G.api.createFileByData(sid,conent)</li>
+</ul>
+<blockquote>
+<p>更新文件内容</p>
+</blockquote>
+<pre><code>例：在线更新test应用中main.html文件
+    let conent;//修改后文本内容
+    uploadfile();
+    async uploadfile function(){
+        let fileId=await G.api.createFileByData(sid, conent);
+        G.api.uploadApp(sid, &#39;test&#39;,&#39;main.html&#39;,fileId) //更新文件
+    }</code></pre><h1 id="api-data-app">应用API</h1>
+
+<h2 id="version">version</h2>
+<ul>
+<li>G.api.version(sid, appName,&#39;lastver&#39;,&#39;&#39;)</li>
+</ul>
+<blockquote>
+<p>生成新的版本</p>
+</blockquote>
+<h2 id="uninstallapp">unInstallApp</h2>
+<ul>
+<li>G.api.unInstallApp(sid, appName)</li>
+</ul>
+<blockquote>
+<p>应用卸载</p>
+</blockquote>
+<h2 id="appinfo">appinfo</h2>
+<ul>
+<li>G.api.getVar(sid, &quot;appinfo&quot;, &quot;appName or appId&quot;) </li>
+</ul>
+<blockquote>
+<p>获取应用信息</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>appId</td>
+<td>String</td>
+<td>应用id</td>
+</tr>
+<tr>
+<td>appName</td>
+<td>String</td>
+<td>应用名称</td>
+</tr>
+</tbody></table>
+<pre><code>例：获取TEST应用信息
+    G.api.getVar(sid, &quot;appinfo&quot;, &quot;TEST&quot;,appinfo=&gt;{
+        console.log(&#39;TEST应用信息&#39;,appinfo)
+    }) </code></pre><h2 id="appversions">appversions</h2>
+<ul>
+<li>G.api.getVar(sid, &quot;appversions&quot;, &quot;appName or appId&quot;) </li>
+</ul>
+<blockquote>
+<p>获取应用版本信息</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>appId</td>
+<td>String</td>
+<td>应用id</td>
+</tr>
+<tr>
+<td>appName</td>
+<td>String</td>
+<td>应用名称</td>
+</tr>
+</tbody></table>
+<pre><code>例：获取TEST应用的版本信息
+    G.api.getVar(sid, &quot;appversions&quot;, &quot;TEST&quot;,versionArr=&gt;{
+        console.log(&#39;TEST应用的版本信息&#39;,versionArr)
+    }) 
+</code></pre><h2 id="apppackage">apppackage</h2>
+<ul>
+<li>G.api.getVar(sid, &quot;apppackage&quot;, &quot;appName or appId&quot;,version) </li>
+</ul>
+<blockquote>
+<p>获取应用最新文件信息</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody><tr>
+<td>appId</td>
+<td>String</td>
+<td>应用id</td>
+</tr>
+<tr>
+<td>appName</td>
+<td>String</td>
+<td>应用名称</td>
+</tr>
+<tr>
+<td>version</td>
+<td>String</td>
+<td>版本号，一般为last</td>
+</tr>
+</tbody></table>
+<pre><code>例：获取TEST应用最新文件信息
+    G.api.getVar(sid, &quot;apppackage&quot;, &quot;TEST&quot;,&#39;last&#39;,apppackage=&gt;{
+        console.log(&#39;TEST应用文件信息&#39;,apppackage)
+    }) </code></pre><h2 id="appids">appids</h2>
+<ul>
+<li>G.api.getVar(sid, &quot;appids&quot;) </li>
+</ul>
+<blockquote>
+<p>获取应用id列表</p>
+</blockquote>
+<pre><code>例：获取本用户应用id列表
+    G.api.getVar(sid, &quot;appids&quot;,appidArr=&gt;{
+        console.log(&#39;本用户应用id列表&#39;,appidArr)
+    }) 
+</code></pre><h2 id="appinfos">appinfos</h2>
+<ul>
+<li>G.api.getVar(sid, &quot;appinfos&quot;) </li>
+</ul>
+<blockquote>
+<p>获取具体应用信息列表  </p>
+</blockquote>
+<pre><code>例：获取本用户全部应用列表
+    G.api.getVar(sid, &quot;appinfos&quot;,appArr=&gt;{
+        console.log(&#39;本用户全部应用&#39;,appArr)
+    }) 
+</code></pre>
+
+
+<h2 id="getvar">getVar</h2>
+<p> G.api.getVar(sid, name, ...arg)</p>
+<blockquote>
+<p>根据 name 来获取对应的值，name 为 String 类型</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>name (String)</th>
+<th>arg</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>now</td>
+<td>无</td>
+<td>获取系统时间 </td>
+</tr>
+<tr>
+<td>capturemac</td>
+<td>无</td>
+<td>获取探针开启状态，默认为 0 （开启），1 为 用户开启，2 为用户关闭</td>
+</tr>
+<tr>
+<td>ver</td>
+<td>无</td>
+<td>获取版本号</td>
+</tr>
+<tr>
+<td>port</td>
+<td>无</td>
+<td>获取端口号</td>
+</tr>
+<tr>
+<td>hostid</td>
+<td>无</td>
+<td>获取hostid</td>
+</tr>
+<tr>
+<td>bindinfo</td>
+<td>无</td>
+<td>获取用户设备信息</td>
+</tr>
+<tr>
+<td>usergroup</td>
+<td>&#39;GLOBAL_USER&#39;, &#39;name&#39;</td>
+<td>获取管理员组</td>
+</tr>
+<tr>
+<td>appinfo</td>
+<td>&#39;appName&#39; or &#39;appId&#39;</td>
+<td>获取应用信息</td>
+</tr>
+<tr>
+<td>appversions</td>
+<td>&#39;appName&#39; or &#39;appId&#39;</td>
+<td>获取应用版本信息</td>
+</tr>
+<tr>
+<td>apppackage</td>
+<td>&#39;appName&#39; or &#39;appId&#39;</td>
+<td>获取应用最新文件信息</td>
+</tr>
+<tr>
+<td>appids</td>
+<td>无</td>
+<td>获取应用id列表</td>
+</tr>
+<tr>
+<td>appinfos</td>
+<td>无</td>
+<td>获取具体应用信息列表</td>
+</tr>
+</tbody></table>
+<pre><code>例：G.api.getVar(sid, &#39;now&#39;)    
+    // 获取系统时间
+    G.api.getVar(sid, &#39;usergroup&#39;, &#39;GLOBAL_USER&#39;, &#39;name&#39;)  
+    //查找管理员组</code></pre><h2 id="act">act</h2>
+<p>G.api.act(sid, name, ...arg)</p>
+<blockquote>
+<p>根据 name 来获取对应的值，name 为 String 类型</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>name (String)</th>
+<th>arg</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>subscrimacInfo</td>
+<td>无</td>
+<td>订阅mac数据</td>
+</tr>
+<tr>
+<td>capturemac</td>
+<td>&#39;start&#39;</td>
+<td>打开网卡探测</td>
+</tr>
+</tbody></table>
+<pre><code>例：1. 订阅mac数据
+    G.api.act(sid, &#39;subscrimacInfo&#39;)
+
+    2.打开网卡探测
+    G.api.act(sid, &#39;capturemac&#39;, &#39;start&#39;)</code></pre-->
+    </div>
+</body>
+</html>

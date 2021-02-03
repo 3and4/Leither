@@ -23,8 +23,10 @@ opt是可选的文件
 <a href="./doc/Directory.md"> 系统目录结构</a>  
 
 <a href="./bin/"> 各版本的应用下载</a>  
+  
+<a href="./doc/Pki.md"> 安全体系</a>  
 
-<a href="./doc/Pki.md"> Pki体系</a>  
+<a href="./doc/Applition.md"> 应用体系</a>  
 
 <a href="./doc/Setup.md"> 节点和应用安装</a>  
   
