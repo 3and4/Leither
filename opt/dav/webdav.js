@@ -108,9 +108,7 @@ function getFilePath(fileName){
 }
 
 function show(stub, sid){
-    var filePath = getFilePathFromHash()
-    //console.log("filePath=", filePath);  
-
+    var filePath = window.decodeURIComponent(getFilePathFromHash());	//处理中文文件名
     console.log("show MFOpenByPath sid:", sid, " filePath=", filePath); 
 	//这是文件操作api,以路径方式打开一个文件或目录，mmroot是弥媒的根目录，对应Webdav目录
     stub.MFOpenByPath(sid, "mmroot", filePath, 0).then(function(mmfsid) {
