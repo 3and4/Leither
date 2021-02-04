@@ -22,21 +22,21 @@ readInput MYAPP "local APP directory"
 readInput URL "local URL"
 readInput MYDOMAIN "user domain"
 
-./Leither lssl runscript -s "local auth=require('auth'); return auth.Register('$USER', '$PASSWORD');"
-./Leither lssl runscript -s "local node=require('mimei'); return node.MMSetRight(request.sid, 'mmroot', '', 0x07276707);"
+./Leither lpki runscript -s "local auth=require('auth'); return auth.Register('$USER', '$PASSWORD');"
+./Leither lpki runscript -s "local node=require('mimei'); return node.MMSetRight(request.sid, 'mmroot', '', 0x07276707);"
 echo "User "$USER" created and authorized"
 
-./Leither lssl genkey -o $KEYFILE.key
-./Leither lssl genca -k $KEYFILE.key -m "name=$KEYFILE" -o $KEYFILE.ca
-./Leither lssl gencert -k $KEYFILE.key -c $KEYFILE.ca -m "name=forapp" -o $KEYFILE.cert
-./Leither lssl signppt -c $KEYFILE.cert -m "CertFor=Self" -o ${KEYFILE}login.ppt
+./Leither lpki genkey -o $KEYFILE.key
+./Leither lpki genca -k $KEYFILE.key -m "name=$KEYFILE" -o $KEYFILE.ca
+./Leither lpki gencert -k $KEYFILE.key -c $KEYFILE.ca -m "name=forapp" -o $KEYFILE.cert
+./Leither lpki signppt -c $KEYFILE.cert -m "CertFor=Self" -o ${KEYFILE}login.ppt
 echo "Credential files created"
 
 URL=http://$URL/
-./Leither lssl reqservice -c $KEYFILE.cert -m RequestService=mimei -n $URL
-./Leither deploy uploadapp -p ${KEYFILE}login.ppt -i ./$MYAPP -n $URL
+./Leither lpki reqservice -c $KEYFILE.cert -m RequestService=mimei -n $URL
+./Leither lapp uploadapp -p ${KEYFILE}login.ppt -i ./$MYAPP -n $URL
 echo "APP uploaded to service node"
 
-./Leither.exe deploy setdomain -d $MYDOMAIN.$GWADDR -n $URL -a $MYAPP -p mylogin.ppt -m gwaddr=$GWADDR
-./Leither.exe deploy backup -a $MYAPP -p ${KEYFILE}login.ppt -n $URL
+./Leither.exe lapp setdomain -d $MYDOMAIN.$GWADDR -n $URL -a $MYAPP -p ${KEYFILE}login.ppt -m gwaddr=$GWADDR
+./Leither.exe lapp backup -a $MYAPP -p ${KEYFILE}login.ppt -n $URL
 echo "APP published successfully"
