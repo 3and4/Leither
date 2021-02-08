@@ -4,6 +4,8 @@
 
 
 ## 一、基础功能  
+弥媒有两种数据类型：文件和数据库。  
+它们都有共同的api：创建、打开、权限、版本管理等。  
 ### 1.1 创建弥媒  
 在有弥媒权限的情况下，用户可以在当前节点上创建弥媒。  
 mark如果为"{{auto}}" 每次产生新的弥媒id  
@@ -24,7 +26,6 @@ MMCreate(sid, appid, ext, mark string, tp byte, right uint64) (mid string, err e
 |返回值|描述|
 |--|--|
 |mid|生成的弥媒 id
-
 
 ### 1.2 打开弥媒
 打开一个存在的弥媒  
@@ -62,7 +63,6 @@ MMSetRight(sid, mid, member string, right uint64) error
 |member|针对成员
 |right|权限
 
-
 ### 1.4 备份弥媒
 对弥媒的当前版本进行备份，生成新的版本，并把特殊版本号last指向这个版本  
 ```golang
@@ -73,12 +73,11 @@ MMBackup(sid, mid, memo string) (ver string, err error)
 |--|--|--|
 |sid|会话id|通过Login获取
 |mid|弥媒id|
-|memo|备注，目前是保留参数，还未启用
-|right|权限  
-
-|返回值|描述|
-|--|--|
-|ver|生成的版本，last指向这个版本
+|memo|备注|保留参数，还未启用
+|right|权限|  
+|返回值|名称|说明|
+|--|--|--|
+|ver|生成的版本|last指向这个版本
 
 ### 1.5 发布弥媒  
 指定某个版本为当前的发布版
@@ -120,9 +119,24 @@ MMDelVers(sid, mid string, vers ...string) (int64, error)
  
 
 ### 1.8 查询信息
+弥媒的信息都是通过GetVar函数获取的，  
+```golang
+func (wa *WebApi) GetVar(sid, name string,args ...string) (interface{}, error)
+```  
+相关的一些变量定义，定义在api包
+```golang
+//弥媒部分
+const (
+	ApiVarMiMeiInfo     = "mminfo"     //弥媒信息
+	ApiVarMiMeiVersions = "mmversions" //弥媒版本
+)
+```
 
-<!--
-    弥媒信息的数据结构
+**1.8.1查询弥媒信息**  
+```golang
+mminfo, err := api.GetVar(sid, "mminfo", mid) 
+```  
+弥媒信息的数据结构
 ```golang
 type MiMeiInfo struct {
 	AppType string    //应用类型
@@ -132,9 +146,16 @@ type MiMeiInfo struct {
 	Create  time.Time //创建时间
 	Right   uint64    //权限
 }
-```
- -->
+``` 
 
+**1.8.2查询弥媒版本信息**  
+```golang
+vers, err := api.GetVar(sid, "mmversions", mid) 
+```  
+返回的信息是版本列表,类型是字符串数组  
+包含特殊版本last,release,不包括cur版本
+
+<!--
 ## 二、弥媒文件  
 弥媒的文件系统  
 MFOpenByPath(sid, fsid, path string, flag int) (string, error)  
@@ -223,3 +244,4 @@ Smembers(dbsid, key string) ([]string, error)
 Srem(dbsid, key string, m string) (int64, error)  
 Sunion(dbsid string, keys ...string) ([]string, error)  
 Scan(dbsid string, begin, match string, count int, inclusive bool, tp byte) (keys []string, err error)
+ -->
