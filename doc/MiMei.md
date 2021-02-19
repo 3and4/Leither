@@ -116,11 +116,9 @@ MFTruncate(fsid string, size int64) error
 MFCopy(fsid, dst, src, srcVer string) error  
 
 #### 1.4、对象引用
-MFAddRef(sid, mid string, fileids ...string) (int, error)  
-MFDelRef(sid, mid string, fileids ...string) (int, error)  
-MFGetRef(sid, mid string) (ret map[string]int, err error)  
-
-
+MMAddRef(sid, mid string, fileids ...string) (int, error)  
+MMDelRef(sid, mid string, fileids ...string) (int, error)  
+MMGetRef(sid, mid string) (ret map[string]int, err error)  
 
 
 ### 二、数据库
