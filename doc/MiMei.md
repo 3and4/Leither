@@ -68,16 +68,19 @@ ver如果是"cur",可以进行写操作。
 其它版本文件为备份过的文件，只能进行读操作。  
 
 **通过路径打开**    
-MFOpenByPath(sid, fsid, path string, flag int) (string, error)
 这种方式打开的是弥媒文件系统或操作系统文件系统中的文件  
+相关API：  
+MFOpenByPath(sid, fsid, path string, flag int) (string, error)
 
 **打开Mac文件**   
-MFOpenMacFile(sid, mmfsid, fileid string) (string, error)
-Mac文件必须挂接在某个弥媒之下。  
+打开挂在某个弥媒下的mac文件  
+相关API：  
+MFOpenMacFile(sid, mid, fileid string) (string, error)
 
 **打开临时文件**   
+打开一个临时文件，用于读写操作
 MFOpenTempFile(sid string) (string, error)  
-操作完成之后转换为Mac文件    
+读写操作完成之后转换为Mac文件    
 MFTemp2MacFile func(sid, mid string) (string, error)  
 
 **关闭文件**  
@@ -103,13 +106,13 @@ MFGetMimeType(fsid string) (string, error)
 
 **目录操作**  
 MFReaddir(fsid string, count int) ([]*FileInfo, error)
-MFFind(sid, mmfsid, path string) (*FindResult, error)
-<!--
-MFOSFSMkDir(sid, fsid, path string, perm os.FileMode) error
-MFOSFSRemoveAll(sid, fsid, path string) error
-MFOSFSStat(sid, fsid, path string) (*FileInfo, error)
-MFOSFSRename(sid, fsid, oldpath, newFullName, newLeft string) error
--->
+MFFind(sid, mmfsid, path string) (*FindResult, error)  
+  
+**文件系统**  
+FSMkDir(sid, fsid, path string, perm os.FileMode) error  
+FSRemoveAll(sid, fsid, path string) error  
+FSStat(sid, fsid, path string) (*FileInfo, error)  
+FSRename(sid, fsid, oldpath, newFullName, newLeft string) error
 
 **其它**  
 MFTruncate(fsid string, size int64) error  
