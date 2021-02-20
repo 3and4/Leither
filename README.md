@@ -38,7 +38,7 @@ opt是可选的文件
 
 <a href="./doc/Setup.md"> 节点和应用安装</a>  
   
-<a href="./opt/dav/"> 示例应用代码目录</a>  
+<a href="./opt/dav/"> 示例应用代码</a>  
   
 <a href="./api/Api.md"> Api文档（doing）</a>  
   

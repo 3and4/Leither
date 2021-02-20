@@ -121,7 +121,7 @@ MMDelVers(sid, mid string, vers ...string) (int64, error)
 ### 1.8 查询信息
 弥媒的信息都是通过GetVar函数获取的，  
 ```golang
-func (wa *WebApi) GetVar(sid, name string,args ...string) (interface{}, error)
+GetVar(sid, name string,args ...string) (interface{}, error)
 ```  
 相关的一些变量定义，定义在api包
 ```golang
@@ -148,20 +148,117 @@ type MiMeiInfo struct {
 }
 ``` 
 
-**1.8.2查询弥媒版本信息**  
+### 1.9 引用对象
+**1.9.1 添加引用**  
 ```golang
-vers, err := api.GetVar(sid, "mmversions", mid) 
+MMAddRef(sid, mid, fileids ...string)(count int, err error)
 ```  
-返回的信息是版本列表,类型是字符串数组  
-包含特殊版本last,release,不包括cur版本
+|参数|名称|说明|
+|--|--|--|
+|sid|会话id|通过Login获取
+|mid|弥媒id|
+|fileids|要引用的对象id，变参，可指定多个    
+
+|返回值|描述|说明|
+|--|--|--|  
+|count|成功的个数|  
+ 
+   
+**1.9.2 删除引用**  
+```golang
+MMDelRef(sid, mid string, fileids ...string) (count int, err error)  
+|参数|名称|说明|
+|--|--|--|
+|sid|会话id|通过Login获取
+|mid|弥媒id|
+|fileids|要引用的对象id，变参，可指定多个    
+
+|返回值|描述|说明|
+|--|--|--|  
+|count|成功的个数|  
+```  
+
+**1.9.3 获取引用**  
+```golang
+MMGetRef(sid, mid string) (refs map[string]int, err error)  
+```  
+|参数|名称|说明|
+|--|--|--|
+|sid|会话id|通过Login获取
+|mid|弥媒id|
+
+|返回值|描述|说明|
+|--|--|--|  
+|refs|引用数|｛文件id->引用数｝  
+   
+
+## 二、文件系统   
+弥媒的文件系统  
+### 2.1 弥媒文件的打开和关闭  
+**2.1.1 通过路径打开文件**  
+```golang
+MFOpenByPath(sid, mmfsid, path string, flag int) (fsid string, err error)  
+```  
+|参数|名称|说明|
+|--|--|--|
+|sid|会话id|通过Login获取
+|mmfsid|文件系统id|
+|path|文件系统内的路径|
+|flag|打开文件的选项|
+
+|返回值|描述|说明|
+|--|--|--|  
+|fsid|资源会话id|用于操作资源的api  
+
+  
+**2.1.2 打开mac文件**  
+```golang
+MFOpenMacFile(sid, mid, fileid string) (fsid string, err error)  
+```  
+|参数|名称|说明|
+|--|--|--|
+|sid|会话id|通过Login获取
+|mid|文件系统id|
+|fileid|mac文件的id|
+
+|返回值|描述|说明|
+|--|--|--|  
+|fsid|资源会话id|用于操作资源的api  
+
+**2.1.3 关闭文件**  
+```golang
+MFClose(fsid string) error  
+```
+|参数|名称|说明|
+|--|--|--|
+|fsid|会话id|上面的MFOpen系列Api打开
+
+**2.1.4 打开mac文件**  
+```golang
+MFOpenTempFile(sid string) (fsid string, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|sid|会话id|通过Login获取
+
+|返回值|描述|说明|
+|--|--|--|  
+|fsid|资源会话id|用于操作资源的api  
+  
+**2.1.4 临时文件转Mac文件**  
+```golang
+MFTemp2MacFile(fsid, mid string) (macid string, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|fsid|会话id|通过MFOpenTempFile获取
+|mid|文件系统id|
+
+|返回值|描述|说明|
+|--|--|--|  
+|macid|mac文件的id|  
 
 <!--
-## 二、弥媒文件  
-弥媒的文件系统  
-MFOpenByPath(sid, fsid, path string, flag int) (string, error)  
-MFOpenMacFile(sid, mmfsid, fileid string) (string, error)  
-MFOpenTempFile(sid string) (string, error)  
-MFClose(fsid string) error  
 MFFind(sid, mmfsid, path string) (*FindResult, error)  
 MFTruncate(fsid string, size int64) error  
 MFSetObject(fsid string, obj interface{}) error  
@@ -173,10 +270,7 @@ MFGetSize(fsid string) (int64, error)
 MFStat(fsid string) (*FileInfo, error)  
 MFIsExist(fsid, fileid string) (bool, error)  
 MFReaddir(fsid string, count int) ([]*FileInfo, error)  
-MFAddRef(sid, mid string, fileids ...string) (int, error)  
-MFDelRef(sid, mid string, fileids ...string) (int, error)  
-MFGetRef(sid, mid string) (ret map[string]int, err error)  
-MFTemp2MacFile(sid, mid string) (string, error)  
+
 MFGetMimeType(fsid string) (string, error)    
 
 ## 三、系统文件  
