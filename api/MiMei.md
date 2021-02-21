@@ -245,7 +245,7 @@ MFOpenTempFile(sid string) (fsid string, err error)
 |--|--|--|  
 |fsid|资源会话id|用于操作资源的api  
   
-**2.1.4 临时文件转Mac文件**  
+**2.1.5 临时文件转Mac文件**  
 ```golang
 MFTemp2MacFile(fsid, mid string) (macid string, err error)  
 ```
@@ -258,13 +258,68 @@ MFTemp2MacFile(fsid, mid string) (macid string, err error)
 |--|--|--|  
 |macid|mac文件的id|  
 
+
+### 2.2 文件读写  
+**2.2.1 设置对象**  
+```golang
+MFSetObject(fsid string, obj interface{}) error  
+```
+|参数|名称|说明|
+|--|--|--|
+|fsid|会话id|MFOpen系列Api获取
+|obj|要设置的对象|
+
+**2.2.2 获取对象**  
+```golang
+MFGetObject(fsid string) (obj interface{}, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|fsid|会话id|MFOpen系列Api获取
+
+|返回值|描述|说明|
+|--|--|--|  
+|obj|返回的对象|  
+  
+interface{}类型主要是针对js这样的动态语言。  
+静态语言这样的返回值会丢失类型。  
+需要用另外的方式包装api  
+
+**2.2.3 设置字节数组**  
+```golang
+MFSetData(fsid string, data []byte, start int64) (count int, err error)  
+(fsid string) (obj interface{}, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|fsid|会话id|MFOpen系列Api获取
+|data|要写的字节数组|
+|start|起始位置|正表示从头部偏移,负表示从尾部偏移,-1表示文件尾部
+
+|返回值|描述|说明|
+|--|--|--|  
+|ret|返回的结果|  
+  
+
+**2.2.4 读取字节数组**  
+```golang
+MFGetData(fsid string, start int64, count int) (ret []byte, err error)  
+(fsid string) (obj interface{}, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|fsid|会话id|MFOpen系列Api获取
+|start|起始位置|正表示从头部偏移,负表示从尾部偏移,-1表示文件尾部
+|count|读取字节数|
+
+|返回值|描述|说明|
+|--|--|--|  
+|ret|返回的结果|  
+  
+
 <!--
 MFFind(sid, mmfsid, path string) (*FindResult, error)  
 MFTruncate(fsid string, size int64) error  
-MFSetObject(fsid string, obj interface{}) error  
-MFGetObject(fsid string) (interface{}, error)  
-MFSetData(fsid string, data []byte, start int64) (count int, err error)  
-MFGetData(fsid string, start int64, count int) ([]byte, error)  
 MFCopy(fsid, dst, src, srcVer string) error  
 MFGetSize(fsid string) (int64, error)  
 MFStat(fsid string) (*FileInfo, error)  
