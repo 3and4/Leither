@@ -89,7 +89,7 @@ MFTemp2MacFile func(sid, mid string) (string, error)
 操作对象的会话id在超时情况下都会自动关闭文件  
 
 
-#### 1.3、文件读写  
+#### 1.3、操作文件  
 **对象方式读写**  
 MFSetObject(fsid string, obj interface{}) error  
 MFGetObject(fsid string) (interface{}, error)
@@ -106,13 +106,13 @@ MFGetMimeType(fsid string) (string, error)
 
 **目录操作**  
 MFReaddir(fsid string, count int) ([]*FileInfo, error)
-MFFind(sid, mmfsid, path string) (*FindResult, error)  
   
 **文件系统**  
-FSMkDir(sid, fsid, path string, perm os.FileMode) error  
-FSRemoveAll(sid, fsid, path string) error  
-FSStat(sid, fsid, path string) (*FileInfo, error)  
-FSRename(sid, fsid, oldpath, newFullName, newLeft string) error
+FSFind(sid, mmfsid, path string) (*FindResult, error)  
+FSMkDir(sid, mmfsid, path string) error  
+FSRemoveAll(sid, mmfsid, path string) error  
+FSStat(sid, mmfsid, path string) (*FileInfo, error)  
+FSRename(sid, mmfsid, oldpath, newFullName, newLeft string) error
 
 **其它**  
 MFTruncate(fsid string, size int64) error  

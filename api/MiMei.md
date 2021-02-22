@@ -316,24 +316,160 @@ MFGetData(fsid string, start int64, count int) (ret []byte, err error)
 |--|--|--|  
 |ret|返回的结果|  
   
+ 
+### 2.3 查询状态  
+**2.3.1 获取文件长度**  
+```golang
+MFGetSize(fsid string) (size int64, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|fsid|会话id|MFOpen系列Api获取
+
+|返回值|描述|说明|
+|--|--|--|  
+|size|文件长度|  
+
+**2.3.2 获取文件的Mime类型**  
+```golang
+MFGetMimeType(fsid string) (tp string, err error)    
+```
+|参数|名称|说明|
+|--|--|--|
+|fsid|会话id|MFOpen系列Api获取
+
+|返回值|描述|说明|
+|--|--|--|  
+|type|MiMe类型|  
+
+**2.3.3 获取文件信息**  
+```golang
+MFStat(fsid string) (info *FileInfo, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|fsid|会话id|MFOpen系列Api获取
+
+|返回值|描述|说明|
+|--|--|--|  
+|info|文件信息|  
+
+**2.3.4 文件是否存在**  
+```golang
+MFIsExist(fsid, fileid string) (bExist bool, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|fsid|会话id|MFOpen系列Api获取
+|fileid|文件id|  
+
+|返回值|描述|说明|
+|--|--|--|  
+|bExist|文件信息|  
+
+
+### 2.4 目录操作  
+**2.4.1 读取目录下的文件信息**  
+```golang
+MFReaddir(fsid string, count int) (infos[]*FileInfo, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|fsid|会话id|MFOpen系列Api获取
+|count|读取个数|不大于0表示读取全部  
+
+|返回值|描述|说明|
+|--|--|--|  
+|infos|目录中的文件信息|  
+
+### 2.5 其它文件操作  
+**2.5.1 截断文件**  
+```golang
+MFTruncate(fsid string, size int64) error  
+```
+|参数|名称|说明|
+|--|--|--|
+|fsid|会话id|MFOpen系列Api获取
+|size|文件长度|  |  
+
+
+### 2.5 文件系统操作  
+**2.5.1 根据路径查找**  
+```golang
+FSFind(sid, mmfsid, path string) (result *FindResult, err error)  
+```  
+|参数|名称|说明|
+|--|--|--|
+|sid|会话id|Login获取
+|mmfsid|文件系统mid|  
+|path|相对路径|  
+
+|返回值|描述|说明|
+|--|--|--|  
+|result|查询结果|  
+
+```golang
+type FindResult struct {
+	FSID     string //文件系统的id
+	Left     string //未匹配的路径，匹配时为空
+	FullName string //完整路径
+}
+``` 
+
+**2.5.2 创建目录**  
+```golang
+FSMkDir(sid, mmfsid, path string) error  
+```  
+|参数|名称|说明|
+|--|--|--|
+|sid|会话id|Login获取
+|mmfsid|文件系统mid|  
+|path|相对路径|  
+
+|返回值|描述|说明|
+|--|--|--|  
+|result|查询结果|  
+
+
+**2.5.3 查询文件信息**  
+```golang
+FSStat(sid, mmfsid, path string) (info *FileInfo, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|sid|会话id|Login获取
+|mmfsid|文件系统mid|  
+|path|相对路径|  
+
+|返回值|描述|说明|
+|--|--|--|  
+|info|文件信息|  
+
+**2.5.4 复制文件**  
+```golang
+FSCopy(fsid, dst, src, srcVer string) error  
+```
+|参数|名称|说明|
+|--|--|--|
+|sid|会话id|Login获取
+|dst|目标路径|  
+|src|源路径|  
+|srcVer|源版本|  
 
 <!--
-MFFind(sid, mmfsid, path string) (*FindResult, error)  
-MFTruncate(fsid string, size int64) error  
-MFCopy(fsid, dst, src, srcVer string) error  
-MFGetSize(fsid string) (int64, error)  
-MFStat(fsid string) (*FileInfo, error)  
-MFIsExist(fsid, fileid string) (bool, error)  
-MFReaddir(fsid string, count int) ([]*FileInfo, error)  
+**2.5.5 文件改名**  
+```golang
+FSRename(sid, mmfsid, oldpath, newFullName, newLeft string) error
+```
+|参数|名称|说明|
+|--|--|--|
+|sid|会话id|Login获取
+|mmfsid|文件系统mid|  
+|oldpath|旧的文件路径|  
+|newFullName|新的文件路径|  
 
-MFGetMimeType(fsid string) (string, error)    
 
-## 三、系统文件  
-操作系统的文件系统  
-MFOSFSMkDir(sid, fsid, path string, perm os.FileMode) error  
-MFOSFSRemoveAll(sid, fsid, path string) error  
-MFOSFSStat(sid, fsid, path string) (*FileInfo, error)  
-MFOSFSRename(sid, fsid, oldpath, newFullName, newLeft string) error
+
 
 
 ## 四、数据库  
