@@ -456,10 +456,9 @@ FSCopy(fsid, dst, src, srcVer string) error
 |src|源路径|  
 |srcVer|源版本|  
 
-<!--
 **2.5.5 文件改名**  
 ```golang
-FSRename(sid, mmfsid, oldpath, newFullName, newLeft string) error
+FSRename(sid, mmfsid, oldpath, newFullName string) error
 ```
 |参数|名称|说明|
 |--|--|--|
@@ -470,7 +469,7 @@ FSRename(sid, mmfsid, oldpath, newFullName, newLeft string) error
 
 
 
-
+<!--
 
 ## 四、数据库  
 弥媒中的数据库  

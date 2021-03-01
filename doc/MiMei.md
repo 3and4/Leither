@@ -112,7 +112,7 @@ FSFind(sid, mmfsid, path string) (*FindResult, error)
 FSMkDir(sid, mmfsid, path string) error  
 FSRemoveAll(sid, mmfsid, path string) error  
 FSStat(sid, mmfsid, path string) (*FileInfo, error)  
-FSRename(sid, mmfsid, oldpath, newFullName, newLeft string) error
+FSRename(sid, mmfsid, oldpath, newFullName string) error
 
 **其它**  
 MFTruncate(fsid string, size int64) error  
