@@ -8,10 +8,29 @@
 为了解决节点之间的数据协同问题,节点  
 -->
 
-### 一、弥媒文件
+### 一、弥媒基础操作
+#### 1.1、创建打开
+MMCreate(sid, appid, ext, mark string, tp byte, right uint64) (mid string, err error)  
+MMOpen(sid, mid, ver string) (string, error)  
+
+#### 1.2、备份和版本
+MMBackup(sid, mid, memo string) (ver string, err error)  
+MMRestore(sid, mid, ver string) error  
+MMDelVers(sid, mid string, vers ...string) (int64, error)  
+MMRelease(sid, mid, ver string) (string, error)   
+  
+#### 1.3、对象引用
+MMAddRef(sid, mid string, fileids ...string) (int, error)  
+MMDelRef(sid, mid string, fileids ...string) (int, error)  
+MMGetRef(sid, mid string) (ret map[string]int, err error)  
+
+### 1.4、权限  
+MMSetRight(sid, mid, member string, right uint64) error  
+
+### 二、弥媒文件
 本文描述系统中的文件对象 
 
-#### 1.1、文件对象  
+#### 2.1、文件对象  
 **弥媒当前文件**  
 指的是弥媒文件的当前版本，当前文件是可读可写的  
 
@@ -56,7 +75,7 @@ webdav目录是节点对外展示的弥媒总入口。
 可以把操作系统中的文件或目录link到这个目录
 也可以生成一个配置文件指向节点内的一个弥媒对象  
   
-#### 1.2、打开文件
+#### 2.2、打开文件
 **弥媒文件**
 创建弥媒文件  
 接口函数MMCreate，参数类型为api.MM_File
@@ -89,7 +108,7 @@ MFTemp2MacFile func(sid, mid string) (string, error)
 操作对象的会话id在超时情况下都会自动关闭文件  
 
 
-#### 1.3、操作文件  
+#### 2.3、操作文件  
 **对象方式读写**  
 MFSetObject(fsid string, obj interface{}) error  
 MFGetObject(fsid string) (interface{}, error)
@@ -118,13 +137,9 @@ FSRename(sid, mmfsid, oldpath, newFullName string) error
 MFTruncate(fsid string, size int64) error  
 MFCopy(fsid, dst, src, srcVer string) error  
 
-#### 1.4、对象引用
-MMAddRef(sid, mid string, fileids ...string) (int, error)  
-MMDelRef(sid, mid string, fileids ...string) (int, error)  
-MMGetRef(sid, mid string) (ret map[string]int, err error)  
 
 
-### 二、数据库
+### 三、数据库
 数据库的底层有两种，一种是基于LevelDB,一种是基于BoltDB。  
 两种数据库都进行过底层改造。  
 LevelDb用于当前版本，可写可读，一致性是基于时序。  
@@ -136,12 +151,12 @@ Api参考Redis
 可以操作字符串，哈希表，列表，集合，有序集五组数据类型  
 支持事务    
 
-#### 2.1、事务 
+#### 3.1、事务 
 Begin(dbsid string, timeout int) error  
 Commit(dbsid string) error  
 Rollback(dbsid string) error 
 
-#### 2.2、字符串 
+#### 3.2、字符串 
 Set(dbsid, key string, value interface{}) error  
 Get(dbsid, key string) (interface{}, error)  
 Del(dbsid string, key ...string) (int64, error)  
@@ -149,7 +164,7 @@ Incr(dbsid, key string) (int64, error)
 IncrBy(dbsid, key string, delta int64) (int64, error)  
 Strlen(dbsid, key string) (int64, error)  
   
-#### 2.3、哈希表   
+#### 3.3、哈希表   
 Hmclear(dbsid string, key ...string) (int64, error)  
 Hdel(dbsid, key string, field ...string) (int64, error)  
 Hlen(dbsid, key string) (int64, error)  
@@ -163,7 +178,7 @@ Hscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FV
 Hrevscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FVPair, err error)  
 HincrBy(sid, key, field string, delta int64) (ret int64, err error)  
 
-#### 2.4 列表
+#### 3.4 列表
 Lpush(dbsid, key string, value ...interface{}) (int64, error)  
 Lpop(dbsid, key string) (interface{}, error)  
 Rpush(dbsid, key string, value ...interface{}) (int64, error)  
@@ -175,7 +190,7 @@ Lindex(dbsid, k string, index int32) (interface{}, error)
 Llen(dbsid, k string) (int64, error)  
 Lset(dbsid, k string, index int32, value interface{}) error  
 
-#### 2.5 集合
+#### 3.5 集合
 Sadd(dbsid, key string, args ...string) (int64, error)  
 Scard(dbsid, key string) (int64, error)  
 Sclear(dbsid, key string) (int64, error)  
@@ -187,7 +202,7 @@ Srem(dbsid, key string, m string) (int64, error)
 Sunion(dbsid string, keys ...string) ([]string, error)  
 Scan(dbsid string, begin, match string, count int, inclusive bool, tp byte) (keys []string, err error)
 
-#### 2.6 有序集
+#### 3.6 有序集
 Zadd(dbsid, key string, args ...ScorePair) (int64, error)  
 Zcard(dbsid, key string) (int64, error)  
 Zcount(dbsid, key string, mins, maxs int64) (int64, error)  
@@ -203,6 +218,3 @@ Zmclear(dbsid string, key ...string) (int64, error)
 Zclear(dbsid, key string) (int64, error)  
 ZincrBy(dbsid, key string, delta int64, member string) (ret int64, err error)  
 
-### 三、弥媒操作
-
-### 四、权限
