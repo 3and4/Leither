@@ -469,10 +469,11 @@ FSRename(sid, mmfsid, oldpath, newFullName string) error
 
 
 
-<!--
 
 ## 四、数据库  
 弥媒中的数据库  
+<!--
+
 Begin(dbsid string, timeout int) error  
 Commit(dbsid string) error  
 Rollback(dbsid string) error 

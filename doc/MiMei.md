@@ -125,7 +125,83 @@ MMGetRef(sid, mid string) (ret map[string]int, err error)
 
 
 ### 二、数据库
+数据库的底层有两种，一种是基于LevelDB,一种是基于BoltDB。  
+两种数据库都进行过底层改造。  
+LevelDb用于当前版本，可写可读，一致性是基于时序。  
+写事务时会检查改动的部分是否有第三方同时修改过相应的内容。  
+有改动则提示错误，通知调用端重新执行相关操作，避免写冲突。
+BoltDb用于历史版本，只用于读。
 
+Api参考Redis  
+可以操作字符串，哈希表，列表，集合，有序集五组数据类型  
+支持事务    
+
+#### 2.1、事务 
+Begin(dbsid string, timeout int) error  
+Commit(dbsid string) error  
+Rollback(dbsid string) error 
+
+#### 2.2、字符串 
+Set(dbsid, key string, value interface{}) error  
+Get(dbsid, key string) (interface{}, error)  
+Del(dbsid string, key ...string) (int64, error)  
+Incr(dbsid, key string) (int64, error)  
+IncrBy(dbsid, key string, delta int64) (int64, error)  
+Strlen(dbsid, key string) (int64, error)  
+  
+#### 2.3、哈希表   
+Hmclear(dbsid string, key ...string) (int64, error)  
+Hdel(dbsid, key string, field ...string) (int64, error)  
+Hlen(dbsid, key string) (int64, error)  
+Hset(dbsid, key, field string, value interface{}) (int64, error)  
+Hget(dbsid, key, field string) (interface{}, error)  
+Hmget(dbsid, key string, fields ...string) ([]interface{}, error)  
+Hmset(dbsid, key string, values ...FVPair) error  
+Hgetall(dbsid, key string) ([]FVPair, error)  
+Hkeys(dbsid, key string) ([]string, error)  
+Hscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FVPair, err error)  
+Hrevscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FVPair, err error)  
+HincrBy(sid, key, field string, delta int64) (ret int64, err error)  
+
+#### 2.4 列表
+Lpush(dbsid, key string, value ...interface{}) (int64, error)  
+Lpop(dbsid, key string) (interface{}, error)  
+Rpush(dbsid, key string, value ...interface{}) (int64, error)  
+Rpop(dbsid, key string) (interface{}, error)  
+Lrange(dbsid, key string, start, stop int32) ([]interface{}, error)  
+Lclear(dbsid, key string) (int64, error)  
+Lmclear(dbsid string, keys ...string) (int64, error)  
+Lindex(dbsid, k string, index int32) (interface{}, error)  
+Llen(dbsid, k string) (int64, error)  
+Lset(dbsid, k string, index int32, value interface{}) error  
+
+#### 2.5 集合
+Sadd(dbsid, key string, args ...string) (int64, error)  
+Scard(dbsid, key string) (int64, error)  
+Sclear(dbsid, key string) (int64, error)  
+Sdiff(dbsid string, keys ...string) ([]string, error)  
+Sinter(dbsid string, keys ...string) ([]string, error)  
+Smclear(dbsid string, key ...string) (int64, error)  
+Smembers(dbsid, key string) ([]string, error)  
+Srem(dbsid, key string, m string) (int64, error)  
+Sunion(dbsid string, keys ...string) ([]string, error)  
+Scan(dbsid string, begin, match string, count int, inclusive bool, tp byte) (keys []string, err error)
+
+#### 2.6 有序集
+Zadd(dbsid, key string, args ...ScorePair) (int64, error)  
+Zcard(dbsid, key string) (int64, error)  
+Zcount(dbsid, key string, mins, maxs int64) (int64, error)  
+Zrem(dbsid, key string, members ...string) (int64, error)  
+Zscore(dbsid, key, member string) (int64, error)  
+Zrank(dbsid, key, member string) (int64, error)  
+Zrange(dbsid, key string, mins, maxs int) ([]ScorePair, error)  
+Zrangebyscore(dbsid, key string, mins, maxs int64, offset int, count int) ([]ScorePair, error)  
+Zremrangebyscore (dbsid, key string, mins, maxs int64) (int64, error)
+Zrevrange(dbsid, key string, start, stop int) (ret []ScorePair, err error)  
+Zrevrangebyscore (dbsid, key string, mins, maxs int64, offset int, count int) (ret []ScorePair, err error)  
+Zmclear(dbsid string, key ...string) (int64, error)  
+Zclear(dbsid, key string) (int64, error)  
+ZincrBy(dbsid, key string, delta int64, member string) (ret int64, err error)  
 
 ### 三、弥媒操作
 
