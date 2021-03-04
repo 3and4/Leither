@@ -119,7 +119,7 @@ http://192.168.1.7:8000/entry?author=h7Nkwe4rfb1d15En8yQ65Lhhq9b&app=dav&ver=cur
 **5.1、上传应用**  
 上传一个应用 
 ```golang
-(sid, fileid, tp string) (app *App, err error)
+UploadApp(sid, fileid, tp string) (app *App, err error)
 ```
 **5.2、更新应用文件**  
 ```golang
