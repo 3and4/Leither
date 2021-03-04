@@ -115,3 +115,52 @@ http://192.168.1.7:8000/entry?author=h7Nkwe4rfb1d15En8yQ65Lhhq9b&app=dav&ver=cur
 
 注：appid参数等效于author加app  
   
+### 五、应用相关的api
+**5.1、上传应用**  
+上传一个应用 
+```golang
+(sid, fileid, tp string) (app *App, err error)
+```
+**5.2、更新应用文件**  
+```golang
+UploadAppfile(sid, AppName string, filename, fileid string) error
+```
+**5.3、删除应用版本**
+```golang
+MMDelVers(sid, mid string, vers ...string) (int64, error)  
+```
+**5.4、获取应用信息**  
+获取应用信息  
+```golang
+err := stub.GetVarObj(api.ApiVarAPPInfo, &app, appName)
+```
+应用版本信息
+```golang  
+var ayVersions []string
+err = stub.GetVarObj(api.ApiVarAPPVersions, &ayVersions, appName)
+```  
+
+所有的应用名  
+```golang  
+var ret []*api.App
+err := stub.GetVarObj(api.ApiVarAPPInfos, &ret)  
+```  
+**5.4、域名设置** 
+```golang  
+SetDomain(sid, domain string, info map[string]string) error
+```  
+
+**5.5、版本备份** 
+```golang  
+MMBackup(sid, mid, memo string) (ver string, err error)
+```  
+
+**5.6、版本发布** 
+```golang  
+MMRelease(sid, mid, ver string) (string, error)
+```  
+
+**5.6、版本恢复** 
+```golang  
+MMRestore(sid, mid, ver string) error
+``` 

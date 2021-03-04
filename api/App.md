@@ -45,6 +45,8 @@ UploadAppfile(sid, AppName string, filename, fileid string) error
 |--|--|
 |app|应用信息| 
   
+<!--
+还不够完备，先注解掉
 ### 三、卸载应用
 ```golang
 UninstallApp(sid, AppName string) error
@@ -53,3 +55,7 @@ UninstallApp(sid, AppName string) error
 |--|--|--|
 |sid|会话id|通过Login获取|
 |AppName|应用名|
+-->  
+### 其它  
+应用本质是一种弥媒，其它操作参考弥媒api  
+查询信息的Api参考变量Api  

@@ -15,13 +15,11 @@ Api文档
    
 接口包含以下部分：
 + <a href="./Auth.md"> 认证部分</a>  
-+ 网络部分  
- + <a href="./App.md">  应用部分</a> 
++ <a href="./Net.md"> 网络部分</a>    
++ <a href="./App.md">  应用部分</a> 
 + 任务管理  
 + 消息部分    
 + <a href="./MiMei.md"> 弥媒部分(doing)</a>  
-+ 用户组  
-+ 数据权限  
 + 系统变量    
  
 
