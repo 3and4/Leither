@@ -11,15 +11,15 @@ Api文档
 **2、RPC接口**  
 采用Hprose引擎，支持常见四十多种语言  
 文档会以golang和html5作为示例,其它语言类似  
-后端支持页面模板和lua语言.   
+后端支持页面模板和lua.   
    
 接口包含以下部分：
 + <a href="./Auth.md"> 认证部分</a>  
-+ <a href="./Net.md"> 网络部分</a>    
 + <a href="./App.md">  应用部分</a> 
++ <a href="./MiMei.md"> 弥媒部分</a>  
++ <a href="./Net.md"> 网络部分</a>    
 + 任务管理  
 + 消息部分    
-+ <a href="./MiMei.md"> 弥媒部分(doing)</a>  
 + 系统变量    
  
 
