@@ -499,14 +499,60 @@ Rollback(dbsid string) error
 |--|--|--|
 |dbsid|会话id|MMOpen获取
 
-
-<!--
+### 3.2 字符串  
+**3.2.1 Set**  
+```golang
 Set(dbsid, key string, value interface{}) error  
-Get(dbsid, key string) (interface{}, error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|
+|value|值|
+  
+**3.2.2 Get**  
+```golang
+Get(dbsid, key string) (ret interface{}, err error) 
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|
+|ret|返回值|
+
+**3.2.2 删除**  
+```golang
 Del(dbsid string, key ...string) (int64, error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|
+|ret|返回值|
+
+**3.2.3 增加**  
+```golang
 Incr(dbsid, key string) (int64, error)  
 IncrBy(dbsid, key string, delta int64) (int64, error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|
+|delta|要增加的值|
+
+**3.2.3 取值的长度**  
+值的类型是字节流返回实际长度  
+值的类型是字符串，返回字符串的长度。（utf8格式）
+```golang
 Strlen(dbsid, key string) (int64, error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|
+
+<!--
 Hmclear(dbsid string, key ...string) (int64, error)  
 Hdel(dbsid, key string, field ...string) (int64, error)  
 Hlen(dbsid, key string) (int64, error)  
