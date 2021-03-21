@@ -470,13 +470,37 @@ FSRename(sid, mmfsid, oldpath, newFullName string) error
 
 
 
-## 四、数据库  
+## 三、数据库  
 弥媒中的数据库  
-<!--
+### 3.1 事务  
+**3.1.1 开始事务**  
+```golang
+Begin(dbsid string, timeout int) error 
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|timeout|延时|单位秒，超时自动Rollback
 
-Begin(dbsid string, timeout int) error  
+**3.1.2 事务递交**  
+```golang
 Commit(dbsid string) error  
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+
+
+**3.1.3 事务回滚**  
+```golang
 Rollback(dbsid string) error 
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+
+
+<!--
 Set(dbsid, key string, value interface{}) error  
 Get(dbsid, key string) (interface{}, error)  
 Del(dbsid string, key ...string) (int64, error)  
