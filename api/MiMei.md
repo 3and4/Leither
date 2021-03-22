@@ -528,7 +528,7 @@ Del(dbsid string, key ...string) (int64, error)
 |--|--|--|
 |dbsid|会话id|MMOpen获取
 |key|键|
-|ret|返回值|
+|ret|成功的个数|
 
 **3.2.3 增加**  
 ```golang
@@ -550,21 +550,163 @@ Strlen(dbsid, key string) (int64, error)
 |参数|名称|说明|
 |--|--|--|
 |dbsid|会话id|MMOpen获取
-|key|键|
+|key|键|  
 
-<!--
-Hmclear(dbsid string, key ...string) (int64, error)  
-Hdel(dbsid, key string, field ...string) (int64, error)  
-Hlen(dbsid, key string) (int64, error)  
-Hset(dbsid, key, field string, value interface{}) (int64, error)  
-Hget(dbsid, key, field string) (interface{}, error)  
-Hmget(dbsid, key string, fields ...string) ([]interface{}, error)  
+### 3.3 哈希表  
+**3.3.1 删除哈希表**  
+删除哈希表 不存在的key将被忽略。  
+```golang
+Hmclear(dbsid string, key ...string) (ret int64, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|  
+|ret|成功的个数|
+
+**3.3.2 删除域**  
+删除哈希表 key 中的一个或多个指定域，不存在的域将被忽略。  
+```golang
+Hdel(dbsid, key string, field ...string) (ret int64, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|  
+|field|域|  
+|ret|成功的个数|
+
+**3.3.3 哈希表大小**  
+返回哈希表 key 中域的数量。
+```golang
+Hlen(dbsid, key string) (ret int64, err error)    
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|  
+|ret|域的数量|
+
+**3.3.4 写**  
+将哈希表 hash 中域 field 的值设置为 value 。
+```golang
+Hset(dbsid, key, field string, value interface{}) (ret int64, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|  
+|field|域| 
+|value|值| 
+|ret|域的数量|不存在返回1，存在返回0
+
+**3.3.5 读**  
+返回哈希表中给定域的值。
+```golang
+Hget(dbsid, key, field string) (ret interface{}, err error)    
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|  
+|field|域| 
+|ret|值|
+
+
+**3.3.6 批量读**  
+返回哈希表 key中，一个或多个给定域的值。
+```golang
+Hmget(dbsid, key string, fields ...string) (ret []interface{}, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|  
+|field|域| 
+|ret|值|
+
+
+
+**3.3.7 批量写**  
+同时将多个 field-value (域-值)对设置到哈希表 key 中。  
+此命令会覆盖哈希表中已存在的域。
+如果 key 不存在，一个空哈希表被创建并执行 Hmset 操作。
+```golang
 Hmset(dbsid, key string, values ...FVPair) error  
-Hgetall(dbsid, key string) ([]FVPair, error)  
-Hkeys(dbsid, key string) ([]string, error)  
-Hscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FVPair, err error)  
-Hrevscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FVPair, err error)  
-HincrBy(sid, key, field string, delta int64) (ret int64, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|  
+|field|域| 
+|value|域-值| 
+  
+**3.3.8 取所有域和值**  
+返回哈希表 key 中，所有的域和值。
+```golang
+Hgetall(dbsid, key string) (ret []FVPair, err error)    
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|  
+|ret|域-值|  
+
+**3.3.9 取所有域**  
+返回哈希表 key 中，所有的域。
+```golang
+Hkeys(dbsid, key string) (ret []string, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|  
+|ret|域| 
+
+**3.3.10 增加值**  
+为哈希表 key 中的域 field 的值加上增量 delta 。
+```golang
+HincrBy(dbsid, key, field string, delta int64) (ret int64, err error)  
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|  
+|delta|增加值|  
+|ret|当前值| 
+
+**3.3.11查询**  
+Hscan 根据参数查找符合条件的域名值
+```golang
+Hscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FVPair, err error)   
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|  
+|beginfield|域的起始值|  
+|match|匹配条件| 
+|count|返回的最大个数| 
+|inclusive|包含边界值| 
+|ret|符合条件的域值| 
+
+**3.3.11逆序查询**  
+Hscan 根据参数查找符合条件的域名值
+```golang
+Hrevscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FVPair, err error)   
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|key|键|  
+|beginfield|域的起始值|  
+|match|匹配条件| 
+|count|返回的最大个数| 
+|inclusive|包含边界值| 
+|ret|符合条件的域值| 
+
+### 3.4 列表 
+<!--
 Lpush(dbsid, key string, value ...interface{}) (int64, error)  
 Lpop(dbsid, key string) (interface{}, error)  
 Rpush(dbsid, key string, value ...interface{}) (int64, error)  
@@ -575,6 +717,22 @@ Lmclear(dbsid string, keys ...string) (int64, error)
 Lindex(dbsid, k string, index int32) (interface{}, error)  
 Llen(dbsid, k string) (int64, error)  
 Lset(dbsid, k string, index int32, value interface{}) error  
+ -->
+### 3.5 集合  
+<!--
+Sadd(dbsid, key string, args ...string) (int64, error)  
+Scard(dbsid, key string) (int64, error)  
+Sclear(dbsid, key string) (int64, error)  
+Sdiff(dbsid string, keys ...string) ([]string, error)  
+Sinter(dbsid string, keys ...string) ([]string, error)  
+Smclear(dbsid string, key ...string) (int64, error)  
+Smembers(dbsid, key string) ([]string, error)  
+Srem(dbsid, key string, m string) (int64, error)  
+Sunion(dbsid string, keys ...string) ([]string, error)  
+Scan(dbsid string, begin, match string, count int, inclusive bool, tp byte) (keys []string, err error)
+ -->
+### 3.6 有序集  
+<!--
 Zadd(dbsid, key string, args ...ScorePair) (int64, error)  
 Zcard(dbsid, key string) (int64, error)  
 Zcount(dbsid, key string, mins, maxs int64) (int64, error)  
@@ -589,14 +747,4 @@ Zrevrangebyscore (dbsid, key string, mins, maxs int64, offset int, count int) (r
 Zmclear(dbsid string, key ...string) (int64, error)  
 Zclear(dbsid, key string) (int64, error)  
 ZincrBy(dbsid, key string, delta int64, member string) (ret int64, err error)  
-Sadd(dbsid, key string, args ...string) (int64, error)  
-Scard(dbsid, key string) (int64, error)  
-Sclear(dbsid, key string) (int64, error)  
-Sdiff(dbsid string, keys ...string) ([]string, error)  
-Sinter(dbsid string, keys ...string) ([]string, error)  
-Smclear(dbsid string, key ...string) (int64, error)  
-Smembers(dbsid, key string) ([]string, error)  
-Srem(dbsid, key string, m string) (int64, error)  
-Sunion(dbsid string, keys ...string) ([]string, error)  
-Scan(dbsid string, begin, match string, count int, inclusive bool, tp byte) (keys []string, err error)
  -->
