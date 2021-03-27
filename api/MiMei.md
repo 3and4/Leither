@@ -551,7 +551,35 @@ Strlen(dbsid, key string) (int64, error)
 |--|--|--|
 |dbsid|会话id|MMOpen获取
 |key|键|  
+<!--
+**3.2.4查询**  
+Scan 根据参数查找符合条件的域名值
+```golang
+Scan(dasid string, begin, match string, count int, inclusive bool, tp byte) (keys []string, err error)
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|begin|键的起始值|  
+|match|匹配条件| 
+|count|返回的最大个数| 
+|inclusive|包含边界值| 
+|tp|类型| 
 
+**3.2.5逆序查询**  
+scan 根据参数查找符合条件的域名值
+```golang
+RevScan(dasid string, begin, match string, count int, inclusive bool, tp byte) (keys []string, err error)
+```
+|参数|名称|说明|
+|--|--|--|
+|dbsid|会话id|MMOpen获取
+|begin|键的起始值|  
+|match|匹配条件| 
+|count|返回的最大个数| 
+|inclusive|包含边界值| 
+|tp|类型| 
+ -->
 ### 3.3 哈希表  
 **3.3.1 删除哈希表**  
 删除哈希表 不存在的key将被忽略。  
@@ -626,7 +654,6 @@ Hmget(dbsid, key string, fields ...string) (ret []interface{}, err error)
 |ret|值|
 
 
-
 **3.3.7 批量写**  
 同时将多个 field-value (域-值)对设置到哈希表 key 中。  
 此命令会覆盖哈希表中已存在的域。
@@ -640,7 +667,15 @@ Hmset(dbsid, key string, values ...FVPair) error
 |key|键|  
 |field|域| 
 |value|域-值| 
-  
+
+```golang
+// FVPair is the pair of field and value.
+type FVPair struct {
+	Field []byte
+	Value []byte
+}
+```
+
 **3.3.8 取所有域和值**  
 返回哈希表 key 中，所有的域和值。
 ```golang
