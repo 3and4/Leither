@@ -19,9 +19,9 @@ Api文档
 + <a href="./MiMei.md"> 弥媒部分</a>  
 + <a href="./Net.md" > 网络部分</a>    
 + <a href="./LTask.md"> 任务部分</a>    
-+ 消息部分    
-+ 系统变量    
- 
++ <a href="./Message.md"> 消息部分</a>        
++ <a href="./VarAct.md"> 系统变量</a>    
+
 
 **3、http接口**
 
