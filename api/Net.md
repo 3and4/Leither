@@ -1,4 +1,4 @@
-网络模块
+网络模块(草)
 ========  
 
 ## 一、域名模块  
@@ -16,7 +16,7 @@ UpdateAddrs func(sid string, addrs ...string) error
 
 ## 二、节点管理模块  
 ### 2.1 邀请节点
-Invite(sid string, validity uint, money uint, friendCount int) (string, error)
+Invite(sid string, validity uint, credit uint, friendCount int) (string, error)
 ### 2.2 接受邀请
 Accept(sid, inviteInfo string) error
 ### 2.3 添加节点
