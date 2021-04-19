@@ -1,14 +1,17 @@
-Leither&弥媒
+Leither&弥媒（草） doing
 ========  
 互联网日益中心化，少数寡头垄断了用户数据，通过规则影响和控制用户行为，并获取巨额利益。打破寡头对互联网的垄断成为民众越来越迫切的需求。  
-区块链，IPFS、Solid、dfinity等都是为了这个目标提出来的解决方案，传统中心化互联网发展积累多年，已经高度成熟，目前的去中心化方案和传统方案相比都不太完备。
 
-Leither是一个去中心化的云操作系统，旨在能用去中心的方式肢解和重构互联网上大部分用户相关的核心业务  
-Leither实现了构建传统互联网应用所需要的用户安全体系、文件系统、数据库、应用体系、网络体系等模块，在体验和协议上尽可能与传统兼容。
+区块链、IPFS、Solid、dfinity等都是为了这个目标提出来的解决方案，传统中心化互联网发展积累多年，已经高度成熟，目前的去中心化方案和传统方案相比都不太完备。
 
-弥媒是系统中的基本对象，用于描述数据和应用。类似于基因和弥母，弥媒是有独立内容或功能的最小单位  
+为了破除数据的垄断，我们提出了弥媒的概念
+弥媒是基本信息单位。类似于基因和弥母，可用于描述数据和应用。
 弥媒之间有引用关联，可以构建出复杂的互联网应用和服务  
-弥媒可以在节点之间流动，从而实现去中心化的目的。   
+
+Leither是一个弥媒容器方案，弥媒可以在运行Leither的节点间流动，从而实现去中心化的目的。   
+Leither也是一个去中心化的云操作系统,实现了构建传统互联网应用所需要的用户安全体系、文件系统、数据库、应用体系、网络体系等模块，在体验和协议上尽可能与传统兼容。
+
+中心化互联网上的内容和服务可以转化为弥媒形式，从而完成中心化互联网向去中心化互联网的进化。
 
 ### 一、背景——互联网日益中心化
 互联网日益中心化，破除垄断，构建去中心化互联网是当前时代的迫切需求
@@ -156,13 +159,55 @@ a new birth of freedom and that  internet of the people, by the people, for the 
 首先，我们要知道问题是怎么产生的，也就是数据是如何被垄断的。 
 
 #### 3.1 相关概念  
-这个问题涉及到两组概念：数据和规则;耦合和解构
+这个问题涉及到两组概念：数据及应用规则;耦合和解构
+
++ **信息**   
+信息，指音讯、消息、通讯系统传输和处理的对象，泛指人类社会传播的一切内容。人通过获得、识别自然界和社会的不同信息来区别不同事物，得以认识和改造世界。在一切通讯和控制系统中，信息是一种普遍联系的形式。1948年，数学家香农在题为“通讯的数学理论”的论文中指出：“信息是用来消除随机不定性的东西”。创建一切宇宙万物的最基本单位是信息。
+
++ **数据**   
+存储在介质的信息称为数据。数据结构定义数据如何存储、如何组织。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。
+
++ **应用**   
+数据不直接作用于外部世界，通过程序和外部世界进行交互。
+程序分系统软件和应用软件（Application），处理用户数据的是应用软件，简称**应用**。  
+应用是用户可以使用的各种程序设计语言，以及用各种程序设计语言编制的应用程序的集合，分为应用软件包和用户程序。应用软件包是利用计算机解决某类问题而设计的程序的集合，多供用户使用。
+应用软件是为满足用户不同领域、不同问题的应用需求而提供的那部分软件。 它可以拓宽计算机系统的应用领域，放大硬件的功能。
+
++ **弥媒**  
+基因（gene）是基本遗传单位，是一段具有功能性的DNA或RNA序列。基因支持着生命的基本构造和性能。储存着生命的种族、血型、孕育、生长、凋亡等过程的全部信息。  
+Meme弥母是人类文明生态中的遗传与进化基因。并在诸如语言、观念、信仰、行为方式等的传递过程中产生出与Gene基因在生物进化过程中所起的生长、代际、演进与发展等作用相类似的结果。可以从一个头脑传递到另一个头脑。  
+参考基因和弥母，我们定义了弥媒（MeMei）：  
+弥媒是互联网中的信息的载体，描述了信息数据的存储方式，也定义了信息相关的应用操作。
+弥媒之间有引用关联，可以构建出复杂的互联网应用和服务  
+
++ **Leither**  
+Leither是一个弥媒容器实现，也是一个超轻量级的去中心化的云操作系统
+系统能够以极低的资源实现常见的互联网应用，包括不限于网站，公众号，小程序，APP
+系统实现了认证体系、应用体系、文件和数据库系统，域名和网络系统
+Api支持常见四十多种语言
+
++ **节点**  
+Leither可以运行在常见的操作系统上，包括不限于windows、linux、freebsd、Darwin、Android
+大小只有6兆，可以运行在pc,服务器，手机，nas，路由，树莓派等各种设备上
+这些运行了Leither的设备，我们称之为Leither节点，简称节点  
+一个节点，可以当成轻量级的主机使用  
+两个节点，可以进行互助，包含不限于数据互备、容错和均衡，域名解析和路由  
+多个节点，能够以去中化心化的方式实现常见的互联网应用。  
+弥媒可以在节点之间流动，从而实现去中心化的目的。     
+
+
+
+
 
 + **数据和规则**  
-数据结构和算法，是计算机科学中重要的两个概念;  
-数据结构描述了数据存放的方式，通常描述内存，数据库或文件中的对象
-算法描述了怎么处理这些数据对象，打开，生成，存取，保存，检索，展现等  
-下文中的**数据**是遵守同一数据结构的数据对象， **规则**指的是使用这些数据的功能模块或应用。
+数据结构和算法，是计算机科学中重要的两个概念  
+数据结构是计算机存储、组织数据的方式。数据结构是指相互之间存在一种或多种特定关系的数据元素的集合。  
+信息通常保存在内存、数据库或文件中，也保存在网络通讯的通道中。  
+算法（Algorithm）是指解题方案的准确而完整的描述，是一系列解决问题的清晰指令，算法代表着用系统的方法描述解决问题的策略机制。
+
+算法描述了怎么处理这些数据对象，打开、生成、存取、保存、检索、展现等  
+
+下文中的**数据**是遵守某一数据结构的存储对象， **规则**指的是使用这些数据的功能模块或应用。
 
 + **耦合和解耦**  
 耦合是各部分组合在一起，互相都有复杂的关联关系，使各部分无法拆分，形成一个整体  
@@ -184,6 +229,7 @@ windows中，用户可以选择不同的程序打开同一类型文件
 用户访问数据时，数据被特定的规则保护，限定了用户只能通过一套规则进行访问。  
 用户在电商平台购物，登录电商平台，查找商品，进行购物  
 用户在社交媒体上访问社交信息  
+在这种情况下，规则决定了用户访问数据的行为路径 
 
 #### 3.3 数据垄断的形成  
 在传统的操作系统上，文件可以在各终端和平台之间自由存取复制  
@@ -196,7 +242,6 @@ windows中，用户可以选择不同的程序打开同一类型文件
 腾讯阿里大战的时候，也互相进行了封杀。  
 互联网日益孤岛化，堡垒化，用户的数据被割裂保存在不同的寡头平台。  
 
-
 #### 3.4 垄断的破除  
 **平台公器化**  
 	计算机刚诞生的时候，为了便于管理设备和应用，操作系统诞生了。  
@@ -205,7 +250,7 @@ windows中，用户可以选择不同的程序打开同一类型文件
 	类似的例子还有手机操作系统android，芯片开源指令集架构RISC-V。  
 	对于存放用户数据的平台，应该有开源的平台架构。  
 	当前互联网最应该公器化的是**社交体系**和**内容检索**两个部分  
-	阿里、百度、谷歌、亚马逊是通过内容检索控制用户数据和行为  
+	阿里、百度、谷歌、亚马逊等一些内容站是通过内容检索控制用户数据和行为  
 	腾讯、脸书是通过社交体系控制用户数据和行为  
 
 **数据能自由流动**  
@@ -214,16 +259,22 @@ windows中，用户可以选择不同的程序打开同一类型文件
 	我们可以做三个工作：  
 + 广为宣传使之成为主流的价值观;  
 + 促进各国制定法律法规成为行业规范，对于保存在用户平台上的数据，必须支持用户导入和导出的接口;  
-+ 是发动类似浏览器插件这样的开源项目，组织研发人员把用户数据从寡头的平台上导入到用户的空间，数据到了用户空间，便可以对用户的数据复活及再关联。  
++ 发动类似浏览器插件这样的开源项目，组织研发人员把用户数据从寡头的平台上导入到用户的空间，数据到了用户空间，便可以对用户的数据复活及再关联。  
 
 **数据和规则分离**  
 	数据能自由流动的情况下，用户可以选用不同规则去操作数据
 
-**数据和数据关联**  
-	孤立的数据价值是有限的，不同数据之间应该能够互联关联，能够表达更复杂的内容
-
 **用户数据颗粒化**  
-	对于耦合在一起的大规模数据，我们是没办法单独剥离的。在设计上应该尽可能的让数据颗粒化。需要比文件更小更灵活的数据对象。描述内容的基本单位
+	对于耦合在一起的大规模数据，我们是没办法单独剥离的。
+	在设计上应该尽可能的让数据颗粒化。  
+	颗粒化的原则是象基因一样，尽可能包含相对完整的信息。  
+	这个信息相对独立，能够独自和算法规则结合。 
+	和外部的关联简洁清晰，能够为算法和规则表达。  
+
+**数据和数据关联**  
+	孤立的数据价值是有限的，不同数据之间应该能够互相关联，这样才能够表达更复杂的内容
+	Html之间通过链接进行关联，除了链接不稳定以外，这是非常不错的一种表达关联方式  
+	数据库的数据关联都是内部关联，限制了广泛的信息互动
 
 #### 3.5 数据容器  
 传统互联网的数据存放着十亿级用户规模的数据，需要构建大量的数据中心。  
@@ -234,7 +285,6 @@ windows中，用户可以选择不同的程序打开同一类型文件
 类似Solid中推荐的Pod，数据要回归用户，首先需要一个容器来存放用户数据   
 这个容器能够最好是存放在用户的个人空间，成本要可控，轻量级免维护的。  
 普通人不具备很强的专业知识
-
 
 #### 3.6 参考模型  
 **文件**  	
@@ -265,39 +315,40 @@ windows中，用户可以选择不同的程序打开同一类型文件
 	这些知识保存在人类的大脑里，在人和人之间传播，也可以保存在各种媒介上  
 	人类可以在大脑中对外界进行建模，在和外界的互动过程中，每一次反省就是一次迭代进化。“吾日三省吾身”相当于每天进化了三次。相对基因，弥母的进化速度有了数量级的提高。
 
- ### 四、弥媒（MIMEI）的由来
+### 四、弥媒（MIMEI）的由来
 信息熵是宇宙和人类发展过程中重要的一个物理量   
 熵增定律为宇宙演变指明了一个方向。熵也被称为时间之箭    
-薛定谔在《生命是什么》中提到：人活着就是在对抗熵增定律，生命以负熵为生    
-生命把对环境的信息记录在了基因（gene）里
-通过遗传适应之前的环境，通过变异筛选适应环境的变化  
+薛定谔在《生命是什么》中提到：  
+人活着就是在对抗熵增定律，生命以负熵为生    
+  
+生命把环境的信息记录在了基因（gene）里
+通过遗传适应之前的环境，通过变异筛选适应环境的变化，生命体则负责解释执行这些信息  
 人类有了意识之后，可以在大脑中对环境进行模拟调整，在大脑中处理相应的信息    
-这些信息的基础单位被查德-道金斯称为弥母（meme）  
-计算机诞生以后，信息的处理方式发性变化，需要一种新的基本单位来描述信息  
+这些信息的基础单位被查德-道金斯称为弥母（meme）    
+
+计算机和互联网诞生以后，信息的处理方式发生变化，需要一种新的单位来描述信息  
 这种新的信息单位，我们称之为弥媒（mimei）  
+除了象基因和弥母一样，弥媒能包含一段信息，同时也定义了和相信相关的规则
 
 弥媒的相关功能如下：    
-弥媒通过应用生成、管理、存取、展现、传播  
-弥媒基于内容主题创建，每一个弥媒都有一个唯一ID  
-用户可以设置弥媒的各种权限  
-弥媒和弥媒之间通过引用进行关联  
-弥媒可以运行保存在一个或多个节点上  
-象Git一样，弥媒有版本的概念  
-版本主要是解决数据的一致性问题  
-节点之间的数据库可以实时同步变化  
-也可以在生成确定版本的时候再进行同步   
-弥媒目前描述的数据类型有数据库和文件，后续会支持流  
-文件系统是特殊的类型，基于数据库和文件完成  
-每个弥媒都可以有独立的数据库和文件系统空间  
-弥媒通过不断的修改备份完成内容的继承进化  
-用户也可以用分支的方式完成弥媒内容的变异  
-Leither是我们实现的一个弥媒容器系统，同时也是一个云中心化的云操作系统
++ 弥媒通过应用生成、管理、存取、展现、传播  
++ 弥媒基于内容主题创建，每一个弥媒都有一个唯一ID  
++ 用户可以设置弥媒的各种权限  
++ 弥媒和弥媒之间通过引用进行关联  
++ 弥媒可以运行保存在一个或多个节点上  
++ 象Git一样，弥媒有版本的概念,版本主要是解决数据的一致性问题  
++ 节点之间的数据库可以实时同步变化，也可以备份后再进行同步   
++ 弥媒目前描述的数据类型有数据库和文件，后续会支持流  
++ 文件系统是特殊的系统类型，基于数据库和文件完成  
++ 每个弥媒都可以有独立的数据库和文件系统空间  
++ 弥媒通过不断的修改备份完成内容的继承进化  
++ 用户也可以用分支的方式完成弥媒内容的变异  
 
+Leither是我们实现的一个弥媒容器系统，同时也是一个去中心化的云操作系统  
 <a href="../api/MiMei.md"> 点击查看弥媒相关的API</a> 
 
 
-#### 4.2、弥媒的数据结构
-**弥媒ID**
+**弥媒ID**  
 在Leither定义的去中心化网络生态中，所有的资源都是用ID来描述的
 包括不限于：用户、节点、内容、应用等  
 用户和节点的ID是基于公私钥产生的  
@@ -343,15 +394,15 @@ http://:服务器地址[:端口号]/路径/文件名[参数=值]
 这种不确定性不利于正常的操作和关联  
 在弥媒体系中我们提出了新的方案：  
 
-**弥媒ID是稳定的**
+**弥媒ID是稳定的**  
 弥媒ID是基于创建者、关联应用、弥媒类型、弥媒标识产生的。
-创建之后，不管怎么操作，弥媒ID都是不变的
+创建之后，不管怎么改变内容，弥媒ID都是不变的
 
-**版本机制**
+**版本机制**  
 弥媒在编辑的过程中，备份的时候生成版本，这个版本对应的数据是基于内容摘要的。版本备份之后内容确定不再修改。  
 版本相关的操作有：备份、恢复、发布、清除、查询状态等  
 
-**特殊版本**
+**特殊版本**  
 cur代表当前修改中未备份的版本，代表在实时修改  
 last代表最后一备份的版本，代表最新的固化内容
 release代表审核过，确定可以对外发布的版本。
@@ -363,30 +414,34 @@ release代表审核过，确定可以对外发布的版本。
 也可以获取任一指定的版本
 
 ### 六、弥媒文件
-本章节描述系统中的文件对象 
+弥媒的支持文件和数据库两种基本类型   
+以此为基础，增加了系统类型“文件系统”。    
+本章节描述系统中的文件对象   
+文件是最基本的信息存储类型  
+弥媒的文件系统API也可以操作宿主操作系统里的文件系统  
 
 #### 6.1、文件对象  
-**弥媒当前文件**  
++ **弥媒当前文件**  
 指的是弥媒文件的当前版本，当前文件是可读可写的  
 
-**弥媒版本文件**  
++ **弥媒版本文件**  
 指的是弥媒的备份文件，备份文件是只读的    
 由当前版本文件备份生成， 同系统动态分配一个版本号指向这个备份文件。  
   
-**Mac文件**  
++ **Mac文件**  
 以文件内容的mac id为标识的文件，Mac文件是只读的  
 Mac文件可以被弥媒对象引用  
 弥媒的版本文件就是一个版本号指向一个mac文件
 Mac文件也可以由临时文件转换生成
 
-**临时文件**  
++ **临时文件**  
 由MFOpenTempFile创建生成，进行数据写操作之后。
 由MFTemp2MacFile转换为mac文件  
 
-**弥媒文件系统**    
++ **弥媒文件系统**    
 系统内置的一个弥媒类型,描述一个弥媒的文件系统  
 创建时系统代码如下：  
-```golang
+	```golang
 	fs.MTreeID, _, err = mc.CreateMiMei(
 		dir.OwnerID,
 		"",                 //需要一个系统app的id,目前用空表示
@@ -396,84 +451,73 @@ Mac文件也可以由临时文件转换生成
 		api.DataRight_Default_Group,
 		false,
 	)
-```  
-在webdav目录下，可以通过设置扩展名为.mmfs的配置文件配置或自动生成弥媒文件系统。  
+	```  
+	在webdav目录下，可以通过设置扩展名为.mmfs的配置文件配置或自动生成弥媒文件系统。  
 可以通过MFOpenByPath打开文件系统中的对象  
 注：目前是通过json文件的方式实现的，在文件比较多的时候性能较差，正在规划变成数据库方式实现  
 
-**操作系统文件和目录**  
++ **操作系统文件和目录**  
 可以把操作系统中的文件目录link到webdav目录下
 这时候可以通过MFOpenByPath函数打开操作系统中的文件和目录
 
-**弥媒根目录**  
++ **弥媒根目录**  
 webdav目录是节点对外展示的弥媒总入口。  
 可以把操作系统中的文件或目录link到这个目录
 也可以生成一个配置文件指向节点内的一个弥媒对象  
   
 #### 6.2、打开文件
-**弥媒文件**
++ **弥媒文件**
 创建弥媒文件  
 接口函数MMCreate，参数类型为api.MM_File
 返回值为弥媒id  
 打开弥媒文件  
-接口函数为MMOpen(sid, mid, ver string) (string, error)
+相关API为MMOpen
 返回值为会话id,通过会话id可以操作文件内容
 ver如果是"cur",可以进行写操作。  
 其它版本文件为备份过的文件，只能进行读操作。  
 
-**通过路径打开**    
++ **通过路径打开**    
 这种方式打开的是弥媒文件系统或操作系统文件系统中的文件  
-相关API：  
-MFOpenByPath(sid, fsid, path string, flag int) (string, error)
+相关API：MFOpenByPath
 
-**打开Mac文件**   
++ **打开Mac文件**   
 打开挂在某个弥媒下的mac文件  
-相关API：  
-MFOpenMacFile(sid, mid, fileid string) (string, error)
+相关API：  MFOpenMacFile  
 
-**打开临时文件**   
++ **打开临时文件**   
 打开一个临时文件，用于读写操作
-MFOpenTempFile(sid string) (string, error)  
+相关API：MFOpenTempFile 
 读写操作完成之后转换为Mac文件    
-MFTemp2MacFile func(sid, mid string) (string, error)  
+相关API：MFTemp2MacFile  
 
-**关闭文件**  
++ **关闭文件**  
 除临时文件外，其它文件操作完成后都需要关闭文件  
 考虑到远程操作文件经常会有异常掉线情况。   
 操作对象的会话id在超时情况下都会自动关闭文件  
 
 
 #### 6.3、操作文件  
-**对象方式读写**  
-MFSetObject(fsid string, obj interface{}) error  
-MFGetObject(fsid string) (interface{}, error)
++ **对象方式读写**  
+MFSetObject  MFGetObject
 
-**字节数组读写**  
-MFSetData(fsid string, data []byte, start int64) (count int, err error)  
-MFGetData(fsid string, start int64, count int) ([]byte, error)  
++ **字节数组读写**  
+MFSetData  MFGetData  
 
-**查询状态**   
-MFGetSize(fsid string) (int64, error)
-MFStat(fsid string) (*FileInfo, error)
-MFIsExist(fsid, fileid string) (bool, error)  
-MFGetMimeType(fsid string) (string, error)
++ **查询状态**   
+MFGetSize  MFStat  MFIsExist  MFGetMimeType
 
-**目录操作**  
-MFReaddir(fsid string, count int) ([]*FileInfo, error)
++ **目录操作**  
+MFReaddir
   
-**文件系统**  
-FSFind(sid, mmfsid, path string) (*FindResult, error)  
-FSMkDir(sid, mmfsid, path string) error  
-FSRemoveAll(sid, mmfsid, path string) error  
-FSStat(sid, mmfsid, path string) (*FileInfo, error)  
-FSRename(sid, mmfsid, oldpath, newFullName string) error
++ **文件系统**  
+FSFind  FSMkDir  FSRemoveAll  FSStat  FSRename
 
-**其它**  
-MFTruncate(fsid string, size int64) error  
-MFCopy(fsid, dst, src, srcVer string) error  
++ **其它**  
+MFTruncate  MFCopy  
 
 
 ### 七、数据库
+
 数据库的底层有两种，一种是基于LevelDB,一种是基于BoltDB。  
 两种数据库都进行过底层改造。  
 LevelDb用于当前版本，可写可读，一致性是基于时序。  
@@ -481,103 +525,66 @@ LevelDb用于当前版本，可写可读，一致性是基于时序。
 有改动则提示错误，通知调用端重新执行相关操作，避免写冲突。
 BoltDb用于历史版本，只用于读。
 
+
 Api参考Redis  
 可以操作字符串，哈希表，列表，集合，有序集五组数据类型  
 支持事务    
 
-#### 7.1、事务 
-Begin(dbsid string, timeout int) error  
-Commit(dbsid string) error  
-Rollback(dbsid string) error 
++ **事务**   
+Begin  Commit   Rollback 
 
-#### 7.2、字符串 
-Set(dbsid, key string, value interface{}) error  
-Get(dbsid, key string) (interface{}, error)  
-Del(dbsid string, key ...string) (int64, error)  
-Incr(dbsid, key string) (int64, error)  
-IncrBy(dbsid, key string, delta int64) (int64, error)  
-Strlen(dbsid, key string) (int64, error)  
++ **字符串**   
+Set  Get  Del  Incr  IncrBy  Strlen  
   
-#### 7.3、哈希表   
-Hmclear(dbsid string, key ...string) (int64, error)  
-Hdel(dbsid, key string, field ...string) (int64, error)  
-Hlen(dbsid, key string) (int64, error)  
-Hset(dbsid, key, field string, value interface{}) (int64, error)  
-Hget(dbsid, key, field string) (interface{}, error)  
-Hmget(dbsid, key string, fields ...string) ([]interface{}, error)  
-Hmset(dbsid, key string, values ...FVPair) error  
-Hgetall(dbsid, key string) ([]FVPair, error)  
-Hkeys(dbsid, key string) ([]string, error)  
-Hscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FVPair, err error)  
-Hrevscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FVPair, err error)  
-HincrBy(sid, key, field string, delta int64) (ret int64, err error)  
++ **哈希表**   
+Hmclear  Hdel  Hlen  Hset  Hget  Hmget Hmset  Hgetall  Hkeys  Hscan  Hrevscan  HincrBy  
 
-#### 7.4 列表
-Lpush(dbsid, key string, value ...interface{}) (int64, error)  
-Lpop(dbsid, key string) (interface{}, error)  
-Rpush(dbsid, key string, value ...interface{}) (int64, error)  
-Rpop(dbsid, key string) (interface{}, error)  
-Lrange(dbsid, key string, start, stop int32) ([]interface{}, error)  
-Lclear(dbsid, key string) (int64, error)  
-Lmclear(dbsid string, keys ...string) (int64, error)  
-Lindex(dbsid, k string, index int32) (interface{}, error)  
-Llen(dbsid, k string) (int64, error)  
-Lset(dbsid, k string, index int32, value interface{}) error  
++ **列表**  
+Lpush  Lpop  Rpush  Rpop  Lrange  Lclear  Lmclear  Lindex  Llen  Lset  
 
-#### 7.5 集合
-Sadd(dbsid, key string, args ...string) (int64, error)  
-Scard(dbsid, key string) (int64, error)  
-Sclear(dbsid, key string) (int64, error)  
-Sdiff(dbsid string, keys ...string) ([]string, error)  
-Sinter(dbsid string, keys ...string) ([]string, error)  
-Smclear(dbsid string, key ...string) (int64, error)  
-Smembers(dbsid, key string) ([]string, error)  
-Srem(dbsid, key string, m string) (int64, error)  
-Sunion(dbsid string, keys ...string) ([]string, error)  
-Scan(dbsid string, begin, match string, count int, inclusive bool, tp byte) (keys []string, err error)
++ **集合**  
+Sadd   Scard   Sclear    Sdiff   Sinter   Smclear  Smembers  Srem  Sunion  Scan
 
-#### 7.6 有序集
-Zadd(dbsid, key string, args ...ScorePair) (int64, error)  
-Zcard(dbsid, key string) (int64, error)  
-Zcount(dbsid, key string, mins, maxs int64) (int64, error)  
-Zrem(dbsid, key string, members ...string) (int64, error)  
-Zscore(dbsid, key, member string) (int64, error)  
-Zrank(dbsid, key, member string) (int64, error)  
-Zrange(dbsid, key string, mins, maxs int) ([]ScorePair, error)  
-Zrangebyscore(dbsid, key string, mins, maxs int64, offset int, count int) ([]ScorePair, error)  
-Zremrangebyscore (dbsid, key string, mins, maxs int64) (int64, error)
-Zrevrange(dbsid, key string, start, stop int) (ret []ScorePair, err error)  
-Zrevrangebyscore (dbsid, key string, mins, maxs int64, offset int, count int) (ret []ScorePair, err error)  
-Zmclear(dbsid string, key ...string) (int64, error)  
-Zclear(dbsid, key string) (int64, error)  
-ZincrBy(dbsid, key string, delta int64, member string) (ret int64, err error)  
++ **有序集**  
+Zadd   Zcard   Zcount   Zrem   Zscore   Zrank   Zrange   Zrangebyscore   Zremrangebyscore Zrevrange   Zrevrangebyscore    Zmclear   Zclear   ZincrBy
+
+### 八、弥媒的关联
+孤立的数据不能表示复杂的信息，弥媒有了唯一标识，可以构建相对稳定的关系结构 ，Html中使用链接进行关联，链接相对不稳定，Html的自身格式偏重于数据展现。 我们对之进行调整：  
+信息存储在弥媒的文件或数据库中，存储的格式由关联应用确定。 弥媒之间的关联由引用确定，引用信息包括弥媒ID和引用数。正常情况下数据内容中的语义关联都是由应用规则解释的，系统无法获取，  需要应用主动调用API维护弥媒引用。  
+增加引用相关的接口规范，弥媒相关的应用可以根据语义生成引用情况  
+相关API：MMAddRef   MMDelRef   MMGetRef   
 
 
-### 七、应用和数据
-
-
-### 八、弥媒的关联性
-孤立的数据不能表示复杂的信息  
-弥媒有了唯一标识，可以构建相对稳定的关系结构  
-Html中
-MMAddRef(sid, mid string, fileids ...string) (int, error)  
-MMDelRef(sid, mid string, fileids ...string) (int, error)  
-MMGetRef(sid, mid string) (ret map[string]int, err error)  
+大部分弥媒所表达的只是一份内容片段，通过关联性，我们可以获取到相对完整的内容。  
 
 
 
 
-### 九、弥媒信息流动
+### 九、应用和数据
+我们用唯一ID定义了弥媒的标识，用文件和数据库增强了弥媒的表达信息的能力    
+对信息的的使用，需要对规则进行建模  
 
-### 十、冗错、均衡和弹性伸缩
+**传统客户端**  
+**BS结构**  
+传统本地化的应用是一系统功能的聚合。
 
-### 十一、群和共识机制
 
-### 十二、信息检索
 
-### 十三、社交模型
 
-### 十四、共识机制
+
+
+### 十、弥媒信息流动
+
+### 十一、冗错、均衡和弹性伸缩
+
+### 十二、群和共识机制
+
+### 十三、信息检索
+
+
+### 十四、社交模型
+
+### 十五、共识机制
 
 ### 后记
 
