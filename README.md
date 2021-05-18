@@ -33,7 +33,6 @@ Leither侧重去中心化的方式肢解现有的互联网平台业务。
 
 
 **相关技术原理介绍**  
-相关理论依据和技术实现都放在了以下两个文件
 <a href="./doc/MiMei.md"> Leither&弥媒</a>  
 <a href="./doc/MiMei.md"> 组织和共识机制</a>  
   
