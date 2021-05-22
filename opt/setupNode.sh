@@ -40,3 +40,4 @@ echo "APP uploaded to service node"
 ./Leither.exe deploy backup -a $MYAPP -p ${KEYFILE}login.ppt -n $URL    #固化刚发布的程序
 ./Leither.exe deploy setdomain -d $MYDOMAIN.$GWADDR -n $URL -a $MYAPP -p mylogin.ppt -m gwaddr=$GWADDR  #设置域名
 echo "APP published successfully"
+
