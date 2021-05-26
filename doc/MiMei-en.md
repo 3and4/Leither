@@ -113,3 +113,25 @@ The following requests shall be supported in a decentralized system:
 + Easy to use development environment
 + User experience compatible with existing internet
 + Law-abiding
+### III. Requirement Analysis
+First and foremost, an understanding of how data is monopolized.
+#### 3.1 The origin of data monopoly
+In nascent internet, data access follows open protocol across the whole network. Major platforms like Google and Microsoft, all provided open API for accessing its data.
+
+The earliest abuse of open data policy was committed by Facebook, which used other platforms’ data to construct its own social media, then shut its own from outside. User data get stuck in Facebook’s platform and the first monopoly of data was borne.
+
+Afterward Apple and Amazon created their own kingdom of user data, respectively. When Tencent published QQ, it used a proprietary communication protocol. When Baidu block Ad from Alibaba, the latter responded in kind.
+
+Thus, the internet has become segregated. User data is fortified by impenetrable barriers created by every developer who can get his hands on it.
+
+There are two forms of data access.  
+**Data->App**
+User has access to data and can choose the App to process the data. For example, in Windows user can select different applications to open certain type of file, or use different browsers to open a web page. 
+
+In this case, User has the freedom of choice and is not restricted by a single App.  
+**App->Data**
+The right of user accessing data is restricted to certain Apps, usually only one. For example, when user login an e-commerce site do shopping, or get on social media to chat with friends.
+
+In this case, the algorithm decides the path of user accessing data, and user behavior is controlled by the App.
+
+In programming, the above two approaches corresponds to **Subjest Oriented Programming** and **Procedure Oriented Programming**, respectively.
