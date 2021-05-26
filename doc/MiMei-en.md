@@ -35,7 +35,7 @@ is a container of MEMEI, an ultra-light decentralized cloud OS.
 
     Leither is designed to support frequently used internet applications with extremely limited resources, for example to run office applications for a small business on a Raspberry Pi Zero.
 
-    Leither OS has implemented all the subsystems necessary to reconstruct regular internet services, including authentication and authorization, file system, database, application framework, domain name service and routing. Leither API supports about 40 kinds of development languages.
+    Leither OS has implemented all the subsystems necessary to reconstruct regular internet services, including authentication and authorization, file system, database, application framework, independent domain name service and routing. Leither API supports about 40 kinds of development languages.
 
     PS: Leither writtten in Kanji character is 弥媒. 弥 means extremely small and ubiquitous, usually something imperceptable. 媒 means media. 弥媒 put togather almost as good as Ether, a substance once believed to be the building block of universe.
 
@@ -71,3 +71,45 @@ In the beginning of computer, program was developed to solve problems. A program
 In Unix, File was designed as carrier of data. File System was designed to manage files and storage medias. Everything is file. Any information related device is of File type.
 #### 2.2 MiMei -- Type of Data
 With the evolution of applications, it became necessary to describe the relationship between file and application. DOS introduced the concept of File Extension. In Windows, file extension is bound with a corresponding application. In E-mail, MIME maintains a strict definition of file type as attachment. All existing web browsers still follow the MIME protocol.
+#### 2.3 Database -- Relationship of Data
+Database was designed to manage complicated data structure. A database is a closed set of datum and their relationships.  
+Shortcomings: Data stored in closed space with little liquidity, value not maximized.
+#### 2.4 HTML -- connections of data over network
+WWW regulates relationships of data over a network. With the birth of internet, information explosion ensued. The inter-connection of data cross network breaks the physical limits of data stored in a single machine. Gateway sites flourished benefiting from this innovation.  
+Shortcomings: connections based on linkage is unstable.
+#### 2.5 Google -- Search Engine
+Information explosion creates the request for search engine. Google provides content search service based on tags. Extra dimensions of properties are added to tagged data from then on.  
+Shortcomings: Data is isolated and monopolized. Data protocol began to be tainted by private interest.
+#### 2.6 Facebook -- Social Model
+The early social media, ICQ, MSN, QQ solved the request for instant messaging. Twitter provides a platform for broadcasting short messages quickly.  
+From MySpace to Facebook, a more social-media oriented model appeared. Social model usually consists of 4 parts:
+|--|--|--|
+|1|My settings|Peronal information, settings and preferences|
+|2|Friends|User contacts|
+|3|App & Services|Application and services for the user|
+|4|Message|Interactions with friends, applications and services|
+
+This model is remarkably successful. All the internet social Apps adopted a similar framework, for example Wechat, Facebook, Twitter and some OA system for enterprise users.
+Shortcomings: Internet becomes more monopolized, more isolated, and data protocols manipulated.
+#### 2.7 Summary of Design
+Design principles for breaking data monopoly and creating decentralized internet:
++ **User oriented in every aspect**
+A new birth of freedom, and that internet of the people, by the people, for the people.
++ **Free and open system**
+Open data protocols  
+Open operation systems protocols
+Only in an open system, user has the freedom of choice and power of ownership.
++ **Free flow of data**
+With user’s authorization and reasonable security discretion, user data shall be allowed to move from one platform to another and transform from one format to another. Only then, a third party can provide valuable applications and services.
+
+The following requests shall be supported in a decentralized system:
++ File, file system, database
++ Association of data type and application
++ Connection between contents over network
++ Search of content over network
++ Data flow over network
++ Decentralized social media
++ Light-weight container system
++ Easy to use development environment
++ User experience compatible with existing internet
++ Law-abiding
