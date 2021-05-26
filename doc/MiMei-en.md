@@ -1,17 +1,46 @@
-MIMEI and its application
+MIMEI
 ======
 ### Summary
-A trend of internet in the past few decades is the fast concentration of traffics on fewer apps or sites owned by tech giants, who used their dominant control of data to influence, even manipulate user behavior for monopolistic profits, at the expense of average users. However, we hold the following truth to be self-evident, that a free and open internet is of the best interest to its users.
+An alarming trend of internet in the past few decades is the fast concentration of traffics on fewer apps or sites owned by tech giants, who used their dominant control of data to influence, even manipulate user behavior for monopolistic profits, at the expense of average users. However, we hold the following truth to be self-evident, that a free and open internet is of the best interest to its users.
 
-Leither, a decentralized Cloud OS, is designed to take the above challenge by decoupling and reconstructing most of the core services of regular internet in a decentralized fashion, therefore give the control of data back to user, its real owner. Leither OS has implemented all the subsystems necessary to reconstruct regular internet services, such as authentication and authorization, file system, database, application framework, domain name service and routing. Applications run on Leither platform provide a user experience consisted with that of the regular internet.
+Leither, a decentralized Cloud OS, is designed to take the challenge by decoupling and reconstructing most of the core services of regular internet in a decentralized fashion, therefore give the control of data back to user, its real owner. Leither OS has implemented all the subsystems necessary to reconstruct regular internet services, such as authentication and authorization, file system, database, application framework, domain name service and routing.
 
-To match a regular internet application on Leither, such as Youtube or Google, simply creates a Leither organization and a Consensus Contract to stipulate how to contribute tokens among participants. Token is a proof of contribution that garantees proportional dividend of the organizaiton's income, or exchange for services such as traffics, routing, domian name resolution, search, backup, bandwidth, CPU power, contract notary, or mining pledge.
+To reconstruct a regular internet application, for example Youtube or Google, simply creates a Leither Organization and a Consensus Contract to stipulate how to distribute tokens among participants. Token is a proof of contribution that garantees proportional dividend of the organizaiton's income, or exchanges for services such as traffics, routing, domian name resolution, search, backup, bandwidth, CPU power, contract notary, or mining pledge.
 
 Members of an organization include initiater, investor, developer, content or service provider, device owner, operation and marketing, etc. The distribution of income is garanteed by Consensus. Device owner does the work of miner in BTC. Devices keep the books as mining machines in BTC, at the same time provide more valuable business services of the organization. Compared with POW-based block-chain Leither block-chain has advantages in every aspect of cost, efficiency, performance and privacy, and last but not least, law abiding.
 
-The whole paper is divided into 2 parts:
-Part I: Introduction of MiMei and its application system. How to reconstruct regular internet platform.
-Part II: Organization and consensus. How to coordinate interests of participants and expand organization.
+This paper is divided into 2 parts:  
+Part I: Introduction of MiMei and its application system.  
+Part II: <a href="./GongShi-en.md">Organization and Consensus</a>.
 
-### Part I MiMei and its application
+### Part I: MiMei and its application
+How to decouple and reconstruct regular internet platform services.
+
 Some key concepts are defined as below:
++ **Data**  
+Information stored on any media. **Data structure** defines how data is stored and organized. It is a set of data items that collaborate with each other following certain rules.
+
++ **Application**  
+Data must be consumed or processed by program. There are two types of programs in general, system software and application program. The latter is used to process user data, aka **APP**.  
+
++ **MiMei**  
+The key concept of Leither, coined referring to Gene or MEME. MEME is the gene of civilization, an element of a culture or system of behavior passed from one individual to another by imitation or other non-genetic means.
+
+MEMEI is the carrier of information on internet. It defines the structure of data storage, and all kinds of operations by associated applications, such as create, open, save, read, search, render and user-interact. 
+
+ Everything in Leither-based ecosystem is defined in term of MEMEI. The referential relationships among MEMEI makes it possible to develop comprehensive internet applications and services.
+
++ **Leither**  
+is a container of MEMEI, an ultra-light decentralized cloud OS.
+
+Leither is designed to support frequently used internet applications with extremely limited resources, for example to run office applications for a small business on a Raspberry Pi Zero.
+
+Leither OS has implemented all the subsystems necessary to reconstruct regular internet services, including authentication and authorization, file system, database, application framework, domain name service and routing. Leither API supports about 40 kinds of development languages.
+
+PS: Leither writtten in Kanji character is 弥媒. 弥 means extremely small and ubiquitous, usually something imperceptable. 媒 means media. 弥媒 put togather almost as good as Ether, a substance once believed to be the building block of universe.
+
++ **Node**  
+A smart device running Leither OS is a Node. As small as 6MB in size and runs on all regular operation systems, Leither supports almost any smart devices, like PC, NAS, router and Raspberry Pi.  
+1. One independent node can serve as an ultralight server;
+2. Two nodes can backup each other in services like data backup, error tolerance, load balance, domain name resolution and routing;
+3. Multiple nodes can network to support decentralized internet applications.
