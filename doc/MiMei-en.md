@@ -53,20 +53,20 @@ Internet has changed our daily life. Big Data is running internet, therefore our
 
 The essence of Big Data is the accumulation of data and formation of rules, for the purpose of manipulating user behavior and generating monopolistic profit.
 
-### 1.2 Big Techs own Big Data
+#### 1.2 Big Techs own Big Data
 Big Techs own core data. For example, FB owns social media and Amazon online retail. Data protocols are manipulated to serve as business barriers. Google’s spider cannot access FB pages, vice versa. Monopoly is protected by corporation regulations, laws and ecosystem rules. Big Techs also take the lion’s share of profit, so their fortune concentrates acceleratingly.
 
-### 1.3 Users are caged by Big Data
+#### 1.3 Users are caged by Big Data
 Individual user is helpless against the invasion of Big Data into its privacy. All user behaviors are data tagged to feed data models, which is then used to predict and influence user behavior. 
 
 Small business struggles under the scrutinizing peek of Big Data, to which the ledger of small business is an open book. Small game developers can barely share 10% of income on Tencent Game. Most online retailers are hard pressed to break even.
 
-### 1.4 Intellectual products of all mankind taken by Big Tech
+#### 1.4 Intellectual products of all mankind taken by Big Tech
 The internet originated from ARPA net of US Army as non-profit project. It was borne an open system without a center.
 
 Telecom firms has invested billions of dollars to build telecom infrastructure, without controlling the data flowing through it.
 
 However, Tech Giants, such as Alibaba, Tencent, FB, Google, etc., has taken control of internet with a few APPs.
 
-### 1.5 Summary
+#### 1.5 Summary
 The internet of Status quo has become a centralized playground of big players. By controlling user data and influencing user behaviors, monopolistic profit is being made at the cost of individuals, for whom a weapon to fight back is in dire need.
