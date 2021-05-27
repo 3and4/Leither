@@ -99,7 +99,7 @@ A new birth of freedom, and that internet of the people, by the people, for the 
 Open data protocols  
 Open operation systems protocols
 Only in an open system, user has the freedom of choice and power of ownership.
-+ **Free flow of data**
++ **Free Data Migration**
 With user’s authorization and reasonable security discretion, user data shall be allowed to move from one platform to another and transform from one format to another. Only then, a third party can provide valuable applications and services.
 
 The following requests shall be supported in a decentralized system:
@@ -107,7 +107,7 @@ The following requests shall be supported in a decentralized system:
 + Association of data type and application
 + Connection between contents over network
 + Search of content over network
-+ Data flow over network
++ Data migration over network
 + Decentralized social media
 + Light-weight container system
 + Easy to use development environment
@@ -136,16 +136,19 @@ In this case, the algorithm decides the path of user accessing data, and user be
 
 In programming, the above two approaches corresponds to **Subjest Oriented Programming** and **Procedure Oriented Programming**, respectively.
 #### 3.2 Break Data Monopoly
-**Opensource Platform**
+**Opensource Platform**  
 Microsoft took control of the PC ecosystem with DOS and Windows, and strangled competition in both office software and browser. Google uses search engine to control data and influences user behavior. FB does the same with social media.
 
 On the other hand, opensource community turned operation system into a public platform with Linux. It is the first attempt to opensource a platform. Similar cases are Android for smartphone and RISC-V for IC instruction set.
 
-There shall be similar opensource platform for storing user data, especially for **social media** and **search engine**.
-**Free flow of data**
+There shall be similar opensource platform for collecting user data, especially for **Social Media** and **Search Engine**.  
+**Free Data Migration**  
 In early operation system, data file can be copied and transferred among different mainframes of different systems. Free movement of data shall be a consensus and primary design norm of operation system.  
 Three measures can be adopted to achieve the above goal:
 + Promote data-freedom as a mainstream ideology
 + Legislate that any platform that collects user data must allow the owner to migrate its personal data.
 + Develop opensource program, such as browser plugins, to facilitate user to migrate data to personal storage devices. Once the ownership of user data taken back by its creator, the data can be revived and reconnected with each other.
-**Data->App**
+**Data Oriented**
+While data can migrate freely, user have the choice of rules that can be applied to it. In another word, try to be **Object Oriented**, avoid **Procedure Oriented** whenever possible. In object oriented development, make sure data can migrate freely. Data structure is relatively simple to be reverse engineered. It is easier to reconstruct program structrue with the knowledge of data structure.  
+**Fine Granulation of User Data**  
+There is no way to decouple convoluted and complicated dataset. It is best to granulate data in design, following the principle of structure of gene, keep the information relatively comprehensive and independent. A piece of granulated information is easier to be applied to certain algorithm independently, and its connection with other objects clearly defined.
