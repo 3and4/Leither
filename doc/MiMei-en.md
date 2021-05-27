@@ -142,6 +142,7 @@ Microsoft took control of the PC ecosystem with DOS and Windows, and strangled c
 On the other hand, opensource community turned operation system into a public platform with Linux. It is the first attempt to opensource a platform. Similar cases are Android for smartphone and RISC-V for IC instruction set.
 
 There shall be similar opensource platform for collecting user data, especially for **Social Media** and **Search Engine**.  
+
 **Free Data Migration**  
 In early operation system, data file can be copied and transferred among different mainframes of different systems. Free movement of data shall be a consensus and primary design norm of operation system.  
 Three measures can be adopted to achieve the above goal:
@@ -151,26 +152,33 @@ Three measures can be adopted to achieve the above goal:
 
 **Seperation of Data and Rule**  
 If data can be migrated freely, user will have the choice of rules that can be applied to it. In another word, try to be **Object Oriented**, avoid **Procedure Oriented** development whenever possible. Data structure is relatively simple to be reverse engineered. It is easier to reconstruct program structrue with the knowledge of data structure.  
+
 **Granulation of User Data**  
 There is no way to decouple convoluted and complicated dataset. It is best to granulate data in design, following the principle of structure of gene, keep the information relatively comprehensive and independent. A piece of granulated information is easier to be applied to certain algorithm independently, and its connection with other objects clearly defined.  
+
 **Connections of Data**  
 Isolated data have little value compared with inter-connected dataset, whose connections contain much more information. HTML is perfect protocol to describe relationships, if not link could be unstable.  
+
 #### 3.3 Data Container  
 Large number of data centers are indispensable for regular internet to process data of billions of users. A large data center can have tens of thousands of servers. Every task will be processed by groups of servers using certain technique. A army of maintenance personals are required for daily operation.
 
 No data center is required when storing personal data by individual. However, some kind of container, a light-weight clouds OS, will be handy, like Pod promoted by Solid platform. The container shall be low cost, lightweight, and easy to operate by layman.Compared with the Homomorphic Encryption that certain block-chain alogrithm is using, Leither method is simpler and more efficient. One who owns the storage device owns the data and defines the rules to apply.
+
 #### 3.4 Data Model for Reference  
 **File**  
 File is a set of program and data stored on media. File is constructed according to certain format, which is usually referred to as data structure. Operation system manages files with File System in a tree-like data structure. File capsulates the access of data on media and optimizes the procedure.  
+
 **WWW (World Wide Web)**  
 In a standard webpage, HTML5 is used to render content of webpage, CSS style and JS tasks. A page can relatively store and render its data comprehensively. Through interconnections among pages, large scale and complicated information can be represented.
 
 Shortcomings:
 Webpage only contains information about frontend, without backend data. Big Techs take monopolistic control of user data by owning the backend servers. The connections among webpages are link based which is unstable for lacking definition about server or user.
+
 **Gene**  
 The basic unit that contains information of life. DNA or RNA stores a complete segment of hereditary material, which records the adaptation of life to its environment. Life copies hereditary information from generation to generation, while adapting to new environment by variation.
 
 Limitation: Every iteration takes a generation, with restrictions on the amount of information inherited and weak capability to deal with complicated changes.  
+
 **MEME**  
 Richard Dawkins introduced the concept of MEME in his original book, the Selfish Gene. Similar to gene, MEME is defined as the basic unit contains information of a civilization. MEME can be used to record all the knowledge of human society. It can be remembered in human brain, broadcasted among people, or stroed in any kind of media.
 
@@ -178,3 +186,4 @@ Human brain uses pattern recognition to model the world. During its interaction 
 ### IV. Introduction to MiMei
 **Origin of MiMei**  
 Entropy is one of the most important measurements in the universe and human society. The 2nd law of thermodynamics points the direction along which the universe evolves. That is why entropy is also called Arrow of Time. Erwin Schrodinger in his book, What is Life, declares that what an organism feeds upon is negative entropy.
+
