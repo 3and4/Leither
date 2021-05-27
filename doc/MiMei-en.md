@@ -154,15 +154,15 @@ Three measures can be adopted to achieve the above goal:
 If data can be migrated freely, user will have the choice of rules that can be applied to it. In another word, try to be **Object Oriented**, avoid **Procedure Oriented** development whenever possible. Data structure is relatively simple to be reverse engineered. It is easier to reconstruct program structrue with the knowledge of data structure.  
 
 **Granulation of User Data**  
-There is no way to decouple convoluted and complicated dataset. It is best to granulate data in design, following the principle of structure of gene, keep the information relatively comprehensive and independent. A piece of granulated information is easier to be applied to certain algorithm independently, and its connection with other objects clearly defined.  
+There is no way to decouple convoluted and complicated dataset. It is best to granulate data in design, following the pattern of gene, keep the information relatively comprehensive and independent. A piece of granulated information is easy to be processed, transferred, and its connection with other objects clear to be understood.
 
 **Connections of Data**  
 Isolated data have little value compared with inter-connected dataset, whose connections contain much more information. HTML is perfect protocol to describe relationships, if not link could be unstable.  
 
 #### 3.3 Data Container  
-Large number of data centers are indispensable for regular internet to process data of billions of users. A large data center can have tens of thousands of servers. Every task will be processed by groups of servers using certain technique. A army of maintenance personals are required for daily operation.
+Many data centers are required to process data of billions of users in regular internet. A large data center has capacity for tens of thousands of servers. Every task is processed by groups of servers using paralell algorithm. A army of maintenance personals are required for daily operation.
 
-No data center is required when storing personal data by individual. However, some kind of container, a light-weight clouds OS, will be handy, like Pod promoted by Solid platform. The container shall be low cost, lightweight, and easy to operate by layman.Compared with the Homomorphic Encryption that certain block-chain alogrithm is using, Leither method is simpler and more efficient. One who owns the storage device owns the data and defines the rules to apply.
+No data center is required when storing personal data by individual. However, some kind of container, a light-weight clouds OS, will be necessary, like Pod promoted by Solid platform. The container shall be low cost, lightweight, and easy to operate by layman. Compared with the Homomorphic Encryption that certain block-chain alogrithm is using, Leither method is simpler and more efficient. One who owns the storage device owns the data and defines the rules to apply.
 
 #### 3.4 Data Model for Reference  
 **File**  
@@ -185,5 +185,23 @@ Richard Dawkins introduced the concept of MEME in his original book, the Selfish
 Human brain uses pattern recognition to model the world. During its interaction with the surroundings, every reflection by the mind is an iteration of evolution. Compared with gene, MEME can evolute faster than gene by orders of magnitude.  
 ### IV. Introduction to MiMei
 **Origin of MiMei**  
-Entropy is one of the most important measurements in the universe and human society. The 2nd law of thermodynamics points the direction along which the universe evolves. That is why entropy is also called Arrow of Time. Erwin Schrodinger in his book, What is Life, declares that what an organism feeds upon is negative entropy.
+Entropy is one of the most important measurements in the universe and human society. The 2nd law of thermodynamics points out the direction along which the universe evolves. That is why entropy is also called Arrow of Time. Erwin Schrodinger in his book, What is Life, declares that what an organism feeds upon is negative entropy.
 
+Life stores information of its environment in gene. Heredity keeps the adaptation and variant deals with the changes of environment. Life simply executes the instructions locked in its gene. Once human developed self-conscious, human brain begins to simulate adjustment made to its environment and process the information. The basic unit of such information is called **Meme** by Richard Dawkins.  
+
+After the birth of internet, the method for processing information has changed and a new unit of information is required. We call it **MiMei**. Similar to Gene and Meme, MiMei contains a piece of information and the rules appliable to it.
+
+**Implementation of MiMei**  
+Based on **Sec 2.7 Summary of Design**, the following functionalities have be implemented.
++ MiMei operation: create, manage, save, render and send
++ MiMei creation by content's topic, each MiMei wiht a unique ID
++ Right to set permissions on MiMei by user
++ Referrential relationship among MiMei
++ MiMei can run or be saved on multiple nodes
++ Version of MiMei, similar to Git, to solve problem of data consistency
++ Synchronization among nodes in real-time or after backup
++ Type of database and file, stream type coming soon
++ File system as a specifal system type, based on database and file
++ Independent space in database and file system for every MiMei
++ Heredity and evolution of MiMei by continuously backuping changes
++ User can also faciliate variation by fork
