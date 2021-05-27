@@ -151,7 +151,7 @@ Three measures can be adopted to achieve the above goal:
 + Develop opensource program, such as browser plugins, to facilitate user to migrate data to personal storage devices. Once the ownership of user data taken back by its creator, the data can be revived and reconnected with each other.
 
 **Seperation of Data and Rule**  
-If data can be migrated freely, user will have the choice of rules that can be applied to it. In another word, try to be **Object Oriented**, avoid **Procedure Oriented** development whenever possible. Data structure is relatively simple to be reverse engineered. It is easier to reconstruct program structrue with the knowledge of data structure.  
+If data can be migrated freely, user will have the choice of rules that can be applied to it. In another word, try to be **Object Oriented**, avoid Procedure Oriented development whenever possible. Data structure is relatively simple to be reverse engineered. It is easier to reconstruct program structrue with the knowledge of data structure.  
 
 **Granulation of User Data**  
 There is no way to decouple convoluted and complicated dataset. It is best to granulate data in design, following the pattern of gene, keep the information relatively comprehensive and independent. A piece of granulated information is easy to be processed, transferred, and its connection with other objects clear to be understood.
@@ -205,3 +205,13 @@ Based on **Sec 2.7 Summary of Design**, the following functionalities have be im
 + Independent space in database and file system for every MiMei
 + Heredity and evolution of MiMei by continuously backuping changes
 + User can also faciliate variation by fork
+Leither is implemented as MiMei container system, and also a decentralized cloud OS.
+<a href="../api/MiMei.md">MiMei API</a>  
+
+**MiMei Features**
+|Feature|Detail|
+|--|--|
+|Identity consistency|MiMei ID combined with version can identify its content precisely|
+|Complex information render|Support database, file system, referrential relationship, App to render complicated data|
+|Free Data Migration|MiMei can flow among different nodes in a relaitonship-chain or group, according to user behavior|  
+|Multi-dimension search|User can add tag to MiMei and search it through multiple nodes|
