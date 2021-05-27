@@ -147,7 +147,8 @@ In early operation system, data file can be copied and transferred among differe
 Three measures can be adopted to achieve the above goal:
 + Promote data-freedom as a mainstream ideology
 + Legislate that any platform that collects user data must allow the owner to migrate its personal data.
-+ Develop opensource program, such as browser plugins, to facilitate user to migrate data to personal storage devices. Once the ownership of user data taken back by its creator, the data can be revived and reconnected with each other.  
++ Develop opensource program, such as browser plugins, to facilitate user to migrate data to personal storage devices. Once the ownership of user data taken back by its creator, the data can be revived and reconnected with each other.
+
 **Data Oriented**  
 While data can migrate freely, user have the choice of rules that can be applied to it. In another word, try to be **Object Oriented**, avoid **Procedure Oriented** whenever possible. In object oriented development, make sure data can migrate freely. Data structure is relatively simple to be reverse engineered. It is easier to reconstruct program structrue with the knowledge of data structure.  
 **Fine Granulation of User Data**  
