@@ -231,7 +231,7 @@ In the decentralized network of Leither system, all resources are described by M
 
 There are two sets of MiMei ID for external and internal reference. MiMei ID is the only unique ID of a MiMei object, created with the creation of the object, and never changes afterward. MiMei ID can be used in index, operation and reference. The data of MiMei is stored in file or database. Each time the data is changed, a new version of backup is created with an ID based on the synopsis of its content.
 
-**MiMei structure**  
+**MiMei Information**  
 Information of MiMei can be defined as:  
 ```golang
 type MiMeiInfo struct {
@@ -243,3 +243,10 @@ type MiMeiInfo struct {
 	Right   uint64    //authorized rights
 }
 ```
+**MiMei ID unchangeable**  
+MiMei ID is based on information of creator, associated application, MiMei type and MiMei mark. Once created, never changes. MiMei ID is invariable.
+
+**Aceess MiMei data with MiMei ID and version**  
+Version is created while MiMei being edited or backuped. Data of the version is based on synopsis of content. Content of the version is read-only. MiMei ID and version combined can identify certian MeMei data.
+
+### VI. Data storage and referrential
