@@ -127,12 +127,12 @@ Thus, the internet has become segregated. User data is fortified by impenetrable
 There are two forms of data access.  
 **Data->App**
 User has access to data and can choose the App to process the data. For example, in Windows user can select different applications to open certain type of file, or use different browsers to open a web page.  
-In this case, User has the freedom of choice and is not restricted by a single App.  
+In this case, User has the freedom of choice and is not restricted to single App.  
 
 **App->Data**
-The right of user accessing data is restricted to certain Apps, usually only one. For example, when user login an e-commerce site do shopping, or get on social media to chat with friends.
+User's right to access data is restricted to certain Apps, usually only one. For example, when user login an e-commerce site for shopping, or get on social media to chat with friends.
 
-In this case, the algorithm decides the path of user accessing data, and user behavior is controlled by the App.
+In this case, the algorithm decides the path for user to access data, so user behavior is controlled by the App.
 
 The two approaches above corresponds to **Objest Oriented Programming** and **Procedure Oriented Programming**, respectively.  
 #### 3.2 Principles for breaking data monopoly
