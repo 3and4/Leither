@@ -137,7 +137,7 @@ In this case, the algorithm decides the path for user to access data, so user be
 The two approaches above corresponds to **Objest Oriented Programming** and **Procedure Oriented Programming**, respectively.  
 #### 3.2 Principles for breaking data monopoly
 **Opensource Platform**  
-Microsoft took control of the PC ecosystem with DOS and Windows, and strangled competition in both office software and browser. Google uses search engine to control data and influences user behavior. FB does the same with social media.
+Microsoft dominated the PC ecosystem with DOS and Windows, and strangled competition in both office software and browser. Google uses search engine to control data and influences user behavior. FB does the same with social media.
 
 On the other hand, opensource community turned operation system into a public platform with Linux. It is the first attempt to opensource a platform. Similar cases are Android for smartphone and RISC-V for IC instruction set.
 
@@ -211,7 +211,15 @@ Leither is implemented as MiMei container system, and also a decentralized cloud
 **MiMei Features**
 |Feature|Detail|
 |--|--|
-|Identity consistency|MiMei ID combined with version can identify its content precisely|
-|Complex information render|Support database, file system, referrential relationship, App to render complicated data|
-|Free Data Migration|MiMei can flow among different nodes in a relaitonship-chain or group, according to user behavior|  
-|Multi-dimension search|User can add tag to MiMei and search it through multiple nodes|
+|Identification consistency|MiMei ID combined with its version can describe a piece of information stably and precisely|
+|Complex information render|Support database, file system, referrential relationship, App to express complicated information|
+|Free Data Migration|MiMei can flow among different nodes in a relaitonship-chain or group, according to user behaviors|  
+|Multi-dimension search|User can add tag to MiMei and search it through multiple nodes over multiple tags|
+
+The above features will be explained in detail later.
+
+### V. MiMei Identification
+**Traditional method**  
+Regular protocols to identify a perticular resource as below,  
+WWW: _http://server_ip[:port#]/path/file_name[parameter=value]_  
+OS: _partition/path/file_name_  
