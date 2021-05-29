@@ -247,7 +247,7 @@ type MiMeiInfo struct {
 MiMei ID is based on information of creator, associated application, MiMei type and MiMei mark. Once created, never changes. MiMei ID is invariable.
 
 **Aceess MiMei data with MiMei ID and version**  
-Version is created while MiMei being edited or backuped. Data of the version is based on synopsis of content. Content of the version is read-only. MiMei ID and version combined can identify certian MeMei data.
+New version is created while MiMei being edited or backuped. Data of the version is based on synopsis of content. Content of the version is read-only. MiMei ID and version combined can identify certian MeMei data.
 
 ### VI. Data storage and referrential
 MiMei can support data storage of most internet applications with its supoort of file and database.
@@ -258,4 +258,16 @@ MiMei granulates information. It is recommended to redefine the following types 
 + Content might migrate among nodes  
 MiMeization can be conducted beforehand, or on demand. The latter is actually a split. A new MiMei detached from the orginal one. A referrential relationship keeps the tie.  
 
-Leither provides database and file system. User can use the traditional development method if only its own data needs to be maintained.
+Leither supprots database and file system. User can use the traditional development method if only its own data needs to be maintained. In this case, the whole user or application is one stand alone MiMei object.
+
+#### 6.2 MiMei version
+Both MiMei file system and database support version.
++ _cur_ the current working copy, not yet backuped.
++ _last_ the latest backuped copy, represents the newest confirmed content
++ _release_ ready for publish
+With versionging mechanism, we can retrieve MiMei data of different version wiht its ID.
+
+#### 6.3 MiMei referrential
+Isolated data cannot express complex relatiohship. With unique MiMei ID, it is possible to establish stable relational structure. Information can be saved in MiMei file or database. Data format is defined by its associated application.
+
+Corelaiton between MiMeis is decided by their referrential relationship. Referrential information includes MiMei ID and number of references. Ordinarilly the semantic relevance of data content is interpreted by its associated application.
