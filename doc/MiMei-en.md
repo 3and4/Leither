@@ -262,9 +262,9 @@ Leither supprots database and file system. User can use the traditional developm
 
 #### 6.2 MiMei version
 Both MiMei file system and database support version.
-+ _cur_ the current working copy, not yet backuped.
-+ _last_ the latest backuped copy, represents the newest confirmed content
-+ _release_ ready for publish
++ _cur_: the current working copy, not yet backuped.
++ _last_: the latest backuped copy, represents the newest confirmed content
++ _release_: ready for publish
 With versionging mechanism, we can retrieve MiMei data of different version wiht its ID.
 
 #### 6.3 MiMei referrential
