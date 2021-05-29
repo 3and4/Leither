@@ -250,3 +250,12 @@ MiMei ID is based on information of creator, associated application, MiMei type 
 Version is created while MiMei being edited or backuped. Data of the version is based on synopsis of content. Content of the version is read-only. MiMei ID and version combined can identify certian MeMei data.
 
 ### VI. Data storage and referrential
+MiMei can support data storage of most internet applications with its supoort of file and database.
+#### 6.1 Granulation of Information
+MiMei granulates information. It is recommended to redefine the following types of information with MiMei data type, aka Mimeization:  
++ Content needed to be indexed
++ Content for sharing
++ Content might migrate among nodes  
+MiMeization can be conducted beforehand, or on demand. The latter is actually a split. A new MiMei detached from the orginal one. A referrential relationship keeps the tie.  
+
+Leither provides database and file system. User can use the traditional development method if only its own data needs to be maintained.
