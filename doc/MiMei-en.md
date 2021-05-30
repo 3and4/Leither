@@ -297,4 +297,27 @@ File labelled with Mac ID that is generated using content of MiMei file. Read-on
 + Temp file  
 Created by MFOpenTempFile after data is written into it, or Converted by MFTemp2MacFile.
 + MiMei File System  
+A built-in special MiMei type of Leither system. It can be created by MMCreate, or placed in _webdav_ directory, or created by Leither automatically using configure file with .mmfs extension, or opened by MFOpenByPath as file system object.  
++ Operation System File and Directory  
+Create a link of a directory in _webdav_, the linked directory and file can be opened by MFOpenByPth.
++ MiMei Root Directory  
+_webdav_ is the general entrance to access MiMei in a node. File or Directory can be linked into _webdav_, or a configure file can be create that points to a MiMei object in the node.  
 
+#### 6.4.2 Open File
++ MiMei File  
+MMCreate: Create MiMei file, take a api.MM_File as input, return MiMei ID.  
+MMOpen: Open MiMei file, return handler ID for file operation. If _ver_ is "cur", file is writable, otherwise read-only.
++ Open File by Path  
+MFOpenByPath: Open file in MiMei file system or Leither file system.
++ Open Mac File  
+MFOpenMacFile: Open a mac file under a MiMei.
++ Opem Temp File  
+MFOpenTempFile: Open a temporary file for read or write.
+MFTemp2MacFile: Convert to Mac file after read or write operation.
++ Close File  
+All the files need to be closed after operation, except temporary file. Considering the inevitable off-line senarios, all handles of file operation will be closed after timeout.
+
+#### 6.4.3 File Operation  
++ Object Method  
+MFSetOject  MFGetObject
++ Byte Array Method  
