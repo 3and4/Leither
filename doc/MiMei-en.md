@@ -288,13 +288,13 @@ In Leither, traditional file system is converted into MiMei framework with the f
 The directory structure of file system is also **granulated**(Ch6.1). Directory that is indexed or shared with high hit count shall be MiMeimized. Currently Leither manages file directory with JSON format, which performs poorly when the number of files grow too large. In future database will replace JSON. The algorithm for extracting snopsis is similar to that of Merkle tree.
 
 #### 6.4.1 File objects in Leither system
-+ MiMei Current File
++ MiMei Current File  
 The current version of MiMei file, both readable and writable.
-+ MiMei Version File
++ MiMei Version File  
 The read-only backup files of MiMei. Created by backuping the current file. Leither creates a version number for each backup file.
 + Mac file  
-File labelled with Mac ID that is generated using content of MiMei file. Read-only. Mac file can be referred by MiMei object. MiMei version file is a Mac file referred to by a version number. Temp file can also be convert into Mac file.
-+ Temp file
+File labelled with Mac ID that is generated using content of MiMei file. Read-only. Mac file can be referred by MiMei object. MiMei version file is a Mac file referred to by a version number. Temp file can also be convert into Mac file.  
++ Temp file  
 Created by MFOpenTempFile after data is written into it, or Converted by MFTemp2MacFile.
-+ MiMei File System
++ MiMei File System  
 
