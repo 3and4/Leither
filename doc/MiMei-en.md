@@ -249,25 +249,52 @@ MiMei ID is based on information of creator, associated application, MiMei type 
 **Aceess MiMei data with MiMei ID and version**  
 New version is created while MiMei being edited or backuped. Data of the version is based on synopsis of content. Content of the version is read-only. MiMei ID and version combined can identify certian MeMei data.
 
-### VI. Data storage and referrential
+### VI. Data storage and corelation
 MiMei can support data storage of most internet applications with its supoort of file and database.
 #### 6.1 Granulation of Information
-MiMei granulates information. It is recommended to redefine the following types of information with MiMei data type, aka Mimeization:  
+MiMei granulates information. It is recommended to redefine the following types of information with MiMei data type, aka Mimeimization:  
 + Content needed to be indexed
-+ Content for sharing
++ Content for sharing among users
 + Content might migrate among nodes  
-MiMeization can be conducted beforehand, or on demand. The latter is actually a split. A new MiMei detached from the orginal one. A referrential relationship keeps the tie.  
+MiMeimization can be executed beforehand, or on demand. The latter is actually a split. A new MiMei object detached from the orginal one. A referrential relationship keeps the tie.  
 
-Leither supprots database and file system. User can use the traditional development method if only its own data needs to be maintained. In this case, the whole user or application is one stand alone MiMei object.
+Leither supprots database and file system. User can use traditional development method if only its own data is concerned. In this case, the whole user or application is one stand alone MiMei object.
 
 #### 6.2 MiMei version
 Both MiMei file system and database support version.
 + _cur_: the current working copy, not yet backuped.
 + _last_: the latest backuped copy, represents the newest confirmed content
 + _release_: ready for publish
-With versionging mechanism, we can retrieve MiMei data of different version wiht its ID.
+With versioning mechanism, we can retrieve MiMei data of different version with its ID and version number.
 
 #### 6.3 MiMei referrential
-Isolated data cannot express complex relatiohship. With unique MiMei ID, it is possible to establish stable relational structure. Information can be saved in MiMei file or database. Data format is defined by its associated application.
+Isolated data cannot express complex relatiohship. With unique MiMei ID, it is possible to establish stable relational structure. Information can be saved in MiMei file or database, with a format defined by its associated application.
 
-Corelaiton between MiMeis is decided by their referrential relationship. Referrential information includes MiMei ID and number of references. Ordinarilly the semantic relevance of data content is interpreted by its associated application.
+Corelaiton between MiMeis is formed by their referrential relationships. Referrential information includes MiMei ID and number of references. Ordinarilly the semantic relevance of data content is interpreted by its associated application. Leither system cannot access App data, so it is the App's task to maintain the referrential relationships of MiMei by calling corresponding API.
+
+MiMei application can generate referrential information according to semantic correlation.  
+API: MMAddRef MMDelRef MMGetRef
+
+Most MiMei contains only granulated piece of information, the whole picture can be described through correlation of MiMei.  
+#### 6.4 File system  
+Originally file system was created for mainframe where number of applications and volumn of data is limited. With the development computer and internet, mobile phones, number of users, Apps and data volumn all increase explosively. The following shortcomings of file system began to be revealed.  
+1. File name cannot precisely identify a file
+2. Insufficient index information, only path and file infor.
+3. One file might have multiple duplicated copies
+In Leither, traditional file system is converted into MiMei framework with the following improvements,  
++ Unique MiMei ID: Every file has a unique ID created based on its synopsis as its mark  
++ _cur_ version: Current version as target of data access  
++ Reference count: Do not copy data, increase count of referene instead. Use MiMei ID to access its data.  
+The directory structure of file system is also **granulated**(Ch6.1). Directory that is indexed or shared with high hit count shall be MiMeimized. Currently Leither manages file directory with JSON format, which performs poorly when the number of files grow too large. In future database will replace JSON. The algorithm for extracting snopsis is similar to that of Merkle tree.
+
+#### 6.4.1 File objects in Leither system
++ MiMei Current File
+The current version of MiMei file, both readable and writable.
++ MiMei Version File
+The read-only backup files of MiMei. Created by backuping the current file. Leither creates a version number for each backup file.
++ Mac file  
+File labelled with Mac ID that is generated using content of MiMei file. Read-only. Mac file can be referred by MiMei object. MiMei version file is a Mac file referred to by a version number. Temp file can also be convert into Mac file.
++ Temp file
+Created by MFOpenTempFile after data is written into it, or Converted by MFTemp2MacFile.
++ MiMei File System
+
