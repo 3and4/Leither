@@ -331,7 +331,7 @@ FSFind FSMkDir FSRemoveAll FSStat FSRename
 + Others
 MFTruncate MFCopy
 ### Database
-There are two underlying databases. One is based on LevelDB and the other BoltDB. Both are revised in underlying code. LevelDB is used for current version, can be read and write, consensus is based on time sequence. During a write transaction, changed data will be checked to see if it is revised by any other party during the transaction. If it does, transaction fails and initiator will be called to redo the transaction. BoltDB is used for backup version and read-only.
+There are two underlying databases. One is based on LevelDB and the other BoltDB. Both are revised in underlying code. LevelDB is used for current version to support read and write, consensus is based on time sequence. During a write transaction, changed data will be checked to see if it is revised by any other party during the transaction. If it does, transaction fails and initiator will be called to redo the transaction. BoltDB is used for backup version and read-only.
 
 API refers to Redis, support 5 types of data: string operation, hash, list, set, ordered set, and transaction.
 + Transaction
