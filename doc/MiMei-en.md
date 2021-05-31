@@ -355,8 +355,31 @@ The earliest form of application. Both data and application are on the same mach
 **P2P Application**  
 In local network, application is responsible for communication with other terminals. Applications on each node equally takes care of business of itself. When there are too many nodes, one node will be selected for public services. This is the early model of server.  
 
-**Client/Server Mode**  
+**Client/Server Model**  
 The development of large network and internet gave birth to dedicated server. In the beginning, server usually processed core business logic only, most of the specific tasks were handled by terminal machines.
 
-**Browser/Server Mode**  
-In the time of Internet, brwoser became the main client to call for remote services. With the enhancement of Javascript, more and more jobs are executed on browsers, aka B/S mode. 
+**Browser/Server Model**  
+In the time of Internet, brwoser became the major client to call for remote services. With the enhancement of Javascript, more and more jobs are executed on browsers, aka B/S model. B/S model greatly reduce the complication of end user's task.
+
+**Merging of Models**  
+In the powerful HTML5, more and more tasks in B/S model is executed in front end, similar to C/S model. On the other hand, more and more App is developed in HTML5, very much like B/S model.
+
+**Leither Solution**  
+Leither API supports 40+ development languages, particular HTML5 becuase large number of frequently used Apps are based on it, including website, App, Applet, etc. HTML5 is not perfect for the lack of standard for backend data processing and business logic. Leither supplements the missing functionalities in HTML5 for building cloud applications, such as user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundency and load balance.
+
+**Business Logic in Front-end**  
+Business executed in front-end by default. The benefit is that App development similar to single page web application. Simple and easy.
+
+**Thin Node**  
+PC and mobile phone are not suitable server. Server is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessbility. NAS and other custermizable hardware are more preferrable to support front-end and personal business logic.
+
+**Specific Optimization**  
+Node can support batch execution and back-end tasks for certain situation.
+Personal device must be maintenance free. Node setup and application installation must be dummy proof.
+Node is optimized for home network. With Leither's decentralized domain name resolution, node works similar to cloud server.  
+
+**MiMeimization of Application**  
+Leither provides complete application system, within which an application is actually a type of MiMei.
+<a href="Applition.md"> Application System Document</a>  
+### VIII. Flow or MiMei Information
+#### 8.1 Why information must flow  
