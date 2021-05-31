@@ -348,10 +348,15 @@ Sadd Scard Sclear Sdiff Sinter Smclear Smembers Srem Sunion Scan
 Zadd Zcard Zcount Zrem Zscore Zrank Zrange Zrangebyscore Zremrangebyscore Zrevrange Zrevrangebyscore Zmclear Zclear ZincrBy  
 ### VII. Application System
 #### 7.1 History of Application
-There a four types of application model:
+There a four types of application model:  
 **Local Application**  
 The earliest form of application. Both data and application are on the same machine. Data is shared through file.  
+
 **P2P Application**  
 In local network, application is responsible for communication with other terminals. Applications on each node equally takes care of business of itself. When there are too many nodes, one node will be selected for public services. This is the early model of server.  
+
 **Client/Server Mode**  
-The development of large network and internet gave birth to dedicated server. In the beginning server usually processed core business logic only, most of the specific tasks were handled by terminal machines.
+The development of large network and internet gave birth to dedicated server. In the beginning, server usually processed core business logic only, most of the specific tasks were handled by terminal machines.
+
+**Browser/Server Mode**  
+In the time of Internet, brwoser became the main client to call for remote services. With the enhancement of Javascript, more and more jobs are executed on browsers, aka B/S mode. 
