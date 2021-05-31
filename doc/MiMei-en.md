@@ -379,7 +379,7 @@ Personal device must be maintenance free. Node setup and application installatio
 Node is optimized for home network. With Leither's decentralized domain name resolution, node works similar to cloud server.  
 
 **MiMeimization of Application**  
-Leither provides complete application system, within which an application is actually a type of MiMei.
+Leither provides complete application system, within which an application is actually a type of MiMei.  
 <a href="Applition.md"> Application System Document</a>  
 ### VIII. Flow or MiMei Information
 #### 8.1 Why information must flow  
