@@ -410,4 +410,15 @@ Ch2.6 mentioned four parts of social media model: Me, Contact, Application and M
 #### 9.2 Credential Model
 During the exchange of information and services between user(node) and user(node), there must be method for quanititative settlement. Currency is the tool to settle credit in daily life. In Leither system it is the exchange of credit.
 
-Every node has the mechanism to grant credit to other nodes.
+Every node has a mechanism to grant other nodes credit, which authorize the others to use its services. The surplus of services provided over received is the equivalent of a receipt that a borrower gives the lender, or an croptocurrency issued by the borrower. Within a group, croptocurrency issued by a member in essence is a certificate of services receivable garanteed by the issuer. The certificate can be used to exchange for services from other memebers.  
+
+**Object of Credential**  
+In reality fiat currency is the object of the highest credential. In Leither network, the services exchanged between nodes can be set as object, namely storage, bandwidth and CPU. Their order of importance is bandwidth > storage > CPU, according to the characteristics of node network.
+
+Bandwidth is the preferred base unit for settlement between nodes. All the other forms of services can be converted with a certain coefficient.
+
+**Personal Credit Model**  
+A type point-to-point credit model, user to user.  
++ Letter of Credit (L/C)
+It is the mount of service that can be used free of charge. Receipt of credit can be understood as amount of service that has be used. A L/C includes authorizer, authorizee, unit of credit, upper limit of redit, signature of authorizer.  
++ Receipt and Currency  
