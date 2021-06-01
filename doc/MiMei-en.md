@@ -349,16 +349,13 @@ Zadd Zcard Zcount Zrem Zscore Zrank Zrange Zrangebyscore Zremrangebyscore Zrevra
 ### VII. Application System
 #### 7.1 History of Application
 There a four types of application model:  
-**Local Application**  
+1. Local Application  
 The earliest form of application. Both data and application are on the same machine. Data is shared through file.  
-
-**P2P Application**  
+2. P2P Application
 In local network, application is responsible for communication with other terminals. Applications on each node equally takes care of business of itself. When there are too many nodes, one node will be selected for public services. This is the early model of server.  
-
-**Client/Server Model**  
+3. Client/Server Model  
 The development of large network and internet gave birth to dedicated server. In the beginning, server usually processed core business logic only, most of the specific tasks were handled by terminal machines.
-
-**Browser/Server Model**  
+4. Browser/Server Model
 In the time of Internet, brwoser became the major client to call for remote services. With the enhancement of Javascript, more and more jobs are executed on browsers, aka B/S model. B/S model greatly reduce the complication of end user's task.
 
 **Merging of Models**  
@@ -383,3 +380,12 @@ Leither provides complete application system, within which an application is act
 <a href="Applition.md"> Application System Document</a>  
 ### VIII. Flow or MiMei Information
 #### 8.1 Why information must flow  
+**The expension of information is the meaning of life**  
+Gene and Meme are the carriers of information of life, whose purpose is to occupy more time and space. Similarly the meaning of MiMei is the propagation of meaningful information.  
+
+**The flow of information appreciates value**  
+FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The higher value of data is appreciatd only when data turn into traffic. Business of data is mainly the operations of save and retrieve. However, business of data traffic involves creation or collection of content, save, propagation, render, value appreciation and business development. Every time a content is rendered, new value is appreciated. The number of renders and value of each display decide value of the content.  
+
+**The flow of information is a business requirement**  
+In traditional network, data backup, error tolerance, load balance and elastic cloud services are all the flow of data in nature.
+### 8.2 The process of data flow
