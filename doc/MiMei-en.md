@@ -256,7 +256,7 @@ MiMei granulates information. It is recommended to redefine the following types 
 + Content needed to be indexed
 + Content for sharing among users
 + Content might migrate among nodes  
-MiMeimization can be executed beforehand, or on demand. The latter is actually a split. A new MiMei object detached from the orginal one. A referrential relationship keeps the tie.  
+Mimeimization can be executed beforehand, or on demand. The latter is actually a split. A new MiMei object detached from the orginal one. A referrential relationship keeps the tie.  
 
 Leither supprots database and file system. User can use traditional development method if only its own data is concerned. In this case, the whole user or application is one stand alone MiMei object.
 
@@ -375,7 +375,7 @@ Node can support batch execution and back-end tasks for certain situation.
 Personal device must be maintenance free. Node setup and application installation must be dummy proof.
 Node is optimized for home network. With Leither's decentralized domain name resolution, node works similar to cloud server.  
 
-**MiMeimization of Application**  
+**Mimeimization of Application**  
 Leither provides complete application system, within which an application is actually a type of MiMei.  
 <a href="Applition.md"> Application System Document</a>  
 ### VIII. Flow or MiMei Information
@@ -394,5 +394,20 @@ There are two cases of information flow:
 2. Save on request. When current node lacks the capacity to uphold regular services, so it asks ohter node to help backup, error tolerance, load balance, etc.
 
 Procedure of save:  
-+ MiMeimization of Information
++ Mimeimization of Information
 After information is MiMeimized, shared information can be saved in file block.  
++ Duplication of data over nodes  
+With proper authorization, copy MiMei blob from one node to another  
++ Update routing information of the MiMei  
+Consumer of MiMei content will get its routing information first to find its data. Routing information includes data of the MiMei node and its newest changes. After routing information is updated, user will get updated MiMei information.
+### IX. Social Model and Credential System
+Ch2.6 mentioned four parts of social media model: Me, Contact, Application and Message. In Leither the corresponding model looks as below:  
+|Item|Detail|
+|--|--|
+|Me|Authentication and authorization of user|
+|App and service|App and service of the user |
+|Message|Manage interaction between user and App or other users|  
+#### 9.2 Credential Model
+During the exchange of information and services between user(node) and user(node), there must be method for quanititative settlement. Currency is the tool to settle credit in daily life. In Leither system it is the exchange of credit.
+
+Every node has the mechanism to grant credit to other nodes.
