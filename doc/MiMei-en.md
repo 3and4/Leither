@@ -388,4 +388,11 @@ FileCoin conveyed a misunderstanding that data is asset. Data itself is actually
 
 **The flow of information is a business requirement**  
 In traditional network, data backup, error tolerance, load balance and elastic cloud services are all the flow of data in nature.
-### 8.2 The process of data flow
+#### 8.2 The process of information flow
+There are two cases of information flow:  
+1. Save voluntarily. Usually when the MiMei data is highly valuable even in future.
+2. Save on request. When current node lacks the capacity to uphold regular services, so it asks ohter node to help backup, error tolerance, load balance, etc.
+
+Procedure of save:  
++ MiMeimization of Information
+After information is MiMeimized, shared information can be saved in file block.  
