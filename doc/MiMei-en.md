@@ -444,4 +444,4 @@ With sufficient credibility, user can exchange for services with credit and gene
 **Credit Mediator**  
 For nodes without direct contact, mediator node, or agent can be used to mediate the credit exchange. It is also possible use other trusted media to facilitate the exchange, such as fiat, cryptocurrency or **group currency** mentioned in 2nd part.  
 ### Part 2
-<a href="./GongShi.md"> Orgnization and Consensus</a>  
+<a href="./GongShi-en.md"> Orgnization and Consensus</a>  
