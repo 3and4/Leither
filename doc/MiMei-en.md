@@ -422,3 +422,26 @@ A type point-to-point credit model, user to user.
 + Letter of Credit (L/C)
 It is the mount of service that can be used free of charge. Receipt of credit can be understood as amount of service that has be used. A L/C includes authorizer, authorizee, unit of credit, upper limit of redit, signature of authorizer.  
 + Receipt and Currency  
+A receipt includes information about lender, borrower, unit of credit, amount, signature of borrower. For lender, it is a **receipt**. For borrower, it is equivalent to issuing **cryptocurrency**.
+
+**Credit Build-up**  
++ Credit Authorization  
+When a relationship is built between nodes, there shall be certain basis for mutual trust, so that certain amount of credit can be authorized according to the magnitude of relationship.  
++ Credit Increment  
+After connection between nodes established, credit can be increased periodically.  
++ Mutual Help  
+Each node is capable of useful services. Credit can be acquired by proactively providing valuable service to the others, including data backup, load balance, routing, search, or mediator service.  
++ Credit Revoke  
+User can revoke credit given to others in case of tresgression.  
++  Acquisition of credit  
+User can purchase extra credit through other channels, say, off-line purchase.  
++ Credit Exchange  
+User can exchange for more credit through 3rd party. Reference to Orgnization and Consensus.  
+
+**Trading Procedure**  
+With sufficient credibility, user can exchange for services with credit and generate receipt at the same time. When user exceeds its credit cap, service provider stops.  
+
+**Credit Mediator**  
+For nodes without direct contact, mediator node, or agent can be used to mediate the credit exchange. It is also possible use other trusted media to facilitate the exchange, such as fiat, cryptocurrency or **group currency** mentioned in 2nd part.  
+### Part 2
+<a href="./GongShi.md"> Orgnization and Consensus</a>  
