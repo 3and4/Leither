@@ -247,15 +247,201 @@ type MiMeiInfo struct {
 MiMei ID is based on information of creator, associated application, MiMei type and MiMei mark. Once created, never changes. MiMei ID is invariable.
 
 **Aceess MiMei data with MiMei ID and version**  
-Version is created while MiMei being edited or backuped. Data of the version is based on synopsis of content. Content of the version is read-only. MiMei ID and version combined can identify certian MeMei data.
+New version is created while MiMei being edited or backuped. Data of the version is based on synopsis of content. Content of the version is read-only. MiMei ID and version combined can identify certian MeMei data.
 
-### VI. Data storage and referrential
+### VI. Data storage and corelation
 MiMei can support data storage of most internet applications with its supoort of file and database.
 #### 6.1 Granulation of Information
-MiMei granulates information. It is recommended to redefine the following types of information with MiMei data type, aka Mimeization:  
+MiMei granulates information. It is recommended to redefine the following types of information with MiMei data type, aka Mimeimization:  
 + Content needed to be indexed
-+ Content for sharing
++ Content for sharing among users
 + Content might migrate among nodes  
-MiMeization can be conducted beforehand, or on demand. The latter is actually a split. A new MiMei detached from the orginal one. A referrential relationship keeps the tie.  
+Mimeimization can be executed beforehand, or on demand. The latter is actually a split. A new MiMei object detached from the orginal one. A referrential relationship keeps the tie.  
 
-Leither provides database and file system. User can use the traditional development method if only its own data needs to be maintained.
+Leither supprots database and file system. User can use traditional development method if only its own data is concerned. In this case, the whole user or application is one stand alone MiMei object.
+
+#### 6.2 MiMei version
+Both MiMei file system and database support version.
++ _cur_: the current working copy, not yet backuped.
++ _last_: the latest backuped copy, represents the newest confirmed content
++ _release_: ready for publish
+With versioning mechanism, we can retrieve MiMei data of different version with its ID and version number.
+
+#### 6.3 MiMei referrential
+Isolated data cannot express complex relatiohship. With unique MiMei ID, it is possible to establish stable relational structure. Information can be saved in MiMei file or database, with a format defined by its associated application.
+
+Corelaiton between MiMeis is formed by their referrential relationships. Referrential information includes MiMei ID and number of references. Ordinarilly the semantic relevance of data content is interpreted by its associated application. Leither system cannot access App data, so it is the App's task to maintain the referrential relationships of MiMei by calling corresponding API.
+
+MiMei application can generate referrential information according to semantic correlation.  
+API: MMAddRef MMDelRef MMGetRef
+
+Most MiMei contains only granulated piece of information, the whole picture can be described through correlation of MiMei.  
+#### 6.4 File system  
+Originally file system was created for mainframe where number of applications and volumn of data is limited. With the development computer and internet, mobile phones, number of users, Apps and data volumn all increase explosively. The following shortcomings of file system began to be revealed.  
+1. File name cannot precisely identify a file
+2. Insufficient index information, only path and file infor.
+3. One file might have multiple duplicated copies
+In Leither, traditional file system is converted into MiMei framework with the following improvements,  
++ Unique MiMei ID: Every file has a unique ID created based on its synopsis as its mark  
++ _cur_ version: Current version as target of data access  
++ Reference count: Do not copy data, increase count of referene instead. Use MiMei ID to access its data.  
+The directory structure of file system is also **granulated**(Ch6.1). Directory that is indexed or shared with high hit count shall be MiMeimized. Currently Leither manages file directory with JSON format, which performs poorly when the number of files grow too large. In future database will replace JSON. The algorithm for extracting snopsis is similar to that of Merkle tree.
+
+#### 6.4.1 File objects in Leither system
++ MiMei Current File  
+The current version of MiMei file, both readable and writable.
++ MiMei Version File  
+The read-only backup files of MiMei. Created by backuping the current file. Leither creates a version number for each backup file.
++ Mac file  
+File labelled with Mac ID that is generated using content of MiMei file. Read-only. Mac file can be referred by MiMei object. MiMei version file is a Mac file referred to by a version number. Temp file can also be convert into Mac file.  
++ Temp file  
+Created by MFOpenTempFile after data is written into it, or Converted by MFTemp2MacFile.
++ MiMei File System  
+A built-in special MiMei type of Leither system. It can be created by MMCreate, or placed in _webdav_ directory, or created by Leither automatically using configure file with .mmfs extension, or opened by MFOpenByPath as file system object.  
++ Operation System File and Directory  
+Create a link of a directory in _webdav_, the linked directory and file can be opened by MFOpenByPth.
++ MiMei Root Directory  
+_webdav_ is the general entrance to access MiMei in a node. File or Directory can be linked into _webdav_, or a configure file can be create that points to a MiMei object in the node.  
+
+#### 6.4.2 Open File
++ MiMei File  
+MMCreate: Create MiMei file, take a api.MM_File as input, return MiMei ID.  
+MMOpen: Open MiMei file, return handler ID for file operation. If _ver_ is "cur", file is writable, otherwise read-only.
++ Open File by Path  
+MFOpenByPath: Open file in MiMei file system or Leither file system.
++ Open Mac File  
+MFOpenMacFile: Open a mac file under a MiMei.
++ Opem Temp File  
+MFOpenTempFile: Open a temporary file for read or write.
+MFTemp2MacFile: Convert to Mac file after read or write operation.
++ Close File  
+All the files need to be closed after operation, except temporary file. Considering the inevitable off-line senarios, all handles of file operation will be closed after timeout.
+
+#### 6.4.3 File Operation  
++ Object Method  
+MFSetOject  MFGetObject
++ Byte Array Method  
+MFSetData MFGetData
++ Query Status
+MFGetSize MFStat MfIsExist MFGetMimeType
++ Directory Operation
+MFReadDir
++ File System
+FSFind FSMkDir FSRemoveAll FSStat FSRename
++ Others
+MFTruncate MFCopy
+### 6.5 Database
+There are two underlying databases. One is based on LevelDB and the other BoltDB. Both are revised in underlying code. LevelDB is used for current version to support read and write, consensus is based on time sequence. During a write transaction, changed data will be checked to see if it is revised by any other party during the transaction. If it does, transaction fails and initiator will be called to redo the transaction. BoltDB is used for backup version and read-only.
+
+API refers to Redis, support 5 types of data: string operation, hash, list, set, ordered set, and transaction.
++ Transaction
+Begin Commit Rollback
++ String
+Set Get Incr IncrBy Strlen  
++ Hash
+Hmclear Hdel Hlen Hget Hmget Hmset Hgetall Hkeys Hscan Hrevscan HincrBy  
++ List
+Lpush Lpop Rpush Rpop Lrange Lclear Lmclear Lindex Llen Lset  
++ Set
+Sadd Scard Sclear Sdiff Sinter Smclear Smembers Srem Sunion Scan  
++ Odered Set
+Zadd Zcard Zcount Zrem Zscore Zrank Zrange Zrangebyscore Zremrangebyscore Zrevrange Zrevrangebyscore Zmclear Zclear ZincrBy  
+### VII. Application System
+#### 7.1 History of Application
+There a four types of application model:  
+1. Local Application  
+The earliest form of application. Both data and application are on the same machine. Data is shared through file.  
+2. P2P Application
+In local network, application is responsible for communication with other terminals. Applications on each node equally takes care of business of itself. When there are too many nodes, one node will be selected for public services. This is the early model of server.  
+3. Client/Server Model  
+The development of large network and internet gave birth to dedicated server. In the beginning, server usually processed core business logic only, most of the specific tasks were handled by terminal machines.
+4. Browser/Server Model
+In the time of Internet, brwoser became the major client to call for remote services. With the enhancement of Javascript, more and more jobs are executed on browsers, aka B/S model. B/S model greatly reduce the complication of end user's task.
+
+**Merging of Models**  
+In the powerful HTML5, more and more tasks in B/S model is executed in front end, similar to C/S model. On the other hand, more and more App is developed in HTML5, very much like B/S model.
+
+**Leither Solution**  
+Leither API supports 40+ development languages, particular HTML5 becuase large number of frequently used Apps are based on it, including website, App, Applet, etc. HTML5 is not perfect for the lack of standard for backend data processing and business logic. Leither supplements the missing functionalities in HTML5 for building cloud applications, such as user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundency and load balance.
+
+**Business Logic in Front-end**  
+Business executed in front-end by default. The benefit is that App development similar to single page web application. Simple and easy.
+
+**Thin Node**  
+PC and mobile phone are not suitable server. Server is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessbility. NAS and other custermizable hardware are more preferrable to support front-end and personal business logic.
+
+**Specific Optimization**  
+Node can support batch execution and back-end tasks for certain situation.
+Personal device must be maintenance free. Node setup and application installation must be dummy proof.
+Node is optimized for home network. With Leither's decentralized domain name resolution, node works similar to cloud server.  
+
+**Mimeimization of Application**  
+Leither provides complete application system, within which an application is actually a type of MiMei.  
+<a href="Applition.md"> Application System Document</a>  
+### VIII. Flow or MiMei Information
+#### 8.1 Why information must flow  
+**The expension of information is the meaning of life**  
+Gene and Meme are the carriers of information of life, whose purpose is to occupy more time and space. Similarly the meaning of MiMei is the propagation of meaningful information.  
+
+**The flow of information appreciates value**  
+FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The higher value of data is appreciatd only when data turn into traffic. Business of data is mainly the operations of save and retrieve. However, business of data traffic involves creation or collection of content, save, propagation, render, value appreciation and business development. Every time a content is rendered, new value is appreciated. The number of renders and value of each display decide value of the content.  
+
+**The flow of information is a business requirement**  
+In traditional network, data backup, error tolerance, load balance and elastic cloud services are all the flow of data in nature.
+#### 8.2 The process of information flow
+There are two cases of information flow:  
+1. Save voluntarily. Usually when the MiMei data is highly valuable even in future.
+2. Save on request. When current node lacks the capacity to uphold regular services, so it asks ohter node to help backup, error tolerance, load balance, etc.
+
+Procedure of save:  
++ Mimeimization of Information
+After information is MiMeimized, shared information can be saved in file block.  
++ Duplication of data over nodes  
+With proper authorization, copy MiMei blob from one node to another  
++ Update routing information of the MiMei  
+Consumer of MiMei content will get its routing information first to find its data. Routing information includes data of the MiMei node and its newest changes. After routing information is updated, user will get updated MiMei information.
+### IX. Social Model and Credential System
+Ch2.6 mentioned four parts of social media model: Me, Contact, Application and Message. In Leither the corresponding model looks as below:  
+|Item|Detail|
+|--|--|
+|Me|Authentication and authorization of user|
+|App and service|App and service of the user |
+|Message|Manage interaction between user and App or other users|  
+#### 9.2 Credential Model
+During the exchange of information and services between user(node) and user(node), there must be method for quanititative settlement. Currency is the tool to settle credit in daily life. In Leither system it is the exchange of credit.
+
+Every node has a mechanism to grant other nodes credit, which authorize the others to use its services. The surplus of services provided over received is the equivalent of a receipt that a borrower gives the lender, or an croptocurrency issued by the borrower. Within a group, croptocurrency issued by a member in essence is a certificate of services receivable garanteed by the issuer. The certificate can be used to exchange for services from other memebers.  
+
+**Object of Credential**  
+In reality fiat currency is the object of the highest credential. In Leither network, the services exchanged between nodes can be set as object, namely storage, bandwidth and CPU. Their order of importance is bandwidth > storage > CPU, according to the characteristics of node network.
+
+Bandwidth is the preferred base unit for settlement between nodes. All the other forms of services can be converted with a certain coefficient.
+
+**Personal Credit Model**  
+A type point-to-point credit model, user to user.  
++ Letter of Credit (L/C)
+It is the mount of service that can be used free of charge. Receipt of credit can be understood as amount of service that has be used. A L/C includes authorizer, authorizee, unit of credit, upper limit of redit, signature of authorizer.  
++ Receipt and Currency  
+A receipt includes information about lender, borrower, unit of credit, amount, signature of borrower. For lender, it is a **receipt**. For borrower, it is equivalent to issuing **cryptocurrency**.
+
+**Credit Build-up**  
++ Credit Authorization  
+When a relationship is built between nodes, there shall be certain basis for mutual trust, so that certain amount of credit can be authorized according to the magnitude of relationship.  
++ Credit Increment  
+After connection between nodes established, credit can be increased periodically.  
++ Mutual Help  
+Each node is capable of useful services. Credit can be acquired by proactively providing valuable service to the others, including data backup, load balance, routing, search, or mediator service.  
++ Credit Revoke  
+User can revoke credit given to others in case of tresgression.  
++  Acquisition of credit  
+User can purchase extra credit through other channels, say, off-line purchase.  
++ Credit Exchange  
+User can exchange for more credit through 3rd party. Reference to Orgnization and Consensus.  
+
+**Trading Procedure**  
+With sufficient credibility, user can exchange for services with credit and generate receipt at the same time. When user exceeds its credit cap, service provider stops.  
+
+**Credit Mediator**  
+For nodes without direct contact, mediator node, or agent can be used to mediate the credit exchange. It is also possible use other trusted media to facilitate the exchange, such as fiat, cryptocurrency or **group currency** mentioned in 2nd part.  
+### Part 2
+<a href="./GongShi-en.md"> Orgnization and Consensus</a>  
