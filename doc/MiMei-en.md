@@ -364,11 +364,11 @@ In the powerful HTML5, more and more tasks in B/S model is executed in front end
 #### 7.2 Leither Solution
 Leither API supports 40+ development languages, particular HTML5 because large number of frequently used applications are developed with HTML5, including website, App, Applet, etc. HTML5 is not perfect for the lack of standards for backend data processing and business logic. Leither supplements the shortcomings in HTML5 for building cloud applications. Leither provides user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundancy and load balance.
 
-**Frontend Business Logic**  
-Business logics shall be executed in front-end by default. The benefit is that Leither application development will be similar to single page application development, simple and easy.
+**Business Logic in Front-end**  
+By default business logics shall be executed in front-end. The benefit is that Leither application development will be similar to single page application development, simple and easy.
 
 **Thin Node**  
-PC and mobile phone are not suitable devices to serve as Node. Server computer is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessability. NAS and other customizable hardware are preferred equipments to run as Node. Cheap and less powerful CPU is suitable to support fine granulated Leither applications.
+PC and mobile phone are not suitable devices to serve as Node. Computer server is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessability. NAS and other customizable hardware are preferred equipments to run as Node. Less powerful CPU is ideal to support fine granulated Leither applications.
 
 **Special Optimization**  
 Because Leither node is intended to be maintained by layman, node setup and application installation must be dummy proof. Node is optimized for home network, with the unique decentralized domain name resolution of Leither system, Leither can provide service similar to cloud server.  
