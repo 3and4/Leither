@@ -391,8 +391,10 @@ FileCoin conveyed a misunderstanding that data is asset. Data itself is actually
 In traditional network, data backup, error tolerance, load balance and elastic cloud services are all the migration of data in nature.
 #### 8.2 The procedure of information flow
 Information can flow in two different situations:  
-1. Save voluntarily.   Usually when the MiMei data is highly valuable even in future.
-2. Save on request.   When current node lacks the capacity to uphold regular services, it may ask other nodes to help doing backup, error tolerance, load balance, etc.
+1. Save voluntarily.   
+Usually when the MiMei data is highly valuable even in future.
+2. Save on request.   
+When current node lacks the capacity to uphold regular services, it may ask other nodes to help doing backup, error tolerance, load balance, etc.
 
 Procedure of save:  
 + Mimeimize Information  
