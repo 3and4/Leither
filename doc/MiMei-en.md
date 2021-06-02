@@ -414,7 +414,7 @@ During the exchange of information and services between user(node) and user(node
 Every node can grant other nodes credit, which authorize the others to use its services. The surplus of services provided over received is the equivalent of a receipt that a borrower gives the lender, or an cryptocurrency issued by the borrower. Within a group, cryptocurrency issued by a member actually is a certificate of services guaranteed receivable by the issuer. This certificate can be used to exchange for services from other members, as long as they recognize it.  
 
 **Object of Credential**  
-In reality fiat currency is the object of the highest credential. In Leither network, the services exchanged between nodes can be used as object. Their order of importance is bandwidth > storage > CPU, according to the characteristics of node network. Bandwidth is the preferred base unit for settlement between nodes. All the other forms of services can be converted into bandwidth with a certain coefficient.
+In reality fiat currency is the object with the highest credit rating. In Leither network, services such as bandwidth, storage and CPU can serve a similar function, aka the object of credit rating in virtuality. Their order of importance is bandwidth > storage > CPU, according to the characteristics of node network. Bandwidth is the preferred base unit for settlement between nodes. All the other forms of services can be converted into bandwidth with a certain coefficient.
 
 **Personal Credential Model**  
 is a type of user-to-user (P2P) credit model, including:  
