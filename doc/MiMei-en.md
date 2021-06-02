@@ -400,48 +400,47 @@ After information is MiMeimized, shared information can be saved in file block.
 With proper authorization, copy MiMei blob from one node to another  
 + Update routing information of MiMei  
 Consumer of MiMei content will get its routing information first to find its data. Routing information includes data of the MiMei node and its newest changes. After routing information is updated, user will get updated MiMei information.
+
 ### IX. Social Model and Credential System
 Ch2.6 mentioned four parts of social media model: Me, Contact, Application and Message. In Leither the corresponding model looks as below:  
-|Item|Detail|
+|Category|Detail|
 |--|--|
 |Me|Authentication and authorization of user|
 |App and service|App and service of the user |
-|Message|Manage interaction between user and App or other users|  
+|Message|Manage interactions between user and Apps|  
 #### 9.2 Credential Model
-During the exchange of information and services between user(node) and user(node), there must be method for quantitative settlement. Currency is the tool to settle credit in daily life. In Leither system it is the exchange of credit.
+During the exchange of information and services between user(node) and user(node), there must be mechanism of quantitative settlement. Currency is the tool to settle business in daily life. In Leither network it is the exchange of credit.
 
-Every node has a mechanism to grant other nodes credit, which authorize the others to use its services. The surplus of services provided over received is the equivalent of a receipt that a borrower gives the lender, or an cryptocurrency issued by the borrower. Within a group, cryptocurrency issued by a member in essence is a certificate of services receivable guaranteed by the issuer. The certificate can be used to exchange for services from other members.  
+Every node can grant other nodes credit, which authorize the others to use its services. The surplus of services provided over received is the equivalent of a receipt that a borrower gives the lender, or an cryptocurrency issued by the borrower. Within a group, cryptocurrency issued by a member actually is a certificate of services guaranteed receivable by the issuer. This certificate can be used to exchange for services from other members, as long as they recognize it.  
 
 **Object of Credential**  
-In reality fiat currency is the object of the highest credential. In Leither network, the services exchanged between nodes can be set as object, namely storage, bandwidth and CPU. Their order of importance is bandwidth > storage > CPU, according to the characteristics of node network.
+In reality fiat currency is the object of the highest credential. In Leither network, the services exchanged between nodes can be used as object. Their order of importance is bandwidth > storage > CPU, according to the characteristics of node network. Bandwidth is the preferred base unit for settlement between nodes. All the other forms of services can be converted into bandwidth with a certain coefficient.
 
-Bandwidth is the preferred base unit for settlement between nodes. All the other forms of services can be converted with a certain coefficient.
-
-**Personal Credit Model**  
-A type point-to-point credit model, user to user.  
+**Personal Credential Model**  
+is a type of user-to-user (P2P) credit model, including:  
 + Letter of Credit (L/C)
-It is the mount of service that can be used free of charge. Receipt of credit can be understood as amount of service that has be used. A L/C includes authorizer, authorize, unit of credit, maximum credit, signature of authorizer.  
-+ Receipt and Currency  
-A receipt includes information about lender, borrower, unit of credit, amount, signature of borrower. For lender, it is a **receipt**. For borrower, it is equivalent to issuing **cryptocurrency**.
+L/C is the amount of services that are allowed to use before payment, whereas IOU is the amount of service that has be used without paying. A L/C includes information of the authorizer, the authorized, unit of credit, maximum credit, signature of authorizer.  
++ IOU and Currency  
+An IOU includes information about lender, borrower, unit of credit, amount, signature of borrower. For borrower, IOU is equivalent to issuing **cryptocurrency**.
 
-**Credit Build-up**  
+**Credit Buildup**  
 + Credit Authorization  
-When a relationship is built between nodes, there shall be certain basis for mutual trust, so that certain amount of credit can be authorized according to the magnitude of relationship.  
-+ Credit Increment  
-After connection between nodes established, credit can be increased periodically.  
+If there is a relationship between nodes, there shall be certain basis for mutual trust, so that certain amount of credit can be authorized according to the magnitude of the relationship.  
++ Periodical Credit Increment  
+After relationship between nodes established, credit can be increased periodically.  
 + Mutual Help  
 Each node is capable of useful services. Credit can be acquired by proactively providing valuable service to the others, including data backup, load balance, routing, search, or mediator service.  
-+ Credit Revoke  
++ Credit Revocation  
 User can revoke credit given to others in case of transgression.  
-+  Acquisition of credit  
++  Acquisition of Credit  
 User can purchase extra credit through other channels, say, off-line purchase.  
 + Credit Exchange  
-User can exchange for more credit through 3rd party. Reference to Organization and Consensus.  
+User can exchange for more credit through 3rd party. Reference to <a href="./GongShi-en.md"> Organization and Consensus</a>.  
 
 **Trading Procedure**  
-With sufficient credibility, user can exchange for services with credit and generate receipt at the same time. When user exceeds its credit cap, service provider stops.  
+With sufficient credential, user can exchange for services with credit and a record will be created in ledger. When user exceeds its credit cap, service will stop.  
 
-**Credit Mediator**  
-For nodes without direct contact, mediator node, or agent can be used to mediate the credit exchange. It is also possible use other trusted media to facilitate the exchange, such as fiat, cryptocurrency or **group currency** mentioned in 2nd part.  
+**Agency Service**  
+When there is no direct contact between nodes, an agent node can be used to mediate the credit exchange. It is also possible use other trusted media to facilitate the exchange, such as fiat currency, cryptocurrency or **group currency** mentioned in 2nd part.  
 ### Part 2
 <a href="./GongShi-en.md"> Organization and Consensus</a>  
