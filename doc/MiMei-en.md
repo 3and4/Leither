@@ -350,18 +350,18 @@ Zadd Zcard Zcount Zrem Zscore Zrank Zrange Zrangebyscore Zremrangebyscore Zrevra
 #### 7.1 History of Application
 There a four types of application model:  
 1. Local Application  
-The earliest form of application. Both data and application are on the same machine. Data is shared through file.  
+The earliest form of application. Both data and application are on the same machine. Data is shared through files.  
 2. P2P Application
-In local network, application is responsible for communication with other terminals. Applications on each node equally takes care of business of itself. When there are too many nodes, one node will be selected for public services. This is the early model of server.  
+In local network, application is responsible for communication with other terminals. Applications on each node equally takes care of business of itself. When there are too many nodes, one node may be selected for public services. This is the predecessor of server.  
 3. Client/Server Model  
-The development of large network and internet gave birth to dedicated server. In the beginning, server usually processed core business logic only, most of the specific tasks were handled by terminal machines.
+The development of large network and internet gave birth to dedicated server. In the beginning, server usually processed core business logic only, most of the specific tasks were handled by client machines.
 4. Browser/Server Model
 In the time of Internet, browser became the major client to call for remote services. With the enhancement of Javascript, more and more jobs are executed on browsers, aka B/S model. B/S model greatly reduce the complication of end user's task.
 
-**Merging of Models**  
-In the powerful HTML5, more and more tasks in B/S model is executed in front end, similar to C/S model. On the other hand, more and more App is developed in HTML5, very much like B/S model.
+**The Merging of Models**  
+In the powerful HTML5, more and more tasks in B/S model is executed in front end, similar to C/S model. At the same time more and more Apps are developed in HTML5, very much like B/S model.
 
-**Leither Solution**  
+### 7.2 Leither Solution
 Leither API supports 40+ development languages, particular HTML5 because large number of frequently used Apps are based on it, including website, App, Applet, etc. HTML5 is not perfect for the lack of standard for backend data processing and business logic. Leither supplements the missing functionalities in HTML5 for building cloud applications, such as user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundancy and load balance.
 
 **Business Logic in Front-end**  
@@ -392,7 +392,7 @@ In traditional network, data backup, error tolerance, load balance and elastic c
 #### 8.2 The procedure of information flow
 Information can flow in two different situations:  
 1. Save voluntarily.   
-Usually when the MiMei data is highly valuable even in future.
+Usually when the MiMei data is highly valuable, it can be saved for future benefit.
 2. Save on request.   
 When current node lacks the capacity to uphold regular services, it may ask other nodes to help doing backup, error tolerance, load balance, etc.
 
