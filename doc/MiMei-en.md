@@ -361,7 +361,7 @@ In the time of Internet, browser became the major client to call for remote serv
 **The Merging of Models**  
 In the powerful HTML5, more and more tasks in B/S model is executed in front end, similar to C/S model. At the same time more and more Apps are developed in HTML5, very much like B/S model.
 
-### 7.2 Leither Solution
+#### 7.2 Leither Solution
 Leither API supports 40+ development languages, particular HTML5 because large number of frequently used Apps are based on it, including website, App, Applet, etc. HTML5 is not perfect for the lack of standard for backend data processing and business logic. Leither supplements the missing functionalities in HTML5 for building cloud applications, such as user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundancy and load balance.
 
 **Business Logic in Front-end**  
