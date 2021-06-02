@@ -362,18 +362,18 @@ In the time of Internet, browser became the major client to call for remote serv
 In the powerful HTML5, more and more tasks in B/S model is executed in front end, similar to C/S model. At the same time more and more Apps are developed in HTML5, very much like B/S model.
 
 #### 7.2 Leither Solution
-Leither API supports 40+ development languages, particular HTML5 because large number of frequently used Apps are based on it, including website, App, Applet, etc. HTML5 is not perfect for the lack of standard for backend data processing and business logic. Leither supplements the missing functionalities in HTML5 for building cloud applications, such as user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundancy and load balance.
+Leither API supports 40+ development languages, particular HTML5 because large number of frequently used applications are developed with HTML5, including website, App, Applet, etc. HTML5 is not perfect for the lack of standards for backend data processing and business logic. Leither supplements the shortcomings in HTML5 for building cloud applications. Leither provides user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundancy and load balance.
 
-**Business Logic in Front-end**  
-Business executed in front-end by default. The benefit is that App development similar to single page web application. Simple and easy.
+**Frontend Business Logic**  
+Business logics shall be executed in front-end by default. The benefit is that Leither application development will be similar to single page application development, simple and easy.
 
 **Thin Node**  
-PC and mobile phone are not suitable server. Server is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessability. NAS and other customizable hardware are more preferable to support front-end and personal business logic.
+PC and mobile phone are not suitable devices to serve as Node. Server computer is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessability. NAS and other customizable hardware are preferred equipments to run as Node. Cheap and less powerful CPU is suitable to support fine granulated Leither applications.
 
-**Specific Optimization**  
-Node can support batch execution and back-end tasks for certain situation.
-Personal device must be maintenance free. Node setup and application installation must be dummy proof.
-Node is optimized for home network. With Leither's decentralized domain name resolution, node works similar to cloud server.  
+**Special Optimization**  
+Because Leither node is intended to be maintained by layman, node setup and application installation must be dummy proof. Node is optimized for home network, with the unique decentralized domain name resolution of Leither system, Leither can provide service similar to cloud server.  
+
+Leither node can also be optimized to support batch execution and back-end tasks.
 
 **Mimeimization of Application**  
 Leither provides complete application system, within which an application is actually a type of MiMei.  
