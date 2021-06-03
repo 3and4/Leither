@@ -330,7 +330,7 @@ MFReadDir
 FSFind FSMkDir FSRemoveAll FSStat FSRename
 + Others
 MFTruncate MFCopy
-### 6.5 Database
+#### 6.5 Database
 There are two underlying databases. One is based on LevelDB and the other BoltDB. Both are revised in underlying code. LevelDB is used for current version to support read and write, consensus is based on time sequence. During a write transaction, changed data will be checked to see if it is revised by any other party during the transaction. If it does, transaction fails and initiator will be called to redo the transaction. BoltDB is used for backup version and read-only.
 
 API refers to Redis, support 5 types of data: string operation, hash, list, set, ordered set, and transaction.
@@ -381,19 +381,25 @@ Leither provides comprehensive application development framework, within which a
 #### 7.3 Design Principle
 #### 7.3.1 HTML5 is the core standard and norm of internet
 Most frequently used Apps are developed in HTML5 now, including App, website, applet, etc.
-
 #### 7.3.2 HTML5 is not a comprehensive internet application development solution
 HTML5 provides only localized data storage (Web Storage and IndexedDB), without setting up the standard for backend data and business logic. The result is internet applications depend heavily on the backend to process business logic and data. Front-end developers became low caste because they do not get in touch with business logic and core data.
-
 #### 7.3.3 Leither complements the missing functions in HTML5
 Leither provides functions of authentication and authorization, application development framework, cloud file system and database, decentralized domain name resolution, error tolerance and load balance.
-
 #### 7.3.4 Leither is ideal to build cloud service
 Besides constructing
-
 #### 7.4 Advantages of Leither Cloud
 #### 7.4.1 App Development is simple
 Knowledge of HTML5 is sufficient to build most could services, such as website, App and applet. The workflow is almost identical to a local HTML application.
+#### 7.4.2 Extremely low requirement of system resource
+Leither is developed with low CPU, low memory devices in mind. Application consumes very little system resources, because business logic is executed in frontend by default, therefore greatly reduces server load. The same server running Leither can withstand up to 100 times of workload of regular system.
+
+#### 7.4.3 Low Bandwidth Cost
+For traffic heavy application, traffic load can be balance on home network based network, and cost only 1/10th of regular network.
+
+#### 7.4.4 Elastic Services
+System application and data both support docker-like sandbox. Application file and database both support versioned backup. One physical machine can support multiple user, multiple Apps and their data.  
+With invariable domain name and link, App and data can flow among different physical machines.   
+elastic service is supported by decentralized domain name and MiMei.
 
 ### VIII. Flow or MiMei Information
 #### 8.1 Why information must flow  
