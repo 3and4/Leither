@@ -376,13 +376,12 @@ Because Leither node is intended to be maintained by layman, node setup and appl
 Leither node can also be optimized to support batch execution and back-end tasks.
 
 **Mimeimization of Application**  
-Leither provides complete application system, within which an application is actually a type of MiMei.  
-<a href="Applition.md"> Application System Document</a>  
+Leither provides comprehensive application system, within which an application is actually a type of MiMei. Refer to <a href="Applition.md"> Application System Document</a>  
 
 ### VIII. Flow or MiMei Information
 #### 8.1 Why information must flow  
 **The meaning of life is the spread of its information**  
-Gene and Meme are the carriers of information of life, whose purpose is to occupy more time and space. Similarly the meaning of MiMei is the propagation of meaningful information.  
+Gene and Meme are the carriers of information of life, whose purpose is to occupy more time and space. Similarly the purpose of MiMei is the propagation of meaningful information.  
 
 **The flow of information appreciates its value**  
 FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The higher value of data is appreciated only when data turn into traffic. Business of data is mainly the operations of save and retrieve. However, business of data traffic involves the creation or collection of content, save, propagation, render, value appreciation and business development. Each time a content is displayed, new value is appreciated. The number of renders and the value of each display determine the value created by the content.  
@@ -412,7 +411,7 @@ Ch2.6 mentioned four parts of social media model: Me, Contact, Application and M
 |App and service|App and service of the user |
 |Message|Manage interactions between user and Apps|  
 #### 9.2 Credential Model
-During the exchange of information and services between user(node) and user(node), there must be mechanism of quantitative settlement. Currency is the tool to settle business in daily life. In Leither network it is the exchange of credit.
+During the exchange of information and services between user(node) and user(node), there must be a mechanism of quantitative settlement. Currency is the tool to settle business in daily life. In Leither network it is the exchange of credit.
 
 Every node can grant other nodes credit, which authorize the others to use its services. The surplus of services provided over received is the equivalent of a receipt that a borrower gives the lender, or an cryptocurrency issued by the borrower. Within a group, cryptocurrency issued by a member actually is a certificate of services guaranteed receivable by the issuer. This certificate can be used to exchange for services from other members, as long as they recognize it.  
 
