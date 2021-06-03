@@ -376,7 +376,24 @@ Because Leither node is intended to be maintained by layman, node setup and appl
 Leither node can also be optimized to support batch execution and back-end tasks.
 
 **Mimeimization of Application**  
-Leither provides comprehensive application system, within which an application is actually a type of MiMei. Refer to <a href="Applition.md"> Application System Document</a>  
+Leither provides comprehensive application development framework, within which an application is actually a type of MiMei. Refer to <a href="Applition.md"> Application System Development Documentary</a>  
+
+#### 7.3 Design Principle
+#### 7.3.1 HTML5 is the core standard and norm of internet
+Most frequently used Apps are developed in HTML5 now, including App, website, applet, etc.
+
+#### 7.3.2 HTML5 is not a comprehensive internet application development solution
+HTML5 provides only localized data storage (Web Storage and IndexedDB), without setting up the standard for backend data and business logic. The result is internet applications depend heavily on the backend to process business logic and data. Front-end developers became low caste because they do not get in touch with business logic and core data.
+
+#### 7.3.3 Leither complements the missing functions in HTML5
+Leither provides functions of authentication and authorization, application development framework, cloud file system and database, decentralized domain name resolution, error tolerance and load balance.
+
+#### 7.3.4 Leither is ideal to build cloud service
+Besides constructing
+
+#### 7.4 Advantages of Leither Cloud
+#### 7.4.1 App Development is simple
+Knowledge of HTML5 is sufficient to build most could services, such as website, App and applet. The workflow is almost identical to a local HTML application.
 
 ### VIII. Flow or MiMei Information
 #### 8.1 Why information must flow  
