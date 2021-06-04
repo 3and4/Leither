@@ -376,7 +376,7 @@ Because Leither node is intended to be maintained by layman, node setup and appl
 Leither node can also be optimized to support batch execution and back-end tasks.
 
 **Mimeimization of Application**  
-Leither provides comprehensive application development framework, within which an application is actually a type of MiMei. Refer to <a href="Applition.md"> Application System Development Documentary</a>  
+Leither provides comprehensive application system, within which an application is actually a type of MiMei. Refer to <a href="Applition.md"> Application System Documentary</a>  
 
 #### 7.3 Design Principle
 #### 7.3.1 HTML5 is the core standard and norm of internet
@@ -384,7 +384,7 @@ Most frequently used Apps are developed in HTML5, including App, website, applet
 #### 7.3.2 HTML5 is not a comprehensive internet application development solution
 HTML5 provides only localized data storage (Web Storage and IndexedDB), without setting up the standard for backend data and business logic. The result is HTML5 applications depend heavily on the backend to process business logic and data. Front-end developers fall to the lowest stratum among developers for not handling business logic and core data.
 #### 7.3.3 Leither complements the missing functions in HTML5
-Leither provides functions of authentication and authorization, application development framework, cloud file system and database, decentralized domain name resolution, error tolerance and load balance.
+Leither provides functions of authentication and authorization, application system, cloud file system and database, decentralized domain name resolution, error tolerance and load balance.
 #### 7.3.4 Leither is ideal to build cloud service
 Besides capable of building complete cloud applications, all the applications and data within Leither system is of MiMei type that is freely movable among nodes. MiMei also enabled load balance mechanism of Leither. All those powerful features make Leither ideal for building cloud service platform. The best practice of Leither App development is to execute business logic in the frontend, therefore greatly reduce the load on the backend. The same server running Leither can outperform traditional platform 100 times or more.
 #### 7.4 Advantages of Leither Cloud
