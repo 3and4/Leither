@@ -386,25 +386,25 @@ HTML5 provides only localized data storage (Web Storage and IndexedDB), without 
 #### 7.3.3 Leither complements the missing functions in HTML5
 Leither provides functions of authentication and authorization, application development framework, cloud file system and database, decentralized domain name resolution, error tolerance and load balance.
 #### 7.3.4 Leither is ideal to build cloud service
-Besides constructing
+Besides capable of building complete cloud applications, all the applications and data within Leither system is of MiMei type that is freely movable among nodes. MiMei also enabled load balance mechanism of Leither. All those powerful features make Leither ideal for building cloud service platform. The best practice of Leither App development is to execute business logic in the frontend, therefore greatly reduce the load of the backend. The same server running Leither can outperform traditional platform 100 times or more.
 #### 7.4 Advantages of Leither Cloud
-#### 7.4.1 App Development is simple
+#### 7.4.1 Simple App Development
 Knowledge of HTML5 is sufficient to build most could services, such as website, App and applet. The workflow is almost identical to a local HTML application.
 #### 7.4.2 Extremely low requirement of system resource
-Leither is developed with low CPU, low memory devices in mind. Application consumes very little system resources, because business logic is executed in frontend by default, therefore greatly reduces server load. The same server running Leither can withstand up to 100 times of workload of regular system.
+Leither is developed with low CPU, low memory devices in mind. Leither applications consume very little system resources, because business logic is executed in the frontend by default, therefore greatly reduces server load.
 
 #### 7.4.3 Low Bandwidth Cost
-For traffic heavy application, traffic load can be balanced on home network based network, and cost only 1/10th of regular network.
+For traffic heavy applications, traffic load can be efficiently balanced by nodes in users' home network. The cost of traffic is only 1/10th of regular network.
 
 #### 7.4.4 Elastic Services
-System application and data both support docker-like sandbox. Application file and database both support versioned backup. One physical machine can support multiple user, multiple Apps and their data.  
-With invariable domain name and link, App and data can flow among different physical machines.   
-elastic service is supported by decentralized domain name and MiMei.
+Leither system applications and data both support docker-like sandbox. Application file and database both support versioned backup. One physical machine can support multiple users, multiple Apps and their data. App and data can flow among different physical machines freely without changing of domain name and link address.   
+
+Elastic service of Leither platform is enabled by decentralized domain name and MiMei mechanism.
 
 ### VIII. Flow or MiMei Information
 #### 8.1 Why information must flow  
 **The meaning of life is the spread of its information**  
-Gene and Meme are the carriers of information of life, whose purpose is to occupy more time and space. Similarly the purpose of MiMei is the propagation of meaningful information.  
+Gene and Meme are the carriers of information of life, whose purpose is to occupy time and space as much as possible. Similarly the purpose of MiMei is the propagation of meaningful information.  
 
 **The flow of information appreciates its value**  
 FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The higher value of data is appreciated only when data turn into traffic. Business of data is mainly the operations of save and retrieve. However, business of data traffic involves the creation or collection of content, save, propagation, render, value appreciation and business development. Each time a content is displayed, new value is appreciated. The number of renders and the value of each display determine the value created by the content.  
