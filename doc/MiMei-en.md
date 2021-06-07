@@ -1,4 +1,4 @@
-MIMEI
+MIMEI and Application System
 ======
 ### Summary
 An alarming trend of internet in the past few decades is the fast concentration of traffics on fewer apps or sites owned by tech giants, who used their dominant control of data to influence, even manipulate user behavior for monopolistic profits, at the expense of average users. However, we hold the following truth to be self-evident, that a free and open internet is of the best interest to its users.
@@ -330,7 +330,7 @@ MFReadDir
 FSFind FSMkDir FSRemoveAll FSStat FSRename
 + Others
 MFTruncate MFCopy
-### 6.5 Database
+#### 6.5 Database
 There are two underlying databases. One is based on LevelDB and the other BoltDB. Both are revised in underlying code. LevelDB is used for current version to support read and write, consensus is based on time sequence. During a write transaction, changed data will be checked to see if it is revised by any other party during the transaction. If it does, transaction fails and initiator will be called to redo the transaction. BoltDB is used for backup version and read-only.
 
 API refers to Redis, support 5 types of data: string operation, hash, list, set, ordered set, and transaction.
@@ -365,7 +365,7 @@ In the powerful HTML5, more and more tasks in B/S model is executed in front end
 Leither API supports 40+ development languages, particular HTML5 because large number of frequently used applications are developed with HTML5, including website, App, Applet, etc. HTML5 is not perfect for the lack of standards for backend data processing and business logic. Leither supplements the shortcomings in HTML5 for building cloud applications. Leither provides user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundancy and load balance.
 
 **Business Logic in Front-end**  
-By default business logics shall be executed in front-end. The benefit is that Leither application development will be similar to single page application development, simple and easy.
+By default business logics shall be executed in the front-end. The benefit is that Leither application development will be similar to single page application development, simple and easy.
 
 **Thin Node**  
 PC and mobile phone are not suitable devices to serve as Node. Computer server is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessability. NAS and other customizable hardware are preferred equipments to run as Node. Less powerful CPU is ideal to support fine granulated Leither applications.
@@ -376,12 +376,35 @@ Because Leither node is intended to be maintained by layman, node setup and appl
 Leither node can also be optimized to support batch execution and back-end tasks.
 
 **Mimeimization of Application**  
-Leither provides comprehensive application system, within which an application is actually a type of MiMei. Refer to <a href="Applition.md"> Application System Document</a>  
+Leither provides comprehensive application system, within which an application is actually a type of MiMei. Refer to <a href="Applition.md"> Application System Documentary</a>  
+
+#### 7.3 Design Principle
+#### 7.3.1 HTML5 is the core standard and norm of internet
+Most frequently used Apps are developed in HTML5, including App, website, applet, etc.
+#### 7.3.2 HTML5 is not a comprehensive internet application development solution
+HTML5 provides only localized data storage (Web Storage and IndexedDB), without setting up the standard for backend data and business logic. The result is HTML5 applications depend heavily on the backend to process business logic and data. Front-end developers fall to the lowest stratum among developers for not handling business logic and core data.
+#### 7.3.3 Leither complements the missing functions in HTML5
+Leither provides functions of authentication and authorization, application system, cloud file system and database, decentralized domain name resolution, error tolerance and load balance.
+#### 7.3.4 Leither is ideal to build cloud service
+Besides capable of building complete cloud applications, all the applications and data within Leither system is of MiMei type that is freely movable among nodes. MiMei also enabled load balance mechanism of Leither. All those powerful features make Leither ideal for building cloud service platform. The best practice of Leither App development is to execute business logic in the frontend, therefore greatly reduce the load on the backend. The same server running Leither can outperform traditional platform 100 times or more.
+#### 7.4 Advantages of Leither Cloud
+#### 7.4.1 Simple App Development
+Knowledge of HTML5 is sufficient for most of the work to build cloud services, or develop website, App and applet independently. The workflow is almost identical to a local HTML application.
+#### 7.4.2 Extremely low requirement of system resource
+Leither is developed with low CPU, low memory devices in mind. Leither applications consume very little system resources of the node, because data and business logic are executed in the frontend, aka user's browser or App usually.
+
+#### 7.4.3 Low Bandwidth Cost
+For traffic heavy applications, traffic load can be efficiently balanced by nodes in users' home network. The cost of traffic is only 1/10th of regular network.
+
+#### 7.4.4 Elastic Services
+Leither system applications and data both support docker-like sandbox. Application file and database both support versioned backup. One physical machine can support multiple users, multiple Apps and their data. App and data can flow among different physical machines freely without changing of domain name and link address.   
+
+Elastic service of Leither platform is enabled by decentralized domain name and MiMei mechanism.
 
 ### VIII. Flow or MiMei Information
 #### 8.1 Why information must flow  
 **The meaning of life is the spread of its information**  
-Gene and Meme are the carriers of information of life, whose purpose is to occupy more time and space. Similarly the purpose of MiMei is the propagation of meaningful information.  
+Gene and Meme are the carriers of information of life, whose purpose is to occupy time and space as much as possible. Similarly the purpose of MiMei is the propagation of meaningful information.  
 
 **The flow of information appreciates its value**  
 FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The higher value of data is appreciated only when data turn into traffic. Business of data is mainly the operations of save and retrieve. However, business of data traffic involves the creation or collection of content, save, propagation, render, value appreciation and business development. Each time a content is displayed, new value is appreciated. The number of renders and the value of each display determine the value created by the content.  
