@@ -9,7 +9,7 @@ Organization is a group centered structure. User chooses to join a group after i
 The maintenance of a group is a public service, which need a block-chain like solution to coordinate the interests of its members. When more potent public service attached to a group, the group becomes an organization. Any organizational entity on internet can be created in the form of a Leither group.
 ### I. Organization Services
 Organization service is public service attached to an organization. Most of the business currently on internet can be reconstructed as organization service.
-#### 2.1 Categories of Business
+#### 2.1 Categories of Internet Business Services
 Internet business can be divided into categories of search, content, social media and tool.  
 + Search  
 Google, Amazon, Alibaba and Baidu all profit from **Information Search**  
@@ -24,4 +24,22 @@ In Leither network, content nodes implement content services in the form of MiMe
 Google Doc, online office, XMind make profits providing **Tool Services**.  
 In Leither, Tool App is also a MiMei. 
 
-### 2.2 Split of Business
+### 2.2 Split of Business Services  
+The above business service can be split and reconstructed through the coordination of the following members of Leither ecosystem.  
++ Application Development  
+Programmer and developer who develop applications for Leither ecosystem, similar to R&D in regular business.
++ Service or Content Production  
+Service provider and content producer, similar to editor of a website or operation department.
++ Service Support  
+People who provide physical devices for the whole ecosystem, different from regular internet, devices do not have to belong to a company. Similar to the role of miner in BTC.  
++ Service Promoter  
+One way is to promote web service of Leither, such as website, link, app and applet, in regular internet. Another is to create tags for content, and provide them to Search Node as public services. Similar to what operation department of a website does.  
++ Value Appreciation  
+Every node can provide services, which can be monetized and used to pay for other services. Information search and online traffics can generate great financial income, which is the foundation of the ecosystem's value.  
+Usually a block-chain like system can coordinate the investment and return of its members. More details in later chapters.  
+
+### 2.3 Service Support
+Including node management, MiMei migration, information search and group consensus.  
++ MiMei Storage  
+Leither decoupled content and service on internet into MiMei form. MiMei is saved on node. MiMei flow among nodes on demand. Service between nodes are settled with credit. Node participates in the settlement of group service by taking part in group consensus.  
++ Information Index  
