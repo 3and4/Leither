@@ -50,7 +50,21 @@ Applications such as APP, DNS and applet, that connect MiMei with regular intern
 Public service of a group. Consensus runs on all the nodes.
 
 ### III. Organization Functions
-#### 3.1 Creation  
+#### 3.1 Create Organization  
 Any user can create an organization. In the beginning, Leither creates a pair of encryption keys for the organization. Default public key ID is the organization ID. Creator is a organization member and supervisor by default. Organization has the same authorization scheme as MiMei. User identity in a group includes supervisor, member and guest.  
 
 Organization runs on the node where it is created. Distributed organization also starts to work on its creation node. The default network structure is DHT network which stores public information of the organization.
+
+Public information of the organization can be inquired through DHT network. Information of member's node can be searched through routing service. Members can send P2P message. Group chatting data belongs to public and saved on DHT network.
+#### 3.2 Join Organization  
+User can apply to join a organization directly, or send application through a member. Once supervisor confirms the application, the user becomes a member and DHT is updated with corresponding information. Member can check public information of the organization.
+
+User can also help with certain task of the organization and become a member as reward.  
+
+#### 3.3 Business Development  
+Organization business is a pack of Leither applications, which can be published as public information of the organization network.  
+For example a video website can be separated into the following sub-business:
++ Content collection and production  
++ Add tags to content  
++ Application support with resource, including storage, bandwidth, CPU, etc.  
++ 
