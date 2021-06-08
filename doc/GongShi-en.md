@@ -24,7 +24,7 @@ In Leither network, content nodes implement content services in the form of MiMe
 Google Doc, online office, XMind make profits providing **Tool Services**.  
 In Leither, Tool App is also a MiMei. 
 
-### 2.2 Split of Business Services  
+#### 2.2 Split of Business Services  
 The above business service can be split and reconstructed through the coordination of the following members of Leither ecosystem.  
 + Application Development  
 Programmer and developer who develop applications for Leither ecosystem, similar to R&D in regular business.
@@ -38,8 +38,19 @@ One way is to promote web service of Leither, such as website, link, app and app
 Every node can provide services, which can be monetized and used to pay for other services. Information search and online traffics can generate great financial income, which is the foundation of the ecosystem's value.  
 Usually a block-chain like system can coordinate the investment and return of its members. More details in later chapters.  
 
-### 2.3 Service Support
-Including node management, MiMei migration, information search and group consensus.  
+#### 2.3 Service Support
+Similar to the work of miner in BTC, including node management, MiMei migration, information search and group consensus.  
 + MiMei Storage  
-Leither decoupled content and service on internet into MiMei form. MiMei is saved on node. MiMei flow among nodes on demand. Service between nodes are settled with credit. Node participates in the settlement of group service by taking part in group consensus.  
+Leither decouples internet content and service into MiMei form. MiMei is saved on node. MiMei flow among nodes on demand. Bill of services between nodes is settled with credit. Node participates in the settlement of group services by group consensus.  
 + Information Index  
+Information of search index is stored on the Distribute Hash Table (DHT) of every online node. Node participates in the settlement of group service by group consensus.  
++ Docking Service  
+Applications such as APP, DNS and applet, that connect MiMei with regular internet. Those services run servers of regular internet and participate in the settlement of group services by group consensus.
++ Consensus  
+Public service of a group. Consensus runs on all the nodes.
+
+### III. Organization Functions
+#### 3.1 Creation  
+Any user can create an organization. In the beginning, Leither creates a pair of encryption keys for the organization. Default public key ID is the organization ID. Creator is a organization member and supervisor by default. Organization has the same authorization scheme as MiMei. User identity in a group includes supervisor, member and guest.  
+
+Organization runs on the node where it is created. Distributed organization also starts to work on its creation node. The default network structure is DHT network which stores public information of the organization.
