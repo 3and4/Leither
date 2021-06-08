@@ -67,4 +67,9 @@ For example a video website can be separated into the following sub-business:
 + Content collection and production  
 + Add tags to content  
 + Application support with resource, including storage, bandwidth, CPU, etc.  
-+ 
++ Content access channel, such as APP, applet, DNS, routing, search, etc.  
++ Promotion to send content to people who need it.  
++ Value appreciation  
+    There two types of value appreciation. In the first type, content contains information of a 3rd party who will pay for the promotion in advance. In the second type, the content is valuable to average users, who would pay for it or watch the attached commercials. Commercial business model is tried and true, a highly matured business practice in regular internet.
+
+### IV. Value System
