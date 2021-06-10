@@ -72,4 +72,17 @@ For example a video website can be separated into the following sub-business:
 + Value appreciation  
     There two types of value appreciation. In the first type, content contains information of a 3rd party who will pay for the promotion in advance. In the second type, the content is valuable to average users, who would pay for it or watch the attached commercials. Commercial business model is tried and true, a highly matured business practice in regular internet.
 
-### IV. Value System
+### IV. Valuation-based System
+**The foundation of value is meaningful work**. It is the basic principle for designing value system.  
+
+Every quantum of token shall be based on a meaningful work and the quantity of its value is based on the contribution of the work to the ecosystem, or how useful the work is.  
+
+An organization ledger in the form of a sparse Merkle Tree with versioning mechanism will be kept by consensus. Any incentives issued by the organization will have to be announced with reason and proof for publicity within the organization. Different from POW, it is called **Proof of Performance (PoP)**.  
+
+System rewards include:  
++ Structural reward  
+Rewards to member who has made fundamental contribution to establish the organization, such as founder, investor, system and App developer, who did all the absolutely necessary work to make it happen. The reward is recommended by supervisor and issued after vote of consensus.
+
++ Reward to service and content  
+Organization provides valuable service or content to users. At every step of value creation, contribution is recorded. At the point of appreciation of the value, smart contract is triggered and incentives rewarded to each member who did valuable work.
+
