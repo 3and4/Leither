@@ -73,7 +73,7 @@ For example a video website can be separated into the following sub-business:
     There two types of value appreciation. In the first type, content contains information of a 3rd party who will pay for the promotion in advance. In the second type, the content is valuable to average users, who would pay for it or watch the attached commercials. Commercial business model is tried and true, a highly matured business practice in regular internet.
 
 ### IV. Valuation-based System
-**The foundation of value is meaningful work**. It is the basic principle for designing value system.  
+**The foundation of value is meaningful work**. It is the basic principle for designing valuation-based system.  
 
 Every quantum of token shall be based on a meaningful work and the quantity of its value is based on the contribution of the work to the ecosystem, or how useful the work is.  
 
@@ -83,6 +83,28 @@ System rewards include:
 + Structural reward  
 Rewards to member who has made fundamental contribution to establish the organization, such as founder, investor, system and App developer, who did all the absolutely necessary work to make it happen. The reward is recommended by supervisor and issued after vote of consensus.
 
+The reward is for creating the organization.  
+
 + Reward to service and content  
 Organization provides valuable service or content to users. At every step of value creation, contribution is recorded. At the point of appreciation of the value, smart contract is triggered and incentives rewarded to each member who did valuable work.
 
+The reward can be distributed by fixed proportion or dynamically balanced following the following mimic process.  
+1. Developer writes a content collection plugin.  
+2. Collector uses the plugin to gather content from internet, turn it into MiMei, and publish the MiMei onto Leither network. MiMei will indicate collector of its content.  
+3. Operator push the content to users through channels such as App, applet, website, or group message.  
+4. User browse the content, commercials are displayed, maybe even clicked.  
+5. Checking mechanism is built in the commercials. Once displayed, it will trigger the smart contract, which then transfers tokens from advertiser's account to each participators of the whole process, respectively.  
+
+The reward mechanism will feedback the healthy development of the organization and the growth of usefulness.  
+
++ Mining Reward  
+Same as any other mining, all the online nodes can join vote and contract service. Reward for new block will be used to support the network, manage public information and routing service.  
+
+The reward makes sure that organization stays active.
+
++ Operation Reward  
+In the beginning when the system cannot sustain itself with insufficient content and service. Extra incentives can be rewarded to accelerate the growth of an infant system.
+
+The reward helps the organization to mature faster.  
+
+### V. Basic Concept
