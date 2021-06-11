@@ -108,3 +108,39 @@ In the beginning when the system cannot sustain itself with insufficient content
 The reward helps the organization to mature faster.  
 
 ### V. Basic Concept
+**DHT network**  
+Distributed Hash Table (DHT) is used to build basics of network topology where nodes are organized by their IDs, so that DHT can provide routing function for the organization.
+
+Node ID can be used to locate a node quickly and access information of the node. Information of the organization can be saved over the whole network in distributed method.  
+
+**Sparse Merkle Tree**  
+is constructed for consensus data, to save the core information of an organization, similar to the public ledger of block-chain.
+
+Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of equilibrium probability, which makes it possible to manipulate the tree without changing its structure extensively. Compared with other method, the merit of jump-table costs a little bit of performance, but still on the same order of magnitude. Leither introduced a similar algorithm, Sparse Merkle Tree, to improve Merkle tree.
+
+Leither ID is a hash key of 160 bit. All of the possible IDs can occupy a binary tree of height 160. Every ID has a fixed location on the tree. Because the real number of IDs is far less than the number of possible leaves, the tree is a sparse tree.  
+
+If a tree-node has only one child, the branch can be shorten by moving the child node up one level to replace its parent. This simple optimization can reduce the height of the tree tremendously. If ID is randomly generated, the number of IDs is N, then most of the IDs will be on leaf-node at level log2(n)+1. The closer to the root-node, denser the tree. The addition or removal of a tree-node only effects its own branch.  
+
+Fast search of a tree-node is essential to implementation of network pulse  
+
+**Network Pulse**  
+is an incremental sequence number generated simultaneously by some trusted Leither nodes that are chosen by an algorithm that guarantees a fair and unpredictable selection. 
+
+The sequence number serves as the synchronization timer of each node, or the version number of its data. Within each cycle, every node backups the new data from last cycle. Each node is responsible to process data for several layers of Merkle tree, according to the height of the tree. The work done is similar to the proof of work in BTC, and will be rewarded by the system.  
+
+**Time-space Versioning**  
+In LevelDB write stream of new variables can optimize write operation so much that it exceeds even the speed of database reading. On the other hand, sequence number at the end of key indicates the version number, and history record can be inquired with version number. Pulse is the equivalent of sequence number in levelDB. With version number, bookkeeping data can be quickly recorded in each cycle.
+
+The same operation can also be used to record multi-dimension Merkle tree. Because no other branch is affected except the one where the node is on. The current version of tree is almost identical to the previous one, so only the minor difference need to be processed.
+
+The underlying MiMei database has already built in with similar function to support time-space versioning.
+
+**Network Partition**  
+Partition enables two functionalities. The first one is elastic concurrency support. The second is an opaque network with different shades of gray.
+
+Within every cycle of pulse, trustworthy nodes will be chosen to process layers of nodes on the tree. Each layer has a backup candidate to safeguard the network. The leaf nodes process specific task. Upper level nodes merge new information of revised branches into the tree, including generating synopsis.
+
+Top layer information is synchronized over the whole Leither network.
+
+### VI. Related Procedures
