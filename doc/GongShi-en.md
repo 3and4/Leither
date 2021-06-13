@@ -137,7 +137,7 @@ The same operation can be applied to multi-dimension Merkle tree. Because branch
 The underlying MiMei database has already built in with similar functions to support time-space versioning.
 
 **Network Partition**  
-Partition enables two functionalities. The first one is elastic concurrency support. The second is an opaque network with variable shades of gray.
+Partition enables two unique advantages. The first one is elastic concurrency support. The second is an opaque network with variable shades of gray.
 
 In each pulse cycle, trustworthy Leither nodes will be chosen to process several layers of nodes on the tree. Each layer is appointed with a backup candidate to safeguard the network. The Leither nodes that are assigned to the lowest leaf layers process specific business instructions. Upper layers only merge changed child-branches into the tree, and generate synopsis.
 
@@ -152,4 +152,4 @@ Ledger is a sparse Merkle tree with time-space versioning. In order to keep netw
 **Organization Distribute**  
 The very first token distribution will be announced network wide, with reasons for scrutiny by the members. However the transfer of tokens between users is private, or public only to the relevant nodes.  
 **Transfer between users**  
-The transaction between two users is relevant only to themselves. After the transaction is confirmed, information attached with signatures of both users will be sent to the parent nodes of the users on Merkle tree respectively. Each parent node will record the changes in its own branch and broadcast the information among backup nodes in the same level. After new time sequence is created (less than 1s), transaction data becomes read only. Trustee nodes begin to check the branch bottom up and assemble branch information, generate synopsis.  Level 1 trustee node assemble information and generate synopsis for the topmost node, and broadcast to nodes on each level. Both parties of a transaction record time sequence, synopsis of each level and its own account information. Transaction is finalized. One transaction waits at most 2 pulses (2s).
+The transaction between two users is relevant only to themselves. After the transaction is confirmed, information attached with signatures of both users will be sent to the parent nodes of the users on Merkle tree respectively. Each parent node will record the changes in its own branch and broadcast the information among backup nodes in the same level. After new time sequence is created (in less than 1s), transaction data becomes read only. Trustee nodes begin to check the branch bottom up and assemble branch information, generate synopsis.  Level 1 trustee node assemble information and generate synopsis for the topmost node, and broadcast to nodes on each level. Both parties of a transaction record time sequence, synopsis of each level and its own account information. Transaction is finalized. One transaction waits at most 2 pulses (2s).
