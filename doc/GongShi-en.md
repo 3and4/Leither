@@ -124,7 +124,7 @@ If a tree-node has only one child, the branch can be shorten by moving the child
 
 Fast search of a tree-node is essential to implement functions such as time-space versioning, pulse, partition, fund transfer and contract, which will be described later in this chapter. Information of each account is on the leaf node of the tree. Each branch use hashes of children nodes and summary information to generates its own hash.  
 **Network Pulse**  
-is an incremental sequence number broadcasted top down by root node in every **Pulse Cycle**. A pulse cycle is 1 second. During a 30 minutes (by default) **Election Cycle**, several trustworthy Leither nodes are eleceted as **Bookkeeper**. 
+is an incremental sequence number broadcasted top down every **Pulse Cycle**. A pulse cycle is 1 second.  
 
 The sequence number serves as the synchronization timer of each node, and version number of its data. Within a pulse cycle, every node backups the new data received in last one. According to the hight of Merkle tree, each node is responsible to process data for several layers. The work done is called **Proof of Perfromance**, similar to PoW in BTC, and will be rewarded by the system.  
 
@@ -138,7 +138,7 @@ The underlying MiMei database of Leither has already built in with similar funct
 **Network Partition**  
 Partition enables two unique advantages. The first one is elastic concurrency support. The second is an opaque network with variable shades of gray.
 
-In each pulse cycle, trustworthy Leither node (**Bookkeeper**)) will be elected to process the branch where it resides. Each branch is also appointed a backup candidate to safeguard the network. The Leither nodes that are assigned to the lowest leaf layers process specific business instructions. Upper layers only merge changed child-branches into the tree, and generate synopsis.
+A **Election Cycle** is 30 minutes (by default), during which trustworthy nodes are eleceted as **Bookkeeper**. Each branch is also appointed a backup candidate to safeguard the network. The Leither nodes that are assigned to the lowest leaf layers process specific business instructions. Upper layers only merge changed child-branches into the tree, and generate synopsis.
 
 Top layer information is synchronized over the whole Leither network.
 
