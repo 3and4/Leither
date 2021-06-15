@@ -126,7 +126,7 @@ Fast search of a tree-node is essential to implement functions such as time-spac
 **Network Pulse**  
 is an incremental sequence number broadcasted top down every **Pulse Cycle**. A pulse cycle is 1 second.  
 
-The sequence number serves as the synchronization timer of each node, and version number of its data. Within a pulse cycle, every node backups the new data received in last one. According to the hight of Merkle tree, each node is responsible to process data for several layers. The work done is called **Proof of Perfromance**, similar to PoW in BTC, and will be rewarded by the system.  
+The sequence number serves as the synchronization timer of each node, and version number of its data. Within a pulse cycle, every node backups the new data received in last one. According to the hight of Merkle tree, each node is responsible to process data for several layers. The work done is called **Proof of Performance**, similar to PoW in BTC, and will be rewarded by the system.  
 
 **Time-space Versioning**  
 In LevelDB, writing of new data using writeStream can be optimized up to the speed limit of storage media, even faster than database reading. On the other hand, sequence number concatenated at the end of the key serves as the revised version number, with which historical record can be inquired. Network Pulse is equivalent of generating sequence version number in levelDB, with which ledger data can be quickly recorded in each cycle.
@@ -138,7 +138,7 @@ The underlying MiMei database of Leither has already built in with similar funct
 **Network Partition**  
 Partition enables two unique advantages. The first one is elastic concurrency support. The second is an opaque network with variable shades of gray.
 
-A **Election Cycle** is 30 minutes (by default), during which trustworthy nodes are eleceted as **Bookkeeper**. Each branch is also appointed a backup candidate to safeguard the network. The Leither nodes that are assigned to the lowest leaf layers process specific business instructions. Upper layers only merge changed child-branches into the tree, and generate synopsis.
+A **Election Cycle** is 30 minutes (by default), during which trustworthy nodes are elected as **Bookkeeper**. Each branch is also appointed a backup candidate to safeguard the network. The Leither nodes that are assigned to the lowest leaf layers process specific business instructions. Upper layers only merge changed child-branches into the tree, and generate synopsis.
 
 Top layer information is synchronized over the whole Leither network.
 
@@ -148,7 +148,7 @@ After user joins an organization, it becomes a member of DHT network. User write
 #### 6.2 Ledger Construction  
 Ledger is a sparse Merkle tree with time-space versioning. In order to keep network wide messages in sync, the whole network will share a time sequence variable, aka Time Sequence. Its initial value is 0, system generates one pulse periodically (1s by default). If system state changes, time sequence increments. Other wise, it stays put.  
 
-System elects priodically some **Bookkeepers**, who backups each other. The first one is chief bookkeeper. The term of bookkeeper is one **Election Cycle** (30min by default). Each branch is responsible to a few layers.  
+System periodically elects **Bookkeepers**, who backups each other. The first one is chief bookkeeper. The term of bookkeeper is one **Election Cycle** (30min by default). Each branch is responsible to a few layers.  
 #### 6.3 Transfer Procedure  
 **Organization Distribute**  
 The very first token distribution will be announced network wide, with reasons for scrutiny by the members. However the transfer of tokens between users is private, or public only to the relevant nodes.  
@@ -158,22 +158,41 @@ The transaction between two users is relevant only to themselves. After the tran
 Both parties of a transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed. One transaction waits at most 2 pulse cycles(2s).
 
 **Dispute Handling**  
-Every transaction must have sufficient security deposit and enough time for other nodes to verify it. Transaction will be processed by multiple nodes simutaneously. Bookkeeper and backup bookkeeper are randomly assigned to avoid collusion. If any node disputes the transaction, dispute resolution procedure kicks in. During the procedure, all relevant funds are frozen.
+Every transaction must have sufficient security deposit and enough time for other nodes to verify it. Transaction will be processed by multiple nodes simultaneously. Bookkeeper and backup bookkeeper are randomly assigned to avoid collusion. If any node disputes the transaction, dispute resolution procedure kicks in. During the procedure, all relevant funds are frozen.
 
-All of the nodes check the disputed transaction and vote according to the result. Desposit of the erroneous node will be confiscated. Bookkeeper can only handle the amount of transaction that the frozen fund can cover.
+All of the nodes check the disputed transaction and vote according to the result. Deposit of the erroneous node will be confiscated. Bookkeeper can only handle the amount of transaction that the frozen fund can cover.
 
 **Legitimacy Check**  
 The relevant parties check the legitimacy of the transaction.   
 The general bookkeeper checks the overall account balance.   
 The branch bookkeeper verifies the legitimacy of transactions on its branch.   
-Each leaf node checks the balance of its neighbours and the sanity of their account, each time when it synchronizes with them.  
+Each leaf node checks the balance of its neighbors and the sanity of their account, each time when it synchronizes with them.  
 
 **Redundancy Backup**  
-The minority of bookkeepers save all the account information on the branch. In order to keep the network robust, all nodes are encouraged to redundantly backup account information of its neighbours.
+The minority of bookkeepers save all the account information on the branch. In order to keep the network robust, all nodes are encouraged to redundantly backup account information of its neighbors.
 
-There are two methods. Ordinary account can audit the transaction information of nearby branches and earn reward. For illegal transactions, freeze account information of neighbouring braches until the state of their accounts recuperate. Number of neighbouring nodes could be 1,3,7,15,31,63,255.  
+There are two methods. Ordinary account can audit the transaction information of nearby branches and earn reward. For illegal transactions, freeze account information of neighboring branches until the state of their accounts recuperate. Number of neighboring nodes could be 1,3,7,15,31,63,255.  
 
 All of the nodes will strive to maintain the health of the network, in order to earn reward and avoid loss.  
 Because of the redundant backup, minority of the nodes can recover the whole network after a crash.  
-Redundant backup happens when bookkeepers broadcast information after their books updated.  
-Network recovery happens at the information verification when a node getting online.  
+Redundant backup happens when bookkeepers broadcast information after their finished their tasks.  
+Network recovery happens at information verification when a node getting online.  
+
+#### 6.4 Dispute Handling**  
+**Publicity**  
+Every transaction has a period of publicity, 24hrs by default. If other nodes find any problem, the transaction will be reported and dispute handling procedure kicks in.  
+**Fundtime**  
+Every transaction deals with different amount of fund. Every bookkeeper and auditor pledge different amount of credit. Therefore a new concept _Fundtime_ is coined for the convenience of calculation.  
+Fundtime = Amount of Fund x Time during which the fund is occupied  
+For transaction,   
+Fund = transaction amount, time = time of publicity  
+For auditing and bookkeeping,  
+Fund = amount of credit pledged, time = time of fund frozen  
+**Accumulated Audit Period**  
+Accumulated (for auditing or bookkeeping) Fundtime / transaction amount  
+**Transaction Security Threshold**  
++ Minimum number of users who audit a transaction  
++ Minimum accumulated audit period  
+    Security threshold sets the minimum auditing cost, so that the cost of mining and service fee can be estimated. Accumulated audit period of a normal transaction will be 1.  
+    Different audit period has different value, therefore different system reward.  
+**Dispute Procedure and Penalty**  
