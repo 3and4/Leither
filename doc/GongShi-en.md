@@ -153,4 +153,27 @@ System elects priodically some **Bookkeepers**, who backups each other. The firs
 **Organization Distribute**  
 The very first token distribution will be announced network wide, with reasons for scrutiny by the members. However the transfer of tokens between users is private, or public only to the relevant nodes.  
 **Transfer between users**  
-The transaction between two users is relevant only to themselves. After the transaction is confirmed, information attached with signatures of both users will be sent to the parent nodes of the users on Merkle tree respectively. Each parent node will record the changes in its own branch and broadcast the information among backup nodes in the same level. After new time sequence is created (in less than 1s), transaction data becomes read only. Trustee nodes begin to check the branch bottom up and assemble branch information, generate synopsis.  Level 1 trustee node assemble information and generate synopsis for the topmost node, and broadcast to nodes on each level. Both parties of a transaction record time sequence, synopsis of each level and its own account information. Transaction is finalized. One transaction waits at most 2 pulse cycles (2s).
+The transaction between two users is relevant only to themselves. After the transaction is confirmed, information attached with signatures of both users will be sent to the parent nodes of the users on Merkle tree respectively. Each parent node will record the changes in its own branch and broadcast the information among backup nodes in the same level. After new time sequence is created (in less than 1s), transaction data becomes read only. Bookkeepers begin to check the branch bottom up and summarize branch information to generate synopsis. The chief bookkeeper summarizes summarize general information and generate synopsis for the tree, and broadcast top down to each level.
+
+Both parties of a transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed. One transaction waits at most 2 pulse cycles(2s).
+
+**Dispute Handling**  
+Every transaction must have sufficient security deposit and enough time for other nodes to verify it. Transaction will be processed by multiple nodes simutaneously. Bookkeeper and backup bookkeeper are randomly assigned to avoid collusion. If any node disputes the transaction, dispute resolution procedure kicks in. During the procedure, all relevant funds are frozen.
+
+All of the nodes check the disputed transaction and vote according to the result. Desposit of the erroneous node will be confiscated. Bookkeeper can only handle the amount of transaction that the frozen fund can cover.
+
+**Legitimacy Check**  
+The relevant parties check the legitimacy of the transaction.   
+The general bookkeeper checks the overall account balance.   
+The branch bookkeeper verifies the legitimacy of transactions on its branch.   
+Each leaf node checks the balance of its neighbours and the sanity of their account, each time when it synchronizes with them.  
+
+**Redundancy Backup**  
+The minority of bookkeepers save all the account information on the branch. In order to keep the network robust, all nodes are encouraged to redundantly backup account information of its neighbours.
+
+There are two methods. Ordinary account can audit the transaction information of nearby branches and earn reward. For illegal transactions, freeze account information of neighbouring braches until the state of their accounts recuperate. Number of neighbouring nodes could be 1,3,7,15,31,63,255.  
+
+All of the nodes will strive to maintain the health of the network, in order to earn reward and avoid loss.  
+Because of the redundant backup, minority of the nodes can recover the whole network after a crash.  
+Redundant backup happens when bookkeepers broadcast information after their books updated.  
+Network recovery happens at the information verification when a node getting online.  
