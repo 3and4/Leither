@@ -196,3 +196,63 @@ Accumulated (for auditing or bookkeeping) Fundtime / transaction amount
     Security threshold sets the minimum auditing cost, so that the cost of mining and service fee can be estimated. Accumulated audit period of a normal transaction will be 1.  
     Different audit period has different value, therefore different system reward.  
 **Dispute Procedure and Penalty**  
+All of the online nodes will be responsible to audit transactions within a certain scope.  
+
+#### 6.5 Smart Contract
+Smart contract is similar to transfer procedure. A contract includes smart code, signature of consignor, upper limit of contract. The bookkeeper in upper level by default is responsible to execute the contract. User can also appoint a consignee node. For complicated contract, if unforeseeable risk is too high, the security deposit of nodes executing and checking the contract shall be raised to cover the risk. It is equivalent to a third party endorse the contract with its own credit and earn corresponding reward.
+
+When dispute happens, the whole network joins dispute handling procedure. The nodes that vote must freeze some of its own asset. After the dispute, the wrong side will lost its frozen asset.  
+
+#### 6.6 Account Inquiry  
+Information of system account is public, but regular user account is private and cannot be inquired. However authenticity of account information that user chooses to demonstrate can be verified by checking the synopsis recorded in public ledger. The truthfulness of synopsis can be confirmed by checking synopsis of child branches.  
+### VII. Privacy and Transaction Security
+#### 7.1 Privacy and Consensus  
+**Conflict**  
+In traditional block-chain, consensus is based on transparency. If account information is hidden, there is not way to confirm the legitimacy of a transaction. The buyer might spend more than it owns.  
+**Solution**  
+For parties not involved in a transaction, the purpose of information is more likely to avoid potential harm of ignorance, rather than voyeurism. If a proper balance can be reached, there is no need for the others to know the detail of a deal.  
+**Premise and Principles**  
+The premise and principles for anonymity of personal information is that the parties involved in a deal and the others do no harm to each other.  
+#### 7.2 Transaction Security  
+To avoid collateral damage, it is necessary to make every member of an organization believes a deal is legal.  
+#### 7.2.1 Safety Conditions  
+Legal transaction must meet the following conditions.  
++ Truthful intention  
+The deal is confirm by both parties.
++ True deal  
+The seller has sufficient commodity to trade.  
+Fund transferred cannot be negative.  
+No negative account after the transaction.  
++ Balanced Account  
+Without system reward, the overall account balance do not change after a transaction.  
+System reward can be counted as a transfer from organization to users, therefore total account balance still do not change.  
+#### 7.2.2 Safety Analysis  
++ Transaction parties' responsibility   
+The seller will strictly check the safety conditions above, otherwise it will not receive the fund.  
+The buyer will also double check the parameters and procedure of the transaction, for illegal deal will be punished by the organization.  
++ Other members  
+The other parties need to check if there is any fake transaction or account balance issue, in order to protect themselves from collateral damage.  
++ Other Child Organization  
+Child Organization: Every account ID is a 160 bit number on a Merkle tree. If subnet mask of Ethernet can be applied to mask account ID's bit one at a time, one account can belong to 160 child organization (sub-tree) simultaneously.  
+
+The question of collateral damage can be restated. Any child organization that does not include transaction party only need to verify there is no fake deal or account balance issue within the child organization that includes a transaction party.  
+
+#### 7.3 Anonymity Strategy  
+**Child Organization Opacity**  
+If an child organization is a unit of settlement, transaction information can be hidden within the child-organization. Any other user only need to worry about the general account balance of the child organization and legal.  
+**Third Party Opacity**  
+If there is a third party endorsement to ensure no collateral damage to the others irrelevant to the deal, transaction information can be revealed in delayed time.  
+**Translucent Network**  
+During redundant backup, information of an account is backup only by a few accounts nearby. Accounts faraway can only acquire summarized information by a few top layer accounts, without knowing any details of the lower layers. This strategy both guarantees the transaction information safely confirmable, and also the anonymity of information.  
+
+#### 7.4 Anonymity Method  
+The following method to implement information anonymity.
+**Credit Endorsement**  
+A third party can be appointed to endorse a transaction. Bookkeeper is the default executive. Transaction runs on a branch. Because there is an endorser to pledge for the transaction, third party will not take damage.  
+**Neighbor Check**  
+After a transaction is committed and Merkle tree changed, bookkeeper must broadcast the information. The neighbors of the transaction parties will get details because they provide redundant backup, so they must verify the transaction and check the Merkle tree.  
+
+If error happens, dispute procedure kicks in. Except a few bookkeepers and neighbors, most of the users will not receive transaction details.
+
+### VIII. Quantitative Analysis
+Usee BTC as reference, currently there are about 30 million accounts and the average number of transaction is 6.67 per second.
