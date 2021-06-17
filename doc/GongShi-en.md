@@ -73,7 +73,7 @@ For example a video website can be separated into the following sub-business:
     There two types of value appreciation. In the first type, content contains information of a 3rd party who will pay for the promotion in advance. In the second type, the content is valuable to average users, who would pay for it or watch the attached commercials. Commercial business model is tried and true, a highly matured business practice in regular internet.
 
 ### IV. Valuation-based System
-**The foundation of value is meaningful work**. It is the basic principle for designing valuation-based system.  
+**Value is created meaningful work**. It is the basic principle for designing valuation-based system.  
 
 Every quantum of token shall be based on a meaningful work and the quantity of its value is based on the contribution of the work to the ecosystem, or how useful the work is.  
 
@@ -256,3 +256,43 @@ If error happens, dispute procedure kicks in. Except a few bookkeepers and neigh
 
 ### VIII. Quantitative Analysis
 Usee BTC as reference, currently there are about 30 million accounts and the average number of transaction is 6.67 per second.
+Analysis Leither network performance with the following assumptions:  
++ Number of accounts 2^32 = 4.3 billions  
++ Transaction concurrency 1 million/s  
++ Pulse cycle 1 second  
++ Election cycle 30 minutes  
+Most of the nodes are located at Layer-32. Let's separate the network into 2 16-layers. Each node need 28 bytes (8 bytes for branch, 20 for synopsis). For 1 million/s concurrency, assume each one involves 2 users. On average, each branch processes about 30 transactions per second.  
+
+**Miner HD usage**  
+Data storage for one branch is 1.8MB. If a miner need to save 2 layers of data, 3.6MB HD is need.  
+**Miner memory usage**  
+Only online nodes need memory space from a miner.  
+For root node miner, most branches need to be processed online. All 1.6MB need to be kept in memory.  
+For sub-branch miners, there are only 30 some transactions per second. No need to keep everything in memory, read related data and synopsis of neighbor branches when necessary. The data amount is 30*16*2*28 byte = 7.5KB. Times of database access is 90.  
+**Miner CPU usage**  
+CPU usage is mainly for verifying transactions and generating synopsis.  
+Root node must calculate every transaction, which means 16 million synopses. However in reality only need to calculate once network wide in each pulse cycle, which is 131,000*20 byte = 2.5MB data.  
+Branch root node need to verify the whole branch, which requires 30*(16+16), and calculate 96 synopses.  
+**Traffic load among miners**  
+The search for a node is load-balanced on each node within a DHT network, therefore the amount of traffic is negligible.    
+The network structure of ledger is predetermined within an election cycle. Traffic load in fixed network is negligible.  
+Transaction between users is handled by the branch node of each transaction party. Traffic load of average 30 transactions is small.  
+
+Traffic load of root node need to be examined closely below.  
+Root node must broadcast to backup miners and branch nodes. The traffic to backup miner is 2.5MB/s. If broadcast is B-tree, total data is 5MB. If data is delivered to node one by one, total data traffic is number 1.5MB * num_of_miners. The total data amount to sub-miners is 16*2*28896 byte = 56 MB/s.
+
+This workload is more than a regular node. A load-balance middle layer can be added to solve the problem. A layer of nodes that handle 8 layers of the B-tree can reduce the communication load to 224 KB/s.
+
+**Communication time among miners**  
+The process of data involves 3 to 4 layers of nodes.  
+The submission and verification of a transaction happen in two pulse cycles.  
+Submission is delivered to branch root node, and done in one hop of communication.  
+Verification is delivered to root node, which need to broadcast to child node once or twice after the information is processed.  
+Most of the operation can be done with less than 10 hops of communication. Normally it takes less than 2 pulse cycles.
+
+Based on the above analysis, with equipment and bandwidth of home network, it is completely feasible to establish decentralized network of 4.3 billion users and support 1 million/s concurrency.  
+
+### IV. Structural Summary
+The overall plan of this paper can be summarized in the following key points.
+#### 9.1 Credential is the result of meaningful work.
+Value is created by the 
