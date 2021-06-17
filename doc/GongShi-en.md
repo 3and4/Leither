@@ -295,4 +295,41 @@ Based on the above analysis, with equipment and bandwidth of home network, it is
 ### IV. Structural Summary
 The overall plan of this paper can be summarized in the following key points.
 #### 9.1 Credential is the result of meaningful work.
-Value is created by the 
+Value is created by work that is meaningful to others. Leither created the original credential system with the meaningful of work. Every quantum of credit corresponds to a piece of work result, so credit can be used to exchange for product and service.  
+
+Comparatively, the meaningful work in block-chain is just bookkeeping, which is at lower end in the chain of value.  
+#### 9.2 Interaction is based on credit
+Credit can endorse any transaction on network. The encryption system is a mechanism to prove user authentication and information. Miner pledges its credit to ensure the others that it will do a good job, otherwise be punished accordingly.  
+
+With security deposit and arbitration mechanism, complicated smart contract can be implemented to support large scale interactions among multiple parties. All of these operations rely on the most basic PKI algorithm, even the cheapest devices are powerful enough to support. Comparatively, traditional block-chain depends on more and more on dedicated devices and squander expensive electricity.  
+#### 9.3 Completeness of time-space comes from synopsis and time sequence
+Leither system defines a 160-bit account space to accommodate all possible accounts on a sparse Merkle.  
+All account information stored on leaf-node, and summarized bottom up to the root-node. The state of the whole system can be represented by one synopsis.  
+Time sequence is used to coordinate all the nodes, and record state of time-space at different stages. Time sequence also solved CAP problem in distributed network.  
+#### 9.4 Division of work and coordination improve processing power as a whole
+Network nodes can be partitioned into layers according to the scale of the network. Transaction data are saved on user nodes. Consensus is confirmed at branch nodes. Data synced network wide is tiny amount of synopses and summaries.  
+
+Network can be more stable and robust by adding proper number of backup nodes. Comparatively, in regular block-chain except large number of miners of PoW, all the bookkeeping is accomplished by all the nodes together, which greatly restricted network scale and throughput.  
+#### 9.5 Endorsement and shade of grey solves privacy problem
+### V. Advantages of Leither compared with regular block-chain
++ Functionality
+With MiMei and Leither application system, most regular internet platforms can be reconstructed as user oriented network.  
+With organization and consensus, Leither can implement most of the ethereum functionalities and organize all the participants.  
+The above functions combined can give internet back to its users from the grip of oligarchies.  
++ Value  
+Traditional block-chain does bookkeeping for others.  
+Every organization of Leither has a mission to decentralize an internet application, to give user control of its data, to satisfy user need first and foremost. The action of every participant has real value, in order to take back the outrageous profit of oligarchies and redistribute it user oriented.  
++ Cost  
+Mining of regular block-chain is hugely expensive because of all the machines and electricity cost to do the most basic work.  
+In Leither, consensus is achieved by doing the very job of internet business. Tv box, router, NAS, smart phone, even Raspberry zero worth $10 can provide valuable services and ROI much higher than mining machine.  
++ Efficiency  
+Leither elastic system can scale according to business request. Workload is balanced on to every node through consensus.  
+The most business load, the more nodes and powerful the network processing capacity, far exceeds that of regular block-chain. Because of its high efficiency, a few nodes can construct their own business and consensus mechanism.  
++ Privacy  
+In regular block-chain, flow of every account is open book. Even though account is anonymous, it is possible to identify the account by analyzing flow information.  
+In Leither, except the earliest contribution of a user need to be publicized for auditing. All the transaction afterward only need to open to related parties and a few nodes. The whole network has a shade of grey. Creator can set translucency to protect privacy.  
++ Lawfulness  
+The token of Leither has corresponding service as object. It is more like the points, notes, share, Q coin, etc. It has many reference in reality. It is perfectly legal.  
+On business form, it is similar to early Taobao business, completely decentralized and conducted in the name of individual.
+
+Smart contract is dealing with real business data, avoid the falling hole of ethereum that it can only process virtual business such as encryption coin.  
