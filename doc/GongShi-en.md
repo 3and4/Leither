@@ -12,14 +12,14 @@ Organization service is public service attached to an organization. Most of the 
 #### 2.1 Categories of Internet Business Services
 Internet business can be divided into categories of search, content, social media and tool.  
 + Search  
-Google, Amazon, Alibaba and Baidu all profit from **Information Search**  
-In Leither network search data is stored by special searching node in distributed mechanism. User can search for multi-dimension results by selecting different searching node.  
-+ Social  
-FB,Twitter, Wechat make huge profits by controlling the **Social Relationship** data of users.  
-In Leither network, data of social connections are saved by user itself. Corresponding messages, App and service are also selected by user, the owner.  
+Google, Amazon, Alibaba and Baidu all profit from **Information Search**.  
+In Leither network，any user can create its own search preference and strategy, or filter and summarize search results from 3rd parties. Therefore search service will not be controlled by a few providers, instead user can take control of and decide its own search information.  
++ Social service  
+FB, Twitter, Wechat make huge profits by controlling the **Social Relationship** data of users.  
+In Leither network, data of social connections are saved by user owned devices, therefore all of the attached messages, Apps and services are also selected by user.  
 + Content and Service  
 On-line video, music and news media provide **Content and Service**.
-In Leither network, content nodes implement content services in the form of MiMei. MiMei can flow among nodes and not under the influence of monopoly any more. User can collect its own data from internet using plug-ins and save it on its own node.  
+In Leither network, content nodes implement content services in the form of MiMei. MiMei can flow among nodes that are not under the control of oligarchies any more. User can collect its own data from internet using plug-ins and save it on its own node.  
 + Tool  
 Google Doc, online office, XMind make profits providing **Tool Services**.  
 In Leither, Tool App is also a MiMei. 
@@ -108,21 +108,17 @@ In the beginning when the system cannot sustain itself with insufficient content
 The reward helps the organization to mature faster.  
 
 ### V. Basic Concept
-**DHT network**  
-Distributed Hash Table (DHT) is used to build basics of network topology where nodes are organized by their IDs, so that DHT can provide routing function for the organization.
-
-Node ID can be used to locate a node quickly and access information of the node. Information of the organization can be saved over the whole network in distributed method.  
+**Distributed Hash Table (DHT) network**  
+In DHT network, node can be quickly located by its ID, to access its information. Public information of an organization can also be saved over the whole network distributively.  
 
 **Sparse Merkle Tree**  
-is constructed for consensus data, to save the core information of an organization, similar to the public ledger of block-chain.
+Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of **equilibrium probability**, which makes it possible to manipulate a tree without changing its structure substantially. Compared with other algorithms, jump-table has a little bit of impact on performance, but still keeps the computation complexity at the same order of magnitude. Using the same algorithm, Merkle Tree is improved to create so called **Sparse Merkle tree**, which is used to hold core information of an organization, similar to the public ledger of a block-chain.
 
-Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of equilibrium probability, which makes it possible to manipulate the tree without changing its structure extensively. Compared with other method, the merit of jump-table costs a little bit of performance, but still on the same order of magnitude. Leither introduced a similar algorithm, Sparse Merkle Tree, to improve Merkle tree.
+Each leaf node of a sparse Merkle tree stores account information of an organization member. Account number is the member's ID that is the hash of the member's public key. Each ID is 160 bit long. All of the possible IDs can fill up the leaf nodes of a binary tree of height 160. Because the actual number of IDs is far less than the number of possible leaves, the tree is a sparse tree.  
 
-Leither ID is a hash key of 160 bit. All of the possible IDs can occupy a binary tree of height 160. Every ID has a fixed location on the tree. Because the real number of IDs is far less than the number of possible leaves, the tree is a sparse tree.  
+If a tree-node has only one child, the branch can be shorten by moving the child node up one level to replace its parent. This simple optimization can reduce the height of the tree tremendously. If the number of randomly distributed IDs is n, then most of the IDs will be on leaf-node at level log2(n)+1. The closer to the root-node, denser the tree. The addition or removal of a tree-node, or changes of account information, only effects the branch where the node is on.  
 
-If a tree-node has only one child, the branch can be shorten by moving the child node up one level to replace its parent. This simple optimization can reduce the height of the tree tremendously. If ID is randomly generated, the number of IDs is N, then most of the IDs will be on leaf-node at level log2(n)+1. The closer to the root-node, denser the tree. The addition or removal of a tree-node only effects its own branch.  
-
-Fast search of a tree-node is essential to implement functions such as time-space versioning, pulse, partition, fund transfer and contract, which will be described later in this chapter. Information of each account is on the leaf node of the tree. Each branch use hashes of children nodes and summary information to generates its own hash.  
+On this tree, the account information of on a leaf node can be quickly located, which is essential to the implementation of time-space versioning, network pulse, network partition, fund transfer and smart contract. Information of each account is on the leaf node of the tree. Each branch use hashes of its root node's children and account sum to generates its own hash.  
 **Network Pulse**  
 is an incremental sequence number broadcasted top down every **Pulse Cycle**. A pulse cycle is 1 second.  
 
@@ -311,7 +307,7 @@ Network nodes can be partitioned into layers according to the scale of the netwo
 
 Network can be more stable and robust by adding proper number of backup nodes. Comparatively, in regular block-chain except large number of miners of PoW, all the bookkeeping is accomplished by all the nodes together, which greatly restricted network scale and throughput.  
 #### 9.5 Endorsement and shade of grey solves privacy problem
-### V. Advantages of Leither compared with regular block-chain
+### X. Advantages of Leither compared with regular block-chain
 + Functionality
 With MiMei and Leither application system, most regular internet platforms can be reconstructed as user oriented network.  
 With organization and consensus, Leither can implement most of the ethereum functionalities and organize all the participants.  
