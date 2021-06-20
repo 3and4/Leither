@@ -112,22 +112,26 @@ The reward helps the organization to mature faster.
 In DHT network, node can be quickly located by its ID, to access its information. Public information of an organization can also be saved over the whole network distributively.  
 
 **Sparse Merkle Tree**  
-Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of **equilibrium probability**, which makes it possible to manipulate a tree without changing its structure substantially. Compared with other algorithms, jump-table has a little bit of impact on performance, but still keeps the computation complexity at the same order of magnitude. Using the same algorithm, Merkle Tree is improved to create so called **Sparse Merkle tree**, which is used to hold core information of an organization, similar to the public ledger of a block-chain.
+Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of **equilibrium probability**, which makes it possible to manipulate a tree without changing its structure substantially. Compared with other algorithms, jump-table has a little bit of impact on performance, but still keeps the computation complexity at the same order of magnitude. Using the same algorithm, Merkle Tree is improved to create so called **Sparse Merkle Tree (SMT)**, which is used to hold core information of an organization, similar to the public ledger of a block-chain.
 
-Each leaf node of a sparse Merkle tree stores account information of an organization member. Account number is the member's ID that is the hash of the member's public key. Each ID is 160 bit long. All of the possible IDs can fill up the leaf nodes of a binary tree of height 160. Because the actual number of IDs is far less than the number of possible leaves, the tree is a sparse tree.  
+Each leaf node of a SMT stores account information of an organization member. Account number is the member's ID that is the hash of the member's public key. Each ID is 160 bit long. All of the possible IDs can fill up the leaf nodes of a binary tree of height 160. Because the actual number of IDs is far less than the number of possible leaves, the tree is a sparse tree.  
 
-If a tree-node has only one child, the branch can be shorten by moving the child node up one level to replace its parent. This simple optimization can reduce the height of the tree tremendously. If the number of randomly distributed IDs is n, then most of the IDs will be on leaf-node at level log2(n)+1. The closer to the root-node, denser the tree. The addition or removal of a tree-node, or changes of account information, only effects the branch where the node is on.  
+If a tree-node has only one child, the branch can be shorten by moving the child node up one level to replace its parent. This simple optimization can reduce the height of the tree tremendously. If the number of randomly distributed IDs is n, most of the IDs will be on leaf-node at level log2(n)+1. The closer to the root-node, denser the tree. The addition or removal of a tree-node, or change of account information, only effects the branch where the node is on.  
 
-On this tree, the account information of on a leaf node can be quickly located, which is essential to the implementation of time-space versioning, network pulse, network partition, fund transfer and smart contract. Information of each account is on the leaf node of the tree. Each branch use hashes of its root node's children and account sum to generates its own hash.  
+On SMT, account information on leaf node can be quickly located, which is essential to the implementation of time-space snapshot, network pulse, network partition, fund transfer and smart contract. Information of each account is on the leaf node of the tree. Each branch uses hashes of its root node's children and account sum to generates its own hash.  
+
+**Node Grouping**  
+With the growth of network scale and traffic, storage, data processing and communication will eventually overload a network node. If not optimized, Leither network will fall in to the same conundrum of 7 throughput like in BTC.
+
 **Network Pulse**  
 is an incremental sequence number broadcasted top down every **Pulse Cycle**. A pulse cycle is 1 second.  
 
 The sequence number serves as the synchronization timer of each node, and version number of its data. Within a pulse cycle, every node backups the new data received in last one. According to the hight of Merkle tree, each node is responsible to process data for several layers. The work done is called **Proof of Performance**, similar to PoW in BTC, and will be rewarded by the system.  
 
-**Time-space Versioning**  
+**Time-space Snapshot**  
 In LevelDB, writing of new data using writeStream can be optimized up to the speed limit of storage media, even faster than database reading. On the other hand, sequence number concatenated at the end of the key serves as the revised version number, with which historical record can be inquired. Network Pulse is equivalent of generating sequence version number in levelDB, with which ledger data can be quickly recorded in each cycle.
 
-The same operation can be applied to multi-dimension time-space Merkle tree. Because branches of other nodes do not change, the current version of Merkle tree is almost identical to the previous one, so only the limited variations on the current branch need to be processed.
+The same operation can be applied to multi-dimension time-space Merklenodes do not change, the current version of Merkle tree is almost identical to the previous one, so only the limited variations on the current branch need to be processed.
 
 The underlying MiMei database of Leither has already built in with similar functions to support time-space versioning.
 
