@@ -123,7 +123,7 @@ On SMT, account information on leaf node can be quickly located, which is essent
 **Node Grouping**  
 With the growth of network scale and traffic, storage, data processing and communication will eventually overload a network node. If not optimized, Leither network will fall in to the same conundrum of 7 throughput like BTC.
 
-Nodes within an organization can be grouped to solve the above problem. Neighboring nodes on SMT are grouped togather as a block.
+Nodes within an organization can be grouped to solve the above problem. Neighboring nodes on SMT are grouped together as a block. The algorithm 
 
 **Network Pulse**  
 is an incremental sequence number broadcasted top down every **Pulse Cycle**. A pulse cycle is 1 second.  
