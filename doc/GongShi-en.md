@@ -29,27 +29,27 @@ In Leither, Tool application is also a MiMei.
 #### 2.2 Division of Services  
 The internet services mentioned in previous section can all be divided and reconstructed through the coordination of the following entities, in decentralized fashion.  
 + Application Development  
-Programmer and developer who develop applications for Leither ecosystem, similar to R&D in regular business.
+Develop application and platform for Leither ecosystem, undertaken by programmers. A similar role of the R&D in an enterprise.
 + Service or Content Production  
-Service provider and content producer, similar to editor of a website or operation department.
+Provide service or produce content for the ecosystem. For content service, similar to editor of a website or operation department of a company.
 + Service Support  
-People who provide physical devices for the whole ecosystem, different from regular internet, devices do not have to belong to a company. Similar to the role of miner in BTC.  
-+ Service Promoter  
-One way is to promote web service of Leither, such as website, link, app and applet, in regular internet. Another is to create tags for content, and provide them to Search Node as public services. Similar to what operation department of a website does.  
+Provide physical devices for the whole ecosystem, run by operators. Different from regular internet, devices are not owned by one company. Similar to the role of maintenance department in a regular company.  
++ Service Promotion  
+One method is to promote web service of Leither, such as website, link, app and applet, in regular internet. Another is to generate tags of content and provide public service from Search Node. Similar to operation department of a company.  
 + Value Appreciation  
-Every node can provide services, which can be monetized and used to pay for other services. Information search and online traffics can generate great financial income, which is the foundation of the ecosystem's value.  
+Every node can provide services, which can be monetized and pay for other services. Information search and online traffics have great financial value, which is the **foundation of the ecosystem's value**.  
 Usually a block-chain like system can coordinate the investment and return of its members. More details in later chapters.  
 
 #### 2.3 Service Support
-Similar to the work of miner in BTC, including node management, MiMei migration, information search and group consensus.  
+Node management, MiMei migration, information search and group consensus, etc.  
 + MiMei Storage  
-Leither decouples internet content and service into MiMei form. MiMei is saved on node. MiMei flow among nodes on demand. Bill of services between nodes is settled with credit. Node participates in the settlement of group services by group consensus.  
-+ Information Index  
-Information of search index is stored on the Distribute Hash Table (DHT) of every online node. Node participates in the settlement of group service by group consensus.  
+Leither decouples internet content and service into MiMei form. MiMei is saved on nodes according to business request. MiMei flow among nodes on demand. Service between nodes is settled with credit. Node participates in the settlement of group services by group consensus.  
++ Index Information  
+Index is used for search service. The information is stored on the public information area (DHT) of all the online nodes. Node participates in the settlement of group service by group consensus.  
 + Docking Service  
-Applications such as APP, DNS and applet, that connect MiMei with regular internet. Those services run servers of regular internet and participate in the settlement of group services by group consensus.
+Services that connect MiMei with regular internet, such as APP, DNS and applet. Those services run on servers of regular internet, and participate in the settlement of group services by group consensus.
 + Consensus  
-Public service of a group. Consensus runs on all the nodes.
+Public business logic of a group. Consensus runs on all the nodes.
 
 ### III. Organization Functions
 #### 3.1 Create Organization  
