@@ -6,26 +6,28 @@ Chapter Nine of _MiMei and Application System_ mentioned individual oriented rel
 
 Organization is a group oriented structure. A group is created first, then people join it to become a member. There are three types of roles within an organization: supervisor (founder), member and guest. Supervisor and member work with each other to maintain and manage the group. In traditional internet, both structures are maintained by platform operator, who also set the rules.
 
-The maintenance of a group is a public service best maintained with a block-chain like solution to coordinate the interests of all of its members. A group must become an organization When more potent public service is asked of it. Any organizational entity on internet can be reconstructed in the form of a Leither group.
+The maintenance of a group is a public service best operated with a block-chain like solution to coordinate the interests of all of its members. A group must become an organization when more potent public service is required of it. Any organizational entity on internet can be reconstructed in the form of a Leither group.
 ### II. Organization Services
-Organization service is public service attached to an organization. Most of the business currently on internet can be reconstructed as organization service.
+Organization service is a public or private service that organization provides. Most of the businesses currently on internet can be reconstructed as organization service.
 #### 2.1 Categories of Internet Business Services
-Internet business can be divided into categories of search, content, social media and tool.  
-+ Search  
+Internet business can be divided into categories of search engine, content, social media and tool.  
++ Search engine  
 Google, Amazon, Alibaba and Baidu all profit from **Information Search**.  
-In Leither network，any user can create its own search preference and strategy, or filter and summarize search results from 3rd parties. Therefore search service will not be controlled by a few providers, instead user can take control of and decide its own search information.  
+In Leither network, user can select its preferred search engines, set its own search strategy. Therefore search service will not be controlled by a few providers, instead user can take control of and decide its own search information.  
 + Social service  
-FB, Twitter, Wechat make huge profits by controlling the **Social Relationship** data of users.  
-In Leither network, data of social connections are saved by user owned devices, therefore all of the attached messages, Apps and services are also selected by user.  
+FB, Twitter, Wechat make huge profits by controlling the **Social Relationship** of users.  
+In Leither network, data of social connections are saved by user owned devices, therefore all of the attached messages, Apps and services are also selected and customized by user.  
 + Content and Service  
 On-line video, music and news media provide **Content and Service**.
-In Leither network, content nodes implement content services in the form of MiMei. MiMei can flow among nodes that are not under the control of oligarchies any more. User can collect its own data from internet using plug-ins and save it on its own node.  
+In Leither network, content and service can be split into finer parcels, and packaged into MiMei format.  
+Content producer can publish directly to its own node, or collect content from regular internet and put on its node.  
+MiMei can flow freely among nodes, users can also customize content search method and resources, not to be subjected to criminal abuse by Gig Techs anymore.    
 + Tool  
-Google Doc, online office, XMind make profits providing **Tool Services**.  
-In Leither, Tool App is also a MiMei. 
+Google Doc, online office, XMind make profits  by providing **Tool Services**.  
+In Leither, Tool application is also a MiMei. 
 
-#### 2.2 Split of Business Services  
-The above business service can be split and reconstructed through the coordination of the following members of Leither ecosystem.  
+#### 2.2 Division of Services  
+The internet services mentioned in previous section can all be divided and reconstructed through the coordination of the following entities, in decentralized fashion.  
 + Application Development  
 Programmer and developer who develop applications for Leither ecosystem, similar to R&D in regular business.
 + Service or Content Production  
