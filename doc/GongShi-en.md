@@ -2,11 +2,11 @@ Part II Consensus Mechanism
 ========
 ### Summary
 ### I. Organization
-Chapter Nine of _MiMei and Application System_ mentioned individual centered model of relationship chain, and credit model based on the relationship-chain. In social life, people always belong to one social group or another, which is called **Organization** in this paper.  
+Chapter Nine of _MiMei and Application System_ mentioned individual oriented relationship model, and credit model based on relationship network. In social life, people always belong to all kinds of social groups, which is called **Organization** in this paper.  
 
-Organization is a group centered structure. User chooses to join a group after its foundation. There are three types of group identities: supervisor (founder), member and guest. Supervisor and member maintain the group together. In traditional internet, both structures are maintained by platform operator, who also set the corresponding regulations.
+Organization is a group oriented structure. A group is created first, then people join it to become a member. There are three types of roles within an organization: supervisor (founder), member and guest. Supervisor and member work with each other to maintain and manage the group. In traditional internet, both structures are maintained by platform operator, who also set the rules.
 
-The maintenance of a group is a public service, which need a block-chain like solution to coordinate the interests of its members. When more potent public service attached to a group, the group becomes an organization. Any organizational entity on internet can be created in the form of a Leither group.
+The maintenance of a group is a public service best maintained with a block-chain like solution to coordinate the interests of all of its members. A group must become an organization When more potent public service is asked of it. Any organizational entity on internet can be reconstructed in the form of a Leither group.
 ### II. Organization Services
 Organization service is public service attached to an organization. Most of the business currently on internet can be reconstructed as organization service.
 #### 2.1 Categories of Internet Business Services
