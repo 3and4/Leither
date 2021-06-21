@@ -121,7 +121,7 @@ If a tree-node has only one child, the branch can be shorten by moving the child
 On SMT, account information on leaf node can be quickly located, which is essential to the implementation of time-space snapshot, network pulse, network partition, fund transfer and smart contract. Information of each account is on the leaf node of the tree. Each branch uses hashes of its root node's children and account sum to generates its own hash.  
 
 **Node Grouping**  
-With the growth of network scale and traffic, storage, data processing and communication will eventually overload a network node. If not optimized, Leither network will fall in to the same conundrum of 7 throughput like BTC.
+With the growth of network and traffic, storage, data processing and communication will eventually overload network nodes. If not optimized, Leither network will fall in to the same conundrum of 7 throughput like BTC.
 
 Nodes within an organization can be grouped to solve the above problem. Neighboring nodes on SMT are grouped together as a block. The algorithm 
 
