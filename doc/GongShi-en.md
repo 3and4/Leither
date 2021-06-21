@@ -43,7 +43,7 @@ Usually a block-chain like system can coordinate the investment and return of it
 #### 2.3 Service Support
 Node management, MiMei migration, information search and group consensus, etc.  
 + MiMei Storage  
-Leither decouples internet content and service into MiMei form. MiMei is saved on nodes according to business request. MiMei flow among nodes on demand. Service between nodes is settled with credit. Node participates in the settlement of group services by group consensus.  
+Leither decouples internet content and service into MiMei form. MiMei is stored on nodes according to business request. MiMei flow among nodes on demand. Service between nodes is settled with credit. Node participates in the settlement of group services by group consensus.  
 + Index Information  
 Index is used for search service. The information is stored on the public information area (DHT) of all the online nodes. Node participates in the settlement of group service by group consensus.  
 + Docking Service  
@@ -51,11 +51,11 @@ Services that connect MiMei with regular internet, such as APP, DNS and applet. 
 + Consensus  
 Public business logic of a group. Consensus runs on all the nodes.
 
-### III. Organization Functions
+### III. Organizational Functions
 #### 3.1 Create Organization  
-Any user can create an organization. In the beginning, Leither creates a pair of encryption keys for the organization. Default public key ID is the organization ID. Creator is a organization member and supervisor by default. Organization has the same authorization scheme as MiMei. User identity in a group includes supervisor, member and guest.  
+Any user can create an organization. First, system creates a pair of encryption keys for the organization. The public key ID is the default organization ID. Founder is automatically a member and supervisor by default. Organization has the same authorization scheme as MiMei. User identity includes supervisor, member and guest.  
 
-Organization runs on the node where it is created. Distributed organization also starts to work on its creation node. The default network structure is DHT network which stores public information of the organization.
+Organization runs on the node of it creation. Distributed organization also starts to work on the first node where it is created. The default network structure is DHT network which stores public information of the organization.
 
 Public information of the organization can be inquired through DHT network. Information of member's node can be searched through routing service. Members can send P2P message. Group chatting data belongs to public and saved on DHT network.
 #### 3.2 Join Organization  
