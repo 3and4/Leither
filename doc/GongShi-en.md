@@ -45,7 +45,7 @@ Node management, MiMei migration, information search and group consensus, etc.
 + MiMei Storage  
 Leither decouples internet content and service into MiMei form. MiMei is stored on nodes according to business request. MiMei flow among nodes on demand. Service between nodes is settled with credit. Node participates in the settlement of group services by group consensus.  
 + Index Information  
-Index is used for search service. The information is stored on the public information area (DHT) of all the online nodes. Node participates in the settlement of group service by group consensus.  
+Index is used for search service. The information is stored on the public folder (DHT) of all the online nodes. Node participates in the settlement of group service by group consensus.  
 + Docking Service  
 Services that connect MiMei with regular internet, such as APP, DNS and applet. Those services run on servers of regular internet, and participate in the settlement of group services by group consensus.
 + Consensus  
@@ -55,17 +55,15 @@ Public business logic of a group. Consensus runs on all the nodes.
 #### 3.1 Create Organization  
 Any user can create an organization. First, system creates a pair of encryption keys for the organization. The public key ID is the default organization ID. Founder is automatically a member and supervisor by default. Organization has the same authorization scheme as MiMei. User identity includes supervisor, member and guest.  
 
-Organization runs on the node of it creation. Distributed organization also starts to work on the first node where it is created. The default network structure is DHT network which stores public information of the organization.
+Organization runs on the node of its creation. Distributed organization also starts to work on the first node where it is created. The default network structure is DHT network which stores public information of the organization.
 
 Public information of the organization can be inquired through DHT network. Information of member's node can be searched through routing service. Members can send P2P message. Group chatting data belongs to public and saved on DHT network.
 #### 3.2 Join Organization  
-User can apply to join a organization directly, or send application through a member. Once supervisor confirms the application, the user becomes a member and DHT is updated with corresponding information. Member can check public information of the organization.
-
-User can also help with certain task of the organization and become a member as reward.  
+User can apply to join a organization directly, or ask a member to apply on its behavior. Once supervisor confirms the application, the user becomes a member and DHT is updated with corresponding information. Member can check public information of the organization. User can also perform certain task for the organization and get rewarded a membership.  
 
 #### 3.3 Business Development  
-Organization business is a pack of Leither applications, which can be published as public information of the organization network.  
-For example a video website can be separated into the following sub-business:
+Organization service is actually a series of Leither applications, which can be published in the public information of the organization network.  
+For example a video website can be separated into the following sub-services:
 + Content collection and production  
 + Add tags to content  
 + Application support with resource, including storage, bandwidth, CPU, etc.  
@@ -130,11 +128,11 @@ Nodes within an organization can be grouped to solve the above problem. Neighbor
 Nodes grouping enables two unique advantages. The first one is elastic concurrency support. The second is an opaque network with variable shades of gray.
 
 **Node Election**  
-Each node group has a few bookkeeers, which is responsible to record, check and verify transactions of the group account, and also broadcast and commnicate related information. Account within a group can vote for bookkeepers of the group. The accumulated vote cannot exceed its account balance.
+Each node group has a few bookkeepers, which is responsible to record, check and verify transactions of the group account, and also broadcast and communicate related information. Account within a group can vote for bookkeepers of the group. The accumulated vote cannot exceed its account balance.
 
 The rules of election is part of the group consensus, which is designed by the organizer. Factors such as the amount of asset pledged and network speed will be taken into consideration. A bookkeeper and backup bookkeeper will be elected. The bookkeeper is in charge of updating the general ledger and the backup bookkeeper verifies it.
 
-Node group can vote as a member in group higher on the SMT, to select bookkeeper of its parent group. The bookkeeping at the lowest level is to record detaild business transactions. In the middle and upper level it is to merge information of changes in the branches below, including generate synopsis and summarize the amount of fund.
+Node group can vote as a member in group higher on the SMT, to select bookkeeper of its parent group. The bookkeeping at the lowest level is to record detailed business transactions. In the middle and upper level it is to merge information of changes in the branches below, including generate synopsis and summarize the amount of fund.
 
 The information of accounts close to root node, which describes the status quo of the network, is synchronized network wide.
 
