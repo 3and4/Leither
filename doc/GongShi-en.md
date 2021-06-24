@@ -43,9 +43,9 @@ Usually a block-chain like system can coordinate the investment and return of it
 #### 2.3 Service Support
 Node management, MiMei migration, information search and group consensus, etc.  
 + MiMei Storage  
-Leither decouples internet content and service into MiMei form. MiMei is stored on nodes according to business request. MiMei flow among nodes on demand. Service between nodes is settled with credit. Node participates in the settlement of group services by group consensus.  
+Leither decouples internet content and service into MiMei form. MiMei is stored on nodes according to business request. MiMei flow among nodes on demand. Service exchanged between nodes is settled with credit. Node participates in the settlement of group services by group consensus.  
 + Index Information  
-Index is used for search service. The information is stored on the public folder (DHT) of all the online nodes. Node participates in the settlement of group service by group consensus.  
+Index is used for search service. The information is stored on Distributed Hash Table (DHT) of all the online nodes. Node participates in the settlement of group service by group consensus.  
 + Docking Service  
 Services that connect MiMei with regular internet, such as APP, DNS and applet. Those services run on servers of regular internet, and participate in the settlement of group services by group consensus.
 + Consensus  
@@ -55,61 +55,64 @@ Public business logic of a group. Consensus runs on all the nodes.
 #### 3.1 Create Organization  
 Any user can create an organization. First, system creates a pair of encryption keys for the organization. The public key ID is the default organization ID. Founder is automatically a member and supervisor by default. Organization has the same authorization scheme as MiMei. User identity includes supervisor, member and guest.  
 
-Organization runs on the node of its creation. Distributed organization also starts to work on the first node where it is created. The default network structure is DHT network which stores public information of the organization.
+Organization runs on the node of its creation. Distributed organization also starts from the first node where it is created. The default network structure is DHT network which stores public information of the organization.
 
 Public information of the organization can be inquired through DHT network. Information of member's node can be searched through routing service. Members can send P2P message. Group chatting data belongs to public and saved on DHT network.
 #### 3.2 Join Organization  
-User can apply to join a organization directly, or ask a member to apply on its behavior. Once supervisor confirms the application, the user becomes a member and DHT is updated with corresponding information. Member can check public information of the organization. User can also perform certain task for the organization and get rewarded a membership.  
+User can apply for membership of an organization directly, or ask a member to apply on its behavior. Once supervisor confirms the application, the user becomes a member and DHT is updated with corresponding information. Member can check public information of the organization. User can also perform certain task for the organization and get rewarded a membership.  
 
 #### 3.3 Business Development  
-Organization service is actually a series of Leither applications, which can be published in the public information of the organization network.  
+Organization service is actually a series of Leither applications, which can be published in the public information area of the organization network.  
 For example a video website can be separated into the following sub-services:
 + Content collection and production  
-+ Add tags to content  
-+ Application support with resource, including storage, bandwidth, CPU, etc.  
++ Content tagging  
++ Application support with storage, bandwidth, CPU, etc.  
 + Content access channel, such as APP, applet, DNS, routing, search, etc.  
 + Promotion to send content to people who need it.  
 + Value appreciation  
-    There two types of value appreciation. In the first type, content contains information of a 3rd party who will pay for the promotion in advance. In the second type, the content is valuable to average users, who would pay for it or watch the attached commercials. Commercial business model is tried and true, a highly matured business practice in regular internet.
+    There two types of value appreciation.  
+    Type one: content contains prepaid information of a third party.  
+    Type two: content is valuable to average users, who would pay for it or watch the imbedded commercials. This business model is tried and true, a highly matured business practice in regular internet.
 
 ### IV. Valuation-based System
-**Value is created meaningful work**. It is the basic principle for designing valuation-based system.  
+**Value is created through meaningful work**. It is the basic principle for designing value system.  
 
-Every quantum of token shall be based on a meaningful work and the quantity of its value is based on the contribution of the work to the ecosystem, or how useful the work is.  
+Every quantum of token shall be based on meaningful work. The quantity of its value is based on its contribution to the ecosystem, or how useful the work is.  
 
-An organization ledger in the form of a sparse Merkle Tree with versioning mechanism will be kept by consensus. Any incentives issued by the organization will have to be announced with reason and proof for publicity within the organization. Different from POW, it is called **Proof of Performance (PoP)**.  
+With consensus, an organizational ledger, which is actually a sparse Merkle tree with snapshot function, can be created. Any incentives issued by the organization will be announced with reason and proof for organization wide publicity.  
+This mechanism is called **Proof of Performance (PoP)**, different from POW of BTC.  
 
 System rewards include:  
-+ Structural reward  
-Rewards to member who has made fundamental contribution to establish the organization, such as founder, investor, system and App developer, who did all the absolutely necessary work to make it happen. The reward is recommended by supervisor and issued after vote of consensus.
++ Foundation reward:  
+Rewards to member who has made fundamental contribution to the organization, such as founder, investor, system and App developer, who did all the absolutely necessary work to make it happen. The reward is recommended by supervisor and issued after vote of consensus.
 
 The reward is for creating the organization.  
 
-+ Reward to service and content  
-Organization provides valuable service or content to users. At every step of value creation, contribution is recorded. At the point of appreciation of the value, smart contract is triggered and incentives rewarded to each member who did valuable work.
++ Content service reward:  
+Organization provides valuable service or content to users. At every step of value creation, contributor is recorded. At the point of value appreciation, smart contract is triggered and incentives rewarded to each member who did valuable work.
 
-The reward can be distributed by fixed proportion or dynamically balanced following the following mimic process.  
-1. Developer writes a content collection plugin.  
-2. Collector uses the plugin to gather content from internet, turn it into MiMei, and publish the MiMei onto Leither network. MiMei will indicate collector of its content.  
+The reward can be distributed by fixed proportion or dynamically balanced through the following mimic process.  
+1. Developer writes content collection plugins.  
+2. Collector use the plugins to gather content from internet, turn it into MiMei, and publish the MiMei onto Leither network. MiMei will indicate collector of its content.  
 3. Operator push the content to users through channels such as App, applet, website, or group message.  
-4. User browse the content, commercials are displayed, maybe even clicked.  
-5. Checking mechanism is built in the commercials. Once displayed, it will trigger the smart contract, which then transfers tokens from advertiser's account to each participators of the whole process, respectively.  
+4. User browse the content and commercials are displayed.  
+5. Checking mechanism is builtin the commercials' code. Once displayed, it will trigger the smart contract, which then transfers tokens from advertiser's account to each participators of the whole process, respectively.  
 
-The reward mechanism will feedback the healthy development of the organization and the growth of usefulness.  
+This reward mechanism will feedback positively the healthy development of the organization and the growth of its usefulness.  
 
-+ Mining Reward  
-Same as any other mining, all the online nodes can join vote and contract service. Reward for new block will be used to support the network, manage public information and routing service.  
++ Mining reward  
+Same as traditional mining, all the online nodes can vote in bookkeeping and smart contract. Reward for new block will be used to support the network, manage public information and routing service.  
 
 The reward makes sure that organization stays active.
 
-+ Operation Reward  
++ Operation reward  
 In the beginning when the system cannot sustain itself with insufficient content and service. Extra incentives can be rewarded to accelerate the growth of an infant system.
 
 The reward helps the organization to mature faster.  
 
 ### V. Basic Concept
 **Distributed Hash Table (DHT) network**  
-In DHT network, node can be quickly located by its ID, to access its information. Public information of an organization can also be saved over the whole network distributively.  
+In DHT network, node can be quickly searched by its ID to access its information. Public information of an organization can also be saved over the whole network distributively using DHT.  
 
 **Sparse Merkle Tree**  
 Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of **equilibrium probability**, which makes it possible to manipulate a tree without changing its structure substantially. Compared with other algorithms, jump-table has a little bit of impact on performance, but still keeps the computation complexity at the same order of magnitude. Using the same algorithm, Merkle Tree is improved to create so called **Sparse Merkle Tree (SMT)**, which is used to hold core information of an organization, similar to the public ledger of a block-chain.
