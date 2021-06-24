@@ -90,7 +90,6 @@ Rewards to member who has made fundamental contribution to the organization, suc
 
 + Content service reward:  
 Organization provides valuable service or content to users. At every step of value creation, contributor is recorded. At the point of value appreciation, smart contract is triggered and incentives rewarded to each member who did valuable work.
-
     The reward can be distributed by fixed proportion or dynamically balanced through the following mimic process.  
     1. Developer writes content collection plugins.  
     2. Collector use the plugins to gather content from internet, turn it into MiMei, and publish the MiMei onto Leither network. MiMei will indicate collector of its content.  
@@ -98,7 +97,7 @@ Organization provides valuable service or content to users. At every step of val
     4. User browse the content and commercials are displayed.  
     5. Checking mechanism is builtin the commercials' code. Once displayed, it will trigger the smart contract, which then transfers tokens from advertiser's account to each participators of the whole process, respectively.  
 
-    This reward mechanism will feedback positively the healthy development of the organization and the growth of its usefulness.  
+    This reward mechanism will feedback positively to the healthy development of the organization and the growth of its usefulness.  
 
 + Mining reward  
 Same as traditional mining, all the online nodes can vote in bookkeeping and smart contract. Reward for new block will be used to support the network, manage public information and routing service.  
@@ -115,9 +114,9 @@ In the beginning when the system cannot sustain itself with insufficient content
 In DHT network, node can be quickly searched by its ID to access its information. Public information of an organization can also be saved over the whole network distributively using DHT.  
 
 **Sparse Merkle Tree**  
-Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of **equilibrium probability**, which makes it possible to manipulate a tree without changing its structure substantially. Compared with other algorithms, jump-table has a little bit of impact on performance, but still keeps the computation complexity at the same order of magnitude. Using the same algorithm, Merkle Tree is improved to create so called **Sparse Merkle Tree (SMT)**, which is used to hold core information of an organization, similar to the public ledger of a block-chain.
+Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of **Equilibrium Probability**, which makes it possible to manipulate a tree without changing its structure substantially. Compared with other algorithms, jump-table has a small impact on performance, but still keeps the computation complexity at the same order of magnitude. Using the same algorithm, Merkle Tree is improved to create so called **Sparse Merkle Tree (SMT)**, which is used to hold core information of an organization, similar to the public ledger of a block-chain.
 
-Each leaf node of a SMT stores account information of an organization member. Account number is the member's ID that is the hash of the member's public key. Each ID is 160 bit long. All of the possible IDs can fill up the leaf nodes of a binary tree of height 160. Because the actual number of IDs is far less than the number of possible leaves, the tree is a sparse tree.  
+Each leaf node of a SMT stores account information of an organization member. Account number is the member's ID that is the hash of the member's public key. Each ID is 160 bit long. All of the possible IDs can fill up the leaf nodes of a binary tree of height 160. Because the actual number of IDs is far less than the number of possible leaves, the tree is a sparse tree. The root node has two children nodes: 0x0m 0x1, and four grandchildren nodes: 0x00, 0x01, 0x10, 0x11, and such.  
 
 If a tree-node has only one child, the branch can be shorten by moving the child node up one level to replace its parent. This simple optimization can reduce the height of the tree tremendously. If the number of randomly distributed IDs is n, most of the IDs will be on leaf-node at level log2(n)+1. The closer to the root-node, denser the tree. The addition or removal of a tree-node, or change of account information, only effects the branch where the node is on.  
 
