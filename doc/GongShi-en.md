@@ -92,8 +92,8 @@ Rewards to member who has made fundamental contribution to the organization, suc
 Organization provides valuable service or content to users. At every step of value creation, contributor is recorded. At the point of value appreciation, smart contract is triggered and incentives rewarded to each member who did valuable work.
 
     The reward can be distributed by fixed proportion or dynamically balanced through the following mimic process.  
-1. Developer writes content collection plugins.  
-2. Collector use the plugins to gather content from internet, turn it into MiMei, and publish the MiMei onto Leither network. MiMei will indicate collector of its content.  
+    1. Developer writes content collection plugins.  
+    2. Collector use the plugins to gather content from internet, turn it into MiMei, and publish the MiMei onto Leither network. MiMei will indicate collector of its content.  
 3. Operator push the content to users through channels such as App, applet, website, or group message.  
 4. User browse the content and commercials are displayed.  
 5. Checking mechanism is builtin the commercials' code. Once displayed, it will trigger the smart contract, which then transfers tokens from advertiser's account to each participators of the whole process, respectively.  
