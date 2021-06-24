@@ -86,29 +86,29 @@ System rewards include:
 + Foundation reward:  
 Rewards to member who has made fundamental contribution to the organization, such as founder, investor, system and App developer, who did all the absolutely necessary work to make it happen. The reward is recommended by supervisor and issued after vote of consensus.
 
-The reward is for creating the organization.  
+    The reward is for creating the organization.  
 
 + Content service reward:  
 Organization provides valuable service or content to users. At every step of value creation, contributor is recorded. At the point of value appreciation, smart contract is triggered and incentives rewarded to each member who did valuable work.
 
-The reward can be distributed by fixed proportion or dynamically balanced through the following mimic process.  
+    The reward can be distributed by fixed proportion or dynamically balanced through the following mimic process.  
 1. Developer writes content collection plugins.  
 2. Collector use the plugins to gather content from internet, turn it into MiMei, and publish the MiMei onto Leither network. MiMei will indicate collector of its content.  
 3. Operator push the content to users through channels such as App, applet, website, or group message.  
 4. User browse the content and commercials are displayed.  
 5. Checking mechanism is builtin the commercials' code. Once displayed, it will trigger the smart contract, which then transfers tokens from advertiser's account to each participators of the whole process, respectively.  
 
-This reward mechanism will feedback positively the healthy development of the organization and the growth of its usefulness.  
+    This reward mechanism will feedback positively the healthy development of the organization and the growth of its usefulness.  
 
 + Mining reward  
 Same as traditional mining, all the online nodes can vote in bookkeeping and smart contract. Reward for new block will be used to support the network, manage public information and routing service.  
 
-The reward makes sure that organization stays active.
+    The reward makes sure that organization stays active.
 
 + Operation reward  
 In the beginning when the system cannot sustain itself with insufficient content and service. Extra incentives can be rewarded to accelerate the growth of an infant system.
 
-The reward helps the organization to mature faster.  
+    The reward helps the organization to mature faster.  
 
 ### V. Basic Concept
 **Distributed Hash Table (DHT) network**  
