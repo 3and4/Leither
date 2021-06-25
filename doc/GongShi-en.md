@@ -113,44 +113,42 @@ In the beginning when the system cannot sustain itself with insufficient content
 **Distributed Hash Table (DHT) network**  
 In DHT network, node can be quickly searched by its ID to access its information. Public information of an organization can also be saved over the whole network distributively using DHT.  
 
-**Sparse Merkle Tree**  
-Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of **Equilibrium Probability**, which makes it possible to manipulate a tree without changing its structure substantially. Compared with other algorithms, jump-table has a small impact on performance, but still keeps the computation complexity at the same order of magnitude. Using the same algorithm, Merkle Tree is improved to create so called **Sparse Merkle Tree (SMT)**, which is used to hold core information of an organization, similar to the public ledger of a block-chain.
+**Sparse Merkle Tree (SMT)**  
+Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of **Equilibrium Probability**, which makes it possible to manipulate a tree without changing its structure substantially. Compared with other algorithms, jump-table has a small impact on performance, but still keeps the computation complexity at the same order of magnitude. Using the same algorithm, Merkle Tree can be improved to create so called Sparse Merkle Tree, which is used to hold core information of an organization, similar to the public ledger of a block-chain.
 
-Each leaf node of a SMT stores account information of an organization member. Account number is the member's ID that is the hash of the member's public key. Each ID is 160 bit long. All of the possible IDs can fill up the leaf nodes of a binary tree of height 160. Because the actual number of IDs is far less than the number of possible leaves, the tree is a sparse tree. The root node has two children nodes: 0x0m 0x1, and four grandchildren nodes: 0x00, 0x01, 0x10, 0x11, and such.  
+Each leaf node of a SMT stores account information of an organization member. Account number is the member's ID that is the hash of the member's public key. Each ID is 160 bit long. All of the possible IDs can fill up the leaf nodes of a binary tree of height 160. Because the actual number of IDs is far less than the number of possible leaves, the tree is a sparse tree. The root node has two children nodes: 0x0m 0x1, and four grandchildren nodes: 0x00, 0x01, 0x10, 0x11, and such. Leaf node with account information is originally on level 160.  
 
-If a tree-node has only one child, the branch can be shorten by moving the child node up one level to replace its parent. This simple optimization can reduce the height of the tree tremendously. If the number of randomly distributed IDs is n, most of the IDs will be on leaf-node at level log2(n)+1. The closer to the root-node, denser the tree. The addition or removal of a tree-node, or change of account information, only effects the branch where the node is on.  
+If a tree-node has only one child, the branch can be shorten by moving the child node up one level to replace its parent. This simple optimization can reduce the height of the tree tremendously. For N IDs that are randomly and independently distributed, most of the IDs will be on leaf-node at level log2(n)+1. The closer to the root-node, denser the tree. The addition or removal of a tree-node, or change of account information, only effects the branch where the node is on.  
 
-On SMT, account information on leaf node can be quickly located, which is essential to the implementation of time-space snapshot, network pulse, network partition, fund transfer and smart contract. Information of each account is on the leaf node of the tree. Each branch uses hashes of its root node's children and account sum to generates its own hash.  
+On SMT, account information on leaf node can be quickly located, which is essential to the implementation of time-space snapshot, network pulse, node grouping, fund transfer and smart contract. Information of each account is on the leaf node of the tree. Each branch uses hashes of its root node's children and account sum to generates its own hash.  
 
-**Node Grouping**  
+**Node Group**  
 With the growth of network and traffic, storage, data processing and communication will eventually overload network nodes. If not optimized, Leither network will fall in to the same conundrum of 7 throughput like BTC.
 
-Nodes within an organization can be grouped to solve the above problem. Neighboring nodes on SMT are grouped together as a block. The conditions for grouping nodes includes number of nodes and height difference of nodes withing a block. Currently the max number of nodes that a group can hold is 256, and the biggest height difference within a block is 64.
-
-Nodes grouping enables two unique advantages. The first one is elastic concurrency support. The second is an opaque network with variable shades of gray.
+Neighboring nodes within an organization can be grouped into a block to solve the above problem. Currently the max number of nodes in a block is 256, and max branch height is 64. Node group enables two unique advantages. One is elastic concurrency support, the other is an opaque network with variable shades of gray.
 
 **Node Election**  
-Each node group has a few bookkeepers, which is responsible to record, check and verify transactions of the group account, and also broadcast and communicate related information. Account within a group can vote for bookkeepers of the group. The accumulated vote cannot exceed its account balance.
+Every node group has bookkeepers, which is responsible to record, check and verify transactions of the group, and also broadcast and communicate related information. Account within a group can vote for bookkeepers. The accumulated vote cannot exceed its account balance.
 
-The rules of election is part of the group consensus, which is designed by the organizer. Factors such as the amount of asset pledged and network speed will be taken into consideration. A bookkeeper and backup bookkeeper will be elected. The bookkeeper is in charge of updating the general ledger and the backup bookkeeper verifies it.
+The rules of election is part of the group consensus, which is designed by the organizer, who will take factors, such as the amount of asset pledged and network speed, into consideration. A bookkeeper and backup bookkeeper will be elected. The bookkeeper is in charge of updating the general ledger and the backup bookkeeper verifies it.
 
-Node group can vote as a member in group higher on the SMT, to select bookkeeper of its parent group. The bookkeeping at the lowest level is to record detailed business transactions. In the middle and upper level it is to merge information of changes in the branches below, including generate synopsis and summarize the amount of fund.
+Node group can vote as a member in its parent group, to elect bookkeeper on higher hierarchy. The bookkeepers at the lowest level deal with detailed business transactions. In the middle and upper level they combine changes of information from groups below, generate synopsis and update the overall account balance.
 
-The information of accounts close to root node, which describes the status quo of the network, is synchronized network wide.
+Top level information that is close to the root node is synchronized network wide, which describe the status quo of the whole network.  
 
 **Network Pulse**  
-In order to coordinate the operations of nodes among the network, root node of the network generates an incremental sequence number and broadcasts it top down in every **Network Pulse Cycle**. A pulse cycle is 1 second by default.  
+In order to coordinate all nodes among the network, bookkeepers at the root generate an incremental sequence number and broadcast it top down in every **Network Pulse Cycle**. A pulse cycle is 1 second by default.  
 
-The sequence number serves as sync timer of each node, and version number of its data. Within each pulse cycle, node consolidates and saves the newly added data from last cycle. According to the height of the SMT, every node group is responsible to process data of several levels. The work done is called **Proof of Performance**, similar to PoW in BTC, and will be rewarded by the system.  
+The sequence number serves as sync timer of each node, and version number of its data. Within each pulse cycle, nodes consolidate and save the newly added data from last cycle. Every node group is responsible to process data of several levels, depending on the height of the SMT. The work done is called **Proof of Performance**, similar to PoW in BTC, and will be rewarded by the system.  
 
 **Time-space Snapshot**  
-LevelDB is an excellent database optimized for writing operation. The writing of new data using writeStream can reach the speed limit of storage media, even faster than database reading. On the other hand, sequence number of key-value serves as revised version number, with which historical record can be inquired quickly. 
+LevelDB is an excellent database optimized for writing operation. The writing of new data using writeStream can reach the speed limit of storage media, even faster than database reading. On the other hand, sequence number of key-value provides revised version number, with which historical record can be quickly inquired. 
 
-Network pulse is equivalent of sequence version number in levelDB, with which changed data within each cycle can be quickly recorded and labelled. The same method can be used to take snapshot of time-space SMT.
+Network pulse is equivalent of the sequence version number in LevelDB, with which changed data within each pulse cycle can be quickly recorded and labelled. The same method can be used to take snapshot of time-space SMT.
 
-In every pulse cycle, the structure of the current SMT is identical to its previous version except the newly added changed data. When taking a snapshot, only the changed information need to be saved. With the version sequence number in key-value, data of any node in any pulse cycle can be quickly retrieved.
+In every pulse cycle, the structure of the current SMT is identical to its previous version, except the newly added changed data. When taking a snapshot, only the changed information need to be saved. With the version sequence number of key-value, data of any node in any pulse cycle can be quickly retrieved. Any regular node only has to record its own account information and information of its node group. 
 
-The underlying MiMei database of Leither has already built in with similar functions to support time-space versioning.
+The underlying MiMei database of Leither has already built in with similar functions to support time-space snapshot.
 
 ### VI. Related Procedures
 #### 6.1 Network Construction  
