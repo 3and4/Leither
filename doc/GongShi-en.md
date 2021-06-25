@@ -179,40 +179,40 @@ All of the nodes check the disputed transaction and vote. Deposit of the erroneo
 **Redundancy Backup**  
 A few bookkeepers save all the account information on the branch. In order to keep the network robust, all nodes are encouraged to redundantly backup account information of its neighboring branches.
 
-There are two methods. Ordinary account can audit the transaction information of nearby branches and earn reward. For illegal transactions, freeze account information of neighboring branches until the state of their accounts recuperate. Number of neighboring nodes could be 1,3,7,15,31,63,255.  
+There are two ways for reward. Ordinary account can audit the transaction information of nearby branches and earn reward. For illegal transactions, freeze account information of nearby branches until the state of their accounts recuperate. Number of neighboring nodes could be 1, 3, 7, 15, 31, 63, 255.  
 
 All of the nodes will strive to maintain the health of the network, in order to earn reward and avoid loss.  
-Because of the redundant backup, minority of the nodes can recover the whole network after a crash.  
-Redundant backup happens when bookkeepers broadcast information after their finished their tasks.  
+Because of the redundant backup, a small number of nodes can recover the whole network after a crash.  
+Redundant backup happens when bookkeepers broadcast information after finishing their tasks.  
 Network recovery happens at information verification when a node getting online.  
 
 #### 6.4 Dispute Handling**  
 **Publicity**  
-Every transaction has a period of publicity, 24hrs by default. If other nodes find any problem, the transaction will be reported and dispute handling procedure kicks in.  
+Every transaction must have a period of publicity, 24hrs by default. If other nodes find any problem, the transaction will be reported and dispute handling procedure kicks in.  
 **Fundtime**  
-Every transaction deals with different amount of fund. Every bookkeeper and auditor pledge different amount of credit. Therefore a new concept _Fundtime_ is coined for the convenience of calculation.  
-Fundtime = Amount of Fund x Time during which the fund is occupied  
+Every transaction involves different amount of fund. Each bookkeeper or auditor pledges different amount of credit. Therefore a new concept _Amount-time_ is coined for the convenience of calculation.  
+amount-time = Amount of fund * Time during which the fund is occupied  
 For transaction,   
-Fund = transaction amount, time = time of publicity  
+Amount = transaction amount, time = period of publicity  
 For auditing and bookkeeping,  
-Fund = amount of credit pledged, time = time of fund frozen  
-**Accumulated Audit Period**  
-Accumulated (for auditing or bookkeeping) Fundtime / transaction amount  
+Amount = amount of credit pledged, time = period the fund frozen  
+**Accumulated Period**  
+= accumulated (for auditing or bookkeeping) amount-time / transaction amount  
 **Transaction Security Threshold**  
 + Minimum number of users who audit a transaction  
 + Minimum accumulated audit period  
-    Security threshold sets the minimum auditing cost, so that the cost of mining and service fee can be estimated. Accumulated audit period of a normal transaction will be 1.  
+    Security threshold sets the minimum auditing cost, so the cost of mining and service fee can be estimated. Accumulated audit period of a normal transaction will be 1.  
     Different audit period has different value, therefore different system reward.  
 **Dispute Procedure and Penalty**  
 All of the online nodes will be responsible to audit transactions within a certain scope.  
 
 #### 6.5 Smart Contract
-Smart contract is similar to transfer procedure. A contract includes smart code, signature of consignor, upper limit of contract. The bookkeeper in upper level by default is responsible to execute the contract. User can also appoint a consignee node. For complicated contract, if unforeseeable risk is too high, the security deposit of nodes executing and checking the contract shall be raised to cover the risk. It is equivalent to a third party endorse the contract with its own credit and earn corresponding reward.
+Smart contract is similar to transfer procedure. A contract includes smart code, signature of consignor, upper limit of contract. The contract will be executed by the bookkeeper in upper level by default. User can also appoint a consignee node. For complicated contract, if unforeseeable risk is too high, the security deposit of nodes executing and checking the contract shall be raised to cover the risk. It is like a third party that endorses the contract with its own credit and earns corresponding reward.
 
-When dispute happens, the whole network joins dispute handling procedure. The nodes that vote must freeze some of its own asset. After the dispute, the wrong side will lost its frozen asset.  
+When dispute happens, the whole network enters dispute handling procedure. The nodes that vote must freeze some of its own asset. Afterward the losing side will lost its frozen asset.  
 
 #### 6.6 Account Inquiry  
-Information of system account is public, but regular user account is private and cannot be inquired. However authenticity of account information that user chooses to demonstrate can be verified by checking the synopsis recorded in public ledger. The truthfulness of synopsis can be confirmed by checking synopsis of child branches.  
+Information of system account is public, but regular user account is private and cannot be inquired by 3rd party. However authenticity of account information that user chooses to demonstrate can be verified by checking the synopsis recorded in public ledger. The truthfulness of synopsis can be confirmed by checking synopsis of child branches.  
 ### VII. Privacy and Transaction Security
 #### 7.1 Privacy and Consensus  
 **Conflict**  
