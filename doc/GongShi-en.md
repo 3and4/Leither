@@ -152,7 +152,7 @@ The underlying MiMei database of Leither has already built in with similar funct
 
 ### VI. Related Procedures
 #### 6.1 Network Construction  
-After user joins an organization, it becomes a member of DHT network. User writes routing information of its node into DHT, so that other nodes can find it for communication or use its services.  
+After a user joins an organization, it joins the DHT network and becomes a member. User writes routing information of its node into DHT, so that other nodes can find it for communication or use its services.  
 #### 6.2 Ledger Construction  
 Ledger is a SMT with snapshot function. In order to keep network wide messages in sync, the whole network will share a time sequence variable, aka Time Sequence. Its initial value is 0, system generates one pulse periodically (1s by default). If system state changes, time sequence increments. Other wise, it stays put.  
 
