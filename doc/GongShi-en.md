@@ -163,7 +163,7 @@ The very first token distribution will be announced network wide, with reasons f
 **Transfer between users**  
 The transaction between two users concerns only themselves. After the transaction is confirmed, information signed by both users will be sent to the parent nodes of the users on their SMT respectively. Each parent node will record the changes in its own branch and broadcast the information among backup bookkeepers in the same level. After time sequence increments (in less than 1s), transaction data becomes read only. Bookkeepers begin to check the branch bottom up and summarize branch information to generate synopsis. The chief bookkeeper summarizes overall information, generates synopsis for the SMT, and broadcasts top down to everyone below.
 
-Both parties of a transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed for good. One transaction waits at most 2 pulse cycles (2s).
+Traders of a transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed for good. One transaction waits at most 2 pulse cycles (2s).
 
 **Dispute Handling**  
 Every transaction must have sufficient security deposit and enough time for other nodes to verify it. Transaction will be processed by multiple nodes simultaneously. Bookkeeper and backup bookkeeper are randomly selected to avoid collusion. If any node disputes the transaction, dispute resolution procedure kicks in. During the procedure, all relevant funds are frozen.
@@ -216,47 +216,48 @@ Information of system account is public, but regular user account is private and
 ### VII. Privacy and Transaction Security
 #### 7.1 Privacy and Consensus  
 **Conflict**  
-In traditional block-chain, consensus is based on transparency. If account information is hidden, there is not way to confirm the legitimacy of a transaction. The buyer might spend more than it owns.  
+In traditional block-chain, consensus is based on transparency. If account information is hidden, there is no way to confirm the legitimacy of a transaction. The buyer might overspend.  
 **Solution**  
-For parties not involved in a transaction, the purpose of information is more likely to avoid potential harm of ignorance, rather than voyeurism. If a proper balance can be reached, there is no need for the others to know the detail of a deal.  
+For parties not involved in a transaction, the purpose of knowledge of the transaction is more likely to avoid potential harm of ignorance, rather than voyeurism. If a proper balance of translucency can be reached, there is no need for the others to know the detail of a deal.  
 **Premise and Principles**  
-The premise and principles for anonymity of personal information is that the parties involved in a deal and the others do no harm to each other.  
+The premise and principles for anonymity is that the parties involved in a deal and those not do not harm each other.  
 #### 7.2 Transaction Security  
-To avoid collateral damage, it is necessary to make every member of an organization believes a deal is legal.  
+Based on not-be-a-sucker principle, it is necessary to make every member of an organization believes a deal is legal.  
 #### 7.2.1 Safety Conditions  
 Legal transaction must meet the following conditions.  
 + Truthful intention  
 The deal is confirm by both parties.
 + True deal  
-The seller has sufficient commodity to trade.  
+The seller has sufficient goods to trade.  
 Fund transferred cannot be negative.  
 No negative account after the transaction.  
 + Balanced Account  
-Without system reward, the overall account balance do not change after a transaction.  
-System reward can be counted as a transfer from organization to users, therefore total account balance still do not change.  
+Without system reward, the overall account balance does not change after a transaction.  
+System reward can be counted as a transfer from organization to users, therefore total account balance still does not change.  
 #### 7.2.2 Safety Analysis  
-+ Transaction parties' responsibility   
++ Traders' responsibility   
 The seller will strictly check the safety conditions above, otherwise it will not receive the fund.  
 The buyer will also double check the parameters and procedure of the transaction, for illegal deal will be punished by the organization.  
 + Other members  
 The other parties need to check if there is any fake transaction or account balance issue, in order to protect themselves from collateral damage.  
 + Other Child Organization  
-Child Organization: Every account ID is a 160 bit number on a Merkle tree. If subnet mask of Ethernet can be applied to mask account ID's bit one at a time, one account can belong to 160 child organization (sub-tree) simultaneously.  
+Child Organization: Every account ID is a 160 bit number on a Merkle tree. If subnet mask of Ethernet can be applied to mask account ID one bit a time, one account can belong to 160 child organizations (sub-tree) simultaneously.  
 
-The question of collateral damage can be restated. Any child organization that does not include transaction party only need to verify there is no fake deal or account balance issue within the child organization that includes a transaction party.  
+The question of collateral damage can be restated. Any child organization that does not include trading user only need to verify there is no fake deal or account balance issue within the child organization that includes a trading user.  
 
 #### 7.3 Anonymity Strategy  
 **Child Organization Opacity**  
-If an child organization is a unit of settlement, transaction information can be hidden within the child-organization. Any other user only need to worry about the general account balance of the child organization and legal.  
+If an child organization is a unit of settlement, transaction information can be hidden within the child-organization. Any other user only need to worry about the general account balance of the child organization and legitimacy.  
 **Third Party Opacity**  
 If there is a third party endorsement to ensure no collateral damage to the others irrelevant to the deal, transaction information can be revealed in delayed time.  
 **Translucent Network**  
-During redundant backup, information of an account is backup only by a few accounts nearby. Accounts faraway can only acquire summarized information by a few top layer accounts, without knowing any details of the lower layers. This strategy both guarantees the transaction information safely confirmable, and also the anonymity of information.  
-
+During redundant backup, information of an account is backed up only by a few accounts nearby. Accounts faraway can only acquire summarized information through a few top level nodes, without knowing any details of the lower level nodes. This strategy not only guarantees the transaction information safely confirmable, but also the anonymity of information.  
+**Capital flow unimportant**  
+In reality, the anonymity of capital flow is more important than account balance. However in Leither network 3rd party will be more interested in account balance and legitimacy, instead of capital flow. If system purges transaction information periodically, after a while capital flow will not be traceable.
 #### 7.4 Anonymity Method  
-The following method to implement information anonymity.
+The following methods implement information anonymity.
 **Credit Endorsement**  
-A third party can be appointed to endorse a transaction. Bookkeeper is the default executive. Transaction runs on a branch. Because there is an endorser to pledge for the transaction, third party will not take damage.  
+A third party can be appointed to endorse a transaction. Bookkeeper is the default executor. Transaction runs on a branch. Because there is an endorser to pledge for the transaction, third party will not take damage.  
 **Neighbor Check**  
 After a transaction is committed and Merkle tree changed, bookkeeper must broadcast the information. The neighbors of the transaction parties will get details because they provide redundant backup, so they must verify the transaction and check the Merkle tree.  
 
