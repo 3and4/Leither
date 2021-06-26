@@ -257,47 +257,59 @@ In reality, the anonymity of capital flow is more important than account balance
 #### 7.4 Anonymity Method  
 The following methods implement information anonymity.
 **Credit Endorsement**  
-A third party can be appointed to endorse a transaction. Bookkeeper is the default executor. Transaction runs on a branch. Because there is an endorser to pledge for the transaction, third party will not take damage.  
+A third party, bookkeeper by default, can be appointed to endorse a transaction. For the other users, the transaction runs on branch and is pledged by the endorsor, so they are collateral damage free. 
 **Neighbor Check**  
-After a transaction is committed and Merkle tree changed, bookkeeper must broadcast the information. The neighbors of the transaction parties will get details because they provide redundant backup, so they must verify the transaction and check the Merkle tree.  
+After a transaction is committed and Merkle tree changed, bookkeeper must broadcast the information. The neighbors of the trading nodes will get details because they provide redundant backup, so must verify the transaction and check the Merkle tree. If problem detected, dispute procedure kicks in. Except a few bookkeepers and neighbors, most of the users will not receive transaction details.  
+**Multiple transfers**  
+If someone wants to know the details of transaction, it needs to access the trading nodes during the transaction. It will cost time and money. User can choose to transfer fund multiple hops through different branches, which make the tracing of a deal virtually impossible.  
+**Transfer across organizations**  
+Every organization has its own consensus system. Different organizations can exchange their tokens. Transfer across organizations will also increase the cost of tracing exponentially.
 
-If error happens, dispute procedure kicks in. Except a few bookkeepers and neighbors, most of the users will not receive transaction details.
+### VIII. Data Processing and Quantitative Analysis
+**Data Storage**  
+In theory Sparse Merkle Tree is an equilibrium probability binary tree. The closer to top, the evener the distribution. Close to the bottom, the length of branches will vary substantially. It is necessary to reduce the disparity. On the other hand, a 160-bit account number is inconvenient to process. Since one byte can differentiate 8 levels of the tree, 8 levels are stratified together. Assume tree node information is 36 bytes (network number 8 bytes + amount 8 bytes + account number 20 bytes ).  
+**Node Group**  
+**Sub-Database**  
+Every 256 node groups or less can be stored in one sub-database. One sub-database requires a maximum of 2.5MB of space to store 65536 node accounts.  
+**Miner's bookkeeping database**  
+In one node (user) database, if there are more than 256 node groups, system will splits some data to other nodes. A bookkeeper can store max 256 sub-databases, 16,777,216 node accounts, which requires 640MB space.  
+**Account summary information**  
+The topmost node group records general ledger status, including account information of the topmost 256 branches, such as synopses and account balance. The size of all these information is less than 10KB. It must be synced to every online node in the system. A normal user only need to know the general status and information of its own branch.  
 
-### VIII. Quantitative Analysis
-Usee BTC as reference, currently there are about 30 million accounts and the average number of transaction is 6.67 per second.
-Analysis Leither network performance with the following assumptions:  
+**Quantitative Analysis**  
+Usee BTC as reference, currently there are about 30 million accounts and the average number of transactions is 6.67 per second.
+Assume the following system parameters:
 + Number of accounts 2^32 = 4.3 billions  
 + Transaction concurrency 1 million/s  
 + Pulse cycle 1 second  
 + Election cycle 30 minutes  
-Most of the nodes are located at Layer-32. Let's separate the network into 2 16-layers. Each node need 28 bytes (8 bytes for branch, 20 for synopsis). For 1 million/s concurrency, assume each one involves 2 users. On average, each branch processes about 30 transactions per second.  
 
+**Scale Analysis**  
+Most of the accounts are located at Level-32. Bookkeepers are stratified into 3 groups to cover 8, 8 and 16 levels respectively.  
 **Miner HD usage**  
-Data storage for one branch is 1.8MB. If a miner need to save 2 layers of data, 3.6MB HD is need.  
+If one branch miner process one sub-database (65536 accounts), data size is 2.5MB. If it is one database (16,777,216 accounts), data size will be 640MB.  
 **Miner memory usage**  
-Only online nodes need memory space from a miner.  
-For root node miner, most branches need to be processed online. All 1.6MB need to be kept in memory.  
-For sub-branch miners, there are only 30 some transactions per second. No need to keep everything in memory, read related data and synopsis of neighbor branches when necessary. The data amount is 30*16*2*28 byte = 7.5KB. Times of database access is 90.  
+Only online nodes need to be processed by a miner.  
+For Level 1 or 2 miner, most branches need to be processed online. All 10KB data need to be kept in memory.  
+For lower level miners, there are only 30 some transactions per second. No need to keep everything in memory, read related data and synopsis of neighboring branches when necessary. The data size is 30*16*2*28 byte = 7.5KB. Times of database access is 90.  
 **Miner CPU usage**  
 CPU usage is mainly for verifying transactions and generating synopsis.  
-Root node must calculate every transaction, which means 16 million synopses. However in reality only need to calculate once network wide in each pulse cycle, which is 131,000*20 byte = 2.5MB data.  
-Branch root node need to verify the whole branch, which requires 30*(16+16), and calculate 96 synopses.  
+Level 1 or 2 miner must calculate for every transaction, which means 16 million synopses. However in reality at most only one calculation for whole network is necessary in each pulse cycle, which is 512 times of synopsis calculation, about 10KB data.    
+Branch root node need to verify the whole branch, which requires 30*(16+16)=7KB data, and 96 synopses.  
 **Traffic load among miners**  
 The search for a node is load-balanced on each node within a DHT network, therefore the amount of traffic is negligible.    
 The network structure of ledger is predetermined within an election cycle. Traffic load in fixed network is negligible.  
-Transaction between users is handled by the branch node of each transaction party. Traffic load of average 30 transactions is small.  
+Transaction between users is handled by the branch node of each trading nodes. Traffic load of average 30 transactions is small.  
 
 Traffic load of root node need to be examined closely below.  
-Root node must broadcast to backup miners and branch nodes. The traffic to backup miner is 2.5MB/s. If broadcast is B-tree, total data is 5MB. If data is delivered to node one by one, total data traffic is number 1.5MB * num_of_miners. The total data amount to sub-miners is 16*2*28896 byte = 56 MB/s.
-
-This workload is more than a regular node. A load-balance middle layer can be added to solve the problem. A layer of nodes that handle 8 layers of the B-tree can reduce the communication load to 224 KB/s.
+Root node must broadcast to backup miners and lower level miners. The data to backup miner is 10KB/s, so the maximum data rate to 256 miners simultaneously is 2.5MB/s. If the bandwidth is insufficient, miners can be further divided into subgroup of 16 miners per level. Data rate becomes 160KB/s. Number of broadcasts from top to bottom increases from 3 times to 5.  
 
 **Communication time among miners**  
-The process of data involves 3 to 4 layers of nodes.  
-The submission and verification of a transaction happen in two pulse cycles.  
-Submission is delivered to branch root node, and done in one hop of communication.  
-Verification is delivered to root node, which need to broadcast to child node once or twice after the information is processed.  
-Most of the operation can be done with less than 10 hops of communication. Normally it takes less than 2 pulse cycles.
+The process of data involves 3 to 4 levels of nodes.  
+The submission and verification of a transaction happen in two different pulse cycles.  
+Submission is delivered to branch root node, so times of communication is 1.  
+Verification request is delivered to root node from branch node, and the result propagates once or twice back to branch node.  
+Most of the operations can be done in less than 10 hops of communication. Normally it takes less than 2 pulse cycles.
 
 Based on the above analysis, with equipment and bandwidth of home network, it is completely feasible to establish decentralized network of 4.3 billion users and support 1 million/s concurrency.  
 
