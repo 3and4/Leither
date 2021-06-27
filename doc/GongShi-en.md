@@ -139,7 +139,7 @@ Node group can vote as a member in its parent group, to elect bookkeeper on high
 Top level information that is close to the root node is synchronized network wide, which describe the status quo of the whole network.  
 
 **Network Pulse**  
-In order to coordinate all nodes among the network, bookkeepers at the root generate an incremental sequence number and broadcast it top down in every **Network Pulse Cycle**. A pulse cycle is 1 second by default.  
+In order to coordinate all nodes among the network, bookkeepers at the root generate an incremental sequence number and broadcast it top down in every **network pulse cycle**. A pulse cycle is one second by default.  
 
 The sequence number serves as sync timer of each node, and version number of its data. Within each pulse cycle, nodes consolidate and save the newly added data from last cycle. Every node group is responsible to process data of several levels, depending on the height of the SMT. The work done is called **Proof of Performance**, similar to PoW in BTC, and will be rewarded by the system.  
 
