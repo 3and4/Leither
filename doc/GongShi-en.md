@@ -141,7 +141,7 @@ Top level information that is close to the root node is synchronized network wid
 **Network Pulse**  
 In order to coordinate all nodes among the network, bookkeepers at the root generate an incremental sequence number and broadcast it top down in every **network pulse cycle**. A pulse cycle is one second by default.  
 
-The sequence number serves as sync timer of each node, and version number of its data. Within each pulse cycle, nodes consolidate and save the newly added data from last cycle. Every node group is responsible to process data of several levels, depending on the height of the SMT. The work done is called **Proof of Performance**, similar to PoW in BTC, and will be rewarded by the system.  
+The sequence number serves as sync timer of each node, and version number of its data. Within each pulse cycle, every node consolidates and saves the newly added data from last cycle. Every node group is responsible to process data of several levels, depending on the height of the SMT. The work done is called **Proof of Performance**, similar to PoW in BTC, and will be rewarded by the system.  
 
 **Time-space Snapshot**  
 LevelDB is an excellent database optimized for writing operation. The writing of new data using writeStream can reach the speed limit of storage media, even faster than database reading. On the other hand, sequence number of key-value provides revised version number, with which historical record can be quickly inquired. 
