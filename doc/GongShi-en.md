@@ -192,7 +192,7 @@ Network recovery happens at information verification when a node getting online.
 **Publicity**  
 Every transaction must have a period of publicity, 24hrs by default. If other nodes find any problem, the transaction will be reported and disputation resolution procedure kicks in.  
 
-**Fundtime**  
+**Amount-time**  
 Every transaction involves different amount of fund. Each bookkeeper or auditor pledges different amount of credit. Therefore a new concept _Amount-time_ is coined for the convenience of calculation.  
 amount-time = Amount of fund * Time during which the fund is occupied  
 For transaction,   
