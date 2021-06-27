@@ -148,27 +148,27 @@ LevelDB is an excellent database optimized for writing operation. The writing of
 
 Network pulse is equivalent of the sequence version number in LevelDB, with which changed data within each pulse cycle can be quickly recorded and labelled. The same method can be used to take snapshot of time-space SMT.
 
-In every pulse cycle, the structure of the current SMT is identical to its previous version, except the newly added changed data. When taking a snapshot, only the changed information need to be saved. With the version sequence number of key-value, data of any node in any pulse cycle can be quickly retrieved. Any regular node only has to record its own account information and information of its node group. 
+In every pulse cycle, the structure of the current SMT is identical to its previous version, except the newly added changed data. When taking a snapshot, only the changed information need to be saved. With the version sequence number of key-value, data of any node in any pulse cycle can be quickly retrieved. Regular node only has to record its own account information and information of its node group. 
 
-The underlying MiMei database of Leither has already built in with similar functions to support time-space snapshot.
+The underlying MiMei database of Leither has built in support to time-space snapshot.
 
 ### VI. Related Procedures
 #### 6.1 Network Construction  
-After a user joins an organization, it joins the DHT network and becomes a member. The newcomer writes the routing information of its node into DHT, so that other nodes can find it to communicate or use its services.  
+After a user joins an organization, it joins the DHT network and becomes a member. The newcomer writes the routing information of its node into DHT, so that other nodes can find it and use its services.  
 #### 6.2 Ledger Construction  
-Ledger is a SMT with snapshot function. In order to keep messages in sync network wide, the whole network will share a time sequence variable, aka Time Sequence. Its initial value is 0, system generates one pulse periodically (1s by default). If system state changes, time sequence increments. Other wise, it stays put.  
+Ledger is a SMT with snapshot function. In order to keep network wide messages in sync, the whole network must share a time sequence variable, aka **Time Sequence**. Its initial value is 0, system generates one pulse periodically (1s by default). If system state changes, time sequence increments. Other wise, it stays put.  
 
-System periodically elects **Bookkeepers**, who backups each other. The first one is chief bookkeeper. The term of bookkeeper is one **Election Cycle** (30min by default). Each branch takes care of a few levels of SMT.  
-#### 6.3 Transfer Procedure  
-**Organization Distribute**  
-The very first token distribution will be announced network wide, with reasons for scrutiny by the members. However, afterward the transfer of tokens between users is private, or public only to the relevant nodes.  
+The system periodically elects a few **bookkeepers**, who backups each other. The first one is chief bookkeeper. The term of bookkeeper is one **Election Cycle** (30min by default).    
+#### 6.3 Fund Transfer Procedure  
+**Distribution by organization**  
+The very first token distribution will be announced network wide, with reasons for scrutiny by the members. However, afterward the transfer of tokens between users is private, or publicized only to relevant nodes.  
 **Transfer between users**  
-The transaction between two users concerns only themselves. After the transaction is confirmed, information signed by both users will be sent to the parent nodes of the users on their SMT respectively. Each parent node will record the changes in its own branch and broadcast the information among backup bookkeepers in the same level. After time sequence increments (in less than 1s), transaction data becomes read only. Bookkeepers begin to check the branch bottom up and summarize branch information to generate synopsis. The chief bookkeeper summarizes overall information, generates synopsis for the SMT, and broadcasts top down to everyone below.
+The transaction between two users concerns only themselves. After the transaction is confirmed, information signed by both users will be sent to their parent nodes on the SMT respectively. Each parent node will record the changes in its own branch and broadcast the information among backup bookkeepers at the same level. After time sequence increments (in less than 1s), transaction data becomes read only. Bookkeepers begin to check the branch bottom up and summarize branch information to generate synopsis. The chief bookkeeper summarizes overall information, generates synopsis of the SMT, and broadcasts top down to everyone below.
 
-Traders of a transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed for good. One transaction waits at most 2 pulse cycles (2s).
+Both parties of the transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed for good. One transaction waits at most 2 pulse cycles (2s) to be confirmed.
 
 **Dispute Handling**  
-Every transaction must have sufficient security deposit and enough time for other nodes to verify it. Transaction will be processed by multiple nodes simultaneously. Bookkeeper and backup bookkeeper are randomly selected to avoid collusion. If any node disputes the transaction, dispute resolution procedure kicks in. During the procedure, all relevant funds are frozen.
+Every transaction must have sufficient security deposit and enough time for more nodes to verify it. Transaction is processed by multiple nodes simultaneously, and bookkeeper and backup bookkeeper are randomly selected to avoid collusion. If any node disputes the transaction, disputation resolution procedure kicks in. During the procedure, all relevant funds are frozen.
 
 All of the nodes check the disputed transaction and vote. Deposit of the erroneous node will be confiscated. Bookkeeper can only handle the transaction amount that the frozen deposit can cover.
 
