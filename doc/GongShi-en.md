@@ -170,20 +170,20 @@ Both parties of the transaction record time sequence, synopsis of each level and
 **Dispute Handling**  
 Every transaction must have sufficient security deposit and enough time for more nodes to verify it. Transaction is processed by multiple nodes simultaneously, and bookkeeper and backup bookkeeper are randomly selected to avoid collusion. If any node disputes the transaction, disputation resolution procedure kicks in. During the procedure, all relevant funds are frozen.
 
-All of the nodes check the disputed transaction and vote. Deposit of the erroneous node will be confiscated. Bookkeeper can only handle the transaction amount that the frozen deposit can cover.
+All of the nodes check the disputed transaction and vote. Security deposit of the erroneous node will be confiscated. Bookkeeper can only process the transaction amount that the frozen deposit can cover.
 
 **Legitimacy Check**  
-    1. The relevant parties check the legitimacy of the transaction.   
-    2. The bookkeepers in upper level checks if the general ledger is in balance.   
-    3. The branch bookkeeper verifies the legitimacy of transactions on its branch.   
-    4. During synchronization, all leaf nodes check the balance of their neighbors and the sanity of their accounts.  
+    1. The trading parties check the legitimacy of the transaction.   
+    2. The bookkeeper checks if the general ledger is in balance.   
+    3. The branch bookkeeper verifies the legitimacy of the transaction on its branch.   
+    4. During synchronization, all leaf nodes check the balance and sanity of their neighbors' accounts.  
 
 **Redundancy Backup**  
-A few bookkeepers save all the account information on the branch. In order to keep the network robust, all nodes are encouraged to redundantly backup account information of its neighboring branches.
+All the account information on a branch are stored by a few bookkeepers. In order to keep the network robust, all nodes are encouraged to redundantly backup account information of its neighboring branches.
 
-There are two ways for reward. Ordinary account can audit the transaction information of nearby branches and earn reward. For illegal transactions, freeze account information of nearby branches until the state of their accounts recuperate. Number of neighboring nodes could be 1, 3, 7, 15, 31, 63, 255.  
+There are two ways for reward. Regualr nodes can audit the transaction information of nearby branches and earn reward. For illegal transaction, account information of neighboring nodes are frozen until the state of their branches recuperate. Number of neighboring nodes could be 1, 3, 7, 15, 31, 63, 255.  
 
-All of the nodes will strive to maintain the health of the network, in order to earn reward and avoid loss.  
+All of the nodes will strive to maintain the health of the network, in order to earn reward and avoid collateral damage.  
 Because of the redundant backup, a small number of nodes can recover the whole network after a crash.  
 Redundant backup happens when bookkeepers broadcast information after finishing their tasks.  
 Network recovery happens at information verification when a node getting online.  
