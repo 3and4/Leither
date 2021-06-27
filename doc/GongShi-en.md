@@ -190,7 +190,8 @@ Network recovery happens at information verification when a node getting online.
 
 #### 6.4 Dispute Handling**  
 **Publicity**  
-Every transaction must have a period of publicity, 24hrs by default. If other nodes find any problem, the transaction will be reported and dispute handling procedure kicks in.  
+Every transaction must have a period of publicity, 24hrs by default. If other nodes find any problem, the transaction will be reported and disputation resolution procedure kicks in.  
+
 **Fundtime**  
 Every transaction involves different amount of fund. Each bookkeeper or auditor pledges different amount of credit. Therefore a new concept _Amount-time_ is coined for the convenience of calculation.  
 amount-time = Amount of fund * Time during which the fund is occupied  
@@ -198,8 +199,10 @@ For transaction,
 Amount = transaction amount, time = period of publicity  
 For auditing and bookkeeping,  
 Amount = amount of credit pledged, time = period the fund frozen  
+
 **Accumulated Period**  
 = accumulated (for auditing or bookkeeping) amount-time / transaction amount  
+
 **Transaction Security Threshold**  
 + Minimum number of users who audit a transaction  
 + Minimum accumulated audit period  
