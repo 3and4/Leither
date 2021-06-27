@@ -125,7 +125,9 @@ On SMT, account information on leaf node can be quickly located, which is essent
 **Node Group**  
 With the growth of network and traffic, storage, data processing and communication will eventually overload network nodes. If not optimized, Leither network will fall in to the same conundrum of 7 throughput like BTC.
 
-Neighboring nodes within an organization can be grouped into a block to solve the above problem. Currently the max number of nodes in a block is 256, and max branch height is 64. Node group enables two unique advantages. One is elastic concurrency support, the other is an opaque network with variable shades of gray.
+Neighboring nodes on a sub-tree or branch of SMT can be partitioned into a **node group** to solve the above problem. The max number of nodes in one group is 256, and the max height is 64.  
+
+Node group enables two unique advantages. One is elastic concurrency support, the other is an opaque network with variable shades of gray.
 
 **Node Election**  
 Every node group has bookkeepers, which is responsible to record, check and verify transactions of the group, and also broadcast and communicate related information. Account within a group can vote for bookkeepers. The accumulated vote cannot exceed its account balance.
@@ -269,6 +271,7 @@ Every organization has its own consensus system. Different organizations can exc
 **Data Storage**  
 In theory Sparse Merkle Tree is an equilibrium probability binary tree. The closer to top, the evener the distribution. Close to the bottom, the length of branches will vary substantially. It is necessary to reduce the disparity. On the other hand, a 160-bit account number is inconvenient to process. Since one byte can differentiate 8 levels of the tree, 8 levels are stratified together. Assume tree node information is 36 bytes (network number 8 bytes + amount 8 bytes + account number 20 bytes ).  
 **Node Group**  
+One group is a sub-tree that can hold up to 256 nodes, with max height of 64. The max storage space of one group is 10KB.
 **Sub-Database**  
 Every 256 node groups or less can be stored in one sub-database. One sub-database requires a maximum of 2.5MB of space to store 65536 node accounts.  
 **Miner's bookkeeping database**  
