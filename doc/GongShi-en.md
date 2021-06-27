@@ -158,7 +158,7 @@ After a user joins an organization, it joins the DHT network and becomes a membe
 #### 6.2 Ledger Construction  
 Ledger is a SMT with snapshot function. In order to keep network wide messages in sync, the whole network must share a time sequence variable, aka **Time Sequence**. Its initial value is 0, system generates one pulse periodically (1s by default). If system state changes, time sequence increments. Other wise, it stays put.  
 
-The system periodically elects a few **bookkeepers**, who backups each other. The first one is chief bookkeeper. The term of bookkeeper is one **Election Cycle** (30min by default).    
+The system periodically elects a few **bookkeepers** that backups each other. The first one is chief bookkeeper. The term of a bookkeeper is one **Election Cycle** (30min by default).    
 #### 6.3 Fund Transfer Procedure  
 **Distribution by organization**  
 The very first token distribution will be announced network wide, with reasons for scrutiny by the members. However, afterward the transfer of tokens between users is private, or publicized only to relevant nodes.  
