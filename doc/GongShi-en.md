@@ -158,7 +158,7 @@ After a user joins an organization, it joins the DHT network and becomes a membe
 #### 6.2 Ledger Construction  
 Ledger is a SMT with snapshot function. In order to keep network wide messages in sync, the whole network must share a time sequence variable, aka **Time Sequence**. Its initial value is 0, system generates one pulse periodically (1s by default). If system state changes, time sequence increments. Other wise, it stays put.  
 
-The system periodically elects a few **bookkeepers** that backups each other. The first one is chief bookkeeper. The term of a bookkeeper is one **Election Cycle** (30min by default).    
+The system periodically elects a few **bookkeepers** that backups each other. The first one is chief bookkeeper. The term of a bookkeeper is one **Election Cycle** (30min by default). The bookkeeper is responsible for bookkeeping of its branch.   
 #### 6.3 Fund Transfer Procedure  
 **Distribution by organization**  
 The very first token distribution will be announced network wide, with reasons for scrutiny by the members. However, afterward the transfer of tokens between users is private, or publicized only to relevant nodes.  
@@ -243,16 +243,14 @@ System reward can be counted as a transfer from organization to users, therefore
 + Traders' responsibility   
 The seller will strictly check the safety conditions above, otherwise it will not receive the fund.  
 The buyer will also double check the parameters and procedure of the transaction, for illegal deal will be punished by the organization.  
-+ Other members  
-The other parties need to check if there is any fake transaction or account balance issue, in order to protect themselves from collateral damage.  
-+ Other Child Organization  
-Child Organization: Every account ID is a 160 bit number on a Merkle tree. If subnet mask of Ethernet can be applied to mask account ID one bit a time, one account can belong to 160 child organizations (sub-tree) simultaneously.  
-
-The question of collateral damage can be restated. Any child organization that does not include trading user only need to verify there is no fake deal or account balance issue within the child organization that includes a trading user.  
++ Other users within the same group  
+The other users need to check if there is any fake transaction or account balance issue of trading account, in order to protect themselves from collateral damage.  
++ Other node groups  
+Any node group that does not include a trading user only need to verify there is no fake deal or account balance issue within the node group that does include a trading user.  
 
 #### 7.3 Anonymity Strategy  
-**Child Organization Opacity**  
-If an child organization is a unit of settlement, transaction information can be hidden within the child-organization. Any other user only need to worry about the general account balance of the child organization and legitimacy.  
+**Node Group Opacity**  
+If a node group is a unit of settlement, transaction information can be hidden within it. Any other user only need to worry about the general ledger of the group and its legitimacy.  
 **Third Party Opacity**  
 If there is a third party endorsement to ensure no collateral damage to the others irrelevant to the deal, transaction information can be revealed in delayed time.  
 **Translucent Network**  
