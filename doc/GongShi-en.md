@@ -62,28 +62,28 @@ Public information of the organization can be inquired through DHT network. Info
 User can apply for membership of an organization directly, or ask a member to apply on its behavior. Once supervisor confirms the application, the user becomes a member and DHT is updated with corresponding information. Member can check public information of the organization. User can also perform certain task for the organization and get rewarded a membership.  
 
 #### 3.3 Business Development  
-Organization service is actually a series of Leither applications, which can be published in the public information area of the organization network.  
+Organization service is actually a series of Leither applications, which can be listed in the public information area of the organization network.  
 For example a video website can be separated into the following sub-services:
 + Content collection and production  
 + Content tagging  
 + Application support with storage, bandwidth, CPU, etc.  
 + Content access channel, such as APP, applet, DNS, routing, search, etc.  
-+ Promotion to send content to people who need it.  
++ Promotion and operation.  
 + Value appreciation  
     There two types of value appreciation.  
     Type one: content contains prepaid information of a third party.  
     Type two: content is valuable to average users, who would pay for it or watch the imbedded commercials. This business model is tried and true, a highly matured business practice in regular internet.
 
-### IV. Valuation-based System
-**Value is created through meaningful work**. It is the basic principle for designing value system.  
+### IV. Value System
+**Value is created through meaningful work**, which is the basic principle for designing value system.  
 
-Every quantum of token shall be based on meaningful work. The quantity of its value is based on its contribution to the ecosystem, or how useful the work is.  
+Every quantum of token shall base on meaningful work. The quantity of its value is decided by its contribution to the ecosystem, or how useful the work is.  
 
 With consensus, an organizational ledger, which is actually a sparse Merkle tree with snapshot function, can be created. Any incentives issued by the organization will be announced with reason and proof for organization wide publicity.  
 This mechanism is called **Proof of Performance (PoP)**, different from POW of BTC.  
 
 System rewards include:  
-+ Foundation reward:  
++ Construction reward:  
 Rewards to member who has made fundamental contribution to the organization, such as founder, investor, system and App developer, who did all the absolutely necessary work to make it happen. The reward is recommended by supervisor and issued after vote of consensus.
 
     The reward is for creating the organization.  
