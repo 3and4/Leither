@@ -111,10 +111,10 @@ In the beginning when an infant system cannot sustain itself. Extra incentives c
 
 ### V. Basic Concepts
 **Distributed Hash Table (DHT) network**  
-In DHT network, node can be quickly searched by its ID to access its information. Public information of an organization can also be saved over the whole network distributively using DHT.  
+In DHT network, node can be quickly located by its ID to access its information. Public information of an organization can also be saved over the whole network distributively.  
 
 **Sparse Merkle Tree (SMT)**  
-Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of **Equilibrium Probability**, which makes it possible to manipulate a tree without changing its structure substantially. Compared with other algorithms, jump-table has a small impact on performance, but still keeps the computation complexity at the same order of magnitude. Using the same algorithm, Merkle Tree can be improved to create so called Sparse Merkle Tree, which is used to hold core information of an organization, similar to the public ledger of a block-chain.
+Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of **Equilibrium Probability**, which makes it possible to manipulate a tree without changing its structure substantially. Compared with other algorithms, jump-table has a small impact on performance, but still keeps the computation complexity at the same order of magnitude. Using the same algorithm, Merkle Tree can be improved to create so called **Sparse Merkle Tree**, which is used to hold core information of an organization, similar to the public ledger of a block-chain.
 
 Each leaf node of a SMT stores account information of an organization member. Account number is the member's ID that is the hash of the member's public key. Each ID is 160 bit long. All of the possible IDs can fill up the leaf nodes of a binary tree of height 160. Because the actual number of IDs is far less than the number of possible leaves, the tree is a sparse tree. The root node has two children nodes: 0x0m 0x1, and four grandchildren nodes: 0x00, 0x01, 0x10, 0x11, and such. Leaf node with account information is originally on level 160.  
 
