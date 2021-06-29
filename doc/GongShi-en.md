@@ -116,16 +116,18 @@ In DHT network, node can be quickly located by its ID to access its information.
 **Sparse Merkle Tree (SMT)**  
 Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of **Equilibrium Probability**, which makes it possible to manipulate a tree without changing its structure substantially. Compared with other algorithms, jump-table has a small impact on performance, but still keeps the computation complexity at the same order of magnitude. Using the same algorithm, Merkle Tree can be improved to create so called **Sparse Merkle Tree**, which is used to hold core information of an organization, similar to the public ledger of a block-chain.
 
-Each leaf node of a SMT stores account information of an organization member. Account number is the member's ID that is the hash of the member's public key. Each ID is 160 bits long. All of the possible IDs can fill up the leaf nodes of a binary tree of height 160. Because the actual number of IDs is far less than the number of possible leaves, the tree is a sparse tree. The root node has two children nodes: 0x0 0x1, and four grandchildren nodes: 0x00, 0x01, 0x10, 0x11, and such. Leaf node with account information is originally on level 160.  
+Each leaf node of a SMT stores account information of an organization member. Account number is the member's ID that is the hash of the member's public key. Each ID is 160 bits long. All of the possible IDs can fill up the leaf nodes of a binary tree of height 160. Because the actual number of IDs is far less than the number of possible leaves, the tree is a sparse tree. The root node has two children nodes: 0x0, 0x1, and four grandchildren nodes: 0x00, 0x01, 0x10, 0x11, and such. Leaf node with account information is originally on level 160.  
 
-If a tree-node has only one child, the branch can be shorten by moving the child node up one level to replace its parent. This simple optimization can reduce the height of the tree tremendously. For N IDs that are randomly and independently distributed, most of the IDs will be on leaf-node at level log2(n)+1. The closer to the root-node, denser the tree. The addition or removal of a tree-node, or change of account information, only effects the branch where the node is on.  
+If a node has only one child, the branch can be shorten by moving the child node up one level to replace its parent. This simple optimization can reduce the height of the tree tremendously. For N IDs that are randomly and independently distributed, most of the IDs will be on leaf-node at level log2(n)+1. The closer to the root-node, denser the tree. The addition or removal of a node, or change of account information, only effects the branch where the node is on.  
 
 On SMT, account information on leaf node can be quickly located, which is essential to the implementation of time-space snapshot, network pulse, node grouping, fund transfer and smart contract. Information of each account is on the leaf node of the tree. Each branch uses hashes of its root node's children and account sum to generates its own hash.  
 
 **Node Group**  
 With the growth of network and traffic, storage, data processing and communication will eventually overload network nodes. If not optimized, Leither network will fall in to the same conundrum of 7 throughput like BTC.
 
-Neighboring nodes on a sub-tree or branch of SMT can be partitioned into a **node group** to solve the above problem. The max number of nodes in one group is 256, and the max height is 64.  
+Neighboring nodes on a sub-tree or branch of SMT can be partitioned into a **node group** to solve the above problem. The max number of nodes in a group is 256, and its max height is 64. When a branch grows more than 256 nodes, the top 8 levels will be kept in the group. The largest branch beyond the top 8 levels will form a new group. The new group ID will be its root node's ID. Every node within the new group share the same 64-bit branch id.
+
+The members on the lowest level of a node group are leaf nodes containing specific user account information. Upper level nodes can also be a child node group, if not a leaf node.
 
 Node group enables two unique advantages. One is elastic concurrency support, the other is an opaque network with variable shades of gray.
 
