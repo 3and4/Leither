@@ -100,14 +100,14 @@ Organization provides valuable service or content to users. At every step of val
     This reward mechanism will feedback positively to the healthy development of the organization and the growth of its usefulness.  
 
 + Mining reward  
-Same as traditional mining, all the online nodes can vote in bookkeeping and smart contract. Reward for new block will be used to support the network, manage public information and routing service.  
+Same as traditional mining, all the online nodes can attend vote, bookkeeping and smart contract service. Reward for new block will be used to support the network, manage public information and routing service.  
 
-    The reward makes sure that organization stays active.
+    This reward makes sure that organization stays active.
 
 + Operation reward  
 In the beginning when the system cannot sustain itself with insufficient content and service. Extra incentives can be rewarded to accelerate the growth of an infant system.
 
-    The reward helps the organization to mature faster.  
+    This reward helps the organization to mature faster.  
 
 ### V. Basic Concept
 **Distributed Hash Table (DHT) network**  
