@@ -105,11 +105,11 @@ Same as traditional mining, all the online nodes can attend vote, bookkeeping an
     This reward makes sure that organization stays active.
 
 + Operation reward  
-In the beginning when the system cannot sustain itself with insufficient content and service. Extra incentives can be rewarded to accelerate the growth of an infant system.
+In the beginning when an infant system cannot sustain itself. Extra incentives can be rewarded to accelerate its growth.
 
     This reward helps the organization to mature faster.  
 
-### V. Basic Concept
+### V. Basic Concepts
 **Distributed Hash Table (DHT) network**  
 In DHT network, node can be quickly searched by its ID to access its information. Public information of an organization can also be saved over the whole network distributively using DHT.  
 
