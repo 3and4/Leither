@@ -156,16 +156,17 @@ The underlying MiMei database of Leither has built in support to time-space snap
 #### 6.1 Network Construction  
 After a user joins an organization, it joins the DHT network and becomes a member. The newcomer writes the routing information of its node into DHT, so that other nodes can find it and use its services.  
 #### 6.2 Ledger Construction  
-Ledger is a SMT with snapshot function. In order to keep network wide messages in sync, the whole network must share a time sequence variable, aka **Network Pulse**. Its initial value is 0. If system state changes, sequence number increments. Other wise, it stays put.  
+Ledger is a SMT with snapshot function. In order to keep network wide messages in sync, the whole network must share a time sequence variable, aka **Network Pulse**. Its initial value is 0. If system state changes, time sequence increments. Other wise, it stays put.  
 
 The system periodically elects a few **bookkeepers** that backups each other. The first one is chief bookkeeper. The term of a bookkeeper is one **Election Cycle** (30min by default). The bookkeeper is responsible for bookkeeping of its branch.   
 #### 6.3 Fund Transfer Procedure  
 **Distribution by organization**  
 The very first token distribution will be announced network wide, with reasons for scrutiny by the members. However, afterward the transfer of tokens between users is private, or publicized only to relevant nodes.  
-**Transfer between users**  
-The transaction between two users concerns only themselves. After the transaction is confirmed, information signed by both users will be sent to their parent nodes on the SMT respectively. Each parent node will record the changes in its own branch and broadcast the information among backup bookkeepers at the same level. After time sequence increments (in less than 1s), transaction data becomes read only. Bookkeepers begin to check the branch bottom up and summarize branch information to generate synopsis. The chief bookkeeper summarizes overall information, generates synopsis of the SMT, and broadcasts top down to everyone below.
 
-Both parties of the transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed for good. One transaction waits at most 2 pulse cycles (2s) to be confirmed.
+**Transfer between users**  
+The transaction between two users concerns only themselves. After the transaction is confirmed, information signed by both users will be sent to their bookkeepers on the SMT respectively. Each bookkeeper will record the changes in its own branch and broadcast the information among backup bookkeepers at the same level. After time sequence increments (in less than 1s), transaction data becomes read only. Bookkeepers at each level begin to check their branches bottom up and summarize branch information to generate synopses. The top bookkeeper summarizes overall information, generates synopsis of the SMT, and broadcasts top down to everyone below.
+
+Both parties of the transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed for good. One transaction waits at most 2 pulse cycles (2s).
 
 **Dispute Handling**  
 Every transaction must have sufficient security deposit and enough time for more nodes to verify it. Transaction is processed by multiple nodes simultaneously, and bookkeeper and backup bookkeeper are randomly selected to avoid collusion. If any node disputes the transaction, disputation resolution procedure kicks in. During the procedure, all relevant funds are frozen.
