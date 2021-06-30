@@ -352,9 +352,9 @@ In Leither, consensus is achieved by doing the very job of internet. Tv box, rou
 Leither elastic system can scale according to business request. Workload is balanced on to every node through consensus.  
 The heavier the network load, the more the nodes, and the more powerful the network processing capacity that far exceeds that of regular block-chain. Because of its high efficiency, a few nodes can construct their own business and consensus mechanism.  
 + Privacy  
-In regular block-chain, information flow of every account is an open book. Even though account is anonymous, it is possible to identify the account owner by analyzing flow information.  
+In regular block-chain, information flow of every account is an open book. Even though account is anonymous, it is possible to identify the owner by analyzing information flow.  
 In Leither, except the earliest contribution of a user that need to be publicized for auditing, all the transactions afterward only need to open to related parties and a few nodes. The whole network has a shade of grey. Creator can set translucency to protect privacy.  
-+ Lawfulness  
++ Law Abiding  
 A token of Leither has corresponding service as anchor object. It is more like points, notes, share, Q coin, and many other business practices in real life. It is perfectly legal, as a matter of fact very similar to early Taobao business, completely decentralized and conducted in the name of individual.
 
-Smart contract deals with real business data, therefore avoids the falling hole of ethereum which can only process virtual business such as encryption coin.  
+    Smart contract deals with real business data, therefore avoids the falling hole of ethereum which can only process virtual business such as encryption coin.  
