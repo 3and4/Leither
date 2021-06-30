@@ -166,20 +166,20 @@ The very first token distribution will be announced network wide, with reasons f
 **Transfer between users**  
 The transaction between two users concerns only themselves. After the transaction is confirmed, information signed by both users will be sent to their bookkeepers on the SMT respectively. Each bookkeeper will record the changes in its own branch and broadcast the information among backup bookkeepers at the same level. After time sequence increments (in less than 1s), transaction data becomes read only. Bookkeepers at each level begin to check their branches bottom up and summarize branch information to generate synopses. The top bookkeeper summarizes overall information, generates synopsis of the SMT, and broadcasts top down to everyone below.
 
-Both parties of the transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed for good. One transaction waits at most 2 pulse cycles (2s).
+Both parties of the transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed for good. One transaction spends at most two pulse cycles (2s).
 
 **Dispute Handling**  
 Every transaction must have sufficient security deposit and enough time for more nodes to verify it. Transaction is processed by multiple nodes simultaneously, and bookkeeper and backup bookkeeper are randomly selected to avoid collusion. If any node disputes the transaction, disputation resolution procedure kicks in. During the procedure, all relevant funds are frozen.
 
-All of the nodes check the disputed transaction and vote. Security deposit of the erroneous node will be confiscated. Bookkeeper can only process the transaction amount that the frozen deposit can cover.
+All of the nodes can check the disputed transaction and vote. Security deposit of the erroneous node will be confiscated. Bookkeeper can only process the transaction amount that the frozen deposit can cover.
 
 **Legitimacy Check**  
     1. The trading parties check the legitimacy of the transaction.   
     2. The bookkeeper checks if the general ledger is in balance.   
     3. The branch bookkeeper verifies the legitimacy of the transaction on its branch.   
-    4. During synchronization, all leaf nodes check the balance and sanity of their neighbors' accounts.  
+    4. During synchronization, all leaf nodes check the balance and sanity of nearby branches' accounts.  
 
-**Redundancy Backup**  
+**Redundant Backup**  
 All the account information on a branch are stored by a few bookkeepers. In order to keep the network robust, all nodes are encouraged to redundantly backup account information of its neighboring branches.
 
 There are two ways for reward. Regualr nodes can audit the transaction information of nearby branches and earn reward. For illegal transaction, account information of neighboring nodes are frozen until the state of their branches recuperate. Number of neighboring nodes could be 1, 3, 7, 15, 31, 63, 255.  
@@ -190,7 +190,7 @@ Redundant backup happens when bookkeepers broadcast information after finishing 
 Network recovery happens at information verification when a node getting online.  
 
 #### 6.4 Dispute Handling**  
-**Publicity**  
+**Publicity Period**  
 Every transaction must have a period of publicity, 24hrs by default. If other nodes find any problem, the transaction will be reported and disputation resolution procedure kicks in.  
 
 **Amount-time**  
@@ -202,15 +202,13 @@ For auditing and bookkeeping,
 Amount = amount of credit pledged, time = period the fund frozen  
 
 **Accumulated Period**  
-= accumulated (for auditing or bookkeeping) amount-time / transaction amount  
+= accumulated amount-time (for auditing or bookkeeping) / transaction amount  
 
 **Transaction Security Threshold**  
 + Minimum number of users who audit a transaction  
 + Minimum accumulated audit period  
     Security threshold sets the minimum auditing cost, so the cost of mining and service fee can be estimated. Accumulated audit period of a normal transaction will be 1.  
     Different audit period has different value, therefore different system reward.  
-**Dispute Procedure and Penalty**  
-All of the online nodes will be responsible to audit transactions within a certain scope.  
 
 #### 6.5 Smart Contract
 Smart contract is similar to transfer procedure. A contract includes smart code, signature of consignor, upper limit of contract. The contract will be executed by the bookkeeper in upper level by default. User can also appoint a consignee node. For complicated contract, if unforeseeable risk is too high, the security deposit of nodes executing and checking the contract shall be raised to cover the risk. It is like a third party that endorses the contract with its own credit and earns corresponding reward.
