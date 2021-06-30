@@ -294,7 +294,7 @@ If one branch miner process one sub-database (65536 accounts), data size is 2.5M
 **Miner memory usage**  
 Only online nodes need to be processed by a miner.  
 For Level 1 or 2 miners, most branches need to be processed online. All 10KB data must be in memory.  
-For lower level miners, there are only 30 some transactions per second. No need to keep everything in memory, read related data and synopsis of neighboring branches when necessary. The data size is 30*16*2*28 byte = 7.5KB, and 90 times of database access.  
+For lower level miners, there are only 30 some transactions per second. No need to keep everything in memory, read related data and synopsis of neighboring branches when necessary. The data size is 30* 16*2*28 byte = 7.5KB, and 90 times of database access.  
 **Miner CPU usage**  
 CPU usage is mainly for verifying transactions and generating synopsis.  
 Level 1 or 2 miners must calculate for every transaction, which means 16 million synopses. However in reality at most only one iteration per pulse cycle is necessary for the whole network, which is 512 times of synopsis calculation, about 10KB data.    
@@ -318,22 +318,24 @@ Based on the above analysis, with equipment and bandwidth of home network, it is
 
 ### IV. Structural Summary
 The overall plan of this paper can be summarized in the following key points.
-#### 9.1 Credential is the result of meaningful work.
-Value is created by work that is meaningful to others. Leither created the original credential system with the meaningful of work. Every quantum of credit corresponds to a piece of work result, so credit can be used to exchange for product and service.  
+#### 9.1 Credit is the result of meaningful work.
+Value is created by work that is meaningful to others. System created the original credit system with meaningful work. Every quantum of credit corresponds to a piece of work result, so credit can be used to exchange for product and service.  
 
 Comparatively, the meaningful work in block-chain is just bookkeeping, which is at lower end in the chain of value.  
 #### 9.2 Interaction is based on credit
-Credit can endorse any transaction on network. The encryption system is a mechanism to prove user authentication and information. Miner pledges its credit to ensure the others that it will do a good job, otherwise be punished accordingly.  
+Any online transaction can be endorsed with credit. The encryption system is a mechanism to prove user authentication and information. Miner pledges its credit to ensure the others that it will do a good job, otherwise be punished accordingly.  
 
-With security deposit and arbitration mechanism, complicated smart contract can be implemented to support large scale interactions among multiple parties. All of these operations rely on the most basic PKI algorithm, even the cheapest devices are powerful enough to support. Comparatively, traditional block-chain depends on more and more on dedicated devices and squander expensive electricity.  
-#### 9.3 Completeness of time-space comes from synopsis and time sequence
-Leither system defines a 160-bit account space to accommodate all possible accounts on a sparse Merkle.  
-All account information stored on leaf-node, and summarized bottom up to the root-node. The state of the whole system can be represented by one synopsis.  
-Time sequence is used to coordinate all the nodes, and record state of time-space at different stages. Time sequence also solved CAP problem in distributed network.  
+With security deposit and arbitration mechanism, complicated smart contract can be implemented to support large scale interactions among multiple parties. All of these operations rely on the most basic PKI algorithm, which even the cheapest devices are powerful enough to support.  
+
+Comparatively, traditional block-chain depends more and more on dedicated devices and squander expensive electricity.  
+#### 9.3 The completeness of time-space comes from synopsis and time sequence
+Leither system defines a 160-bit account space to accommodate all possible accounts on a sparse Merkle tree.  
+All accounts information are stored on leaf nodes, and synopses are generated bottom up at each level to the root node. The state of the whole system can be represented by one synopsis.  
+Time sequence is used to coordinate all of the nodes, and record state of time-space at different stages. Time sequence also solved CAP problem in distributed network.  
 #### 9.4 Division of work and coordination improve processing power as a whole
-Network nodes can be partitioned into layers according to the scale of the network. Transaction data are saved on user nodes. Consensus is confirmed at branch nodes. Data synced network wide is tiny amount of synopses and summaries.  
+Network nodes can be partitioned into layers according to the scale of the network. Transaction data are saved on user nodes. Consensus is confirmed by branch nodes. Data that must be synced network wide is tiny amount of synopses and summaries.  
 
-Network can be more stable and robust by adding proper number of backup nodes. Comparatively, in regular block-chain except large number of miners of PoW, all the bookkeeping is accomplished by all the nodes together, which greatly restricted network scale and throughput.  
+Network can be more stable and robust by adding proper number of backup nodes. Comparatively, in regular block-chain all of the bookkeeping is accomplished by all of the nodes together, which greatly restricted network scale and throughput.  
 #### 9.5 Endorsement and shade of grey solves privacy problem
 ### X. Advantages of Leither compared with regular block-chain
 + Functionality
@@ -342,18 +344,17 @@ With organization and consensus, Leither can implement most of the ethereum func
 The above functions combined can give internet back to its users from the grip of oligarchies.  
 + Value  
 Traditional block-chain does bookkeeping for others.  
-Every organization of Leither has a mission to decentralize an internet application, to give user control of its data, to satisfy user need first and foremost. The action of every participant has real value, in order to take back the outrageous profit of oligarchies and redistribute it user oriented.  
+Every organization of Leither has a mission to decentralize an internet application, to give user control of its data, to satisfy user's need first and foremost. The action of every participant has real value, in order to take back the outrageous profit of oligarchies and redistribute it users who did meaningful work.  
 + Cost  
 Mining of regular block-chain is hugely expensive because of all the machines and electricity cost to do the most basic work.  
-In Leither, consensus is achieved by doing the very job of internet business. Tv box, router, NAS, smart phone, even Raspberry zero worth $10 can provide valuable services and ROI much higher than mining machine.  
+In Leither, consensus is achieved by doing the very job of internet. Tv box, router, NAS, smart phone, even Raspberry zero worth $10 can provide valuable services and ROI much higher than mining machine.  
 + Efficiency  
 Leither elastic system can scale according to business request. Workload is balanced on to every node through consensus.  
-The most business load, the more nodes and powerful the network processing capacity, far exceeds that of regular block-chain. Because of its high efficiency, a few nodes can construct their own business and consensus mechanism.  
+The heavier the network load, the more the nodes, and the more powerful the network processing capacity that far exceeds that of regular block-chain. Because of its high efficiency, a few nodes can construct their own business and consensus mechanism.  
 + Privacy  
-In regular block-chain, flow of every account is open book. Even though account is anonymous, it is possible to identify the account by analyzing flow information.  
-In Leither, except the earliest contribution of a user need to be publicized for auditing. All the transaction afterward only need to open to related parties and a few nodes. The whole network has a shade of grey. Creator can set translucency to protect privacy.  
+In regular block-chain, information flow of every account is an open book. Even though account is anonymous, it is possible to identify the account owner by analyzing flow information.  
+In Leither, except the earliest contribution of a user that need to be publicized for auditing, all the transactions afterward only need to open to related parties and a few nodes. The whole network has a shade of grey. Creator can set translucency to protect privacy.  
 + Lawfulness  
-The token of Leither has corresponding service as object. It is more like the points, notes, share, Q coin, etc. It has many reference in reality. It is perfectly legal.  
-On business form, it is similar to early Taobao business, completely decentralized and conducted in the name of individual.
+A token of Leither has corresponding service as anchor object. It is more like points, notes, share, Q coin, and many other business practices in real life. It is perfectly legal, as a matter of fact very similar to early Taobao business, completely decentralized and conducted in the name of individual.
 
-Smart contract is dealing with real business data, avoid the falling hole of ethereum that it can only process virtual business such as encryption coin.  
+Smart contract deals with real business data, therefore avoids the falling hole of ethereum which can only process virtual business such as encryption coin.  
