@@ -125,9 +125,9 @@ On SMT, account information on leaf node can be quickly located, which is essent
 **Node Group**  
 With the growth of network and traffic, storage, data processing and communication will eventually overload network nodes. If not optimized, Leither network will fall in to the same conundrum of 7 throughput like BTC.
 
-Neighboring nodes on a sub-tree or branch of SMT can be partitioned into a **node group** to solve the above problem. The max number of nodes in a group is 256, and its max height is 64. When a branch grows more than 256 nodes, the top 8 levels will be kept in the group. The largest branch beyond the top 8 levels will form a new group. The new group ID will be its root node's ID. Every node within the new group share the same 64-bit branch id.
+Neighboring nodes on a sub-tree or branch of SMT can be partitioned into a **node group** to solve the above problem. The max number of nodes in a group is 256, and its max height is 64. When a group grows more than 256 nodes, the top 8 levels will be kept in the group, but the largest branch beyond the top 8 levels will form a new group. The new group ID will be its root node's ID. Every node within the new group share the same 64-bit branch id.
 
-The members on the lowest level of a node group are leaf nodes containing specific user account information. Upper level nodes can also be a child node group, if not a leaf node.
+The members on the lowest level of a node group are leaf nodes containing specific user account information. Upper level nodes in the group can be either a child node group or a leaf node.
 
 Node group enables two unique advantages. One is elastic concurrency support, the other is an opaque network with variable shades of gray.
 
