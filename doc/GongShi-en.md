@@ -37,8 +37,7 @@ Provide physical devices for the whole ecosystem, run by operators. Different fr
 + Service Promotion  
 One method is to promote web service of Leither in regular internet, such as website, link, APP and applet. Another is to tag contents and provide public service from Search Node. Similar to operation department of a company.  
 + Value Appreciation  
-Every node can provide services, which can be monetized to pay for other services. Information search and online traffics have great financial value, which is the **foundation of the ecosystem's value**.  
-Usually a block-chain like system can coordinate the investment and return of its members. More details in later chapters.  
+Every node can provide public services that can be monetized to pay for other services. Information search and online traffics have great financial value, which is the **foundation of the ecosystem's value**. When packed into a block-chain like system, the investment and return of its members can be coordinated through consensus. More details in later chapters.
 
 #### 2.3 Service Support
 Node management, MiMei migration, information search and group consensus, etc.  
