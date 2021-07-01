@@ -35,9 +35,9 @@ Provide services or produce contents for the ecosystem. For content service, sim
 + Service Support  
 Provide physical devices for the whole ecosystem, run by operators. Different from regular internet, devices are not owned by one company. Similar to the role of maintenance department in a regular company.  
 + Service Promotion  
-One method is to promote web service of Leither, such as website, link, app and applet, in regular internet. Another is to generate tags of content and provide public service from Search Node. Similar to operation department of a company.  
+One method is to promote web service of Leither in regular internet, such as website, link, APP and applet. Another is to tag contents and provide public service from Search Node. Similar to operation department of a company.  
 + Value Appreciation  
-Every node can provide services, which can be monetized and pay for other services. Information search and online traffics have great financial value, which is the **foundation of the ecosystem's value**.  
+Every node can provide services, which can be monetized to pay for other services. Information search and online traffics have great financial value, which is the **foundation of the ecosystem's value**.  
 Usually a block-chain like system can coordinate the investment and return of its members. More details in later chapters.  
 
 #### 2.3 Service Support
