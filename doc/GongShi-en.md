@@ -42,13 +42,13 @@ Every node can provide public services that can be monetized to pay for other se
 #### 2.3 Service Support
 Node management, MiMei migration, information search and group consensus, etc.  
 + MiMei Storage  
-Leither decouples internet content and service into MiMei form. MiMei is stored on nodes according to business request. MiMei flow among nodes on demand. Service exchanged between nodes is settled with credit. Node participates in the settlement of group services by group consensus.  
+Leither decouples internet content and service into MiMei form. MiMei is stored on nodes according to business request and flow among nodes on demand. Service exchanged between nodes is settled with credit. Node participates in the settlement of group services by group consensus.  
 + Index Information  
 Index is used for search service. The information is stored on Distributed Hash Table (DHT) of all the online nodes. Node participates in the settlement of group service by group consensus.  
 + Docking Service  
 Services that connect MiMei with regular internet, such as APP, DNS and applet. Those services run on servers of regular internet, and participate in the settlement of group services by group consensus.
 + Consensus  
-Public business logic of a group. Consensus runs on all the nodes.
+Consensus is the public business logic of a group. Consensus runs on all bookkeepers.
 
 ### III. Organizational Functions
 #### 3.1 Create Organization  
@@ -56,7 +56,7 @@ Any user can create an organization. First, system creates a pair of encryption 
 
 Organization runs on the node of its creation. Distributed organization also starts from the first node where it is created. The default network structure is DHT network which stores public information of the organization.
 
-Public information of the organization can be inquired through DHT network. Information of member's node can be searched through routing service. Members can send P2P message. Group chatting data belongs to public and saved on DHT network.
+Public information of an organization can be inquired through DHT network, so can the information of a member's node. Members can exchange P2P messages. Group message data belongs to the public and is saved on DHT network.
 #### 3.2 Join Organization  
 User can apply for membership of an organization directly, or ask a member to apply on its behavior. Once supervisor confirms the application, the user becomes a member and DHT is updated with corresponding information. Member can check public information of the organization. User can also perform certain task for the organization and get rewarded a membership.  
 
