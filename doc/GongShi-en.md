@@ -13,14 +13,14 @@ Organization service is a public or private service that organization provides. 
 Internet business can be divided into categories of search engine, content, social media and tool.  
 + Search engine  
 Google, Amazon, Alibaba and Baidu all profit from **Information Search**.  
-In Leither network, user can select its preferred search engines, set its own search strategy. Therefore search service will not be controlled by a few providers, instead user can take control of and decide its own search information.  
+In Leither network, user can select its preferred search engine and set its own search strategy. Therefore search service will not be controlled by a few providers, instead user can take control of and customize its own search result.  
 + Social service  
 FB, Twitter, Wechat make huge profits by controlling the **Social Relationship** of users.  
 In Leither network, data of social connections are saved by user owned devices, therefore all of the attached messages, Apps and services are also selected and customized by user.  
 + Content and Service  
 On-line video, music and news media provide **Content and Service**.
 In Leither network, content and service can be split into finer parcels, and packaged into MiMei format.  
-Content producer can publish directly to its own node, or collect content from regular internet and put on its node.  
+Content producer can publish directly to its own node, or collect content from regular internet and put it on its node.  
 MiMei can flow freely among nodes, users can also customize content search method and resources, not to be subjected to criminal abuse by Gig Techs anymore.    
 + Tool  
 Google Doc, online office, XMind make profits  by providing **Tool Services**.  
@@ -29,9 +29,9 @@ In Leither, Tool application is also a MiMei.
 #### 2.2 Division of Services  
 The internet services mentioned in previous section can all be divided and reconstructed through the coordination of the following entities, in decentralized fashion.  
 + Application Development  
-Develop application and platform for Leither ecosystem, undertaken by programmers. A similar role of the R&D in an enterprise.
+Develop applications for Leither ecosystem, undertaken by programmers. Similar to the role of R&D in an enterprise.
 + Service or Content Production  
-Provide service or produce content for the ecosystem. For content service, similar to editor of a website or operation department of a company.
+Provide services or produce contents for the ecosystem. For content service, similar to editor of a website or operation department of a company.
 + Service Support  
 Provide physical devices for the whole ecosystem, run by operators. Different from regular internet, devices are not owned by one company. Similar to the role of maintenance department in a regular company.  
 + Service Promotion  
