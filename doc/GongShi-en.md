@@ -2,7 +2,7 @@ Part II Consensus Mechanism
 ========
 ### Summary
 ### I. Organization
-Chapter Nine of _MiMei and Application System_ mentioned individual oriented relationship model, and credit model based on relationship network. In social life, people always belong to all kinds of social groups, which is called **Organization** in this paper.  
+Chapter Nine of _MiMei and Application System_ mentioned user oriented relationship model, and credit model based on relationship network. In social life, people always belong to some kinds of social groups, which is called **Organization** in this paper.  
 
 Organization is a group oriented structure. A group is created first, then people join it to become a member. There are three types of roles within an organization: supervisor (founder), member and guest. Supervisor and member work with each other to maintain and manage the group. In traditional internet, both structures are maintained by platform operator, who also set the rules.
 
