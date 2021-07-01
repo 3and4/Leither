@@ -37,15 +37,15 @@ is a container of MiMei, an ultra-light decentralized cloud OS.
 
     Leither OS has implemented all the subsystems necessary to reconstruct regular internet services, including authentication and authorization, file system, database, application framework, independent domain name service and routing. Leither API supports about 40 kinds of development languages.
 
-    PS: Leither written in Kanji character is 弥媒. 弥 means extremely small and ubiquitous, usually something imperceptible. 媒 means media. 弥媒 put together almost as good as Ether, a substance once believed to be the building block of universe.
+    PS: Leither written in Kanji character is 弥媒. 弥 means extremely small and ubiquitous, usually something imperceptible. 媒 means media. 弥媒 put together is almost as good as Ether, a substance once believed to be the building block of universe.
 
 + **Node**  
-A smart device running Leither OS is a **Node**. As small as 6MB in size and runs on all regular operation systems, Leither supports almost any smart devices, like PC, NAS, router and Raspberry Pi.  
+A smart device running Leither OS is a **Node**. As small as 6MB in size and runs on all regular operation systems, Leither runs almost any smart devices, like PC, NAS, router and Raspberry Pi.  
 1. One independent node can serve as an ultralight server;
 2. Two nodes can backup each other in services like data backup, error tolerance, load balance, domain name resolution and routing;
 3. Multiple nodes can network to support decentralized internet applications.
 
-    MiMei flows among nodes to facilitate the decentralization of centralized internet.
+    **MiMei flows among nodes to facilitate the decentralization of centralized internet**.
 
 ### I. Background -- Centralized Internet
 #### 1.1 Big Data has conquered the world
