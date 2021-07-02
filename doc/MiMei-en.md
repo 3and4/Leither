@@ -49,7 +49,7 @@ A smart device running Leither OS is a **Node**. As small as 6MB in size and run
 
 ### I. Background -- Centralized Internet
 #### 1.1 Big Data has conquered the world
-Internet has changed our daily life. Big Data is running internet, therefore our lives. Online retail up to US$35 trillion in 2019 in China alone. The essence of Big Data is the accumulation of data and formation of rules, for the purpose of manipulating user behavior and generating monopolistic profit.
+Internet has changed our daily life. Big Data is running internet, therefore our lives. Online retail went up to US$35 trillion in 2019 in China alone. The essence of Big Data is the accumulation of data and formation of rules, for the purpose of manipulating user behavior and generating monopolistic profit.
 
 #### 1.2 Big Techs own Big Data
 Big Techs own core data. For example, FB owns social media and Amazon online retail. Data protocols are manipulated to serve as business barriers. Google’s spider cannot access FB pages, vice versa. Monopoly is protected by corporation regulations, laws and ecosystem rules. Big Techs also take the lion’s share of profit, so their fortune concentrates accelerating.
