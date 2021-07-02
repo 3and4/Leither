@@ -94,17 +94,17 @@ From MySpace to Facebook, a more systematic social media model is created. The c
 |3|App & Services|Application and services for the user|
 |4|Message|Interactions with friends, applications and services|
 
-This model is remarkably successful. All the afterward internet social Apps adopted a similar framework, for example Wechat, Facebook, Alipay and some OA system for enterprise users.
+This model is remarkably successful. All the afterward internet social Apps adopted a similar framework, for example Wechat, Facebook, Alipay and some OA system for enterprise users.  
 Shortcomings: Internet becomes more monopolized, more isolated, and data protocols manipulated.
 #### 2.7 Design summary
 Design principles for breaking data monopoly and creating decentralized internet:
-+ **User oriented in every aspect**
++ **User oriented in every aspect**  
 A new birth of freedom, and that internet of the people, by the people, for the people.
-+ **Free and open system**
++ **Free and open system**  
 Open data protocols  
 Open operation system protocols
 Only in an open system, user has the freedom of choice and power of control.
-+ **Free Data Migration**
++ **Free Data Migration**  
 With user’s authorization and reasonable security discretion, user data shall be allowed to move from one platform to another and transform from one format to another. Only then, a third party can provide valuable applications and services.
 
 The following requests shall be supported in a decentralized system:
