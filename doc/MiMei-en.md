@@ -79,7 +79,7 @@ With the evolution of applications, it became necessary to describe the relation
 Database was designed to manage complicated data structure. A database is a closed space of datasets and their relationships.  
 Shortcomings: Data stored in closed space with little liquidity, value not maximized.
 #### 2.4 HTML -- connections of data over network
-WWW regulates relationships of data cross machines over a network. The inter-connection of data cross network breaks the physical limits of data storage on mainframe. With the birth of internet, information explosion ensued and gateway sites flourished.  
+WWW regulates connections of data cross machines over a network. The inter-connection of data cross network breaks the physical limits of data storage on mainframe. With the birth of internet, information explosion ensued and gateway sites flourished.  
 Shortcomings: connections based on linkage is vulnerable.
 #### 2.5 Google -- Search Engine
 Information explosion creates the request for search engine. By adding tags to data, Google provides content search service by keywords.  
