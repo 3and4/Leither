@@ -71,49 +71,50 @@ Before presenting a plan to build decentralized internet, it is necessary to bri
 #### 2.1 File -- Carrier of Data
 In the beginning of computer age, applications were developed to solve scientific problems. Those application generated the earliest request of data, and also large amount of data in return. 
 
-In Unix, File was designed as carrier of data. File System was designed to manage files and storage medias. Everything is file. Any information related device is of File type.  
+In Unix, File was designed as carrier of data. File System was designed to manage files and storage medias.  
+Everything is file. Any information related device is of File type.  
 #### 2.2 MiMei -- Type of Data
-With the evolution of applications, it became necessary to describe the relationship between file and application. DOS introduced the concept of File Extension. In Windows, file extension is bound with a corresponding application. In E-mail, MIME maintains a strict definition of file type as attachment. All existing web browsers still follow the MIME protocol.
+With the evolution of applications, it became necessary to describe the relationship between file and application. DOS introduced the concept of File Extension. In Windows, file extension is bound with a corresponding application. MIME defines a strict rule for file type as E-mail attachment. All existing web browsers still follow the MIME protocol.
 #### 2.3 Database -- Relationship of Data
-Database was designed to manage complicated data structure. A database is a closed set of datum and their relationships.  
+Database was designed to manage complicated data structure. A database is a closed space of datasets and their relationships.  
 Shortcomings: Data stored in closed space with little liquidity, value not maximized.
 #### 2.4 HTML -- connections of data over network
-WWW regulates relationships of data over a network. With the birth of internet, information explosion ensued. The inter-connection of data cross network breaks the physical limits of data stored in a single machine. Gateway sites flourished benefiting from this innovation.  
-Shortcomings: connections based on linkage is unstable.
+WWW regulates relationships of data cross machines over a network. The inter-connection of data cross network breaks the physical limits of data storage on mainframe. With the birth of internet, information explosion ensued and gateway sites flourished.  
+Shortcomings: connections based on linkage is vulnerable.
 #### 2.5 Google -- Search Engine
-Information explosion creates the request for search engine. Google provides content search service based on tags. Extra dimensions of properties are added to tagged data from then on.  
-Shortcomings: Data is isolated and monopolized. Data protocol began to be tainted by private interest.
+Information explosion creates the request for search engine. By adding tags to data, Google provides content search service by keywords.  
+Shortcomings: Data is more and more isolated and monopolized. Data protocol began to be influenced and controlled.
 #### 2.6 Facebook -- Social Model
-The early social media, ICQ, MSN, QQ solved the request for instant messaging. Twitter provides a platform for broadcasting short messages quickly.  
-From MySpace to Facebook, a more social-media oriented model appeared. Social model usually consists of 4 parts:
+The early social medias, ICQ, MSN, QQ, solved problem of instant messaging among people. Twitter provides a platform for broadcasting short messages quickly.  
+From MySpace to Facebook, a more systematic social media model is created. Social model usually consists of 4 parts:
 |--|--|--|
 |1|My settings|Personal information, settings and preferences|
 |2|Friends|User contacts|
 |3|App & Services|Application and services for the user|
 |4|Message|Interactions with friends, applications and services|
 
-This model is remarkably successful. All the internet social Apps adopted a similar framework, for example Wechat, Facebook, Twitter and some OA system for enterprise users.
+This model is remarkably successful. All the afterward internet social Apps adopted a similar framework, for example Wechat, Facebook, Alipay and some OA system for enterprise users.
 Shortcomings: Internet becomes more monopolized, more isolated, and data protocols manipulated.
-#### 2.7 Summary of Design
+#### 2.7 Design summary
 Design principles for breaking data monopoly and creating decentralized internet:
 + **User oriented in every aspect**
 A new birth of freedom, and that internet of the people, by the people, for the people.
 + **Free and open system**
 Open data protocols  
-Open operation systems protocols
-Only in an open system, user has the freedom of choice and power of ownership.
+Open operation system protocols
+Only in an open system, user has the freedom of choice and power of control.
 + **Free Data Migration**
 With user’s authorization and reasonable security discretion, user data shall be allowed to move from one platform to another and transform from one format to another. Only then, a third party can provide valuable applications and services.
 
 The following requests shall be supported in a decentralized system:
 + File, file system, database
 + Association of data type and application
-+ Connection between contents over network
++ Association of contents over network
 + Search of content over network
 + Data migration over network
-+ Decentralized social media
++ Decentralized social model
 + Light-weight container system
-+ Easy to use development environment
++ User friendly development framework
 + User experience compatible with existing internet
 + Law-abiding
 ### III. Requirement Analysis
