@@ -69,7 +69,7 @@ The internet of Status quo has become a centralized playground of big players. B
 ### II. System Requirement
 Before presenting a plan to build decentralized internet, it is necessary to briefly review the different requests that computer and internet must address at each stage of their development, and the corresponding solutions presented. If the new solution cannot solve old problems satisfactorily, it cannot beat the incumbent.  
 #### 2.1 File -- Carrier of Data
-In the beginning of computer, applications were developed to solve scientific problems. Those application generated the earliest request of data, and also large amount of data in return. 
+In the beginning of computer age, applications were developed to solve scientific problems. Those application generated the earliest request of data, and also large amount of data in return. 
 
 In Unix, File was designed as carrier of data. File System was designed to manage files and storage medias. Everything is file. Any information related device is of File type.  
 #### 2.2 MiMei -- Type of Data
