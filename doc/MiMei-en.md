@@ -87,6 +87,7 @@ Shortcomings: Data is more and more isolated and monopolized. Data protocol bega
 #### 2.6 Facebook -- Social Model
 The early social medias, ICQ, MSN, QQ, solved problem of instant messaging among people. Twitter provides a platform for broadcasting short messages quickly.  
 From MySpace to Facebook, a more systematic social media model is created. The consists of 4 parts:  
+|序号|名称|说明|
 |--|--|--|
 |1|My settings|Personal information, settings and preferences|
 |2|Friends|User contacts|
