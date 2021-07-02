@@ -86,7 +86,7 @@ Information explosion creates the request for search engine. By adding tags to d
 Shortcomings: Data is more and more isolated and monopolized. Data protocol began to be influenced and controlled.
 #### 2.6 Facebook -- Social Model
 The early social medias, ICQ, MSN, QQ, solved problem of instant messaging among people. Twitter provides a platform for broadcasting short messages quickly.  
-From MySpace to Facebook, a more systematic social media model is created. Social model usually consists of 4 parts:
+From MySpace to Facebook, a more systematic social media model is created. Social model usually consists of 4 parts:  
 |--|--|--|
 |1|My settings|Personal information, settings and preferences|
 |2|Friends|User contacts|
