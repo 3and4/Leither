@@ -193,7 +193,7 @@ Human brain uses pattern recognition to model the world. During its interaction 
 **Origin of MiMei**  
 Entropy is one of the most important measurements in the universe and human society. The 2nd law of thermodynamics points out the direction along which the universe evolves. That is why entropy is also called Arrow of Time. Erwin Schrodinger in his book, What is Life, declares that what an organism feeds upon is negative entropy.
 
-Life stores information of its environment in gene. Heredity keeps the adaptation and variant deals with the changes of environment. Life simply executes the instructions locked in its gene. Once human developed self-conscious, human brain begins to simulate adjustment made to its environment and process the information. The basic unit of such information is called **Meme** by Richard Dawkins.  
+Life stores information of its environment in gene. The heredity keeps the adaptation and the variation deals with the changes of environment. Life simply executes the instructions locked in its gene. Once human developed self-conscious, human brain begins to simulate adjustment made to its environment and process the information. The basic unit of such information is called **Meme** by Richard Dawkins.  
 
 After the birth of internet, the method for processing information has changed and a new unit of information is required. We call it **MiMei**. Similar to Gene and Meme, MiMei contains a piece of information and the rules applicable to it.
 
@@ -217,10 +217,10 @@ Leither is implemented as MiMei container system, and also a decentralized cloud
 **MiMei Features**
 |Feature|Detail|
 |--|--|
-|Identification consistency|MiMei ID combined with its version can describe a piece of information stably and precisely|
-|Complex information render|Support database, file system, referential relationship, App to express complicated information|
-|Free Data Migration|MiMei can flow among different nodes in a relationship-chain or group, according to user behaviors|  
-|Multi-dimension search|User can add tag to MiMei and search it through multiple nodes over multiple tags|
+|Unique label|MiMei ID with version number can describe a piece of information consistantly and precisely|
+|Complex information rendering|Support database, file system, referential relationship and App. Describe complicated information|
+|Free Data Migration|Contrstuct relationship chain or group. MiMei can flow among different nodes according to user behaviors|  
+|Multi-dimension search|User can add tags to MiMei and search it through multiple nodes over multiple tags|
 
 The above features will be explained in detail later.
 
