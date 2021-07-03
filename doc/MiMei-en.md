@@ -259,8 +259,8 @@ type MiMeiInfo struct {
 **MiMei ID unchangeable**  
 MiMei ID is based on information of creator, associated application, MiMei type and MiMei mark. Once created, MiMei ID never changes no matter how its content changes.
 
-**Access MiMei data with MiMei ID and version**  
-New version is created while MiMei being edited or backed up. Data of the version is based on synopsis of content. Content of the version is read-only. MiMei ID and version combined can identify certian MeMei data.
+**Access MiMei data with MiMei ID and version number**  
+New version is created while MiMei being edited or backed up. ID of the version is based on synopsis of content. Content of the version is read-only. MiMei ID and version combined can identify certian MeMei data.
 
 ### VI. Data storage and corelation
 MiMei can support data storage of most internet applications with its support of file and database.
