@@ -136,7 +136,6 @@ In this case, User has the freedom of choice and is not restricted by certain Ap
 
 **App->Data**  
 User's right to access data is restricted to certain Apps, usually only one. For example, when user login an e-commerce site for shopping, or get on social media to chat with friends.
-
 In this case, the algorithm of App decides the path for user to access data, so user behavior is controlled by the App's algorithm or rules.
 
 The two approaches above correspond to **Object Oriented Programming** and **Procedure Oriented Programming**, respectively.  
@@ -149,11 +148,11 @@ On the other hand, open source community turned operation system into a public p
 There shall be similar open source platform for collecting user data, especially for **Social Media** and **Search Engine**.  
 
 **Free Data Migration**  
-In early operation system, data file can be copied and transferred among different mainframes of different systems. Free movement of data shall be a consensus and primary design norm of operation system.  
-Three measures can be adopted to achieve the above goal:
+In early operation system, data file can be copied and transferred among different mainframes of different systems. Free migration of data shall be a consensus and primary design norm of operation system.  
+Three measures can be adopted to achieve the above goals:
 + Promote data-freedom as a mainstream ideology
-+ Legislate that any platform that collects user data must allow the owner to migrate its personal data.
-+ Develop opensource program, such as browser plugins, to facilitate user to migrate data to personal storage devices. Once the ownership of user data taken back by its creator, the data can be revived and reconnected with each other.
++ Mandate that any platform that collects user data must allow the owner to migrate its personal data. (European Commission proposed a similar legislation recently)
++ Develop opensource programs, such as browser plugins, to facilitate user to migrate data to personal storage devices. Once the ownership of user data taken back by its creator, the data can be revived and reconnected with each other.
 
 **Separation of Data and Rule**  
 If data can be migrated freely, user will have the choice of rules that can be applied to it. In another word, try to be **Object Oriented**, avoid Procedure Oriented development whenever possible. Data structure is relatively simple to be reverse engineered. It is easier to reconstruct program structure with the knowledge of data structure.  
