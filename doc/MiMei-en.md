@@ -154,39 +154,41 @@ Three measures can be adopted to achieve the above goals:
 + Mandate that any platform that collects user data must allow the owner to migrate its personal data. (European Commission proposed a similar legislation recently)
 + Develop opensource programs, such as browser plugins, to facilitate user to migrate data to personal storage devices. Once the ownership of user data taken back by its creator, the data can be revived and reconnected with each other.
 
-**Separation of Data and Rule**  
-If data can be migrated freely, user will have the choice of rules that can be applied to it. In another word, try to be **Object Oriented**, avoid Procedure Oriented development whenever possible. Data structure is relatively simple to be reverse engineered. It is easier to reconstruct program structure with the knowledge of data structure.  
+**Rule subordinates to data**  
+If data can be migrated freely, user will have the choice of rules to apply to it. In another word, try to be **Object Oriented**, avoid **Procedure Oriented** development whenever possible. Data structure is relatively simple to be reverse engineered. It is easier to reconstruct program structure with the knowledge of data structure.  
 
 **Granulation of User Data**  
 There is no way to decouple convoluted and complicated dataset. It is best to granulate data in design, following the pattern of gene, keep the information relatively comprehensive and independent. A piece of granulated information is easy to be processed, transferred, and its connection with other objects clear to be understood.
 
-**Connections of Data**  
-Isolated data have little value compared with inter-connected dataset, whose connections contain much more information. HTML is perfect protocol to describe relationships, if not link could be unstable.  
+**inter-Connections of Data**  
+Isolated data have limited value. Inter-connected data can express much more complicated information. HTML is a perfect protocol to describe relationships, if not link could be unstable. The connections of information within a database is still of limited scope.  
 
 #### 3.3 Data Container  
 Many data centers are required to process data of billions of users in regular internet. A large data center has capacity for tens of thousands of servers. Every task is processed by groups of servers using parallel algorithm. A army of maintenance personals are required for daily operation.
 
-No data center is required when storing personal data by individual. However, some kind of container, a light-weight clouds OS, will be necessary, like Pod promoted by Solid platform. The container shall be low cost, lightweight, and easy to operate by layman. Compared with the Homomorphic Encryption that certain block-chain alogrithm is using, Leither method is simpler and more efficient. One who owns the storage device owns the data and defines the rules to apply.
+No data center is required when storing personal data by individual. However, some kind of container, a light-weight clouds OS, will be necessary, like Pod promoted by Solid platform. The container shall be low cost, lightweight, and easy to operate by layman. Compared with the Homomorphic Encryption that certain block-chain alogrithm is using, Leither method is simpler and more efficient. One who owns the storage device owns the data and defines the rules of application.
 
 #### 3.4 Data Model for Reference  
 **File**  
 File is a set of program and data stored on media. File is constructed according to certain format, usually referred to as data structure. Operation system manages files with File System in a tree-like data structure. File wraps the access of data on media and optimizes the procedure.  
 
 **WWW (World Wide Web)**  
-In a standard webpage, HTML5 is used to render content of webpage, CSS style and JS tasks. A page can relatively store and render its data comprehensively. Through interconnections among pages, large scale and complicated information can be represented.
+In a standard webpage, HTML5 is used to render content of webpage, CSS style and JavaScript tasks. A page can store and render its data relatively comprehensively. Through interconnections among pages, large scale and complicated information can be constructed.
 
 Shortcomings:
-Webpage only contains information about frontend, without backend data. Big Techs take monopolistic control of user data by owning the backend servers. The connections among webpages are link based which is unstable for lacking definition about server or user.
+Webpage only contains information of frontend, without backend data. Big Techs take monopolistic control of user data by owning the backend servers.  
+The links that connect webpages are unstable due to the fragility of server and volatility of its location.  
+Lack of definition of elements such as server, user, etc.
 
 **Gene**  
 The basic unit that contains information of life. DNA or RNA stores a complete segment of hereditary material, which records the adaptation of life to its environment. Life copies hereditary information from generation to generation, while adapting to new environment by variation.
 
-Limitation: Every iteration takes a generation, with restrictions on the amount of information inherited and weak capability to deal with complicated changes.  
+Limitation: Every iteration takes a generation, with restrictions on the amount of information inherited and weak ability to deal with complicated changes.  
 
 **MEME**  
 Richard Dawkins introduced the concept of MEME in his original book, the Selfish Gene. Similar to gene, MEME is defined as the base unit that contains information of a civilization. MEME can be used to record all the knowledge of human society. It can be remembered in human brain, propagated among people, or stored in any kind of media.
 
-Human brain uses pattern recognition to model the world. During its interaction with environment, every reflection by the mind is an iteration of evolution. Compared with gene, MEME can evolute faster than gene by orders of magnitude.  
+Human brain uses pattern recognition to model the world. During its interaction with the environment, every reflection by the mind is an iteration of evolution. Compared with gene, MEME can evolute faster than gene by many orders of magnitude.  
 ### IV. Introduction to MiMei
 **Origin of MiMei**  
 Entropy is one of the most important measurements in the universe and human society. The 2nd law of thermodynamics points out the direction along which the universe evolves. That is why entropy is also called Arrow of Time. Erwin Schrodinger in his book, What is Life, declares that what an organism feeds upon is negative entropy.
