@@ -152,7 +152,7 @@ In early operation system, data file can be copied and transferred among differe
 Three measures can be adopted to achieve the above goals:
 + Promote data-freedom as a mainstream ideology
 + Mandate that any platform that collects user data must allow the owner to migrate its personal data. (European Commission proposed a similar legislation recently)
-+ Develop opensource programs, such as browser plugins, to facilitate user to migrate data to personal storage devices. Once the ownership of user data taken back by its creator, the data can be revived and reconnected with each other.
++ Develop open source programs, such as browser plugins, to facilitate user to migrate data to personal storage devices. Once the ownership of user data taken back by its creator, the data can be revived and reconnected with each other.
 
 **Rule subordinates to data**  
 If data can be migrated freely, user will have the choice of rules to apply to it. In another word, try to be **Object Oriented**, avoid **Procedure Oriented** development whenever possible. Data structure is relatively simple to be reverse engineered. It is easier to reconstruct program structure with the knowledge of data structure.  
@@ -166,7 +166,7 @@ Isolated data have limited value. Inter-connected data can express much more com
 #### 3.3 Data Container  
 Many data centers are required to process data of billions of users in regular internet. A large data center has capacity for tens of thousands of servers. Every task is processed by groups of servers using parallel algorithm. A army of maintenance personals are required for daily operation.
 
-No data center is required when storing personal data by individual. However, some kind of container, a light-weight clouds OS, will be necessary, like Pod promoted by Solid platform. The container shall be low cost, lightweight, and easy to operate by layman. Compared with the Homomorphic Encryption that certain block-chain alogrithm is using, Leither method is simpler and more efficient. One who owns the storage device owns the data and defines the rules of application.
+No data center is required when storing personal data by individual. However, some kind of container, a light-weight clouds OS, will be necessary, like Pod promoted by Solid platform. The container shall be low cost, lightweight, and easy to operate by layman. Compared with the Homomorphic Encryption that certain block-chain algorithm is using, Leither method is simpler and more efficient. One who owns the storage device owns the data and defines the rules of application.
 
 #### 3.4 Data Model for Reference  
 **File**  
@@ -200,7 +200,7 @@ After the birth of internet, the method for processing information has changed a
 **Implementation of MiMei**  
 Based on **Sec 2.7 Summary of Design**, the following functionalities have be implemented.
 + MiMei operation: create, manage, save, render and send
-+ MiMei creation by content's topic, each MiMei wiht a unique ID
++ MiMei creation by content's topic, each MiMei with a unique ID
 + Right to set permissions on MiMei by user
 + Referential relationship among MiMei
 + MiMei can run or be saved on multiple nodes
@@ -209,7 +209,7 @@ Based on **Sec 2.7 Summary of Design**, the following functionalities have be im
 + Type of database and file, stream type coming soon
 + File system as a special system type, based on database and file
 + Independent space in database and file system for every MiMei
-+ Heredity and evolution of MiMei by continuously backuping changes
++ Heredity and evolution of MiMei by continuously backing up changes
 + User can also facilitate variation by fork
 Leither is implemented as MiMei container system, and also a decentralized cloud OS.
 <a href="../api/MiMei.md">MiMei API</a>  
@@ -217,9 +217,9 @@ Leither is implemented as MiMei container system, and also a decentralized cloud
 **MiMei Features**
 |Feature|Detail|
 |--|--|
-|Unique label|MiMei ID with version number can describe a piece of information consistantly and precisely|
+|Unique label|MiMei ID with version number can describe a piece of information consistently and precisely|
 |Complex information rendering|Support database, file system, referential relationship and App. Describe complicated information|
-|Free Data Migration|Contrstuct relationship chain or group. MiMei can flow among different nodes according to user behaviors|  
+|Free Data Migration|Construct relationship chain or group. MiMei can flow among different nodes according to user behaviors|  
 |Multi-dimension search|User can add tags to MiMei and customize multi-dimension search result through multiple nodes|
 
 The above features will be explained in detail later.
@@ -230,7 +230,7 @@ Path of a resource in regular protocols,
 WWW: _http://server_ip[:port#]/path/file_name[parameter=value]_  
 OS: _partition/path/file_name_  
 
-In all of the above methods, every thing is undecisive, server IP, port number, path, file name, parameter. Existing protocols cannot describe location of a resource precisely. In IPFS, a unique ID is generated by hashing the content of a file, however a new ID must be created if any change happens to the file. This kind of uncertainty is troublesome to normal operations and referential integrity.
+In all of the above methods, every thing is indecisive, server IP, port number, path, file name, parameter. Existing protocols cannot describe location of a resource precisely. In IPFS, a unique ID is generated by hashing the content of a file, however a new ID must be created if any change happens to the file. This kind of uncertainty is troublesome to normal operations and referential integrity.
 
 In MiMei system there is a brand new solution: **MiMei ID**  
 In the decentralized network of Leither, all resources are described by ID, including user, node, content, application, etc. ID of user and node is generated by encryption key pairs. Label ID of file or data block is based on synopsis of its content.
@@ -240,7 +240,7 @@ There are two sets of labels for external and internal reference.
  MiMei ID is the unique ID of a MiMei object, never changes after its creation.  
  MiMei ID can be used in index, operation and reference of the object.  
  MiMei data is stored in file or database. Each time the data is changed, a new version of backup is created with an ID based on the synopsis of its content. The version number increments from 0.  
- For convenience the lastest version of backup data is called _last_. 
+ For convenience the latest version of backup data is called _last_. 
  + Internal label is content synopsis ID  
 Every backup version of MiMei is pointed to by a file or database ID, which is generated by hashing synopsis of content.
 
@@ -260,7 +260,7 @@ type MiMeiInfo struct {
 MiMei ID is based on information of creator, associated application, MiMei type and MiMei mark. Once created, MiMei ID never changes no matter how its content changes.
 
 **Access MiMei data with MiMei ID and version number**  
-New version is created while MiMei being edited or backed up. ID of the version is based on synopsis of content. Content of the version is read-only. MiMei ID and version combined can identify certian MeMei data.
+New version is created while MiMei being edited or backed up. New version ID is based on synopsis of its content, which is read-only after backup. Historical MiMei data can be retrieved by MiMei ID combined with version number.
 
 ### VI. Data storage and corelation
 MiMei can support data storage of most internet applications with its support of file and database.
@@ -271,7 +271,7 @@ MiMei granulates information. It is recommended to redefine the following types 
 + Content might migrate among nodes  
 Mimeimization can be executed beforehand, or on demand. The latter is actually a split. A new MiMei object detached from the original one. A referential relationship keeps the tie.  
 
-Leither supprots database and file system. User can use traditional development method if only its own data is concerned. In this case, the whole user or application is one stand alone MiMei object.
+Leither supports database and file system. User can use traditional development method if only its own data is concerned. In this case, the whole user or application is one stand alone MiMei object.
 
 #### 6.2 MiMei version
 Both MiMei file system and database support version.
