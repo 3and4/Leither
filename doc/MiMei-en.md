@@ -24,9 +24,9 @@ Information stored on any media. **Data structure** defines how data is stored a
 Data must be consumed or processed by program. There are two types of programs in general, system software and application program. The latter is used to process user data, aka **APP**.  
 
 + **MiMei**  
-The key concept of Leither, coined referring to Gene or MEME. MEME is the gene of civilization, an element of a culture or system of behavior passed from one individual to another by imitation or other non-genetic means.
+The key concept of Leither, inspired by Gene and MEME. MEME is the gene of civilization, an element of a culture or system of behavior passed from one individual to another by imitation or other non-genetic means.
 
-    MiMei is the carrier of information on internet. It defines the structure of data storage, and all kinds of operations by associated applications, such as create, open, save, read, search, render and user-interact. 
+    MiMei is the carrier of information on internet. It defines the structure of data storage and operations by associated applications, such as create, open, save, read, search, render and user-interact. 
 
     Everything in Leither-based ecosystem is defined in term of MiMei. The referential relationships among MiMei makes it possible to develop comprehensive internet applications and services.
 
@@ -121,22 +121,21 @@ The following requests shall be supported in a decentralized system:
 ### III. Requirement Analysis
 First and foremost, an understanding of how data is monopolized.
 #### 3.1 The origin of data monopoly
-In nascent internet, data access follows open protocol across the whole network. Major platforms like Google and Microsoft, all provided open API for accessing its data.
+In nascent internet, data access follows open protocol across the whole network. Major platforms like Google and Microsoft, all provided open API for accessing their data.
 
 The earliest abuse of open data policy was committed by Facebook, which used other platforms’ data to construct its own social media, then shut the others out. User data get stuck in Facebook’s platform and the first monopoly of data was borne.
 
 Afterward Apple and Amazon created their own kingdoms of user data, respectively. When Tencent published QQ, it used a proprietary communication protocol. When Baidu blocked commercials of Alibaba, the latter responded in kind.
 
-Thus, internet has become segregated. User data is fortified by impenetrable barriers created by every monopolist who can get its hands on it.
+Thus, internet became segregated. User data is fortified by impenetrable barriers created by every monopolist who can get its hands on it.
 
 There are two types of data access.  
-**Data->App**
+**Data->App**  
 User can freely access data, then choose whatever application to process the data. For example, in Windows user can select different applications to open certain type of file, or use different browsers to open a web page.  
 In this case, User has the freedom of choice and is not restricted by certain App.  
 
-**App->Data**
+**App->Data**  
 User's right to access data is restricted to certain Apps, usually only one. For example, when user login an e-commerce site for shopping, or get on social media to chat with friends.
-
 In this case, the algorithm of App decides the path for user to access data, so user behavior is controlled by the App's algorithm or rules.
 
 The two approaches above correspond to **Object Oriented Programming** and **Procedure Oriented Programming**, respectively.  
@@ -149,50 +148,52 @@ On the other hand, open source community turned operation system into a public p
 There shall be similar open source platform for collecting user data, especially for **Social Media** and **Search Engine**.  
 
 **Free Data Migration**  
-In early operation system, data file can be copied and transferred among different mainframes of different systems. Free movement of data shall be a consensus and primary design norm of operation system.  
-Three measures can be adopted to achieve the above goal:
+In early operation system, data file can be copied and transferred among different mainframes of different systems. Free migration of data shall be a consensus and primary design norm of operation system.  
+Three measures can be adopted to achieve the above goals:
 + Promote data-freedom as a mainstream ideology
-+ Legislate that any platform that collects user data must allow the owner to migrate its personal data.
-+ Develop opensource program, such as browser plugins, to facilitate user to migrate data to personal storage devices. Once the ownership of user data taken back by its creator, the data can be revived and reconnected with each other.
++ Mandate that any platform that collects user data must allow the owner to migrate its personal data. (European Commission proposed a similar legislation recently)
++ Develop opensource programs, such as browser plugins, to facilitate user to migrate data to personal storage devices. Once the ownership of user data taken back by its creator, the data can be revived and reconnected with each other.
 
-**Separation of Data and Rule**  
-If data can be migrated freely, user will have the choice of rules that can be applied to it. In another word, try to be **Object Oriented**, avoid Procedure Oriented development whenever possible. Data structure is relatively simple to be reverse engineered. It is easier to reconstruct program structure with the knowledge of data structure.  
+**Rule subordinates to data**  
+If data can be migrated freely, user will have the choice of rules to apply to it. In another word, try to be **Object Oriented**, avoid **Procedure Oriented** development whenever possible. Data structure is relatively simple to be reverse engineered. It is easier to reconstruct program structure with the knowledge of data structure.  
 
 **Granulation of User Data**  
 There is no way to decouple convoluted and complicated dataset. It is best to granulate data in design, following the pattern of gene, keep the information relatively comprehensive and independent. A piece of granulated information is easy to be processed, transferred, and its connection with other objects clear to be understood.
 
-**Connections of Data**  
-Isolated data have little value compared with inter-connected dataset, whose connections contain much more information. HTML is perfect protocol to describe relationships, if not link could be unstable.  
+**inter-Connections of Data**  
+Isolated data have limited value. Inter-connected data can express much more complicated information. HTML is a perfect protocol to describe relationships, if not link could be unstable. The connections of information within a database is still of limited scope.  
 
 #### 3.3 Data Container  
 Many data centers are required to process data of billions of users in regular internet. A large data center has capacity for tens of thousands of servers. Every task is processed by groups of servers using parallel algorithm. A army of maintenance personals are required for daily operation.
 
-No data center is required when storing personal data by individual. However, some kind of container, a light-weight clouds OS, will be necessary, like Pod promoted by Solid platform. The container shall be low cost, lightweight, and easy to operate by layman. Compared with the Homomorphic Encryption that certain block-chain alogrithm is using, Leither method is simpler and more efficient. One who owns the storage device owns the data and defines the rules to apply.
+No data center is required when storing personal data by individual. However, some kind of container, a light-weight clouds OS, will be necessary, like Pod promoted by Solid platform. The container shall be low cost, lightweight, and easy to operate by layman. Compared with the Homomorphic Encryption that certain block-chain alogrithm is using, Leither method is simpler and more efficient. One who owns the storage device owns the data and defines the rules of application.
 
 #### 3.4 Data Model for Reference  
 **File**  
 File is a set of program and data stored on media. File is constructed according to certain format, usually referred to as data structure. Operation system manages files with File System in a tree-like data structure. File wraps the access of data on media and optimizes the procedure.  
 
 **WWW (World Wide Web)**  
-In a standard webpage, HTML5 is used to render content of webpage, CSS style and JS tasks. A page can relatively store and render its data comprehensively. Through interconnections among pages, large scale and complicated information can be represented.
+In a standard webpage, HTML5 is used to render content of webpage, CSS style and JavaScript tasks. A page can store and render its data relatively comprehensively. Through interconnections among pages, large scale and complicated information can be constructed.
 
 Shortcomings:
-Webpage only contains information about frontend, without backend data. Big Techs take monopolistic control of user data by owning the backend servers. The connections among webpages are link based which is unstable for lacking definition about server or user.
+Webpage only contains information of frontend, without backend data. Big Techs take monopolistic control of user data by owning the backend servers.  
+The links that connect webpages are unstable due to the fragility of server and volatility of its location.  
+Lack of definition of elements such as server, user, etc.
 
 **Gene**  
 The basic unit that contains information of life. DNA or RNA stores a complete segment of hereditary material, which records the adaptation of life to its environment. Life copies hereditary information from generation to generation, while adapting to new environment by variation.
 
-Limitation: Every iteration takes a generation, with restrictions on the amount of information inherited and weak capability to deal with complicated changes.  
+Limitation: Every iteration takes a generation, with restrictions on the amount of information inherited and weak ability to deal with complicated changes.  
 
 **MEME**  
 Richard Dawkins introduced the concept of MEME in his original book, the Selfish Gene. Similar to gene, MEME is defined as the base unit that contains information of a civilization. MEME can be used to record all the knowledge of human society. It can be remembered in human brain, propagated among people, or stored in any kind of media.
 
-Human brain uses pattern recognition to model the world. During its interaction with environment, every reflection by the mind is an iteration of evolution. Compared with gene, MEME can evolute faster than gene by orders of magnitude.  
+Human brain uses pattern recognition to model the world. During its interaction with the environment, every reflection by the mind is an iteration of evolution. Compared with gene, MEME can evolute faster than gene by many orders of magnitude.  
 ### IV. Introduction to MiMei
 **Origin of MiMei**  
 Entropy is one of the most important measurements in the universe and human society. The 2nd law of thermodynamics points out the direction along which the universe evolves. That is why entropy is also called Arrow of Time. Erwin Schrodinger in his book, What is Life, declares that what an organism feeds upon is negative entropy.
 
-Life stores information of its environment in gene. Heredity keeps the adaptation and variant deals with the changes of environment. Life simply executes the instructions locked in its gene. Once human developed self-conscious, human brain begins to simulate adjustment made to its environment and process the information. The basic unit of such information is called **Meme** by Richard Dawkins.  
+Life stores information of its environment in gene. The heredity keeps the adaptation and the variation deals with the changes of environment. Life simply executes the instructions locked in its gene. Once human developed self-conscious, human brain begins to simulate adjustment made to its environment and process the information. The basic unit of such information is called **Meme** by Richard Dawkins.  
 
 After the birth of internet, the method for processing information has changed and a new unit of information is required. We call it **MiMei**. Similar to Gene and Meme, MiMei contains a piece of information and the rules applicable to it.
 
@@ -216,25 +217,32 @@ Leither is implemented as MiMei container system, and also a decentralized cloud
 **MiMei Features**
 |Feature|Detail|
 |--|--|
-|Identification consistency|MiMei ID combined with its version can describe a piece of information stably and precisely|
-|Complex information render|Support database, file system, referential relationship, App to express complicated information|
-|Free Data Migration|MiMei can flow among different nodes in a relationship-chain or group, according to user behaviors|  
-|Multi-dimension search|User can add tag to MiMei and search it through multiple nodes over multiple tags|
+|Unique label|MiMei ID with version number can describe a piece of information consistantly and precisely|
+|Complex information rendering|Support database, file system, referential relationship and App. Describe complicated information|
+|Free Data Migration|Contrstuct relationship chain or group. MiMei can flow among different nodes according to user behaviors|  
+|Multi-dimension search|User can add tags to MiMei and customize multi-dimension search result through multiple nodes|
 
 The above features will be explained in detail later.
 
-### V. MiMei Identification
+### V. MiMei Label
 **Traditional method**  
 Path of a resource in regular protocols,  
 WWW: _http://server_ip[:port#]/path/file_name[parameter=value]_  
 OS: _partition/path/file_name_  
 
-In all of the above methods, every thing is changeable, server IP, port number, path, file name, parameter. Existing method cannot describe a resource precisely. In IPFS, a unique ID is generated by hashing the synopsis of a file. A new ID will need to be created if there is any changes to the file. This kind of uncertainty is troublesome to normal operations and referential integrity.
+In all of the above methods, every thing is undecisive, server IP, port number, path, file name, parameter. Existing protocols cannot describe location of a resource precisely. In IPFS, a unique ID is generated by hashing the content of a file, however a new ID must be created if any change happens to the file. This kind of uncertainty is troublesome to normal operations and referential integrity.
 
-There is a brand new solution: **MiMei ID**  
-In the decentralized network of Leither system, all resources are described by MiMei ID, including user, node, content, application, etc. ID of user and node is generated by encryption key pairs. MiMei ID of file or data block is based on synopsis of its content.
+In MiMei system there is a brand new solution: **MiMei ID**  
+In the decentralized network of Leither, all resources are described by ID, including user, node, content, application, etc. ID of user and node is generated by encryption key pairs. Label ID of file or data block is based on synopsis of its content.
 
-There are two sets of MiMei ID for external and internal reference. MiMei ID is the only unique ID of a MiMei object, created with the creation of the object, and never changes afterward. MiMei ID can be used in index, operation and reference. The data of MiMei is stored in file or database. Each time the data is changed, a new version of backup is created with an ID based on the synopsis of its content.
+There are two sets of labels for external and internal reference. 
++ External label is MiMei ID  
+ MiMei ID is the unique ID of a MiMei object, never changes after its creation.  
+ MiMei ID can be used in index, operation and reference of the object.  
+ MiMei data is stored in file or database. Each time the data is changed, a new version of backup is created with an ID based on the synopsis of its content. The version number increments from 0.  
+ For convenience the lastest version of backup data is called _last_. 
+ + Internal label is content synopsis ID  
+Every backup version of MiMei is pointed to by a file or database ID, which is generated by hashing synopsis of content.
 
 **MiMei Information**  
 Information of MiMei can be defined as:  
@@ -249,10 +257,10 @@ type MiMeiInfo struct {
 }
 ```
 **MiMei ID unchangeable**  
-MiMei ID is based on information of creator, associated application, MiMei type and MiMei mark. Once created, never changes. MiMei ID is invariable.
+MiMei ID is based on information of creator, associated application, MiMei type and MiMei mark. Once created, MiMei ID never changes no matter how its content changes.
 
-**Access MiMei data with MiMei ID and version**  
-New version is created while MiMei being edited or backed up. Data of the version is based on synopsis of content. Content of the version is read-only. MiMei ID and version combined can identify certian MeMei data.
+**Access MiMei data with MiMei ID and version number**  
+New version is created while MiMei being edited or backed up. ID of the version is based on synopsis of content. Content of the version is read-only. MiMei ID and version combined can identify certian MeMei data.
 
 ### VI. Data storage and corelation
 MiMei can support data storage of most internet applications with its support of file and database.
