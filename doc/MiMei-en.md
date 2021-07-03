@@ -263,42 +263,47 @@ MiMei ID is based on information of creator, associated application, MiMei type 
 New version is created while MiMei being edited or backed up. New version ID is based on synopsis of its content, which is read-only after backup. Historical MiMei data can be retrieved by MiMei ID combined with version number.
 
 ### VI. Data storage and corelation
-MiMei can support data storage of most internet applications with its support of file and database.
+MiMei can support data storage of most internet applications with its support of file system and database.
 #### 6.1 Granulation of Information
 MiMei granulates information. It is recommended to redefine the following types of information with MiMei data type, aka Mimeimization:  
 + Content needed to be indexed
 + Content for sharing among users
-+ Content might migrate among nodes  
++ Content that migrate among nodes  
 Mimeimization can be executed beforehand, or on demand. The latter is actually a split. A new MiMei object detached from the original one. A referential relationship keeps the tie.  
 
-Leither supports database and file system. User can use traditional development method if only its own data is concerned. In this case, the whole user or application is one stand alone MiMei object.
+Leither supports database and file system. User can use traditional development method if only its own data is concerned. In this case, one stand alone MiMei object is constructed for the user or application.
 
 #### 6.2 MiMei version
-Both MiMei file system and database support version.
+Both MiMei file system and database support version mechanism.
 + _cur_: the current working copy, not yet backed up.
 + _last_: the latest backup copy, represents the newest confirmed content
-+ _ease_: ready for publish
-With versioning mechanism, we can retrieve MiMei data of different version with its ID and version number.
++ _release_: tested and ready for publish
+With version mechanism, MiMei data of different version can be retrieved with its ID.  
+_MiMei ID and cur for the newest data_  
+_MiMei ID and last for the latest backup_  
+_MiMei ID and release for the most stable data_  
+_MiMei ID and version number for any historical data_  
 
-#### 6.3 MiMei 
-Isolated data cannot express complex relationship. With unique MiMei ID, it is possible to establish table relational structure. Information can be saved in MiMei file or database, with a format defined by its associated application.
+#### 6.3 Connections of MiMei
+Isolated data cannot describe complicated information. With unique label ID of MiMei, it is possible to establish stable relational structure. Information can be saved in MiMei file or database, with a format defined by its associated application.
 
-Corelation between MiMeis is formed by their  relationships. Referential information includes MiMei ID and number of references. Ordinarily the semantic relevance of data content is interpreted by its associated application. Leither system cannot access App data, so it is the App's task to maintain the  relationships of MiMei by calling corresponding API.
+Association between MiMei is established by reference. Referential information includes MiMei ID and number of references. Ordinarily the semantic association of data is interpreted by its associated application. Leither system cannot access App data, so it is the App's job to maintain the reference of MiMei by calling corresponding API.
 
-MiMei application can generate  information according to semantic correlation.  
+MiMei application can generate information of references according to semantics.  
 API: MMAddRef MMDelRef MMGetRef
 
 Most MiMei contains only granulated piece of information, the whole picture can be described through correlation of MiMei.  
 #### 6.4 File system  
-Originally file system was created for mainframe where number of applications and volume of data is limited. With the development computer and internet, mobile phones, number of users, Apps and data volume all increase explosively. The following shortcomings of file system began to be revealed.  
+Originally file system was designed for mainframe where the number of applications and volume of data is limited. File system increased efficiency by saving application from the task of managing and accessing storage media. With the development computer and internet, especially mobile internet, the number of users, Apps and data volume all increased explosively. The following shortcomings of file system began to appear.  
 1. File name cannot precisely identify a file
 2. Insufficient index information, only path and file information.
-3. One file might have multiple duplicated copies
+3. One file might have multiple duplicated copies  
+
 In Leither, traditional file system is converted into MiMei framework with the following improvements,  
-+ Unique MiMei ID: Every file has a unique ID created based on its synopsis as its mark  
-+ _cur_ version: Current version as target of data access  
-+ Reference count: Do not copy data, increase count of reference instead. Use MiMei ID to access its data.  
-The directory structure of file system is also **granulated**(Ch6.1). Directory that is indexed or shared with high hit count shall be Mimeimized. Currently Leither manages file directory with JSON format, which performs poorly when the number of files grow too large. In future database will replace JSON. The algorithm for extracting synopsis is similar to that of Merkle tree.
++ Unique label: Every data file has a unique ID generated from its synopsis, as its label.  
++ _cur_ version: Current version as target of frequent data access  
++ Reference count: Do not copy data, increase count of reference instead. Use unique label to access its data.  
+The directory structure of file system is also **granulated**(Ch6.1). Directory that is indexed or shared with high hit count shall be Mimeimized. Currently Leither manages file directory with JSON file, which performs poorly when the number of files is too big. In future database will replace JSON. The algorithm for generating synopsis is similar to that of Merkle tree.
 
 #### 6.4.1 File objects in Leither system
 + MiMei Current File  
