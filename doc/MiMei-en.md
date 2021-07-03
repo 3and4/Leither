@@ -121,20 +121,20 @@ The following requests shall be supported in a decentralized system:
 ### III. Requirement Analysis
 First and foremost, an understanding of how data is monopolized.
 #### 3.1 The origin of data monopoly
-In nascent internet, data access follows open protocol across the whole network. Major platforms like Google and Microsoft, all provided open API for accessing its data.
+In nascent internet, data access follows open protocol across the whole network. Major platforms like Google and Microsoft, all provided open API for accessing their data.
 
 The earliest abuse of open data policy was committed by Facebook, which used other platforms’ data to construct its own social media, then shut the others out. User data get stuck in Facebook’s platform and the first monopoly of data was borne.
 
-Afterward Apple and Amazon created their own kingdom of user data, respectively. When Tencent published QQ, it used a proprietary communication protocol. When Baidu blocked commercials of Alibaba, the latter responded in kind.
+Afterward Apple and Amazon created their own kingdoms of user data, respectively. When Tencent published QQ, it used a proprietary communication protocol. When Baidu blocked commercials of Alibaba, the latter responded in kind.
 
-Thus, internet has become segregated. User data is fortified by impenetrable barriers created by every monopolist who can get its hands on it.
+Thus, internet became segregated. User data is fortified by impenetrable barriers created by every monopolist who can get its hands on it.
 
 There are two types of data access.  
-**Data->App**
+**Data->App**  
 User can freely access data, then choose whatever application to process the data. For example, in Windows user can select different applications to open certain type of file, or use different browsers to open a web page.  
 In this case, User has the freedom of choice and is not restricted by certain App.  
 
-**App->Data**
+**App->Data**  
 User's right to access data is restricted to certain Apps, usually only one. For example, when user login an e-commerce site for shopping, or get on social media to chat with friends.
 
 In this case, the algorithm of App decides the path for user to access data, so user behavior is controlled by the App's algorithm or rules.
