@@ -304,7 +304,7 @@ In Leither, traditional file system is converted into MiMei framework with the f
 + _cur_ version: Current version as target of frequent data access.  
 + Reference count: Do not copy data, increase count of reference instead. Use unique label to access its data.  
 
-The directory structure of file system is also **granulated**(Ch6.1). Directory that is indexed or shared with high hit count shall be Mimeimized. Currently Leither manages file directory with JSON file, which performs poorly when the number of files is too big. In future database will replace JSON. The algorithm for generating synopsis is similar to that of Merkle tree.
+The directory structure of file system is also **granulated** (Ch6.1). Directory that is indexed or shared with high hit count shall be Mimeimized. Currently Leither manages file directory with JSON file, which performs poorly when the number of files is too big. In future database will replace JSON. The algorithm for generating synopsis is similar to that of Merkle tree.
 
 #### 6.4.1 File objects in Leither system
 + MiMei Current File  
