@@ -277,15 +277,15 @@ Leither supports database and file system. User can use traditional development 
 Both MiMei file system and database support version mechanism.
 + _cur_: the current working copy, not yet backed up.
 + _last_: the latest backup copy, represents the newest confirmed content
-+ _release_: tested and ready for publish
-With version mechanism, MiMei data of different version can be retrieved with its ID.  
++ _release_: tested and ready for release  
+
 _MiMei ID and cur for the newest data_  
 _MiMei ID and last for the latest backup_  
 _MiMei ID and release for the most stable data_  
 _MiMei ID and version number for any historical data_  
 
 #### 6.3 Connections of MiMei
-Isolated data cannot describe complicated information. With unique label ID of MiMei, it is possible to establish stable relational structure. Information can be saved in MiMei file or database, with a format defined by its associated application.
+Isolated data cannot describe complicated information. With unique label of MiMei, it is possible to establish relatively stable relationship structure. Information can be saved in MiMei file or database, with format defined by its associated application.
 
 Association between MiMei is established by reference. Referential information includes MiMei ID and number of references. Ordinarily the semantic association of data is interpreted by its associated application. Leither system cannot access App data, so it is the App's job to maintain the reference of MiMei by calling corresponding API.
 
@@ -295,7 +295,7 @@ API: MMAddRef MMDelRef MMGetRef
 Most MiMei contains only granulated piece of information, the whole picture can be described through association of MiMei.  
 #### 6.4 File system  
 Originally file system was designed for mainframe where the number of applications and volume of data is limited. File system increased efficiency by saving applications from the task of managing and accessing storage media. With the development computer and internet, especially mobile internet, the number of users, Apps and data volume all increased explosively. The following shortcomings of file system began to appear.  
-1. File name cannot precisely identify a file
+1. File name cannot precisely label a file
 2. Insufficient index information, only path and file information.
 3. One file might have multiple duplicated copies  
 
