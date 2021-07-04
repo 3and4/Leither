@@ -378,7 +378,7 @@ The development of large network and internet gave birth to dedicated server. In
 In the time of Internet, browser became the major client of RPC. With the enhancement of Javascript, more and more jobs are executed on browsers, aka B/S model. B/S model greatly reduces the complication of end user's task.
 
 **Merging of the above models**  
-With the apperance of powerful HTML5, more and more tasks in B/S model is executed in front end, similar to C/S model. At the same time more and more Apps are developed in HTML5, very much like B/S model.
+With the appearance of powerful HTML5, more and more tasks in B/S model is executed in front end, similar to C/S model. At the same time more and more Apps are developed in HTML5, very much like B/S model.
 
 #### 7.2 Leither Solution
 Leither API supports 40+ development languages, particular HTML5 because large number of frequently used applications are developed with HTML5, including website, App, Applet, etc. HTML5 is not perfect for the lack of standards for backend data processing and business logic. Leither makes up the missing functionalities of HTML5 in building cloud applications, including user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundancy and load balance.
@@ -425,25 +425,25 @@ Elastic service of Leither platform is enabled by decentralized domain name and 
 **The meaning of life is the spread of its information**  
 Gene and Meme are the carriers of information of life, whose purpose is to occupy time and space as much as possible. Similarly the purpose of MiMei is the propagation of meaningful information.  
 
-**The flow of information appreciates its value**  
-FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The higher value of data is appreciated only when data turn into traffic. Business of data is mainly the operations of save and retrieve. However, business of data traffic involves the creation or collection of content, save, propagation, render, value appreciation and business development. Each time a content is displayed, new value is appreciated. The number of renders and the value of each display determine the value created by the content.  
+**The flowing information is valuable**  
+FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The higher value of data appreciates only when data turn into traffic. Services to support data is mainly the operations of save and retrieve. However, services to support data traffic involve the creation or collection of content, save, propagation, render, value appreciation and business development. Each time a content is displayed, more value is created. The number of renders and the value of each display determine the value created by the content.  
 
 **The flow of information is a business requirement**  
-In traditional network, data backup, error tolerance, load balance and elastic cloud services are all the migration of data in nature.
+In traditional network, data backup, error tolerance, load balance and elastic cloud services are all the migration of data in essence.
 #### 8.2 The procedure of information flow
 Information can flow in two different situations:  
 1. Save voluntarily.   
 Usually when the MiMei data is highly valuable, it can be saved for future benefit.
-2. Save on request.   
-When current node lacks the capacity to uphold regular services, it may ask other nodes to help doing backup, error tolerance, load balance, etc.
+2. Save on demand.   
+When current node lacks the capacity to sustain normal services, it may ask other nodes to help backup, error tolerance, load balance, etc.
 
 Procedure of save:  
 + Mimeimize Information  
-After information is MiMeimized, shared information can be saved in file block.  
+After information is MiMeimized, shared information can be backed up as file block.  
 + Duplicate data over node network  
-With proper authorization, copy MiMei blob from one node to another  
+With proper authorization, copy MiMei block from one node to another  
 + Update routing information of MiMei  
-Consumer of MiMei content will get its routing information first to find its data. Routing information includes data of the MiMei node and its newest changes. After routing information is updated, user will get updated MiMei information.
+Content consumer will get routing information of MiMei first before accessing its data. Routing information includes node information and the newest changes of the MiMei. After routing information is updated, user will get updated MiMei information.
 
 ### IX. Social Model and Credential System
 Ch2.6 mentioned four parts of social media model: Me, Contact, Application and Message. In Leither the corresponding model looks as below:  
