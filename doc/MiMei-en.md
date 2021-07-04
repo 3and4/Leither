@@ -332,7 +332,7 @@ MFOpenByPath: Open file in MiMei file system or Leither file system.
 MFOpenMacFile: Open a mac file under a MiMei.
 + Open Temp File  
 MFOpenTempFile: Open a temporary file for read or write.
-MFTemp2MacFile: Convert to Mac file after read or write operation.
+MFTemp2MacFile: Convert to Mac file after read or write.
 + Close File  
 All the files need to be closed after operation, except temporary file. Considering the inevitable off-line scenarios, all handles of file operation will be closed after timeout.
 
@@ -350,7 +350,7 @@ FSFind FSMkDir FSRemoveAll FSStat FSRename
 + Others
 MFTruncate MFCopy
 #### 6.5 Database
-There are two underlying databases. One is based on LevelDB and the other BoltDB. Both are revised in underlying code. LevelDB is used for current version to support read and write, consensus is based on time sequence. During a write transaction, changed data will be checked to see if it is revised by any other party during the transaction. If it does, transaction fails and initiator will be called to redo the transaction. BoltDB is used for backup version and read-only.
+There are two underlying databases. One is based on LevelDB and the other BoltDB. Both are revised in underlying code. LevelDB is used for current version to support read and write, consistency is based on time sequence. During a write transaction, changed data will be checked to see if it is revised by any other party during the transaction. If it does, transaction fails and initial caller will be required to redo the transaction. BoltDB is used for backup version and read-only.
 
 API refers to Redis, support 5 types of data: string operation, hash, list, set, ordered set, and transaction.
 + Transaction
@@ -367,7 +367,7 @@ Sadd Scard Sclear Sdiff Sinter Smclear Smembers Srem Sunion Scan
 Zadd Zcard Zcount Zrem Zscore Zrank Zrange Zrangebyscore Zremrangebyscore Zrevrange Zrevrangebyscore Zmclear Zclear ZincrBy  
 ### VII. Application System
 #### 7.1 History of Application
-There a four types of application model:  
+There are four types of application model:  
 1. Local Application  
 The earliest form of application. Both data and application are on the same machine. Data is shared through files.  
 2. P2P Application
