@@ -310,15 +310,15 @@ The directory structure of file system is also **granulated** (Ch6.1). Directory
 + MiMei Current File  
 The current version of MiMei file, both readable and writable.
 + MiMei Version File  
-The read-only backup files of MiMei. Created by backing up the current file. Leither creates a version number for each backup file.
+The read-only backup file of MiMei, created by backing up the current file. System assigns a version number for each backup file.
 + Mac file  
-File labelled with Mac ID that is generated using content of MiMei file. Read-only. Mac file can be referred by MiMei object. MiMei version file is a Mac file referred to by a version number. Temp file can also be convert into Mac file.  
+Read-only file labelled by Mac ID of synopsis of file's content. Mac file can be referred to by MiMei object. MiMei version file is a Mac file referred to by a version number. Temp file can also be convert into Mac file.  
 + Temp file  
-Created by MFOpenTempFile after data is written into it, or Converted by MFTemp2MacFile.
+Created by MFOpenTempFile. After data is written into it, converted to MAC file by MFTemp2MacFile.
 + MiMei File System  
 A built-in special MiMei type of Leither system. It can be created by MMCreate, or placed in _webdav_ directory, or created by Leither automatically using configure file with .mmfs extension, or opened by MFOpenByPath as file system object.  
 + Operation System File and Directory  
-Create a link of a directory in _webdav_, the linked directory and file can be opened by MFOpenByPth.
+Create a link to a directory or file in _webdav_, the linked directory or file can be opened by MFOpenByPth.
 + MiMei Root Directory  
 _webdav_ is the general entrance to access MiMei in a node. File or Directory can be linked into _webdav_, or a configure file can be create that points to a MiMei object in the node.  
 
