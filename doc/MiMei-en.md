@@ -310,7 +310,7 @@ The directory structure of file system is also **granulated** (Ch6.1). Directory
 + MiMei Current File  
 The current version of MiMei file, both readable and writable.
 + MiMei Version File  
-The read-only backup file of MiMei, created by backing up the current file. System assigns a version number for each backup file.
+The read-only backup file of MiMei, created by backing up the current file. System assigns a version number to each version of backup file.
 + Mac file  
 Read-only file labelled by Mac ID of synopsis of file's content. Mac file can be referred to by MiMei object. MiMei version file is a Mac file referred to by a version number. Temp file can also be convert into Mac file.  
 + Temp file  
@@ -329,7 +329,7 @@ MMOpen: Open MiMei file, return handler ID for file operation. If _ver_ is "cur"
 + Open File by Path  
 MFOpenByPath: Open file in MiMei file system or Leither file system.
 + Open Mac File  
-MFOpenMacFile: Open a mac file under a MiMei.
+MFOpenMacFile: Open a Mac file under a MiMei.
 + Open Temp File  
 MFOpenTempFile: Open a temporary file for read or write.
 MFTemp2MacFile: Convert to Mac file after read or write.
@@ -387,7 +387,7 @@ Leither API supports 40+ development languages, particular HTML5 because large n
 By default business logics shall be executed in the front-end. The benefit is that Leither application development will be similar to single page application development, simple and easy.
 
 **Thin Node**  
-PC and mobile phone are not suitable to provide stable service. Computer server is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessability. NAS and other customizable hardware are preferred devices. Less powerful CPU is ideal to support fine granulated Leither applications.
+PC and mobile phone are not suitable for long term stable service. Server is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessability. NAS and other customizable hardware are preferred devices. Less powerful CPU is ideal to support fine granulated Leither applications.
 
 **Special Optimization**  
 Because Leither node is intended to be maintained by layman, node setup and application installation must be dummy proof. Node is optimized for home network, with the unique decentralized domain name resolution of Leither system, Leither can provide service similar to cloud server.  
