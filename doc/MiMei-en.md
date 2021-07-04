@@ -310,9 +310,9 @@ The directory structure of file system is also **granulated** (Ch6.1). Directory
 + MiMei Current File  
 The current version of MiMei file, both readable and writable.
 + MiMei Version File  
-The read-only backup file of MiMei, created by backing up the current file. System assigns a version number to each version of backup file.
+The read-only backup file of MiMei, created by backing up MiMei current file. System assigns a version number to each version of backup file.
 + Mac file  
-Read-only file labelled by Mac ID of synopsis of file's content. Mac file can be referred to by MiMei object. MiMei version file is a Mac file referred to by a version number. Temp file can also be convert into Mac file.  
+Read-only file labelled by Mac ID of the file's content. Mac file can be referred to by MiMei object. MiMei version file is a Mac file referred to by a version number. Temp file can also be convert into Mac file.  
 + Temp file  
 Created by MFOpenTempFile. After data is written into it, converted to MAC file by MFTemp2MacFile.
 + MiMei File System  
@@ -320,12 +320,12 @@ A built-in special MiMei type of Leither system. It can be created by MMCreate, 
 + Operation System File and Directory  
 Create a link to a directory or file in _webdav_, the linked directory or file can be opened by MFOpenByPth.
 + MiMei Root Directory  
-_webdav_ is the general entrance to access MiMei in a node. File or Directory can be linked into _webdav_, or a configure file can be create that points to a MiMei object in the node.  
+_webdav_ is the general entrance to access MiMei on a node. File or Directory can be linked into _webdav_, or a configure file can be create that points to a MiMei object on the node.  
 
 #### 6.4.2 Open File
 + MiMei File  
 MMCreate: Create MiMei file, take a api.MM_File as input, return MiMei ID.  
-MMOpen: Open MiMei file, return handler ID for file operation. If _ver_ is "cur", file is writable, otherwise read-only.
+MMOpen: Open MiMei file, return handle ID for file operation. If _ver_ is "cur", file is writable, otherwise read-only.
 + Open File by Path  
 MFOpenByPath: Open file in MiMei file system or Leither file system.
 + Open Mac File  
@@ -337,22 +337,22 @@ MFTemp2MacFile: Convert to Mac file after read or write.
 All the files need to be closed after operation, except temporary file. Considering the inevitable off-line scenarios, all handles of file operation will be closed after timeout.
 
 #### 6.4.3 File Operation  
-+ Object Method  
++ Object Operation  
 MFSetObject  MFGetObject
-+ Byte Array Method  
++ Byte Array Operation  
 MFSetData MFGetData
-+ Query Status
++ Status Query  
 MFGetSize MFStat MfIsExist MFGetMimeType
 + Directory Operation
 MFReadDir
-+ File System
++ File System Operation  
 FSFind FSMkDir FSRemoveAll FSStat FSRename
-+ Others
++ Others  
 MFTruncate MFCopy
 #### 6.5 Database
 There are two underlying databases. One is based on LevelDB and the other BoltDB. Both are revised in underlying code. LevelDB is used for current version to support read and write, consistency is based on time sequence. During a write transaction, changed data will be checked to see if it is revised by any other party during the transaction. If it does, transaction fails and initial caller will be required to redo the transaction. BoltDB is used for backup version and read-only.
 
-API refers to Redis, support five types of data structure: string operation, hash, list, set, ordered set, and transaction.
+Refer to Redis API, support five types of data structure: string operation, hash, list, set, ordered set, and transaction.
 + Transaction
 Begin Commit Rollback
 + String
