@@ -292,9 +292,9 @@ Association between MiMei is established by reference. Referential information i
 MiMei application can generate information of references according to semantics.  
 API: MMAddRef MMDelRef MMGetRef
 
-Most MiMei contains only granulated piece of information, the whole picture can be described through correlation of MiMei.  
+Most MiMei contains only granulated piece of information, the whole picture can be described through association of MiMei.  
 #### 6.4 File system  
-Originally file system was designed for mainframe where the number of applications and volume of data is limited. File system increased efficiency by saving application from the task of managing and accessing storage media. With the development computer and internet, especially mobile internet, the number of users, Apps and data volume all increased explosively. The following shortcomings of file system began to appear.  
+Originally file system was designed for mainframe where the number of applications and volume of data is limited. File system increased efficiency by saving applications from the task of managing and accessing storage media. With the development computer and internet, especially mobile internet, the number of users, Apps and data volume all increased explosively. The following shortcomings of file system began to appear.  
 1. File name cannot precisely identify a file
 2. Insufficient index information, only path and file information.
 3. One file might have multiple duplicated copies  
@@ -352,7 +352,7 @@ MFTruncate MFCopy
 #### 6.5 Database
 There are two underlying databases. One is based on LevelDB and the other BoltDB. Both are revised in underlying code. LevelDB is used for current version to support read and write, consistency is based on time sequence. During a write transaction, changed data will be checked to see if it is revised by any other party during the transaction. If it does, transaction fails and initial caller will be required to redo the transaction. BoltDB is used for backup version and read-only.
 
-API refers to Redis, support 5 types of data: string operation, hash, list, set, ordered set, and transaction.
+API refers to Redis, support five types of data structure: string operation, hash, list, set, ordered set, and transaction.
 + Transaction
 Begin Commit Rollback
 + String
@@ -370,24 +370,24 @@ Zadd Zcard Zcount Zrem Zscore Zrank Zrange Zrangebyscore Zremrangebyscore Zrevra
 There are four types of application model:  
 1. Local Application  
 The earliest form of application. Both data and application are on the same machine. Data is shared through files.  
-2. P2P Application
-In local network, application is responsible for communication with other terminals. Applications on each node equally takes care of business of itself. When there are too many nodes, one node may be selected for public services. This is the predecessor of server.  
+2. P2P Application  
+In local network, application is responsible for communication with other terminals. Applications on each network node behave equally as peer. When there are too many nodes, one node may be setup for public services. This is the predecessor of server.  
 3. Client/Server Model  
 The development of large network and internet gave birth to dedicated server. In the beginning, server usually processed core business logic only, most of the specific tasks were handled by client machines.
-4. Browser/Server Model
-In the time of Internet, browser became the major client to call for remote services. With the enhancement of Javascript, more and more jobs are executed on browsers, aka B/S model. B/S model greatly reduce the complication of end user's task.
+4. Browser/Server Model  
+In the time of Internet, browser became the major client of RPC. With the enhancement of Javascript, more and more jobs are executed on browsers, aka B/S model. B/S model greatly reduces the complication of end user's task.
 
-**The Merging of Models**  
-In the powerful HTML5, more and more tasks in B/S model is executed in front end, similar to C/S model. At the same time more and more Apps are developed in HTML5, very much like B/S model.
+**Merging of the above models**  
+With the apperance of powerful HTML5, more and more tasks in B/S model is executed in front end, similar to C/S model. At the same time more and more Apps are developed in HTML5, very much like B/S model.
 
 #### 7.2 Leither Solution
-Leither API supports 40+ development languages, particular HTML5 because large number of frequently used applications are developed with HTML5, including website, App, Applet, etc. HTML5 is not perfect for the lack of standards for backend data processing and business logic. Leither supplements the shortcomings in HTML5 for building cloud applications. Leither provides user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundancy and load balance.
+Leither API supports 40+ development languages, particular HTML5 because large number of frequently used applications are developed with HTML5, including website, App, Applet, etc. HTML5 is not perfect for the lack of standards for backend data processing and business logic. Leither makes up the missing functionalities of HTML5 in building cloud applications, including user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundancy and load balance.
 
 **Business Logic in Front-end**  
 By default business logics shall be executed in the front-end. The benefit is that Leither application development will be similar to single page application development, simple and easy.
 
 **Thin Node**  
-PC and mobile phone are not suitable devices to serve as Node. Computer server is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessability. NAS and other customizable hardware are preferred equipments to run as Node. Less powerful CPU is ideal to support fine granulated Leither applications.
+PC and mobile phone are not suitable to provide stable service. Computer server is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessability. NAS and other customizable hardware are preferred devices. Less powerful CPU is ideal to support fine granulated Leither applications.
 
 **Special Optimization**  
 Because Leither node is intended to be maintained by layman, node setup and application installation must be dummy proof. Node is optimized for home network, with the unique decentralized domain name resolution of Leither system, Leither can provide service similar to cloud server.  
