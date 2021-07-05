@@ -435,7 +435,7 @@ Information can flow in two different situations:
 1. Save voluntarily.   
 Usually when the MiMei data is highly valuable, it can be saved for future benefit.
 2. Save on demand.   
-When current node lacks the capacity to sustain normal services, it may ask other nodes to help backup, error tolerance, load balance, etc.
+When current node cannot sustain normal services, it may ask other nodes to help in backup, error tolerance, load balance, etc.
 
 Procedure of save:  
 + Mimeimize Information  
