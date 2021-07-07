@@ -443,10 +443,10 @@ After information is MiMeimized, shared information can be backed up as file blo
 + Duplicate data over node network  
 With proper authorization, copy MiMei block from one node to another  
 + Update routing information of MiMei  
-Content consumer will get routing information of MiMei first before accessing its data. Routing information includes node information and the newest changes of the MiMei. After routing information is updated, user will get updated MiMei information.
+Terminal content consumer will get routing information of MiMei first, then accessing its data. Routing information includes node information and the newest changes of MiMei. After routing information is updated, user will get updated MiMei information.
 
 ### IX. Social Model and Credential System
-Ch2.6 mentioned four parts of social media model: Me, Contact, Application and Message. In Leither the corresponding model looks as below:  
+Ch2.6 mentioned four parts of social media model: Me, Contact, Application and Message. In Leither the corresponding model is defined below:  
 |Category|Detail|
 |--|--|
 |Me|Authentication and authorization of user|
