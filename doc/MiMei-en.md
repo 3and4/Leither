@@ -350,9 +350,9 @@ FSFind FSMkDir FSRemoveAll FSStat FSRename
 + Others  
 MFTruncate MFCopy
 #### 6.5 Database
-There are two underlying databases. One is based on LevelDB and the other BoltDB. Both are revised in underlying code. LevelDB is used for current version to support read and write, consistency is based on time sequence. During a write transaction, changed data will be checked to see if it is revised by any other party during the transaction. If it does, transaction fails and initial caller will be required to redo the transaction. BoltDB is used for backup version and read-only.
+There are two underlying databases. One is based on LevelDB and the other BoltDB. Both are revised in underlying code. LevelDB is used for current version to support read and write operations. Its consistency is based on time sequence. During a write transaction, changed data will be checked to see if it is modified by any other party during the transaction. If it is, transaction fails and initial caller will be required to redo the transaction. BoltDB is used for backup version and read-only.
 
-Refer to Redis API, support five types of data structure: string operation, hash, list, set, ordered set, and transaction.
+Leither API refers to Redis, support five types of data structure: string operation, hash, list, set, ordered set, and transaction.
 + Transaction
 Begin Commit Rollback
 + String
@@ -390,7 +390,7 @@ By default business logics shall be executed in the front-end. The benefit is th
 PC and mobile phone are not suitable for long term stable service. Server is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessability. NAS and other customizable hardware are preferred devices. Less powerful CPU is ideal to support fine granulated Leither applications.
 
 **Special Optimization**  
-Because Leither node is intended to be maintained by layman, node setup and application installation must be dummy proof. Node is optimized for home network, with the unique decentralized domain name resolution of Leither system, Leither can provide service similar to cloud server.  
+Because Leither node device is intended to be maintained by layman, node setup and application installation must be dummy proof. Node is optimized for home network, with the unique decentralized domain name resolution of Leither system, Leither can provide service similar to commercial cloud server.  
 
 Leither node can also be optimized to support batch execution and back-end tasks.
 
@@ -399,7 +399,7 @@ Leither provides comprehensive application system, within which an application i
 
 #### 7.3 Design Principle
 #### 7.3.1 HTML5 is the core standard and norm of internet
-Most frequently used Apps are developed in HTML5, including App, website, applet, etc.
+Most frequently used applications are developed in HTML5, including website, App, applet, etc.
 #### 7.3.2 HTML5 is not a comprehensive internet application development solution
 HTML5 provides only localized data storage (Web Storage and IndexedDB), without setting up the standard for backend data and business logic. The result is HTML5 applications depend heavily on the backend to process business logic and data. Front-end developers fall to the lowest stratum among developers for not handling business logic and core data.
 #### 7.3.3 Leither complements the missing functions in HTML5
@@ -407,8 +407,8 @@ Leither provides functions of authentication and authorization, application syst
 #### 7.3.4 Leither is ideal to build cloud service
 Besides capable of building complete cloud applications, all the applications and data within Leither system is of MiMei type that is freely movable among nodes. MiMei also enabled load balance mechanism of Leither. All those powerful features make Leither ideal for building cloud service platform. The best practice of Leither App development is to execute business logic in the frontend, therefore greatly reduce the load on the backend. The same server running Leither can outperform traditional platform 100 times or more.
 #### 7.4 Advantages of Leither Cloud
-#### 7.4.1 Simple App Development
-Knowledge of HTML5 is sufficient for most of the work to build cloud services, or develop website, App and applet independently. The workflow is almost identical to a local HTML application.
+#### 7.4.1 Simple Application Development
+Knowledge of HTML5 is sufficient to do most of the work for building cloud services, or develop website, App and applet independently. The workflow is almost identical to a local HTML application.
 #### 7.4.2 Extremely low requirement of system resource
 Leither is developed with low CPU, low memory devices in mind. Leither applications consume very little system resources of the node, because data and business logic are executed in the frontend, aka user's browser or App usually.
 
