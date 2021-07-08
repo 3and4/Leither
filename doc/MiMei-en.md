@@ -469,9 +469,9 @@ An IOU includes information about lender, borrower, unit of credit, amount, sign
 
 **How to buildup credit**  
 + Initial grant of credit  
-If there is a relationship between nodes, there shall be certain basis for mutual trust, so that certain amount of credit can be authorized according to the magnitude of that relationship.  
+If there is a relationship between nodes, there shall be certain basis for mutual trust, so that certain amount of credit can be granted according to the magnitude of that relationship.  
 + Periodical credit increase  
-After relationship between nodes established, credit can be increased periodically.  
+After a relationship between nodes established, credit can be increased periodically.  
 + Mutual help  
 Each node is capable of useful services. Credit can be acquired by proactively providing valuable service to the others, including data backup, load balance, routing, search, or mediator service.  
 + Credit Revocation  
