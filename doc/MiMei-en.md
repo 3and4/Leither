@@ -455,24 +455,24 @@ Ch2.6 mentioned four parts of social media model: Me, Contact, Application and M
 #### 9.2 Credential Model
 During the exchange of information and services between user(node) and user(node), there must be a mechanism of quantitative settlement. Currency is the tool to settle business in daily life. In Leither network it is the credit that can be exchanged between users.
 
-Every node can grant other nodes credit, which authorize the others to use its services. The difference between services provided and received is the equivalent of a receipt that a borrower gives the lender, or an cryptocurrency issued by the borrower. Within a group, cryptocurrency issued by a member actually is a certificate of service guaranteed by the issuer. This certificate can be used to exchange for services from other members.  
+Every node can grant other nodes credit, which authorize the others to use its services. The difference between services provided and received is the equivalent of a IOU that a borrower gives the lender, or an cryptocurrency issued by the borrower. Cryptocurrency issued by a group is actually a certificate of service or work made for the group. This certificate can be used to exchange for services from its members.  
 
-**Object of Credential**  
-In reality fiat currency is the object with the highest credit rating. In Leither network, services such as bandwidth, storage and CPU can serve a similar function, aka the object of credit rating in virtuality. Their order of importance is bandwidth > storage > CPU. Because of the characteristics of node network, bandwidth is the preferred base unit to measure settlement between nodes. All the other forms of services can be converted into bandwidth with a certain coefficient.
+**Object of credit**  
+In reality fiat currency is the object with the highest credit rating. In Leither network, services exchanged between nodes, such as bandwidth, storage and CPU, can serve as the object. Their order of importance is bandwidth > storage > CPU. Because of the characteristics of node network, bandwidth is the preferred base unit to measure settlement between nodes. All the other forms of services can be converted into bandwidth with a certain coefficient.
 
-**Individual Credit Model**  
-is a type of User-to-User (P2P) credit model.  
+**Individual credit model**  
+is a type of User-to-User (P2P) L/C or IOU.  
 + Letter of Credit (L/C)
-L/C can be understood as the amount of services allowed to use before payment, whereas IOU is the amount of services that have been used without paying. A L/C includes information of the authorizer, the authorized, unit of credit, maximum credit, signature of authorizer.  
+L/C can be understood as the amount of services allowed to use before payment, whereas IOU is the amount of services that have been used without payment. A L/C includes information of the authorizer, the authorized, unit of credit, maximum credit, signature of authorizer.  
 + IOU and Currency  
 An IOU includes information about lender, borrower, unit of credit, amount, signature of borrower. For borrower, IOU is equivalent to issuing **Cryptocurrency**.
 
-**How to buildup credential**  
-+ Initial Grant of Credit  
+**How to buildup credit**  
++ Initial grant of credit  
 If there is a relationship between nodes, there shall be certain basis for mutual trust, so that certain amount of credit can be authorized according to the magnitude of that relationship.  
-+ Periodical Credit Increment  
++ Periodical credit increase  
 After relationship between nodes established, credit can be increased periodically.  
-+ Mutual Help  
++ Mutual help  
 Each node is capable of useful services. Credit can be acquired by proactively providing valuable service to the others, including data backup, load balance, routing, search, or mediator service.  
 + Credit Revocation  
 User can revoke credit granted to others in case of transgression.  
@@ -481,7 +481,7 @@ User can purchase extra credit through other channels, say, off-line purchase.
 + Credit Exchange  
 User can exchange for more credit through 3rd party. Reference to <a href="./GongShi-en.md"> Organization and Consensus</a>.  
 
-**Trading Procedure**  
+**Trading procedure**  
 With sufficient credential, user can exchange for services with credit and a record will be created in public ledger. When user exceeds its credit cap, service will stop.  
 
 **Agency Service**  
