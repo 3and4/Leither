@@ -408,15 +408,15 @@ Leither provides functions of authentication and authorization, application syst
 Besides capable of building complete cloud applications, all the applications and data within Leither system is of MiMei type that is freely movable among nodes. MiMei also enabled load balance mechanism of Leither. All those powerful features make Leither ideal for building cloud service platform. The best practice of Leither App development is to execute business logic in the frontend, therefore greatly reduce the load on the backend. The same server running Leither can outperform traditional platform 100 times or more.
 #### 7.4 Advantages of Leither Cloud
 #### 7.4.1 Simple Application Development
-Knowledge of HTML5 is sufficient to do most of the work for building cloud services, or develop website, App and applet independently. The workflow is almost identical to a local HTML application.
-#### 7.4.2 Extremely low requirement of system resource
+Knowledge of HTML5 is sufficient to do most of the work for developing cloud services or website, App and applet independently. The workflow is almost identical to a HTML single page application.
+#### 7.4.2 Extremely low demand on system resources
 Leither is developed with low CPU, low memory devices in mind. Leither applications consume very little system resources of the node, because data and business logic are executed in the frontend, aka user's browser or App usually.
 
-#### 7.4.3 Low Bandwidth Cost
-For traffic heavy applications, traffic load can be efficiently balanced by nodes in users' home network. The cost of traffic is only 1/10th of regular network.
+#### 7.4.3 Low bandwidth cost
+For traffic heavy applications, traffic load can be efficiently balanced by nodes in users' home network, which is cheap. The cost of traffic is only 1/10th of regular web service.
 
-#### 7.4.4 Elastic Services
-Leither system applications and data both support docker-like sandbox. Application file and database both support versioned backup. One physical machine can support multiple users, multiple Apps and their data. App and data can flow among different physical machines freely without changing of domain name and link address.   
+#### 7.4.4 Elastic service
+Both Leither system applications and data support docker-like sandbox. Both file and database support versioned backup. One physical machine can support multiple users, multiple applications and their datum. Application and data can flow among different physical machines freely without changing domain name or link address.   
 
 Elastic service of Leither platform is enabled by decentralized domain name and MiMei mechanism.
 
@@ -426,10 +426,10 @@ Elastic service of Leither platform is enabled by decentralized domain name and 
 Gene and Meme are the carriers of information of life, whose purpose is to occupy time and space as much as possible. Similarly the purpose of MiMei is the propagation of meaningful information.  
 
 **The flowing information is valuable**  
-FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The higher value of data appreciates only when data turn into traffic. Services to support data is mainly the operations of save and retrieve. However, services to support data traffic involve the creation or collection of content, save, propagation, render, value appreciation and business development. Each time a content is displayed, more value is created. The number of renders and the value of each display determine the value created by the content.  
+FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The value of data appreciates only when data turn into traffic. Services to support data is mainly the operations of save and retrieval. However, services to support data traffic involve the creation or collection of content, save, propagation, render, value realization and business development. Each time a content is displayed, more value is created. The number of renders and the value of each display determine the value created by the content.  
 
 **The flow of information is a business requirement**  
-In traditional network, data backup, error tolerance, load balance and elastic cloud services are all the migration of data in essence.
+In traditional network, data backup, error tolerance, load balance and elastic cloud services are all migration of data in essence.
 #### 8.2 The procedure of information flow
 Information can flow in two different situations:  
 1. Save voluntarily.   
@@ -438,22 +438,22 @@ Usually when the MiMei data is highly valuable, it can be saved for future benef
 When a node is in danger of overloading, it may ask other nodes to help in backup, error tolerance, load balance, etc.
 
 Procedure of save:  
-+ Mimeimize Information  
++ Mimeimize information  
 After information is MiMeimized, shared information can be backed up as file block.  
 + Duplicate data over node network  
 With proper authorization, copy MiMei block from one node to another  
 + Update routing information of MiMei  
-Terminal content consumer will get routing information of MiMei first, then accessing its data. Routing information includes node information and the newest changes of MiMei. After routing information is updated, user will get updated MiMei information.
+Terminal content consumer will get routing information of MiMei first, then accessing its data. Routing information includes node information and the newest changes of MiMei. After routing information is updated, user can get updated MiMei information.
 
-### IX. Social Model and Credential System
-Ch2.6 mentioned four parts of social media model: Me, Contact, Application and Message. In Leither the corresponding model is defined below:  
+### IX. Social model and Credential system
+Ch2.6 mentioned four parts of social media model: Me, Contact, Application and Message. In Leither the corresponding model is defined as below:  
 |Category|Detail|
 |--|--|
 |Me|Authentication and authorization of user|
 |App and service|App and service of the user |
 |Message|Manage interactions between user and Apps|  
 #### 9.2 Credential Model
-During the exchange of information and services between user(node) and user(node), there must be a mechanism of quantitative settlement. Currency is the tool to settle business in daily life. In Leither network it is the exchange of credit.
+During the exchange of information and services between user(node) and user(node), there must be a mechanism of quantitative settlement. Currency is the tool to settle business in daily life. In Leither network it is credit that can be exchanged between users.
 
 Every node can grant other nodes credit, which authorize the others to use its services. The surplus of services provided over received is the equivalent of a receipt that a borrower gives the lender, or an cryptocurrency issued by the borrower. Within a group, cryptocurrency issued by a member actually is a certificate of services guaranteed receivable by the issuer. This certificate can be used to exchange for services from other members, as long as they recognize it.  
 
