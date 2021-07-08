@@ -453,9 +453,9 @@ Ch2.6 mentioned four parts of social media model: Me, Contact, Application and M
 |App and service|App and service of the user |
 |Message|Manage interactions between user and Apps|  
 #### 9.2 Credential Model
-During the exchange of information and services between user(node) and user(node), there must be a mechanism of quantitative settlement. Currency is the tool to settle business in daily life. In Leither network it is credit that can be exchanged between users.
+During the exchange of information and services between user(node) and user(node), there must be a mechanism of quantitative settlement. Currency is the tool to settle business in daily life. In Leither network it is the credit that can be exchanged between users.
 
-Every node can grant other nodes credit, which authorize the others to use its services. The surplus of services provided over received is the equivalent of a receipt that a borrower gives the lender, or an cryptocurrency issued by the borrower. Within a group, cryptocurrency issued by a member actually is a certificate of services guaranteed receivable by the issuer. This certificate can be used to exchange for services from other members, as long as they recognize it.  
+Every node can grant other nodes credit, which authorize the others to use its services. The difference between services provided and received is the equivalent of a receipt that a borrower gives the lender, or an cryptocurrency issued by the borrower. Within a group, cryptocurrency issued by a member actually is a certificate of service guaranteed by the issuer. This certificate can be used to exchange for services from other members.  
 
 **Object of Credential**  
 In reality fiat currency is the object with the highest credit rating. In Leither network, services such as bandwidth, storage and CPU can serve a similar function, aka the object of credit rating in virtuality. Their order of importance is bandwidth > storage > CPU. Because of the characteristics of node network, bandwidth is the preferred base unit to measure settlement between nodes. All the other forms of services can be converted into bandwidth with a certain coefficient.
