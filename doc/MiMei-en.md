@@ -405,7 +405,7 @@ HTML5 provides only localized data storage (Web Storage and IndexedDB), without 
 #### 7.3.3 Leither complements the missing functions in HTML5
 Leither provides functions of authentication and authorization, application system, cloud file system and database, decentralized domain name resolution, error tolerance and load balance.
 #### 7.3.4 Leither is ideal to build cloud service
-Besides capable of building complete cloud applications, all the applications and data within Leither system is of MiMei type that is freely migratable among nodes. MiMei also enabled load balance mechanism of Leither. All those powerful features make Leither ideal for building cloud service platform. The best practice of Leither App development is to execute business logic in the frontend, therefore greatly reduce the load on the backend. The same server running Leither can outperform traditional platform 100 times or more.
+Besides capable of building complete cloud applications, all of the applications and data within Leither system is of MiMei type, which can freely migrate among nodes. MiMei also enabled load balance mechanism of Leither. All those powerful features make Leither ideal for building cloud service platform. The best practice of Leither App development is to execute business logic in the frontend, therefore greatly reduce the load on the backend. The same server running Leither can outperform traditional platform 100 times or more.
 #### 7.4 Advantages of Leither Cloud
 #### 7.4.1 Simple Application Development
 Knowledge of HTML5 is sufficient for most of the work for developing cloud services or website, App and applet independently. The workflow is almost identical to a HTML single page application.
