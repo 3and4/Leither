@@ -482,7 +482,7 @@ User could gain extra credit through off-line purchase or negotiation.
 User can exchange for more credit through 3rd party. Reference to <a href="./GongShi-en.md"> Organization and Consensus</a>.  
 
 **Trading procedure**  
-With sufficient credit, user can exchange for services with credit and a record will be created in public ledger. When user exceeds its credit cap, service will stop.  
+With sufficient credit, user can exchange for services with credit, afterward a record will be added into public ledger. When user exceeds its credit cap, service will stop.  
 
 **Agency Service**  
 When there is no direct connection between nodes, an agent node could be used to mediate the credit exchange. It is also possible to use other trusted media to facilitate the exchange, such as fiat currency, cryptocurrency or **group currency** mentioned in 2nd part.  
