@@ -458,7 +458,7 @@ During the exchange of information and services between user(node) and user(node
 Every node can grant other nodes credit, which authorize the others to use its services. The difference between services provided and received is the equivalent of a IOU that a borrower gives the lender, or an cryptocurrency issued by the borrower. Cryptocurrency issued by a group is actually a certificate of contribution made by its members. The contribution could be anything valuable to the group, such as resource, money or work done for the group. This certificate can be used to exchange for group services or other value from its members.  
 
 **Object of credit**  
-In reality fiat currency is the object of the highest credit rating. In Leither network, services exchanged between nodes, such as bandwidth, storage and CPU, can serve as the object. Their order of importance is bandwidth > storage > CPU. Because of the characteristics of node network, bandwidth is the preferred base unit of settlement between nodes. All the other forms of services can be converted into bandwidth with a certain coefficiency.
+In reality fiat currency is the object of the highest credit rating. In Leither network, services exchanged between nodes, such as bandwidth, storage and CPU, can serve as the object. Their order of importance is bandwidth > storage > CPU. Because of the characteristics of node network, bandwidth is the preferred base unit of settlement between nodes. All the other forms of services can be converted into bandwidth with a certain coefficiency. Fiat currency can also be used as object of credit.  
 
 **Individual credit model**  
 is a type of User-to-User (P2P) L/C or IOU.  
@@ -469,22 +469,22 @@ An IOU includes information about lender, borrower, unit of credit, amount, sign
 
 **How to buildup credit**  
 + Initial grant of credit  
-If there is a relationship between nodes, there shall be certain basis for mutual trust, so that certain amount of credit can be granted according to the magnitude of that relationship.  
+If there were a relationship between nodes, there should have been certain basis for mutual trust, so that certain amount of credit could be granted according to the magnitude of that relationship.  
 + Periodical credit increase  
 After a relationship between nodes established, credit can be increased periodically.  
 + Mutual help  
-Each node is capable of useful services. Credit can be acquired by proactively providing valuable service to the others, including data backup, load balance, routing, search, or mediator service.  
-+ Credit Revocation  
-User can revoke credit granted to others in case of transgression.  
-+  Acquisition of Credit  
-User can purchase extra credit through other channels, say, off-line purchase.  
-+ Credit Exchange  
+Each node is capable of providing useful services. Credit can be acquired by proactively providing valuable service to the others, including data backup, load balance, routing, search, or mediator service.  
++ Credit revocation  
+User can revoke credit granted to others in case of misbehavior.  
++  Acquisition of credit  
+User could gain extra credit through off-line purchase or negotiation.  
++ Credit exchange  
 User can exchange for more credit through 3rd party. Reference to <a href="./GongShi-en.md"> Organization and Consensus</a>.  
 
 **Trading procedure**  
-With sufficient credential, user can exchange for services with credit and a record will be created in public ledger. When user exceeds its credit cap, service will stop.  
+With sufficient credit, user can exchange for services with credit and a record will be created in public ledger. When user exceeds its credit cap, service will stop.  
 
 **Agency Service**  
-When there is no direct connection between nodes, an agent node can be used to mediate the credit exchange. It is also possible use other trusted media to facilitate the exchange, such as fiat currency, cryptocurrency or **group currency** mentioned in 2nd part.  
+When there is no direct connection between nodes, an agent node could be used to mediate the credit exchange. It is also possible to use other trusted media to facilitate the exchange, such as fiat currency, cryptocurrency or **group currency** mentioned in 2nd part.  
 ### Part 2
 <a href="./GongShi-en.md"> Organization and Consensus</a>  
