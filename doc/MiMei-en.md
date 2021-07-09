@@ -455,10 +455,10 @@ Ch2.6 mentioned four parts of social media model: Me, Contact, Application and M
 #### 9.2 Credential Model
 During the exchange of information and services between user(node) and user(node), there must be a mechanism of quantitative settlement. Currency is the tool to settle business in daily life. In Leither network it is the credit that can be exchanged between users.
 
-Every node can grant other nodes credit, which authorize the others to use its services. The difference between services provided and received is the equivalent of a IOU that a borrower gives the lender, or an cryptocurrency issued by the borrower. Cryptocurrency issued by a group is actually a certificate of service or work made for the group. This certificate can be used to exchange for services from its members.  
+Every node can grant other nodes credit, which authorize the others to use its services. The difference between services provided and received is the equivalent of a IOU that a borrower gives the lender, or an cryptocurrency issued by the borrower. Cryptocurrency issued by a group is actually a certificate of contribution made by its members. The contribution could be anything valuable to the group, such as resource, money or work done for the group. This certificate can be used to exchange for group services or other value from its members.  
 
 **Object of credit**  
-In reality fiat currency is the object with the highest credit rating. In Leither network, services exchanged between nodes, such as bandwidth, storage and CPU, can serve as the object. Their order of importance is bandwidth > storage > CPU. Because of the characteristics of node network, bandwidth is the preferred base unit to measure settlement between nodes. All the other forms of services can be converted into bandwidth with a certain coefficient.
+In reality fiat currency is the object of the highest credit rating. In Leither network, services exchanged between nodes, such as bandwidth, storage and CPU, can serve as the object. Their order of importance is bandwidth > storage > CPU. Because of the characteristics of node network, bandwidth is the preferred base unit of settlement between nodes. All the other forms of services can be converted into bandwidth with a certain coefficiency.
 
 **Individual credit model**  
 is a type of User-to-User (P2P) L/C or IOU.  
