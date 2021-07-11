@@ -16,7 +16,7 @@ Part II: <a href="./GongShi-en.md">Organization and Consensus</a>.
 ### Part I: MiMei and its application
 How to decouple and reconstruct regular internet platform services.
 
-Some key concepts are defined as below:
+Definition of key concepts:
 + **Data**  
 Information stored on any media. **Data structure** defines how data is stored and organized. It is a set of data items that collaborate with each other following certain rules.
 
