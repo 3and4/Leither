@@ -68,23 +68,23 @@ The internet of Status quo has become a centralized playground of big players. B
 
 ### II. System Requirement
 Before presenting a plan to build decentralized internet, it is necessary to briefly review the different requests that computer and internet must address at each stage of their development, and the corresponding solutions presented. If the new solution cannot solve old problems satisfactorily, it cannot beat the incumbent.  
-#### 2.1 File -- Carrier of Data
+#### 2.1 File -- Carrier of data
 In the beginning of computer age, applications were developed to solve scientific problems. Those application generated the earliest request of data, and also large amount of data in return. 
 
 In Unix, File was designed as carrier of data. File System was designed to manage files and storage medias.  
 Everything is file. Any information related device is of File type.  
-#### 2.2 MiMei -- Type of Data
+#### 2.2 MiMei -- Type of data
 With the evolution of applications, it became necessary to describe the relationship between file and application. DOS introduced the concept of File Extension. In Windows, file extension is bound with a corresponding application. MIME defines a strict rule for file type as E-mail attachment. All existing web browsers still follow the MIME protocol.
-#### 2.3 Database -- Relationship of Data
+#### 2.3 Database -- Relationship of data
 Database was designed to manage complicated data structure. A database is a closed space of datasets and their relationships.  
 Shortcomings: Data stored in closed space with little liquidity, value not maximized.
 #### 2.4 HTML -- connections of data over network
 WWW regulates connections of data cross machines over a network. The inter-connection of data cross network breaks the physical limits of data storage on mainframe. With the birth of internet, information explosion ensued and gateway sites flourished.  
 Shortcomings: connections based on linkage is vulnerable.
-#### 2.5 Google -- Search Engine
+#### 2.5 Google -- Search engine
 Information explosion creates the request for search engine. By adding tags to data, Google provides content search service by keywords.  
 Shortcomings: Data is more and more isolated and monopolized. Data protocol began to be influenced and controlled.
-#### 2.6 Facebook -- Social Model
+#### 2.6 Facebook -- Social model
 The early social medias, ICQ, MSN, QQ, solved problem of instant messaging among people. Twitter provides a platform for broadcasting short messages quickly.  
 From MySpace to Facebook, a more systematic social media model is created. The consists of 4 parts:  
 |#|Title|Detail|
