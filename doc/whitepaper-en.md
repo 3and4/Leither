@@ -135,9 +135,9 @@ Life stores information of its environment in gene. The heredity keeps the adapt
 
 After the birth of internet, the method for processing information has changed and a new unit of information is required. We call it **MiMei**. Similar to Gene and Meme, MiMei contains a piece of information and the rules applicable to it.
 
-**MiMei flows among nodes to facilitate the decentralization of centralized internet**.
+_**MiMei flows among nodes to facilitate the decentralization of centralized internet**_.
 
-**Implementation of MiMei**  
++ **Implementation of MiMei**  
 Based on **Sec 1.7 Summary of Design**, the following functionalities have be implemented.
 + MiMei operation: create, manage, save, render and send
 + MiMei creation by content's topic, each MiMei with a unique ID
