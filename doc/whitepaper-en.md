@@ -154,7 +154,7 @@ Based on **Sec 1.7 Summary of Design**, the following functionalities have be im
 Leither is implemented as MiMei container system, and also a decentralized cloud OS.
 <a href="../api/MiMei.md">MiMei API</a>  
 
-**MiMei Features**
+#### 3.2 MiMei Features
 |Feature|Detail|
 |--|--|
 |Unique label|MiMei ID with version number can describe a piece of information consistently and precisely|
