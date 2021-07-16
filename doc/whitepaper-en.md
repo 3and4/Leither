@@ -67,11 +67,11 @@ This model is remarkably successful. All the afterward internet social Apps adop
 Shortcomings: Internet becomes more monopolized, more isolated, and data protocols manipulated.
 #### 1.7 Design principles of decentralized internet
 Design principles for breaking data monopoly and creating decentralized internet:
-+ User oriented in every aspect  
++ **User oriented in every aspect**  
 A new birth of freedom, and that internet of the people, by the people, for the people.
 + **Free and open system**  
-1. Open data protocols.  
-2. Open operation system protocols.  
+    1. Open data protocols.  
+    2. Open operation system protocols.  
 Only in an open system, user has the freedom of choice and power of control.
 + **Unrestricted data migration**  
 With user’s authorization and reasonable security discretion, user data shall be allowed to move from one platform to another and transform from one format to another. Only then, a third party can provide valuable applications and services.
