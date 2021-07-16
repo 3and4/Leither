@@ -487,4 +487,4 @@ With sufficient credit, user can exchange for services with credit, afterward a 
 **Agency Service**  
 When there is no direct connection between nodes, an agent node could be used to mediate the credit exchange. It is also possible to use other trusted media to facilitate the exchange, such as fiat currency, cryptocurrency or **group currency** mentioned in 2nd part.  
 ### Part 2
-<a href="./GongShi-en.md"> Organization and Consensus</a>  
+<a href="./GongShi-en.md"> Organization and Consensus</a>
