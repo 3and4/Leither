@@ -137,7 +137,7 @@ After the birth of internet, the method for processing information has changed a
 
 _**MiMei flows among nodes to facilitate the decentralization of centralized internet**_.
 
-+ **Implementation of MiMei**  
+#### 3.1 Implementation of MiMei
 Based on **Sec 1.7 Summary of Design**, the following functionalities have be implemented.
 + MiMei operation: create, manage, save, render and send
 + MiMei creation by content's topic, each MiMei with a unique ID
