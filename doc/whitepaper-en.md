@@ -249,3 +249,38 @@ After information is MiMeimized, shared information can be backed up as file blo
 With proper authorization, copy MiMei block from one node to another  
 + Update routing information of MiMei  
 Terminal content consumer will get routing information of MiMei first, then accessing its data. Routing information includes node information and the newest changes of MiMei. After routing information is updated, user can get updated MiMei information.
+### VII. Leither Application System
+Leither API supports 40+ development languages, particular HTML5 because large number of frequently used applications are developed with HTML5, including website, App, Applet, etc. HTML5 is not perfect for the lack of standards for backend data processing and business logic. Leither makes up the missing functionalities of HTML5 in building cloud applications, including user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundancy and load balance.
+
+#### 7.2 Leither Solution
+**Business Logic in Front-end**  
+By default business logics shall be executed in the front-end. The benefit is that Leither application development will be similar to single page application development, simple and easy.
+
+**Thin Node**  
+PC and mobile phone are not suitable for long term stable service. Server is maintenance heavy and expensive. Router and TV box are usually proprietary system with restricted accessability. NAS and other customizable hardware are preferred devices. Less powerful CPU is ideal to support fine granulated Leither applications.
+
+**Special Optimization**  
+Because Leither node device is intended to be maintained by layman, node setup and application installation must be dummy proof. Node is optimized for home network, with the unique decentralized domain name resolution of Leither system, Leither can provide service similar to commercial cloud server.  
+
+Leither node can also be optimized to support batch execution and back-end tasks.
+
+**Mimeimization of Application**  
+Leither provides comprehensive application system, within which an application is actually a type of MiMei. 
+
+#### 7.4 Advantages of Leither Cloud
+**Leither is ideal to build cloud service**  
+Besides capable of building complete cloud applications, all of the applications and data within Leither system is of MiMei type, which can freely migrate among nodes. MiMei also enables load balance mechanism of Leither. All those powerful features make Leither ideal for building cloud service platform. The best practice of Leither App development is to execute business logic in the frontend, therefore greatly reduce the load on the backend. The same server running Leither can outperform traditional platform 100 times or more.
+
+**Simple Application Development**  
+Knowledge of HTML5 is sufficient for most of the work for developing cloud services or website, App and applet independently. The workflow is almost identical to a HTML single page application.
+
+**Extremely low demand on system resources**  
+Leither is developed with weak CPU and small memory devices in mind. Leither applications consume very little system resources of the node, because data and business logic are executed in the frontend, usually user's browser or App.
+
+**Low bandwidth cost**  
+For traffic heavy applications, traffic load can be efficiently balanced by nodes in users' home network, which is cheap. The cost of traffic is only 1/10th of regular web service.
+
+**Elastic service**  
+Both Leither system applications and data support docker-like sandbox. Both file and database support versioned backup. One physical machine can support multiple users, multiple applications and their datum. Application and data can flow among different physical machines freely without changing domain name or link address.   
+
+Elastic service of Leither platform is enabled by decentralized domain name and MiMei mechanism.
