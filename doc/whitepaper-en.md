@@ -225,15 +225,15 @@ In Leither, traditional file system is converted into MiMei framework with the f
 
 The directory structure of file system is also **granulated** (Ch6.1). Directory that is indexed or shared with high hit count shall be Mimeimized. Currently Leither manages file directory with JSON file. In future database will replace JSON. Leither has comprehensive instruction set and API for file and database operations.
 
-### VI. Flow or MiMei Information
+### VI. Flow of MiMei Information
 #### 6.1 Why information must flow  
-**The meaning of life is the spread of its information**  
++ **The meaning of life is the spread of its information**  
 Gene and Meme are the carriers of information of life, whose purpose is to occupy time and space as much as possible. Similarly the purpose of MiMei is the propagation of meaningful information.  
 
-**The flowing information is valuable**  
-FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The value of data appreciates only when data turn into traffic. Services to support data is mainly the operations of save and retrieval. However, services to support data traffic involve the creation or collection of content, save, propagation, render, value realization and business development. Each time a content is displayed, more value is created. The number of renders and the value of each display determine the value created by the content.  
++ **Hot data is more valuable**  
+FileCoin conveyed a misunderstanding that data is asset. Cold (static) data is actually a debt, for device, storage and network all cost money. The value of data appreciates only when data turn into traffic (get hot). Services to support data is mainly the operations of save and retrieval. However, services to support data traffic involve the creation or collection of content, save, propagation, render, value realization and business development. Each time a content is displayed, more value is created. The number of renders and the value of each display determine the value created by the content.  
 
-**The flow of information is a business requirement**  
++ **The flow of information is a business requirement**  
 In traditional network, data backup, error tolerance, load balance and elastic cloud services are all migration of data in essence.
 #### 6.2 The procedure of information flow
 Information can flow in two different situations:  

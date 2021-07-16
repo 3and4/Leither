@@ -420,13 +420,13 @@ Both Leither system applications and data support docker-like sandbox. Both file
 
 Elastic service of Leither platform is enabled by decentralized domain name and MiMei mechanism.
 
-### VIII. Flow or MiMei Information
+### VIII. Flow of MiMei Information
 #### 8.1 Why information must flow  
 **The meaning of life is the spread of its information**  
 Gene and Meme are the carriers of information of life, whose purpose is to occupy time and space as much as possible. Similarly the purpose of MiMei is the propagation of meaningful information.  
 
-**The flowing information is valuable**  
-FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The value of data appreciates only when data turn into traffic. Services to support data is mainly the operations of save and retrieval. However, services to support data traffic involve the creation or collection of content, save, propagation, render, value realization and business development. Each time a content is displayed, more value is created. The number of renders and the value of each display determine the value created by the content.  
+**Hot data is more valuable**  
+FileCoin conveyed a misunderstanding that data is asset. Cold (static) data is actually a debt, for device, storage and network all cost money. The value of data appreciates only when data turn into traffic (get hot). Services to support data is mainly the operations of save and retrieval. However, services to support data traffic involve the creation or collection of content, save, propagation, render, value realization and business development. Each time a content is displayed, more value is created. The number of renders and the value of each display determine the value created by the content.  
 
 **The flow of information is a business requirement**  
 In traditional network, data backup, error tolerance, load balance and elastic cloud services are all migration of data in essence.
