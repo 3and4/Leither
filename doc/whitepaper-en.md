@@ -284,3 +284,22 @@ For traffic heavy applications, traffic load can be efficiently balanced by node
 Both Leither system applications and data support docker-like sandbox. Both file and database support versioned backup. One physical machine can support multiple users, multiple applications and their datum. Application and data can flow among different physical machines freely without changing domain name or link address.   
 
 Elastic service of Leither platform is enabled by decentralized domain name and MiMei mechanism.
+### VIII. Leither credit system
+During the exchange of information and services between user(node) and user(node), there must be a mechanism of quantitative settlement. Currency is the tool to settle business in daily life. In Leither network it is the credit that can be exchanged between users.
+
+Every node can grant other nodes credit, which authorize the others to use its services. The difference between services provided and received is the equivalent of a IOU that a borrower gives the lender, or an cryptocurrency issued by the borrower. Cryptocurrency issued by a group is actually a certificate of contribution made by its members. The contribution could be anything valuable to the group, such as resource, money or work done for the group. This certificate can be used to exchange for group services or other value from its members.  
+
+**Object of credit**  
+In reality fiat currency is the object of the highest credit rating. In Leither network, services exchanged between nodes, such as bandwidth, storage and CPU, can serve as the object. Their order of importance is bandwidth > storage > CPU. Because of the characteristics of node network, bandwidth is the preferred base unit of settlement between nodes. All the other forms of services can be converted into bandwidth with a certain coefficient. Fiat currency can also be used as object of credit.  
+
+**Individual credit model**  
+is a type of User-to-User (P2P) L/C or IOU.  
++ Letter of Credit (L/C)
+L/C can be understood as the amount of services allowed to use before payment, whereas IOU is the amount of services that have been used without payment. A L/C includes information of the authorizer, the authorized, unit of credit, maximum credit, signature of authorizer.  
++ IOU and Currency  
+An IOU includes information about lender, borrower, unit of credit, amount, signature of borrower. For borrower, IOU is equivalent to issuing **Cryptocurrency**.
+
+**How to buildup credit**  
+If there were a relationship between nodes, there should have been certain basis for mutual trust, so that certain amount of credit could be granted according to the magnitude of that relationship. After a relationship between nodes established, credit can be increased periodically. 
+
+Each node is capable of providing useful services. Credit can be acquired by proactively providing valuable service to the others, including data backup, load balance, routing, search, or mediator service. User can also exchange for more credit through 3rd party.
