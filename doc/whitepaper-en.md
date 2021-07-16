@@ -168,7 +168,7 @@ In the decentralized network of Leither, all resources are described by ID, such
 
 There are two sets of labels for external and internal reference. 
 + External label is MiMei ID  
- MiMei ID is the unique ID of a MiMei object, never changes after its creation.  
+ **MiMei ID is the unique ID of a MiMei object and never changes after its creation**.  
  MiMei ID can be used in index, operation and reference of the object.  
  MiMei data is stored in file or database. Each time the data is changed, a new version of backup is created with an ID based on the synopsis of its content. The version number increments from 0.  
  For convenience the latest version of backup data is called _last_. 
@@ -187,6 +187,65 @@ type MiMeiInfo struct {
 	Right   uint64    //authorized rights
 }
 ```
-MiMei ID is based on information of creator, associated application, MiMei type and MiMei label. Once created, MiMei ID never changes no matter how its content changes.
-
+**Access MiMei data with MiMei ID and version number**  
 New version is created while MiMei being edited or backed up. New version ID is based on synopsis of its content, which is read-only after backup. Historical MiMei data can be retrieved by MiMei ID combined with version number.
+### V. MiMei storage and association
+MiMei can support data storage of most internet applications with its support of file system and database.
+#### 5.1 Granulation of Information
+MiMei granulates information. It is recommended to redefine the following types of information with MiMei data type, aka Mimeimization:  
++ Content needed to be indexed
++ Content for sharing among users
++ Content that migrate among nodes  
+Mimeimization can be executed beforehand, or on demand. The latter is actually a split. A new MiMei object detached from the original one. A referential relationship keeps the tie.  
+
+Leither supports database and file system. User can use traditional development method if only its own data is concerned. In this case, one stand alone MiMei object is constructed for the user or application.
+
+#### 5.2 MiMei version
+Both MiMei file system and database support version mechanism. Data version can be retrieved by MiMei ID.
++ _cur_: the current working copy, not yet backed up.
++ _last_: the latest backup copy, represents the newest confirmed content
++ _release_: tested and ready for release  
+
+#### 5.3 Association of MiMei
+Isolated data cannot describe complicated information. With unique label of MiMei, it is possible to establish relatively stable relationship structure. Information can be saved in MiMei file or database, with format defined by its associated application.
+
+Association between MiMei is established by reference. Referential information includes MiMei ID and number of references. Ordinarily the semantic association of data is interpreted by its associated application. Leither system cannot access App data, so it is the App's job to maintain the reference of MiMei by calling corresponding API.
+
+Most MiMei contains only granulated piece of information, the whole picture can be described through association of MiMei.  
+#### 5.4 File system  
+Originally file system was designed for mainframe where the number of applications and volume of data is limited. File system increased efficiency by saving applications from the task of managing and accessing storage media. With the development computer and internet, especially mobile internet, the number of users, Apps and data volume all increased explosively. The following shortcomings of file system began to appear.  
+1. File name cannot precisely label a file
+2. Insufficient index information, only path and file information.
+3. One file might have multiple duplicated copies  
+
+In Leither, traditional file system is converted into MiMei framework with the following improvements,  
++ Unique label: Every data file has a unique ID generated from its synopsis, as its label.  
++ _cur_ version: Current version as target of frequent data access.  
++ Reference count: Do not copy data, increase count of reference instead. Use unique label to access its data.  
+
+The directory structure of file system is also **granulated** (Ch6.1). Directory that is indexed or shared with high hit count shall be Mimeimized. Currently Leither manages file directory with JSON file. In future database will replace JSON. Leither has comprehensive instruction set and API for file and database operations.
+
+### VI. Flow or MiMei Information
+#### 6.1 Why information must flow  
+**The meaning of life is the spread of its information**  
+Gene and Meme are the carriers of information of life, whose purpose is to occupy time and space as much as possible. Similarly the purpose of MiMei is the propagation of meaningful information.  
+
+**The flowing information is valuable**  
+FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The value of data appreciates only when data turn into traffic. Services to support data is mainly the operations of save and retrieval. However, services to support data traffic involve the creation or collection of content, save, propagation, render, value realization and business development. Each time a content is displayed, more value is created. The number of renders and the value of each display determine the value created by the content.  
+
+**The flow of information is a business requirement**  
+In traditional network, data backup, error tolerance, load balance and elastic cloud services are all migration of data in essence.
+#### 6.2 The procedure of information flow
+Information can flow in two different situations:  
+1. Save voluntarily.   
+Usually when the MiMei data is highly valuable, it can be saved for future benefit.
+2. Save on demand.   
+When a node is in danger of overloading, it may ask other nodes to help in backup, error tolerance, load balance, etc.
+
+Procedure of save:  
++ Mimeimize information  
+After information is MiMeimized, shared information can be backed up as file block.  
++ Duplicate data over node network  
+With proper authorization, copy MiMei block from one node to another  
++ Update routing information of MiMei  
+Terminal content consumer will get routing information of MiMei first, then accessing its data. Routing information includes node information and the newest changes of MiMei. After routing information is updated, user can get updated MiMei information.
