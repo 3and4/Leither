@@ -365,24 +365,9 @@ Lpush Lpop Rpush Rpop Lrange Lclear Lmclear Lindex Llen Lset
 Sadd Scard Sclear Sdiff Sinter Smclear Smembers Srem Sunion Scan  
 + Odered Set
 Zadd Zcard Zcount Zrem Zscore Zrank Zrange Zrangebyscore Zremrangebyscore Zrevrange Zrevrangebyscore Zmclear Zclear ZincrBy  
-### VII. Application System
-#### 7.1 History of Application
-There are four types of application model:  
-1. Local Application  
-The earliest form of application. Both data and application are on the same machine. Data is shared through files.  
-2. P2P Application  
-In local network, application is responsible for communication with other terminals. Applications on each network node behave equally as peer. When there are too many nodes, one node may be setup for public services. This is the predecessor of server.  
-3. Client/Server Model  
-The development of large network and internet gave birth to dedicated server. In the beginning, server usually processed core business logic only, most of the specific tasks were handled by client machines.
-4. Browser/Server Model  
-In the time of Internet, browser became the major client of RPC. With the enhancement of Javascript, more and more jobs are executed on browsers, aka B/S model. B/S model greatly reduces the complication of end user's task.
-
-**Merging of the above models**  
-With the appearance of powerful HTML5, more and more tasks in B/S model is executed in front end, similar to C/S model. At the same time more and more Apps are developed in HTML5, very much like B/S model.
-
-#### 7.2 Leither Solution
+### VII. Leither Application System
 Leither API supports 40+ development languages, particular HTML5 because large number of frequently used applications are developed with HTML5, including website, App, Applet, etc. HTML5 is not perfect for the lack of standards for backend data processing and business logic. Leither makes up the missing functionalities of HTML5 in building cloud applications, including user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundancy and load balance.
-
+#### 7.1 Leither Solution
 **Business Logic in Front-end**  
 By default business logics shall be executed in the front-end. The benefit is that Leither application development will be similar to single page application development, simple and easy.
 
@@ -445,7 +430,7 @@ With proper authorization, copy MiMei block from one node to another
 + Update routing information of MiMei  
 Terminal content consumer will get routing information of MiMei first, then accessing its data. Routing information includes node information and the newest changes of MiMei. After routing information is updated, user can get updated MiMei information.
 
-### IX. Social model and Credential system
+### IX. Social model and credential system
 Ch2.6 mentioned four parts of social media model: Me, Contact, Application and Message. In Leither the corresponding model is defined as below:  
 |Category|Detail|
 |--|--|
