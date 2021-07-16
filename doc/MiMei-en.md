@@ -257,7 +257,7 @@ type MiMeiInfo struct {
 }
 ```
 **MiMei ID unchangeable**  
-MiMei ID is based on information of creator, associated application, MiMei type and MiMei mark. Once created, MiMei ID never changes no matter how its content changes.
+MiMei ID is based on information of creator, associated application, MiMei type and MiMei label. Once created, MiMei ID never changes no matter how its content changes.
 
 **Access MiMei data with MiMei ID and version number**  
 New version is created while MiMei being edited or backed up. New version ID is based on synopsis of its content, which is read-only after backup. Historical MiMei data can be retrieved by MiMei ID combined with version number.
