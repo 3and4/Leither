@@ -88,7 +88,7 @@ The following requests shall be supported in a decentralized system:
 + User experience compatible with existing internet
 + Law-abiding
 ### II. How is data monopolized?
-In nascent internet, data access followed open protocol. Major platforms like Google and Microsoft, all provided open API for accessing their data. The earliest abuse of open data policy was committed by Facebook, which used other platforms’ data to construct its own social media, then shut the others out.
+In nascent internet, data access protocol was open. Major platforms like Google and Microsoft, all provided open API for accessing their data. The earliest abuse of open data policy was committed by Facebook, which used other platforms’ data to construct its own social media, then shut the others out.
 
 User data get stuck in Facebook’s platform and the first monopoly of data was borne. Afterward Apple and Amazon created their own kingdoms of user data, respectively. Thus internet became segregated. User data is fortified by impenetrable barriers created by every monopolist who can get its hands on it.
 
