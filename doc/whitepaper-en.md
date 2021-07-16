@@ -103,16 +103,15 @@ In this case, the algorithm of App decides the path for user to access data, so 
 
 The two approaches above correspond to **Object Oriented Programming** and **Procedure Oriented Programming**, respectively.  
 #### 2.1 Principles for breaking data monopoly
-**Open Source Platform**  
+**Open source platform**  
 Microsoft dominated the PC ecosystem with DOS and Windows, and strangled competition in both office software and browser. Google uses search engine to control data and influences user behavior. FB does the same with social media.
 
 On the other hand, open source community turned operation system into a public platform with Linux. It is the first attempt to open source a platform. Similar cases are Android for smartphone and RISC-V for IC instruction set.
 
 There shall be similar open source platform for collecting user data, especially for **Social Media** and **Search Engine**.  
 
-**Free Data Migration**  
-In early operation system, data file can be copied and transferred among different mainframes of different systems. Free migration of data shall be a consensus and primary design norm of operation system.  
-Three measures can be adopted to achieve the above goals:
+**Unrestricted data migration**  
+Free migration of data shall be a consensus and primary design norm of operation system. Three measures can be adopted to achieve the above goals:
 + Promote data-freedom as a mainstream ideology
 + Mandate that any platform that collects user data must allow the owner to migrate its personal data. (European Commission proposed a similar legislation recently)
 + Develop open source programs, such as browser plugins, to facilitate user to migrate data to personal storage devices. Once the ownership of user data taken back by its creator, the data can be revived and reconnected with each other.
@@ -123,43 +122,23 @@ If data can be migrated freely, user will have the choice of rules to apply to i
 **Granulation of User Data**  
 There is no way to decouple convoluted and complicated dataset. It is best to granulate data in design, following the pattern of gene, keep the information relatively comprehensive and independent. A piece of granulated information is easy to be processed, transferred, and its connection with other objects clear to be understood.
 
-**inter-Connections of Data**  
+**inter-connections of data**  
 Isolated data have limited value. Inter-connected data can express much more complicated information. HTML is a perfect protocol to describe relationships, if not link could be unstable. The connections of information within a database is still of limited scope.  
 
 #### 2.2 Data Container  
 No data center is required when storing personal data by individual. However, some kind of easy-to-use, cheap and maintenance free data-container will be necessary, like Pod promoted by Solid Platform. One who owns the storage device owns the data and defines the rules of application. Compared with the Homomorphic Encryption that certain block-chain is using to secure data, Leither method is simpler and more efficient.
 
-#### 3.4 Data Model for Reference  
-**File**  
-File is a set of program and data stored on media. File is constructed according to certain format, usually referred to as data structure. Operation system manages files with File System in a tree-like data structure. File wraps the access of data on media and optimizes the procedure.  
-
-**WWW (World Wide Web)**  
-In a standard webpage, HTML5 is used to render content of webpage, CSS style and JavaScript tasks. A page can store and render its data relatively comprehensively. Through interconnections among pages, large scale and complicated information can be constructed.
-
-Shortcomings:
-Webpage only contains information of frontend, without backend data. Big Techs take monopolistic control of user data by owning the backend servers.  
-The links that connect webpages are unstable due to the fragility of server and volatility of its location.  
-Lack of definition of elements such as server, user, etc.
-
-**Gene**  
-The basic unit that contains information of life. DNA or RNA stores a complete segment of hereditary material, which records the adaptation of life to its environment. Life copies hereditary information from generation to generation, while adapting to new environment by variation.
-
-Limitation: Every iteration takes a generation, with restrictions on the amount of information inherited and weak ability to deal with complicated changes.  
-
-**MEME**  
-Richard Dawkins introduced the concept of MEME in his original book, the Selfish Gene. Similar to gene, MEME is defined as the base unit that contains information of a civilization. MEME can be used to record all the knowledge of human society. It can be remembered in human brain, propagated among people, or stored in any kind of media.
-
-Human brain uses pattern recognition to model the world. During its interaction with the environment, every reflection by the mind is an iteration of evolution. Compared with gene, MEME can evolute faster than gene by many orders of magnitude.  
-### IV. Introduction to MiMei
-**Origin of MiMei**  
+### III. Introduction to MiMei
 Entropy is one of the most important measurements in the universe and human society. The 2nd law of thermodynamics points out the direction along which the universe evolves. That is why entropy is also called Arrow of Time. Erwin Schrodinger in his book, What is Life, declares that what an organism feeds upon is negative entropy.
 
 Life stores information of its environment in gene. The heredity keeps the adaptation and the variation deals with the changes of environment. Life simply executes the instructions locked in its gene. Once human developed self-conscious, human brain begins to simulate adjustment made to its environment and process the information. The basic unit of such information is called **Meme** by Richard Dawkins.  
 
 After the birth of internet, the method for processing information has changed and a new unit of information is required. We call it **MiMei**. Similar to Gene and Meme, MiMei contains a piece of information and the rules applicable to it.
 
+**MiMei flows among nodes to facilitate the decentralization of centralized internet**.
+
 **Implementation of MiMei**  
-Based on **Sec 2.7 Summary of Design**, the following functionalities have be implemented.
+Based on **Sec 1.7 Summary of Design**, the following functionalities have be implemented.
 + MiMei operation: create, manage, save, render and send
 + MiMei creation by content's topic, each MiMei with a unique ID
 + Right to set permissions on MiMei by user
