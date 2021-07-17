@@ -318,15 +318,13 @@ Most of the existing businesses on internet can be reconstructed as a public or 
 Internet business can be divided into categories of search engine, content, social media and tool.  
 + **Search engine**  
 Google, Amazon, Alibaba and Baidu all profit from **Information Search**.  
-In Leither network, user can select its preferred search engine and set its own search strategy. Therefore search service will not be controlled by a few providers, instead user can take control of and customize its own search result.  
+In Leither network, user can select its preferred search engine and customize its own search strategy. Therefore search service will not be controlled by a few providers, instead user can take control of and customize its own search result.  
 + **Social media**  
-FB, Twitter, Wechat make huge profits by controlling the **Social Relationship** of users.  
+FB, Twitter and Wechat make huge profits by controlling the **Social Relationship** of users.  
 In Leither network, data of social connections are saved by user owned devices, therefore all of the attached messages, Apps and services are also selected and customized by user.  
 + **Content and Service**  
 On-line video, music and news media provide **Content and Service**.
-In Leither network, content and service can be split into finer parcels, and packaged into MiMei format.  
-Content producer can publish directly to its own node, or collect content from regular internet and put it on its node.  
-MiMei can flow freely among nodes, users can also customize content search method and resources, not to be subjected to criminal abuse by Gig Techs anymore.    
+In Leither network, content and service can be split into finer parcels, and packaged into MiMei format. Content producer can publish directly from its own node. MiMei can flow freely among nodes, users can also customize content search method and resources, not be subjected to criminal abuse by Big Techs anymore.    
 + **Tool**  
 Google Doc, online office, XMind make profits  by providing **Tool Services**.  
 In Leither, Tool application is also a MiMei. 
