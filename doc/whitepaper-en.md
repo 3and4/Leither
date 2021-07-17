@@ -323,8 +323,8 @@ In Leither network, user can select its preferred search engine and customize it
 FB, Twitter and Wechat make huge profits by controlling the **Social Relationship** of users.  
 In Leither network, data of social connections are saved by user owned devices, therefore all of the attached messages, Apps and services are also selected and customized by user.  
 + **Content and Service**  
-On-line video, music and news media provide **Content and Service**.
-In Leither network, content and service can be split into finer parcels, and packaged into MiMei format. Content producer can publish directly from its own node. MiMei can flow freely among nodes, users can also customize content search method and resources, not be subjected to criminal abuse by Big Techs anymore.    
+On-line video, music and news media provide **Content and Service**.  
+In Leither network, content and service can be split into finer parcels, and packaged into MiMei that can flow freely among nodes. Content producer can publish directly from its own node. Users can also customize content search method and resources, not be subjected to criminal abuse by Big Techs anymore.  
 + **Tool**  
 Google Doc, online office, XMind make profits  by providing **Tool Services**.  
 In Leither, Tool application is also a MiMei. 
