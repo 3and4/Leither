@@ -303,3 +303,52 @@ An IOU includes information about lender, borrower, unit of credit, amount, sign
 If there were a relationship between nodes, there should have been certain basis for mutual trust, so that certain amount of credit could be granted according to the magnitude of that relationship. After a relationship between nodes established, credit can be increased periodically. 
 
 Each node is capable of providing useful services. Credit can be acquired by proactively providing valuable service to the others, including data backup, load balance, routing, search, or mediator service. User can also exchange for more credit through 3rd party.
+
+Part II: Organization and consensus
+========
+Part I describes key functions, features and important data structures of Leither platform. Part II will explain how to establish highly efficient, translucent and privacy safe block-chain smart contract services.
+
+### I. Organization
+In social life, people always belong to some kinds of social groups. **Organization** is a group with a purpose and enhanced functionalities. An organization is first created as a group, then people join it to become a member. There are three types of roles within an organization: supervisor (founder), member and guest. Supervisor and member work with each other to maintain and manage the group.
+
+The maintenance of a group is a public service best operated with a block-chain like structure to coordinate the interests of all of its members. A group must become an organization when more potent public service is required of it. Any organizational entity on internet can be reconstructed in the form of a Leither group.
+### II. Organization Services
+Organization service is a public or private service that organization provides. Most of the businesses currently on internet can be reconstructed as organization service.
+#### 2.1 Categories of Internet Business Services
+Internet business can be divided into categories of search engine, content, social media and tool.  
++ Search engine  
+Google, Amazon, Alibaba and Baidu all profit from **Information Search**.  
+In Leither network, user can select its preferred search engine and set its own search strategy. Therefore search service will not be controlled by a few providers, instead user can take control of and customize its own search result.  
++ Social service  
+FB, Twitter, Wechat make huge profits by controlling the **Social Relationship** of users.  
+In Leither network, data of social connections are saved by user owned devices, therefore all of the attached messages, Apps and services are also selected and customized by user.  
++ Content and Service  
+On-line video, music and news media provide **Content and Service**.
+In Leither network, content and service can be split into finer parcels, and packaged into MiMei format.  
+Content producer can publish directly to its own node, or collect content from regular internet and put it on its node.  
+MiMei can flow freely among nodes, users can also customize content search method and resources, not to be subjected to criminal abuse by Gig Techs anymore.    
++ Tool  
+Google Doc, online office, XMind make profits  by providing **Tool Services**.  
+In Leither, Tool application is also a MiMei. 
+#### 2.2 Division of Services  
+The internet services mentioned in previous section can all be divided and reconstructed through the coordination of the following entities, in decentralized fashion.  
++ Application Development  
+Develop applications for Leither ecosystem, undertaken by programmers. Similar to the role of R&D in an enterprise.
++ Service or Content Production  
+Provide services or produce contents for the ecosystem. For content service, similar to editor of a website or operation department of a company.
++ Service Support  
+Provide physical devices for the whole ecosystem, run by operators. Different from regular internet, devices are not owned by one company. Similar to the role of maintenance department in a regular company.  
++ Service Promotion  
+One method is to promote web service of Leither in regular internet, such as website, link, APP and applet. Another is to tag contents and provide public service from Search Node. Similar to operation department of a company.  
++ Value Appreciation  
+Every node can provide public services that can be monetized to pay for other services. Information search and online traffics have great financial value, which is the **foundation of the ecosystem's value**. When packed into a block-chain like system, the investment and return of its members can be coordinated through consensus. More details in later chapters.
+#### 2.3 Service Support
+Node management, MiMei migration, information search and group consensus, etc.  
++ MiMei Storage  
+Leither decouples internet content and service into MiMei form. MiMei is stored on nodes according to business request and flow among nodes on demand. Service exchanged between nodes is settled with credit. Node participates in the settlement of group services by group consensus.  
++ Index Information  
+Index is used for search service. The information is stored on Distributed Hash Table (DHT) of all the online nodes. Node participates in the settlement of group service by group consensus.  
++ Docking Service  
+Services that connect MiMei with regular internet, such as APP, DNS and applet. Those services run on servers of regular internet, and participate in the settlement of group services by group consensus.
++ Consensus  
+Consensus is the public business logic of a group. Consensus runs on all bookkeepers.
