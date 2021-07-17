@@ -306,12 +306,12 @@ Each node is capable of providing useful services. Credit can be acquired by pro
 
 Part II: Organization and consensus
 ========
-Part I describes key functions, features and important data structures of Leither platform. Part II will explain how to establish highly efficient, translucent and privacy safe block-chain smart contract services.
+Part I describes the key functions, features and important data structures of Leither platform. Part II will explain how to establish highly efficient, translucent and privacy safe block-chain smart contract services.
 
 ### I. Organization
-In social life, people always belong to some kinds of social groups. **Organization** is a group with a purpose and enhanced functionalities. An organization is first created as a group, then people join it to become a member. There are three types of roles within an organization: supervisor (founder), member and guest. Supervisor and member work with each other to maintain and manage the group.
+In social life, people always belong to some kinds of social groups. **Organization** is a group with a purpose and enhanced functionalities. An organization is first created as a group, then people join the membership. There are three types of roles within an organization: supervisor (founder), member and guest.
 
-The maintenance of a group is a public service best operated with a block-chain like structure to coordinate the interests of all of its members. A group must become an organization when more potent public service is required of it. Any organizational entity on internet can be reconstructed in the form of a Leither group.
+The maintenance of a group is a public service, best operated with a block-chain like structure to coordinate the interests of all of its members. A group must become an organization when more potent public service is required of it. Any organizational entity on internet can be reconstructed in the form of a Leither group.
 ### II. Organization Services
 Organization service is a public or private service that organization provides. Most of the businesses currently on internet can be reconstructed as organization service.
 #### 2.1 Categories of Internet Business Services
