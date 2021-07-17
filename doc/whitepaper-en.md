@@ -329,7 +329,7 @@ In Leither network, content and service can be split into finer parcels, and pac
 Google Document, online office, XMind make profits by providing **Tool Services**.  
 In Leither, Tool application is also a MiMei. 
 #### 2.2 Division of Services  
-The internet services mentioned in previous section can all be divided and reconstructed through the coordination of the following entities, in decentralized fashion.  
+All of the internet services mentioned in previous section can be divided and reconstructed through the coordination of the following services, in decentralized fashion.  
 + **Application Development**  
 Develop applications for Leither ecosystem, undertaken by programmers. Similar to the role of R&D in an enterprise.
 + **Service or Content Production**  
