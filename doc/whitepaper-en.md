@@ -313,7 +313,7 @@ In social life, people always belong to some kinds of social groups. **Organizat
 
 The maintenance of a group is a public service, best operated with a consensus mechanism to coordinate the interests of all of its members. A group must become an organization when more potent public service is required of it. Any organizational entity on internet can be reconstructed in the form of a Leither group.
 ### II. Organization Services
-Organization service is a public or private service that organization provides. Most of the businesses currently on internet can be reconstructed as organization service.
+Most of the existing businesses on internet can be reconstructed as a public or private organization service.
 #### 2.1 Categories of Internet Business Services
 Internet business can be divided into categories of search engine, content, social media and tool.  
 + Search engine  
