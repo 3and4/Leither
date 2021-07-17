@@ -326,29 +326,29 @@ In Leither network, data of social connections are saved by user owned devices, 
 On-line video, music and news media provide **Content and Service**.  
 In Leither network, content and service can be split into finer parcels, and packaged into MiMei that can flow freely among nodes. Content producer can publish directly from its own node. Users can also customize content search method and resources, not be subjected to criminal abuse by Big Techs anymore.  
 + **Tool**  
-Google Doc, online office, XMind make profits  by providing **Tool Services**.  
+Google Document, online office, XMind make profits by providing **Tool Services**.  
 In Leither, Tool application is also a MiMei. 
 #### 2.2 Division of Services  
 The internet services mentioned in previous section can all be divided and reconstructed through the coordination of the following entities, in decentralized fashion.  
-+ Application Development  
++ **Application Development**  
 Develop applications for Leither ecosystem, undertaken by programmers. Similar to the role of R&D in an enterprise.
-+ Service or Content Production  
++ **Service or Content Production**  
 Provide services or produce contents for the ecosystem. For content service, similar to editor of a website or operation department of a company.
-+ Service Support  
++ **Service Support**  
 Provide physical devices for the whole ecosystem, run by operators. Different from regular internet, devices are not owned by one company. Similar to the role of maintenance department in a regular company.  
-+ Service Promotion  
++ **Service Promotion**  
 One method is to promote web service of Leither in regular internet, such as website, link, APP and applet. Another is to tag contents and provide public service from Search Node. Similar to operation department of a company.  
-+ Value Appreciation  
++ **Value Realization**  
 Every node can provide public services that can be monetized to pay for other services. Information search and online traffics have great financial value, which is the **foundation of the ecosystem's value**. When packed into a block-chain like system, the investment and return of its members can be coordinated through consensus.
 #### 2.3 Service Support
 Node management, MiMei migration, information search and group consensus, etc.  
-+ MiMei Storage  
++ **MiMei Storage**  
 Leither decouples internet content and service into MiMei form. MiMei is stored on nodes according to business request and flow among nodes on demand. Service exchanged between nodes is settled with credit. Node participates in the settlement of group services by group consensus.  
-+ Index Information  
++ **Index Information**  
 Index is used for search service. The information is stored on Distributed Hash Table (DHT) of all the online nodes. Node participates in the settlement of group service by group consensus.  
-+ Docking Service  
++ **Docking Service**  
 Services that connect MiMei with regular internet, such as APP, DNS and applet. Those services run on servers of regular internet, and participate in the settlement of group services by group consensus.
-+ Consensus  
++ **Consensus**  
 Consensus is the public business logic of a group. Consensus runs on all bookkeepers.
 ### III. Organizational Functions
 #### 3.1 Create Organization  
