@@ -378,17 +378,17 @@ For example a video website can be separated into the following sub-services:
 
 Every quantum of token shall base on meaningful work. The quantity of its value is decided by its contribution to the ecosystem, or how useful the work is.  
 
-An organizational ledger, which is actually a sparse Merkle tree with snapshot function, can be created with consensus. Any incentives issued by the organization will be announced with reason and proof for organization wide publicity and scrutiny. 
+An organizational ledger, which is actually a sparse Merkle tree with time-space snapshot, can be created with consensus. Any incentives issued by the organization shall be announced with reason and proof for organization wide publicity and scrutiny. 
 
 This mechanism is called **Proof of Performance (PoP)**, different from POW of BTC.  
 
 System rewards include:  
-+ Construction reward:  
++ **Infrastructural reward**  
 Rewards to member who has made fundamental contribution to the organization, such as founder, investor, system and App developer, who did all the absolutely necessary work to make it happen. The reward is recommended by supervisor and issued after vote of consensus.
 
     The reward is for creating the organization.  
 
-+ Content service reward:  
++ **Content service reward**  
 Organization provides valuable service or content to users. At every step of value creation, contributor is recorded. At the point of value appreciation, smart contract is triggered and incentives rewarded to each member who did valuable work.
     The reward can be distributed by fixed proportion or dynamically balanced through the following mimic process.  
     1. Developer writes content collection plugins.  
@@ -399,12 +399,12 @@ Organization provides valuable service or content to users. At every step of val
 
     This reward mechanism will feedback positively to the healthy development of the organization and the growth of its usefulness.  
 
-+ Mining reward  
++ **Mining reward**  
 Same as traditional mining, all the online nodes can attend vote, bookkeeping and smart contract service. Reward for new block will be used to support the network, manage public information and routing service.  
 
     This reward makes sure that organization stays active.
 
-+ Operation reward  
++ **Operation reward**  
 In the beginning when an infant system cannot sustain itself. Extra incentives can be rewarded to accelerate its growth.
 
     This reward helps the organization to mature faster.  
