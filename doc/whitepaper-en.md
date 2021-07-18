@@ -335,11 +335,11 @@ Develop applications for Leither ecosystem, undertaken by programmers, equivalen
 + **Service or Content Production**  
 Provide services or produce contents for the ecosystem. For content service, equivalent to editor of a website or operation department of a company.
 + **Service Support**  
-Provide physical devices for the whole ecosystem, run by operators. Different from regular internet, devices are not owned by one company. Similar to the role of maintenance department in a regular company.  
+Provide computation power for the whole ecosystem, run by operators. Different from regular internet, devices are owned by multiple small businesses or end users. Equivalent to the role of maintenance department in a regular company.  
 + **Service Promotion**  
-One method is to promote web service of Leither in regular internet, such as website, link, APP and applet. Another is to tag contents and provide public service from Search Node. Similar to operation department of a company.  
+Promote web service of Leither in regular internet, such as website, link, APP and applet, or tag contents and provide public service from Search Node. Equivalent to operation department of a company.  
 + **Value Realization**  
-Every node can provide public services that can be monetized to pay for other services. Information search and online traffics have great financial value, which is the **foundation of the ecosystem's value**. When packed into a block-chain like system, the investment and return of its members can be coordinated through consensus.
+Every node is capable of public services that can be monetized to pay for other services. Information search and online traffics have great financial value, which is the **foundation of the ecosystem**. The investment and return of Leither ecosystem's members can be coordinated through consensus mechanism using Leither block-chain.
 #### 2.3 Service Support
 Node management, MiMei migration, information search and group consensus, etc.  
 + **MiMei Storage**  
