@@ -368,8 +368,8 @@ For example a video website can be separated into the following sub-services:
 + Application support with storage, bandwidth, CPU, etc.  
 + Content access channel, such as APP, applet, DNS, routing, search, etc.  
 + Promotion and operation.  
-+ Value appreciation  
-    There two types of value appreciation.  
++ Value realization  
+    There two types of value realization.  
     Type one: content contains prepaid information of a third party.  
     Type two: content is valuable to average users, who would pay for it or watch the imbedded commercials. This business model is tried and true, a highly matured business practice in regular internet.
 
