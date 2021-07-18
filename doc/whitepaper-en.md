@@ -356,12 +356,12 @@ Any user can create an organization. First, system creates a pair of encryption 
 
 Organization runs on the node of its creation. Distributed organization also starts from the first node where it is created. The default network structure is DHT network which stores public information of the organization.
 
-Public information of an organization can be inquired through DHT network, so can the information of a member's node. Members can exchange P2P messages. Group message data belongs to the public and is saved on DHT network.
+Public information of an organization can be inquired through DHT network. Members can exchange P2P messages. Data of group message belongs to the public and is saved on DHT network.
 #### 3.2 Join Organization  
 User can apply for membership of an organization directly, or ask a member to apply on its behavior. Once supervisor confirms the application, the user becomes a member and DHT is updated with corresponding information. Member can check public information of the organization. User can also perform certain task for the organization and get rewarded a membership.  
 
 #### 3.3 Business Development  
-Organization service is actually a series of Leither applications, which can be listed in the public information area of the organization network.  
+Organization service is actually a series of Leither applications, which can be listed on the bulletin board of the organization.  
 For example a video website can be separated into the following sub-services:
 + Content collection and production  
 + Content tagging  
