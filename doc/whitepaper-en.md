@@ -389,7 +389,7 @@ Rewards to member who has made fundamental contribution to the organization, suc
     The reward is for creating the organization.  
 
 + **Content service reward**  
-Organization provides valuable service or content to users. At every step of value creation, contributor is recorded. At the point of value appreciation, smart contract is triggered and incentives rewarded to each member who did valuable work.
+Organization provides valuable service or content to users. At every step of value creation, contributor is recorded. At the point of value realization, smart contract is triggered and incentives rewarded to each member who did valuable work.
     The reward can be distributed by fixed proportion or dynamically balanced through the following mimic process.  
     1. Developer writes content collection plugins.  
     2. Collector use the plugins to gather content from internet, turn it into MiMei, and publish the MiMei onto Leither network. MiMei will indicate collector of its content.  
