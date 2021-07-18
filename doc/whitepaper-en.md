@@ -378,7 +378,8 @@ For example a video website can be separated into the following sub-services:
 
 Every quantum of token shall base on meaningful work. The quantity of its value is decided by its contribution to the ecosystem, or how useful the work is.  
 
-An organizational ledger, which is actually a sparse Merkle tree with snapshot function, can be created with consensus. Any incentives issued by the organization will be announced with reason and proof for organization wide publicity.  
+An organizational ledger, which is actually a sparse Merkle tree with snapshot function, can be created with consensus. Any incentives issued by the organization will be announced with reason and proof for organization wide publicity and scrutiny. 
+
 This mechanism is called **Proof of Performance (PoP)**, different from POW of BTC.  
 
 System rewards include:  
