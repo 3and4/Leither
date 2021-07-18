@@ -349,7 +349,7 @@ Index is used for search service. The information is stored on Distributed Hash 
 + **Docking Service**  
 Services that connect MiMei with regular internet, such as APP, DNS and applet. Those services run on servers of regular internet, and participate in the settlement of group services by group consensus.
 + **Consensus**  
-Consensus is the public business logic of a group. Consensus runs on all bookkeepers.
+Consensus is the public business logic of a group. Consensus runs on all bookkeepers (miner as in BTC).
 ### III. Organizational Functions
 #### 3.1 Create Organization  
 Any user can create an organization. First, system creates a pair of encryption keys for the organization. The public key ID is the default organization ID. Founder is automatically a member and supervisor by default. Organization has the same authorization scheme as MiMei. User identity includes supervisor, member and guest.  
