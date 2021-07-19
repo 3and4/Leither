@@ -441,14 +441,14 @@ Top level information that is close to the root node is synchronized network wid
 **Network Pulse**  
 In order to coordinate all nodes among the network, an incremental sequence number is broadcast top down in every **network pulse cycle** (1s by default). The sequence number generation is coordinated by top level bookkeepers.  
 
-The sequence number serves as sync timer of each node, and version number of its data. Within each pulse cycle, every node consolidates and saves the newly added data from last cycle. Every node group is responsible to process data of several levels, depending on the height of the SMT. The work done is called **Proof of Performance**, similar to PoW in BTC, and will be rewarded by the system.  
+The sequence number serves as sync timer of each node, and version number of its data. Within each pulse cycle, every node consolidates and saves the newly added data from last cycle. Every node group is responsible to process data of several levels of nodes, depending on the height of the SMT. The work done is called **Proof of Performance**, similar to **Proof of Work** in BTC, and will be rewarded by the system.  
 
 **Time-space Snapshot**  
 LevelDB is an excellent database optimized for writing operation. The writing of new data using writeStream can reach the speed limit of storage media, even faster than database reading. On the other hand, sequence number in key-value provides revised version number, with which historical record can be quickly inquired. 
 
 Network pulse is equivalent of the sequence version number in LevelDB, with which changed data within each pulse cycle can be quickly recorded and labelled. The same method can be used to take snapshot of time-space SMT.
 
-In every pulse cycle, the structure of the current SMT is identical to its previous version, except the newly added changed data. When taking a snapshot, only the changed information need to be saved. With the version sequence number of key-value, data of any node in any pulse cycle can be quickly retrieved. Regular account only has to record its own account information and information of its node group. 
+In every pulse cycle, the structure of the current SMT is identical to its previous version, except the newly added changed data. When taking a snapshot, only the changed information need to be saved. With the version sequence number in key-value, data of any node in any pulse cycle can be quickly retrieved. Regular account only has to record its own account information and information of its node group. 
 
 The underlying MiMei database of Leither has built in support to time-space snapshot.
 
