@@ -400,7 +400,7 @@ Organization provides valuable service or content to users. At every step of val
     This reward mechanism will feedback positively to the healthy development of the organization and the growth of its usefulness.  
 
 + **Mining reward**  
-Same as traditional mining, all the online nodes can attend vote, bookkeeping and smart contract service. Reward for new block will be used to support the network, manage public information and routing service.  
+Same as traditional mining, all the online nodes can attend election, bookkeeping and smart contract service. Reward for new block will be used to support the network, manage public information and routing service.  
 
     This reward makes sure that organization stays active.
 
