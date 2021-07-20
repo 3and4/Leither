@@ -450,7 +450,7 @@ Network pulse is equivalent of the sequence version number in LevelDB, with whic
 
 In every pulse cycle, the structure of the current SMT is identical to its previous version, except the newly added changed data. When taking a snapshot, only the changed information need to be saved. With the version sequence number in key-value, data of any node in any pulse cycle can be quickly retrieved. Regular account only has to record its own account information and information of its node group. 
 
-The underlying MiMei database of Leither has built in support to time-space snapshot.
+The underlying MiMei database of Leither has built in support for time-space snapshot.
 
 ### VI. Related Procedures
 #### 6.1 Network Construction  
