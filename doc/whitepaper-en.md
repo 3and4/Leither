@@ -354,9 +354,9 @@ Consensus is the public business logic of a group. Consensus runs on all bookkee
 #### 3.1 Create Organization  
 Any user can create an organization. First, system creates a pair of encryption keys for the organization. The public key ID is the default organization ID. Founder is automatically a member and supervisor by default. Organization has the same authorization scheme as MiMei. User identity includes supervisor, member and guest.  
 
-Organization runs on the node of its creation. Distributed organization also starts from the first node where it is created. The default network structure is DHT network which stores public information of the organization.
+Organization runs on the node of its creation. Distributed organization also starts from the first node where it is created. The default network structure is DHT network, which stores public information of the organization.
 
-Public information of an organization can be inquired through DHT network. Members can exchange P2P messages. Data of group message belongs to the public and is saved on DHT network.
+Public information of an organization can be inquired through DHT network. Members can exchange P2P messages. Data of group message is public information and saved on DHT network.
 #### 3.2 Join Organization  
 User can apply for membership of an organization directly, or ask a member to apply on its behavior. Once supervisor confirms the application, the user becomes a member and DHT is updated with corresponding information. Member can check public information of the organization. User can also perform certain task for the organization and get rewarded a membership.  
 
