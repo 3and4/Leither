@@ -410,7 +410,7 @@ In the beginning when an infant system cannot sustain itself. Extra incentives c
     This reward helps the organization to mature faster.  
 
 ### V. Basic Concepts
-**Distributed Hash Table (DHT) network**  
++ **Distributed Hash Table (DHT) network**  
 In DHT network, node can be quickly located by its ID to access its information. Public information of an organization can also be saved over the whole network distributively.  
 
 + **Sparse Merkle Tree (SMT)**  
