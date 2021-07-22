@@ -490,10 +490,10 @@ Redundant backup happens when bookkeepers broadcast information after finishing 
 Network recovery happens at information verification when a node getting online.  
 
 #### 6.4 Dispute Handling**  
-**Publicity Period**  
++ **Publicity Period**  
 Every transaction must have a period of publicity, 24hrs by default. If other nodes find any problem, the transaction will be reported and disputation resolution procedure kicks in.  
 
-**Amount-time**  
++ **Amount-time**  
 Every transaction involves different amount of fund. Each bookkeeper or auditor pledges different amount of credit. Therefore a new concept _Amount-time_ is coined for the convenience of calculation.  
 amount-time = Amount of fund * Time during which the fund is occupied  
 For transaction,   
@@ -501,12 +501,12 @@ Amount = transaction amount, time = period of publicity
 For auditing and bookkeeping,  
 Amount = amount of credit pledged, time = period the fund frozen  
 
-**Accumulated Period**  
++ **Accumulated Period**  
 = accumulated amount-time (for auditing or bookkeeping) / transaction amount  
 
-**Transaction Security Threshold**  
-+ Minimum number of users who audit a transaction  
-+ Minimum accumulated audit period  
++ **Transaction Security Threshold**  
+    + Minimum number of users who audit a transaction  
+    + Minimum accumulated audit period  
     Security threshold sets the minimum auditing cost, so the cost of mining and service fee can be estimated. Accumulated audit period of a normal transaction will be 1.  
     Different audit period has different value, therefore different system reward.  
 
@@ -519,52 +519,52 @@ When dispute happens, the whole network enters dispute handling procedure. The n
 Information of system account is public, but regular user account is private and cannot be inquired by 3rd party. However authenticity of account information that user chooses to demonstrate can be verified by checking the synopsis recorded in public ledger. The truthfulness of synopsis can be confirmed by checking synopsis of child branches.  
 ### VII. Privacy and Transaction Security
 #### 7.1 Privacy and Consensus  
-**Dilemma of Transparency**  
++ **Dilemma of Transparency**  
 In traditional block-chain, consensus is based on transparency. If account information is hidden, there is no way to confirm the legitimacy of a transaction. The buyer might overspend.  
 
 For parties not involved in a transaction, the purpose of knowledge of the transaction is more likely to avoid potential harm of ignorance, rather than voyeurism. If a proper balance of translucency can be reached, there is no need for the others to know the detail of a deal.  
-**Premise and Principles**  
++ **Premise and Principles**  
 The premise and principles for anonymity is that trading parties in a deal and the third parties do not harm each other.  
 #### 7.2 Transaction Security  
 Based on not-be-a-sucker principle, it is necessary to make every member of an organization believes a deal is legal.  
 #### 7.2.1 Safety Conditions  
 Legal transaction must meet the following conditions.  
-+ Truthful intention  
++ **Truthful intention**  
 The deal is confirmed by both parties.
-+ Real deal  
++ **Real deal**  
 The seller has sufficient goods to trade.  
 Fund transferred cannot be negative.  
 No negative account after the transaction.  
-+ Balanced Account  
++ **Balanced Account**  
 Without system reward, the overall account balance does not change after a transaction.  
 If system reward is counted as a transfer from organization to users, total account balance still does not change.  
 #### 7.2.2 Safety Analysis  
-+ Traders' responsibility   
++ **Traders' responsibility**   
 The seller will strictly check the safety conditions above, otherwise it will not receive the fund.  
 The buyer will also double check the parameters and procedure of the transaction, for illegal deal will be punished by the organization.  
-+ Other users within the same group  
++ **Other users within the same group**  
 The other users need to check if there is any fake transaction or account balance issue of the trading accounts, in order to protect themselves from collateral damage.  
-+ Other node groups  
++ **Other node groups**  
 Any node group that does not include a trading user only need to verify there is no fake deal or account balance issue within the node group that does include a trading user.  
 
 #### 7.3 Anonymity Strategy  
-**Node Group Opacity**  
++ **Node Group Opacity**  
 If a node group is a unit of settlement, transaction information can be hidden within it. Any other user only need to worry about the general ledger of the group and its legitimacy.  
-**Third Party Opacity**  
++ **Third Party Opacity**  
 If there is a third party endorsement to ensure no collateral damage to the others irrelevant to the deal, transaction information can be revealed in delayed time.  
-**Translucent Network**  
++ **Translucent Network**  
 During redundant backup, information of an account is backed up only by a few accounts nearby. Accounts faraway can only acquire summarized information through a few top level nodes, without knowing any details of the lower level nodes. This strategy not only guarantees the transaction information safely confirmable, but also the anonymity of information.  
-**Capital flow unimportant**  
++ **Capital flow unimportant**  
 In reality, the anonymity of capital flow is more important than that of account balance. However in Leither network 3rd party will be more interested in account balance and legitimacy, instead of capital flow. If system purges transaction information periodically, after a while capital flow will not be traceable.
 #### 7.4 Anonymity Strategy  
 The following methods implement information anonymity.
-**Credit Endorsement**  
++ **Credit Endorsement**  
 A third party, bookkeeper by default, can be appointed to endorse a transaction. For other users, the transaction runs on branch and is pledged by the endorsor, so they are collateral damage free. 
-**Neighbor Check**  
++ **Neighbor check**  
 After a transaction is committed and SMT changed, bookkeeper must broadcast the information. The neighbors of the trading nodes will get details because they provide redundant backup, so they must verify the transaction and check the SMT. If problem detected, dispute procedure kicks in. Except a few bookkeepers and neighbors, most of the users will not receive transaction details.  
-**Multiple transfers**  
++ **Multiple hops transfer**  
 If someone wants to know the details of a transaction, it needs to access the trading nodes during the transaction. It will cost time and money. User can choose to transfer fund multiple hops through different branches, which make the tracking of a deal virtually impossible.  
-**Transfer across organizations**  
++ **Transfer across organizations**  
 Every organization has its own consensus system. Different organizations can exchange their tokens. Transfer across organizations will also increase the cost of tracing exponentially.
 
 ### VIII. Data Processing and Quantitative Analysis
