@@ -466,12 +466,12 @@ The very first token distribution will be announced network wide, with reasons f
 + **Transfer between users**  
 The transaction between two users concerns only themselves. After the transaction is confirmed, information signed by both users will be sent to their bookkeepers on the SMT respectively. Each bookkeeper will record the changes in its own branch and broadcast the information among backup bookkeepers at the same level. After time sequence increments (in less than 1s), transaction data becomes read only. Bookkeepers at each level begin to check their branches bottom up and summarize branch information to generate synopses. The top bookkeeper summarizes overall information, generates synopsis of the SMT, and broadcasts top down to everyone below.
 
-Both parties of the transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed for good. One transaction spends at most two pulse cycles (2s).
+    Both parties of the transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed for good. One transaction spends at most two pulse cycles (2s).
 
 + **Dispute Resolution Procedure**  
 Every transaction must have sufficient security deposit to endorse enough time for more nodes to verify it. Transaction is processed by multiple nodes simultaneously, and bookkeeper and backup bookkeeper are randomly selected to avoid collusion. If any node disputes the transaction, disputation resolution procedure kicks in. During the procedure, all relevant funds are frozen.
 
-All of the nodes can check the disputed transaction and vote. Security deposit of the erroneous node will be confiscated. Bookkeeper can only process the transaction amount that the frozen deposit can cover.
+    All of the nodes can check the disputed transaction and vote. Security deposit of the erroneous node will be confiscated. Bookkeeper can only process the transaction amount that the frozen deposit can cover.
 
 + **Legitimacy Check**  
     1. The trading parties check the legitimacy of the transaction.   
@@ -482,13 +482,13 @@ All of the nodes can check the disputed transaction and vote. Security deposit o
 + **Redundant Backup**  
 All the account information on a branch are stored by a few bookkeepers. In order to keep the network robust, all nodes are encouraged to redundantly backup account information of its neighboring branches.
 
-There are two ways for reward. Regular nodes can audit the transaction information of nearby branches and earn reward. For illegal transaction, account information of neighboring nodes are frozen until the state of their branches recuperate.  
-Number of neighboring nodes could be 1, 3, 7, 15, 31, 63, 255.  
+    There are two ways for reward. Regular nodes can audit the transaction information of nearby branches and earn reward. For illegal transaction, account information of neighboring nodes are frozen until the state of their branches recuperate.  
+    Number of neighboring nodes could be 1, 3, 7, 15, 31, 63, 255.  
 
-All of the nodes will strive to maintain the health of the network, in order to earn reward and avoid collateral damage.  
-Because of the redundant backup, a small number of nodes can recover the whole network after a crash.  
-Redundant backup happens when bookkeepers broadcast information after finishing their tasks.  
-Network recovery happens at information verification when a node getting online.  
+    All of the nodes will strive to maintain the health of the network, in order to earn reward and avoid collateral damage.  
+    Because of the redundant backup, a small number of nodes can recover the whole network after a crash.  
+    Redundant backup happens when bookkeepers broadcast information after finishing their tasks.  
+    Network recovery happens at information verification when a node getting online.  
 
 #### 6.4 Dispute Handling**  
 + **Publicity Period**  
@@ -605,8 +605,7 @@ The search for a node is load-balanced on each node within a DHT network, theref
 The network structure of ledger is predetermined within each election cycle. Traffic load in fixed network is negligible.  
 Transaction between users is handled by the branch of each user. Traffic load of average 30 transactions is small.  
 
-Traffic load of root node need to be examined closely below.  
-Root node must broadcast to backup miners and lower level miners. The data to backup miner is 10KB/s, so the maximum data rate to 256 miners simultaneously is 2.5MB/s. If the bandwidth is insufficient, miners can be further divided into subgroup of 16 miners per level. Data rate becomes 160KB/s. Number of broadcasts from top to bottom increases from 3 times to 5.  
+    Root node must broadcast to backup miners and lower level miners. The data to backup miner is 10KB/s, so the maximum data rate to 256 miners simultaneously is 2.5MB/s. If the bandwidth is insufficient, miners can be further divided into subgroup of 16 miners per level. Data rate becomes 160KB/s. Number of broadcasts from top to bottom increases from 3 times to 5.  
 
 + **Communication time among miners**  
 The process of data involves 3 to 4 levels of nodes.  
