@@ -555,7 +555,7 @@ If there is a third party endorsement to ensure no collateral damage to the othe
 **Translucent Network**  
 During redundant backup, information of an account is backed up only by a few accounts nearby. Accounts faraway can only acquire summarized information through a few top level nodes, without knowing any details of the lower level nodes. This strategy not only guarantees the transaction information safely confirmable, but also the anonymity of information.  
 **Capital flow unimportant**  
-In reality, the anonymity of capital flow is more important than account balance. However in Leither network 3rd party will be more interested in account balance and legitimacy, instead of capital flow. If system purges transaction information periodically, after a while capital flow will not be traceable.
+In reality, the anonymity of capital flow is more important than that of account balance. However in Leither network 3rd party will be more interested in account balance and legitimacy, instead of capital flow. If system purges transaction information periodically, after a while capital flow will not be traceable.
 #### 7.4 Anonymity Strategy  
 The following methods implement information anonymity.
 **Credit Endorsement**  
@@ -568,38 +568,38 @@ If someone wants to know the details of a transaction, it needs to access the tr
 Every organization has its own consensus system. Different organizations can exchange their tokens. Transfer across organizations will also increase the cost of tracing exponentially.
 
 ### VIII. Data Processing and Quantitative Analysis
-**Data Storage**  
++ **Data Storage**  
 In theory Sparse Merkle Tree is an equilibrium probability binary tree. The closer to top, the evener the distribution. Close to the bottom, the length of branches will vary substantially. It is necessary to reduce the disparity. On the other hand, a 160-bit account number is inconvenient to process. Since one byte can differentiate 8 levels of the tree, 8 levels are stratified together. Assume tree node information is 36 bytes (network number 8 bytes + amount 8 bytes + account number 20 bytes ).  
-**Node Group**  
++ **Node Group**  
 One group is a sub-tree that can hold up to 256 nodes, with max height of 64. The max storage space of one group is 10KB.
-**Sub-Database**  
++ **Sub-Database**  
 One sub-database can hold up to 256 node groups and requires a maximum of 2.5MB to store that 65536 node accounts.  
-**Miner's bookkeeping database**  
-If there are more than 256 node groups in database on one node(user), system will splits some data to other nodes. A bookkeeper can store max 256 sub-databases, 16,777,216 node accounts, which requires 640MB space.  
-**Account summary information**  
++ **Miner's bookkeeping database**  
+If there are more than 256 node groups in database on one node(user), system will splits some data to other nodes. A bookkeeper can store max 256 sub-databases, or 16,777,216 node accounts, which requires 640MB space.  
++ **Account summary information**  
 The topmost node group records general ledger status, including account information of the topmost 256 branches, such as synopses and account balance. The size of all these information is less than 10KB. It must be synced to every online node in the system. A normal user only need to know the general network status and information of its own branch.  
 
-**Quantitative Analysis**  
++ **Quantitative Analysis**  
 Usee BTC as reference, currently there are about 30 million accounts and the average number of transactions is 6.67 per second.
 Assume the following system parameters:
-+ Number of accounts 2^32 = 4.3 billions  
-+ Transaction concurrency 1 million/s  
-+ Pulse cycle 1 second  
-+ Election cycle 30 minutes  
+    + Number of accounts 2^32 = 4.3 billions  
+    + Transaction concurrency 1 million/s  
+    + Pulse cycle 1 second  
+    + Election cycle 30 minutes  
 
-**Scale Analysis**  
++ **Scale Analysis**  
 Most of the accounts are distributed in a 32-level network. Bookkeepers are grouped to cover 8, 8 and 16 levels respectively.  
-**Miner HD usage**  
++ **Miner storage usage**  
 If one branch miner process one sub-database (65536 accounts), data size is 2.5MB. If it is one database (16,777,216 accounts), data size will be 640MB.  
-**Miner memory usage**  
++ **Miner memory usage**  
 Only online nodes need to be processed by a miner.  
 For Level 1 or 2 miners, most branches need to be processed online. All 10KB data must be in memory.  
 For lower level miners, there are only 30 some transactions per second. No need to keep everything in memory, read related data and synopsis of neighboring branches when necessary. The data size is 30* 16*2*28 byte = 7.5KB, and 90 times of database access.  
-**Miner CPU usage**  
++ **Miner CPU usage**  
 CPU usage is mainly for verifying transactions and generating synopsis.  
 Level 1 or 2 miners must calculate for every transaction, which means 16 million synopses. However in reality at most only one iteration per pulse cycle is necessary for the whole network, which is 512 times of synopsis calculation, about 10KB data.    
 Branch root node need to verify the whole branch, which requires 30*(16+16)=7KB data, and 96 synopses.  
-**Traffic load among miners**  
++ **Traffic load among miners**  
 The search for a node is load-balanced on each node within a DHT network, therefore the amount of traffic is negligible.    
 The network structure of ledger is predetermined within each election cycle. Traffic load in fixed network is negligible.  
 Transaction between users is handled by the branch of each user. Traffic load of average 30 transactions is small.  
@@ -607,7 +607,7 @@ Transaction between users is handled by the branch of each user. Traffic load of
 Traffic load of root node need to be examined closely below.  
 Root node must broadcast to backup miners and lower level miners. The data to backup miner is 10KB/s, so the maximum data rate to 256 miners simultaneously is 2.5MB/s. If the bandwidth is insufficient, miners can be further divided into subgroup of 16 miners per level. Data rate becomes 160KB/s. Number of broadcasts from top to bottom increases from 3 times to 5.  
 
-**Communication time among miners**  
++ **Communication time among miners**  
 The process of data involves 3 to 4 levels of nodes.  
 The submission and verification of a transaction happen in two different pulse cycles.  
 Submission is delivered to branch root node, so times of communication is one.  
@@ -638,23 +638,23 @@ Network nodes can be partitioned into layers according to the scale of the netwo
 Network can be more stable and robust by adding proper number of backup nodes. Comparatively, in regular block-chain all of the bookkeeping is accomplished by all of the nodes together, which greatly restricted network scale and throughput.  
 #### 9.5 Endorsement and shade of grey solves privacy problem
 ### X. Advantages of Leither compared with regular block-chain
-+ Functionality
++ **Functionality**
 With MiMei and Leither application system, most regular internet platforms can be reconstructed as user oriented network.  
 With organization and consensus, Leither can implement most of the ethereum functionalities and organize all the participants.  
 The above functions combined can give internet back to its users from the grip of oligarchies.  
-+ Value  
++ **Value**  
 Traditional block-chain does bookkeeping for others.  
 Every organization of Leither has a mission to decentralize an internet application, to give user control of its data, to satisfy user's need first and foremost. The action of every participant has real value, in order to take back the outrageous profit of oligarchies and redistribute it users who did meaningful work.  
-+ Cost  
++ **Cost**  
 Mining of regular block-chain is hugely expensive because of all the machines and electricity cost to do the most basic work.  
 In Leither, consensus is achieved by doing the very job of internet. Tv box, router, NAS, smart phone, even Raspberry zero worth $10 can provide valuable services and ROI much higher than mining machine.  
-+ Efficiency  
++ **Efficiency**  
 Leither elastic system can scale according to business request. Workload is balanced on to every node through consensus.  
 The heavier the network load, the more the nodes, and the more powerful the network processing capacity that far exceeds that of regular block-chain. Because of its high efficiency, a few nodes can construct their own business and consensus mechanism.  
-+ Privacy  
++ **Privacy**  
 In regular block-chain, information flow of every account is an open book. Even though account is anonymous, it is possible to identify the owner by analyzing information flow.  
 In Leither, except the earliest contribution that need to be publicized for auditing, all the transactions afterward are open only to related parties and a few nodes. The whole network has a shade of grey. Creator can set translucency to protect privacy.  
-+ Law Abiding  
++ **Law Abiding**  
 A token of Leither has corresponding service as anchor object. It is more like points, notes, share, Q coin, and many other business practices in real life. It is perfectly legal, as a matter of fact very similar to early Taobao business, completely decentralized and conducted in the name of individual.
 
     Smart contract deals with real business data, therefore avoids the falling hole of ethereum which can only process virtual business such as encryption coin.  
