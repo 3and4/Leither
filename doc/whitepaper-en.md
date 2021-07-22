@@ -658,3 +658,6 @@ In Leither, except the earliest contribution that need to be publicized for audi
 A token of Leither has corresponding service as anchor object. It is more like points, notes, share, Q coin, and many other business practices in real life. It is perfectly legal, as a matter of fact very similar to early Taobao business, completely decentralized and conducted in the name of individual.
 
     Smart contract deals with real business data, therefore avoids the falling hole of ethereum which can only process virtual business such as encryption coin.  
+
+Part III: Application Case Study
+========
