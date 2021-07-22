@@ -413,44 +413,44 @@ In the beginning when an infant system cannot sustain itself. Extra incentives c
 **Distributed Hash Table (DHT) network**  
 In DHT network, node can be quickly located by its ID to access its information. Public information of an organization can also be saved over the whole network distributively.  
 
-**Sparse Merkle Tree (SMT)**  
++ **Sparse Merkle Tree (SMT)**  
 Jump-table is a key data structure used in Redis and LevelDB. It introduced the concept of **Equilibrium Probability**, which makes it possible to manipulate a tree without changing its structure substantially. Compared with other algorithms, jump-table has a small impact on performance, but still keeps the computation complexity at the same order of magnitude. Using the same algorithm, Merkle Tree can be improved to create so called **Sparse Merkle Tree**, which is used to hold core information of an organization, similar to the public ledger of a block-chain.
 
-Each leaf node of a SMT stores account information of an organization member. Account number is also called Member ID, which is the hash of the member's public key. Each ID is 160 bits long. All of the possible IDs can fill up the leaf nodes of a binary tree of height 160. Because the actual number of IDs is far less than the number of possible leaves, the tree is a sparse tree. The root node has two children nodes: 0x0, 0x1, and four grandchildren nodes: 0x00, 0x01, 0x10, 0x11, and such. Leaf node with account information is originally on level 160.  
+    Each leaf node of a SMT stores account information of an organization member. Account number is also called Member ID, which is the hash of the member's public key. Each ID is 160 bits long. All of the possible IDs can fill up the leaf nodes of a binary tree of height 160. Because the actual number of IDs is far less than the number of possible leaves, the tree is a sparse tree. The root node has two children nodes: 0x0, 0x1, and four grandchildren nodes: 0x00, 0x01, 0x10, 0x11, and such. Leaf node with account information is originally on level 160.  
 
-If a node has only one child, the branch can be shorten by moving its child up one level to replace the parent. This simple optimization can reduce the height of the tree tremendously. For n IDs that are randomly and independently distributed, most of the IDs will be on leaf-node at height log2(n)+1. The closer to the root-node, denser the tree. The addition or removal of a node, or change of account information, only effects its ancestor nodes.  
+    If a node has only one child, the branch can be shorten by moving its child up one level to replace the parent. This simple optimization can reduce the height of the tree tremendously. For n IDs that are randomly and independently distributed, most of the IDs will be on leaf-node at height log2(n)+1. The closer to the root-node, denser the tree. The addition or removal of a node, or change of account information, only effects its ancestor nodes.  
 
-On SMT, account information on leaf node can be quickly located, which is essential to the implementation of time-space snapshot, network pulse, node grouping, fund transfer and smart contract. Information of each account is on the leaf node of the tree. Each branch uses hashes of its root node's children and synopses to generates its own hash.  
+    On SMT, account information on leaf node can be quickly located, which is essential to the implementation of time-space snapshot, network pulse, node grouping, fund transfer and smart contract. Information of each account is on the leaf node of the tree. Each branch uses hashes of its root node's children and synopses to generates its own hash.  
 
-**Node Group**  
++ **Node Group**  
 With the growth of network and traffic, storage, data processing and communication will eventually overload network nodes. If not optimized, Leither network will fall in to the same conundrum of 7 throughput per second like BTC.
 
-Nodes on a sub-tree or branch of SMT can be partitioned into a **node group** to solve the above problem. The max number of nodes in a group is 256, and its max height is 64. When the size of a branch exceeds 256, the longest branch at depth 7 will form a new group. The new group ID will be its root node's ID. Every node within the new group share the same 64-bit branch id.
+    Nodes on a sub-tree or branch of SMT can be partitioned into a **node group** to solve the above problem. The max number of nodes in a group is 256, and its max height is 64. When the size of a branch exceeds 256, the longest branch at depth 7 will form a new group. The new group ID will be its root node's ID. Every node within the new group share the same 64-bit branch id.
 
-Node group has two unique advantages. One is elastic concurrency support, the other is an opaque network with variable shades of gray.
+    Node group has two unique advantages. One is elastic concurrency support, the other is an opaque network with variable shades of gray.
 
-**Node Election**  
++ **Node Election**  
 Node group is maintained by bookkeepers, which is responsible to record, check and verify transactions of the group, and also broadcast and communicate related information. Account within a group can vote for bookkeepers. The accumulated vote cannot exceed its account balance.
 
-The rules of election is part of the group consensus, which is designed by the organizer, who will take the following factors, such as the amount of asset pledged and network speed, into consideration. A bookkeeper and backup bookkeeper will be elected. The bookkeeper is in charge of updating the general ledger and the backup bookkeeper verifies it.
+    The rules of election is part of the group consensus, which is designed by the organizer, who will take the following factors, such as the amount of asset pledged and network speed, into consideration. A bookkeeper and backup bookkeeper will be elected. The bookkeeper is in charge of updating the general ledger and the backup bookkeeper verifies it.
 
-Node group can vote as a member in its parent group, to elect bookkeeper on higher hierarchy. The bookkeepers at the lowest level deal with specific business transactions. In the middle and upper levels they combine changes of information from groups below, generate synopses and update the overall account balance. If the number of online nodes is small or network load is light, a node group does not have its own bookkeeper, instead its bookkeeping can be trusted to upper level bookkeepers.
+    Node group can vote as a member in its parent group, to elect bookkeeper on higher hierarchy. The bookkeepers at the lowest level deal with specific business transactions. In the middle and upper levels they combine changes of information from groups below, generate synopses and update the overall account balance. If the number of online nodes is small or network load is light, a node group does not have its own bookkeeper, instead its bookkeeping can be trusted to upper level bookkeepers.
 
-Top level information that is close to the root node is synchronized network wide, which describes the status quo of the whole network.  
+    Top level information that is close to the root node is synchronized network wide, which describes the status quo of the whole network.  
 
-**Network Pulse**  
++ **Network Pulse**  
 In order to coordinate all nodes among the network, an incremental sequence number is broadcast top down in every **network pulse cycle** (1s by default). The sequence number generation is coordinated by top level bookkeepers.  
 
-The sequence number serves as sync timer of each node, and version number of its data. Within each pulse cycle, every node consolidates and saves the newly added data from last cycle. Every node group is responsible to process data of several levels of nodes, depending on the height of the SMT. The work done is called **Proof of Performance**, similar to **Proof of Work** in BTC, and will be rewarded by the system.  
+    The sequence number serves as sync timer of each node, and version number of its data. Within each pulse cycle, every node consolidates and saves the newly added data from last cycle. Every node group is responsible to process data of several levels of nodes, depending on the height of the SMT. The work done is called **Proof of Performance**, similar to **Proof of Work** in BTC, and will be rewarded by the system.  
 
-**Time-space Snapshot**  
++ **Time-space Snapshot**  
 LevelDB is an excellent database optimized for writing operation. The writing of new data using writeStream can reach the speed limit of storage media, even faster than database reading. On the other hand, sequence number in key-value provides revised version number, with which historical record can be quickly inquired. 
 
-Network pulse is equivalent of the sequence version number in LevelDB, with which changed data within each pulse cycle can be quickly recorded and labelled. The same method can be used to take snapshot of time-space SMT.
+    Network pulse is equivalent of the sequence version number in LevelDB, with which changed data within each pulse cycle can be quickly recorded and labelled. The same method can be used to take snapshot of time-space SMT.
 
-In every pulse cycle, the structure of the current SMT is identical to its previous version, except the newly added changed data. When taking a snapshot, only the changed information need to be saved. With the version sequence number in key-value, data of any node in any pulse cycle can be quickly retrieved. Regular account only has to record its own account information and information of its node group. 
+    In every pulse cycle, the structure of the current SMT is identical to its previous version, except the newly added changed data. When taking a snapshot, only the changed information need to be saved. With the version sequence number in key-value, data of any node in any pulse cycle can be quickly retrieved. Regular account only has to record its own account information and information of its node group. 
 
-The underlying MiMei database of Leither has built in support for time-space snapshot.
+    The underlying MiMei database of Leither has built in support for time-space snapshot.
 
 ### VI. Related Procedures
 #### 6.1 Network Construction  
@@ -460,29 +460,30 @@ Ledger is a SMT with snapshot function. In order to keep network wide messages i
 
 The system periodically elects a few **bookkeepers** that backups each other. The first one is chief bookkeeper. The term of a bookkeeper is one **Election Cycle** (30min by default). The bookkeeper is responsible for bookkeeping of its branch.   
 #### 6.3 Fund Transfer Procedure  
-**Distribution by organization**  
++ **Distribution by organization**  
 The very first token distribution will be announced network wide, with reasons for scrutiny by the members. However, afterward the transfer of tokens between users is private, or publicized only to relevant nodes.  
 
-**Transfer between users**  
++ **Transfer between users**  
 The transaction between two users concerns only themselves. After the transaction is confirmed, information signed by both users will be sent to their bookkeepers on the SMT respectively. Each bookkeeper will record the changes in its own branch and broadcast the information among backup bookkeepers at the same level. After time sequence increments (in less than 1s), transaction data becomes read only. Bookkeepers at each level begin to check their branches bottom up and summarize branch information to generate synopses. The top bookkeeper summarizes overall information, generates synopsis of the SMT, and broadcasts top down to everyone below.
 
 Both parties of the transaction record time sequence, synopsis of each level and its own account information, and finally transaction is committed for good. One transaction spends at most two pulse cycles (2s).
 
-**Dispute Resolution Procedure**  
++ **Dispute Resolution Procedure**  
 Every transaction must have sufficient security deposit to endorse enough time for more nodes to verify it. Transaction is processed by multiple nodes simultaneously, and bookkeeper and backup bookkeeper are randomly selected to avoid collusion. If any node disputes the transaction, disputation resolution procedure kicks in. During the procedure, all relevant funds are frozen.
 
 All of the nodes can check the disputed transaction and vote. Security deposit of the erroneous node will be confiscated. Bookkeeper can only process the transaction amount that the frozen deposit can cover.
 
-**Legitimacy Check**  
++ **Legitimacy Check**  
     1. The trading parties check the legitimacy of the transaction.   
     2. The bookkeeper checks if the general ledger is in balance.   
     3. The branch bookkeeper verifies the legitimacy of the transaction on its branch.   
     4. During synchronization, all leaf nodes check the balance and sanity of nearby branches' accounts.  
 
-**Redundant Backup**  
++ **Redundant Backup**  
 All the account information on a branch are stored by a few bookkeepers. In order to keep the network robust, all nodes are encouraged to redundantly backup account information of its neighboring branches.
 
-There are two ways for reward. Regualr nodes can audit the transaction information of nearby branches and earn reward. For illegal transaction, account information of neighboring nodes are frozen until the state of their branches recuperate. Number of neighboring nodes could be 1, 3, 7, 15, 31, 63, 255.  
+There are two ways for reward. Regular nodes can audit the transaction information of nearby branches and earn reward. For illegal transaction, account information of neighboring nodes are frozen until the state of their branches recuperate.  
+Number of neighboring nodes could be 1, 3, 7, 15, 31, 63, 255.  
 
 All of the nodes will strive to maintain the health of the network, in order to earn reward and avoid collateral damage.  
 Because of the redundant backup, a small number of nodes can recover the whole network after a crash.  
@@ -522,7 +523,7 @@ Information of system account is public, but regular user account is private and
 + **Dilemma of Transparency**  
 In traditional block-chain, consensus is based on transparency. If account information is hidden, there is no way to confirm the legitimacy of a transaction. The buyer might overspend.  
 
-For parties not involved in a transaction, the purpose of knowledge of the transaction is more likely to avoid potential harm of ignorance, rather than voyeurism. If a proper balance of translucency can be reached, there is no need for the others to know the detail of a deal.  
+    For parties not involved in a transaction, the purpose of knowledge of the transaction is more likely to avoid potential harm of ignorance, rather than voyeurism. If a proper balance of translucency can be reached, there is no need for the others to know the detail of a deal.  
 + **Premise and Principles**  
 The premise and principles for anonymity is that trading parties in a deal and the third parties do not harm each other.  
 #### 7.2 Transaction Security  
