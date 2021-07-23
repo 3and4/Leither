@@ -1,6 +1,6 @@
 MIMEI and Application System
 ======
-### Summary
+### Introduction
 An alarming trend of internet in the past few decades is the fast concentration of traffics on fewer apps or sites owned by tech giants, who used their dominant control of data to influence, even manipulate user behavior for monopolistic profits, at the expense of average users. However, we hold the following truth to be self-evident, that a free and open internet is of the best interest to its users.
 
 Leither, a decentralized Cloud OS, is designed to take the challenge by decoupling and reconstructing most of the core services of regular internet in a decentralized fashion, and give the control of data back to user, its real owner. Leither OS has implemented all the subsystems necessary to reconstruct regular internet services, such as authentication and authorization, file system, database, application framework, domain name service and routing.
@@ -68,23 +68,23 @@ The internet of Status quo has become a centralized playground of big players. B
 
 ### II. System Requirement
 Before presenting a plan to build decentralized internet, it is necessary to briefly review the different requests that computer and internet must address at each stage of their development, and the corresponding solutions presented. If the new solution cannot solve old problems satisfactorily, it cannot beat the incumbent.  
-#### 2.1 File -- Carrier of Data
+#### 2.1 File -- Carrier of data
 In the beginning of computer age, applications were developed to solve scientific problems. Those application generated the earliest request of data, and also large amount of data in return. 
 
 In Unix, File was designed as carrier of data. File System was designed to manage files and storage medias.  
 Everything is file. Any information related device is of File type.  
-#### 2.2 MiMei -- Type of Data
+#### 2.2 MiMei -- Type of data
 With the evolution of applications, it became necessary to describe the relationship between file and application. DOS introduced the concept of File Extension. In Windows, file extension is bound with a corresponding application. MIME defines a strict rule for file type as E-mail attachment. All existing web browsers still follow the MIME protocol.
-#### 2.3 Database -- Relationship of Data
+#### 2.3 Database -- Relationship of data
 Database was designed to manage complicated data structure. A database is a closed space of datasets and their relationships.  
 Shortcomings: Data stored in closed space with little liquidity, value not maximized.
 #### 2.4 HTML -- connections of data over network
 WWW regulates connections of data cross machines over a network. The inter-connection of data cross network breaks the physical limits of data storage on mainframe. With the birth of internet, information explosion ensued and gateway sites flourished.  
 Shortcomings: connections based on linkage is vulnerable.
-#### 2.5 Google -- Search Engine
+#### 2.5 Google -- Search engine
 Information explosion creates the request for search engine. By adding tags to data, Google provides content search service by keywords.  
 Shortcomings: Data is more and more isolated and monopolized. Data protocol began to be influenced and controlled.
-#### 2.6 Facebook -- Social Model
+#### 2.6 Facebook -- Social model
 The early social medias, ICQ, MSN, QQ, solved problem of instant messaging among people. Twitter provides a platform for broadcasting short messages quickly.  
 From MySpace to Facebook, a more systematic social media model is created. The consists of 4 parts:  
 |#|Title|Detail|
@@ -257,7 +257,7 @@ type MiMeiInfo struct {
 }
 ```
 **MiMei ID unchangeable**  
-MiMei ID is based on information of creator, associated application, MiMei type and MiMei mark. Once created, MiMei ID never changes no matter how its content changes.
+MiMei ID is based on information of creator, associated application, MiMei type and MiMei label. Once created, MiMei ID never changes no matter how its content changes.
 
 **Access MiMei data with MiMei ID and version number**  
 New version is created while MiMei being edited or backed up. New version ID is based on synopsis of its content, which is read-only after backup. Historical MiMei data can be retrieved by MiMei ID combined with version number.
@@ -365,24 +365,9 @@ Lpush Lpop Rpush Rpop Lrange Lclear Lmclear Lindex Llen Lset
 Sadd Scard Sclear Sdiff Sinter Smclear Smembers Srem Sunion Scan  
 + Odered Set
 Zadd Zcard Zcount Zrem Zscore Zrank Zrange Zrangebyscore Zremrangebyscore Zrevrange Zrevrangebyscore Zmclear Zclear ZincrBy  
-### VII. Application System
-#### 7.1 History of Application
-There are four types of application model:  
-1. Local Application  
-The earliest form of application. Both data and application are on the same machine. Data is shared through files.  
-2. P2P Application  
-In local network, application is responsible for communication with other terminals. Applications on each network node behave equally as peer. When there are too many nodes, one node may be setup for public services. This is the predecessor of server.  
-3. Client/Server Model  
-The development of large network and internet gave birth to dedicated server. In the beginning, server usually processed core business logic only, most of the specific tasks were handled by client machines.
-4. Browser/Server Model  
-In the time of Internet, browser became the major client of RPC. With the enhancement of Javascript, more and more jobs are executed on browsers, aka B/S model. B/S model greatly reduces the complication of end user's task.
-
-**Merging of the above models**  
-With the appearance of powerful HTML5, more and more tasks in B/S model is executed in front end, similar to C/S model. At the same time more and more Apps are developed in HTML5, very much like B/S model.
-
-#### 7.2 Leither Solution
+### VII. Leither Application System
 Leither API supports 40+ development languages, particular HTML5 because large number of frequently used applications are developed with HTML5, including website, App, Applet, etc. HTML5 is not perfect for the lack of standards for backend data processing and business logic. Leither makes up the missing functionalities of HTML5 in building cloud applications, including user authentication, application system, cloud file system and database, decentralized domain name resolution, data redundancy and load balance.
-
+#### 7.1 Leither Solution
 **Business Logic in Front-end**  
 By default business logics shall be executed in the front-end. The benefit is that Leither application development will be similar to single page application development, simple and easy.
 
@@ -420,13 +405,13 @@ Both Leither system applications and data support docker-like sandbox. Both file
 
 Elastic service of Leither platform is enabled by decentralized domain name and MiMei mechanism.
 
-### VIII. Flow or MiMei Information
+### VIII. Flow of MiMei Information
 #### 8.1 Why information must flow  
 **The meaning of life is the spread of its information**  
 Gene and Meme are the carriers of information of life, whose purpose is to occupy time and space as much as possible. Similarly the purpose of MiMei is the propagation of meaningful information.  
 
-**The flowing information is valuable**  
-FileCoin conveyed a misunderstanding that data is asset. Data itself is actually a debt, for device, storage and network all cost money. The value of data appreciates only when data turn into traffic. Services to support data is mainly the operations of save and retrieval. However, services to support data traffic involve the creation or collection of content, save, propagation, render, value realization and business development. Each time a content is displayed, more value is created. The number of renders and the value of each display determine the value created by the content.  
+**Hot data is more valuable**  
+FileCoin conveyed a misunderstanding that data is asset. Cold (static) data is actually a debt, for device, storage and network all cost money. The value of data appreciates only when data turn into traffic (get hot). Services to support data is mainly the operations of save and retrieval. However, services to support data traffic involve the creation or collection of content, save, propagation, render, value realization and business development. Each time a content is displayed, more value is created. The number of renders and the value of each display determine the value created by the content.  
 
 **The flow of information is a business requirement**  
 In traditional network, data backup, error tolerance, load balance and elastic cloud services are all migration of data in essence.
@@ -445,7 +430,7 @@ With proper authorization, copy MiMei block from one node to another
 + Update routing information of MiMei  
 Terminal content consumer will get routing information of MiMei first, then accessing its data. Routing information includes node information and the newest changes of MiMei. After routing information is updated, user can get updated MiMei information.
 
-### IX. Social model and Credential system
+### IX. Social model and credential system
 Ch2.6 mentioned four parts of social media model: Me, Contact, Application and Message. In Leither the corresponding model is defined as below:  
 |Category|Detail|
 |--|--|
@@ -487,4 +472,4 @@ With sufficient credit, user can exchange for services with credit, afterward a 
 **Agency Service**  
 When there is no direct connection between nodes, an agent node could be used to mediate the credit exchange. It is also possible to use other trusted media to facilitate the exchange, such as fiat currency, cryptocurrency or **group currency** mentioned in 2nd part.  
 ### Part 2
-<a href="./GongShi-en.md"> Organization and Consensus</a>  
+<a href="./GongShi-en.md"> Organization and Consensus</a>

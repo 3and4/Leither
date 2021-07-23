@@ -4,7 +4,7 @@ Part II Consensus Mechanism
 ### I. Organization
 _Chapter IX: MiMei and Application System_ mentioned user oriented relationship model, and credit model based on relationship network. In social life, people always belong to some kinds of social groups, which is called **Organization** in this paper.  
 
-Organization is a group oriented structure. A group is created first, then people join it to become a member. There are three types of roles within an organization: supervisor (founder), member and guest. Supervisor and member work with each other to maintain and manage the group.
+Organization is a group oriented structure. An organization is first created as a group, then people join it to become a member. There are three types of roles within an organization: supervisor (founder), member and guest. Supervisor and member work with each other to maintain and manage the group.
 
 The maintenance of a group is a public service best operated with a block-chain like structure to coordinate the interests of all of its members. A group must become an organization when more potent public service is required of it. Any organizational entity on internet can be reconstructed in the form of a Leither group.
 ### II. Organization Services
