@@ -1,11 +1,14 @@
+
+Github不适合存放大的二进制文件。
+最新的程序放到了下面网址  
+<http://leither.cn/dl/>
+
+
 程序解压复制到目录中
 直接运行便可
 确保有相关权限
 最新版本V0.11.29
 
-Github不适合存放大的二进制文件。
-最新的程序放到了下面网址
-<http://leither.cn/dl/>
 
 **Leither.darwin64**  
 MacOS amd64芯片，通常是苹果电脑或笔记本 
