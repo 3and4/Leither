@@ -71,6 +71,7 @@ global.getLocalApiHandler = ()=>{
 global.doAll = (api)=>{
     console.log("doAll")
     console.log("api=", api)
+    global.api = api
     
     var initReply = (api)=>{
         vue.sid = api.sid

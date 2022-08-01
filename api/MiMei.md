@@ -235,7 +235,7 @@ MFClose(fsid string) error
 |--|--|--|
 |fsid|会话id|上面的MFOpen系列Api打开
 
-**2.1.4 打开mac文件**  
+**2.1.4 打开临时文件**  
 ```golang
 MFOpenTempFile(sid string) (fsid string, err error)  
 ```
@@ -290,7 +290,6 @@ interface{}类型主要是针对js这样的动态语言。
 **2.2.3 设置字节数组**  
 ```golang
 MFSetData(fsid string, data []byte, start int64) (count int, err error)  
-(fsid string) (obj interface{}, err error)  
 ```
 |参数|名称|说明|
 |--|--|--|
@@ -306,7 +305,6 @@ MFSetData(fsid string, data []byte, start int64) (count int, err error)
 **2.2.4 读取字节数组**  
 ```golang
 MFGetData(fsid string, start int64, count int) (ret []byte, err error)  
-(fsid string) (obj interface{}, err error)  
 ```
 |参数|名称|说明|
 |--|--|--|
