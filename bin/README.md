@@ -4,7 +4,7 @@
 最新版本V0.11.29
 
 Github不适合存放大的二进制文件。
-新的程序放到了下面网址
+最新的程序放到了下面网址
 <http://leither.cn/dl/>
 
 **Leither.darwin64**  
