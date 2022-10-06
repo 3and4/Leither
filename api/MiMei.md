@@ -726,7 +726,7 @@ Hscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FV
 |ret|符合条件的域值| 
 
 **3.3.11逆序查询**  
-Hscan 根据参数查找符合条件的域名值
+Hrevscan 根据参数查找符合条件的域名值
 ```golang
 Hrevscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FVPair, err error)   
 ```

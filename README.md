@@ -82,6 +82,7 @@ curl 127.0.0.1:8000/ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 ./Leither mimei create
 ```
 
+返回
 ```
 Create MiMei  ok 
 mid= RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -120,8 +121,8 @@ add /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2 50773
 MiMeiAdd cid= /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 MiMeiAdd ver= 2
 ```
-这时候弥媒的最后版本为1
-版本1指向了上面的ipfs文件
+这时候弥媒的最后版本为2
+版本2指向了上面的ipfs文件
 
 ### **弥媒发布**
 发布弥媒信息到网络
@@ -134,8 +135,8 @@ MiMeiAdd ver= 2
 MiMeiPublish mids= [RXN74QNeiY08LRSaoeQhx3nOLTC] EOL = 168h
 MiMeiPublish ok
 ```
-这时候弥媒的信息发布到了网络上
-
+这时候弥媒的信息发布到了网络上  
+所有保存弥媒数据的支撑节点会实时更新相应内容。  
 
 ### **查看弥媒信息**
 查询本地和网络上的弥媒信息  
@@ -190,14 +191,51 @@ mimei sync ok
 
 
 ### **弥媒支撑**
+```bash
+./Leither mimei provide RXN74QNeiY08LRSaoeQhx3nOLTC
+```  
+返回
+```bash
+MiMeiProvide cids= [RXN74QNeiY08LRSaoeQhx3nOLTC]
+MiMeiProvide ok
+```  
 
-### **域名显示弥媒**
+查看数据支撑节点  
+```bash
+./Leither mimei findprovs RXN74QNeiY08LRSaoeQhx3nOLTC
+```
+返回
+```bash
+MiMeiFindProvide mid= RXN74QNeiY08LRSaoeQhx3nOLTC
+mimei findprovs  ver=2
+mimei findprovs  addrs=[{Ngacq50-IRX_DfcndFwZ0c9S0Nh [/ip6/240e:390:86b:f630:2900
+:1e4:50f8:cd6a/tcp/8000 /ip4/192.168.3.7/tcp/8000 /ip4/60.186.9.237/tcp/8000]}]
+mimei findprovs ok
+```  
 
-### **弥媒数据库**
-
+当前有两个节点对弥媒提供数据支持  
+用户发布新的弥媒数据时，所有在线的支撑节点的数据会实时同步
 
 
 ### **应用**
+弥媒创建的时候可以绑定一个应用  
+普通用户通过浏览器打开弥媒时，会缺省通过这个应用打开弥媒  
+
+
+### **域名显示弥媒**
+通过域名节点，可以把用户家里的节点通过域名展示给其他人。  
+整个体验象idc机房里主机一样
+
+
+### **弥媒数据库**
+弥媒创建的时候可以指定数据库类型  
+数据库兼容绝大部分redis的功能  
+html5中的数据库功能都对应实现
+可以使用命令行和api操作这个数据库  
+使用上面的备份和同步  
+可以把数据库发布到网络上
+支撑节点实时同步数据库的变化
+
 
 
 ### **更多的功能使用**
