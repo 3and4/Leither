@@ -33,10 +33,15 @@ chmod +x ./Leither
 ```
 
 
-### **查看状态**
+### **网络**
+节点启动之后，通过引导节点进入网络
 显示本节点id  
 ```bash
 ./Leither lpki id
+```
+返回：
+```bash
+Ngacq50-IRX_DfcndFwZ0c9S0Nh
 ```
 
 显示本机地址
@@ -44,11 +49,42 @@ chmod +x ./Leither
 ./Leither swarm local
 ```
 
+返回：  
+```bash
+/ip4/192.168.3.7/tcp/8000
+/ip4/60.186.9.237/tcp/8000
+/ip6/240e:390:86b:f630:2900:1e4:50f8:cd6a/tcp/8000
+```
+
 显示附近的网络节点
 ```bash
 ./Leither swarm addrs
 ```
+返回
+```bash
+Ngacq50-IRX_DfcndFwZ0c9S0Nh (3)
+        /ip4/192.168.3.7/tcp/8000
+        /ip4/60.186.9.237/tcp/8000
+        /ip6/240e:390:86b:f630:2900:1e4:50f8:cd6a/tcp/8000
+l86HuY4FuRDezLEPHOHBjnaQczp (2)
+        /ip4/172.31.47.58/tcp/80
+        /ip4/18.222.243.60/tcp/80
+...
+略
+....
+```
 
+查找节点
+```bash
+./Leither dht findpeer tNP93yuZhNXd-om4izWQkYHfS50
+```
+返回：
+
+```bash
+/ip4/99.79.46.219/tcp/80
+/ip6/2600:1f11:ec1:3001:4d57:55c2:aec6:e279/tcp/80
+/ip4/10.0.17.253/tcp/80
+```
 
 ### **ipfs文件**
 添加ipfs文件到网络
@@ -72,14 +108,12 @@ curl 127.0.0.1:8000/ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 22:48:54 [D] [mmdb]MMDbMangaer.init db/mmdb
 ......
 ```
-
-### **生成一个弥媒**
+### **弥媒**
 弥媒是一个信息容器,里面可以存放文件或数据库。    
 弥媒实现了数据的存取、展现，弥媒可以在各网络节点间流动  
-弥媒可以通过互相关联实现常见大多数互联网应用功能
+弥媒可以通过互相关联实现常见大多数互联网应用功能  
 
-
-创建一个弥媒
+**生成一个弥媒**   
 ```bash
 ./Leither mimei create
 ```
@@ -95,7 +129,7 @@ id为RXN74QNeiY08LRSaoeQhx3nOLTC
 
 弥媒生成之后，就可以往弥媒中填充数据  
 
-### **填充ipfs文件到弥媒**
+**填充ipfs文件到弥媒**  
 弥媒支持ipfs文件和文件系统
 
 把ipfs文件放入弥媒
@@ -114,7 +148,7 @@ MiMeiSetCid ver= 1
 版本1指向了上面的ipfs文件
 
 
-### **直接填充文件到弥媒**
+**直接填充文件到弥媒**  
 ```bash
 ./Leither mimei add RXN74QNeiY08LRSaoeQhx3nOLTC Leither.txt
 ```
@@ -129,7 +163,7 @@ MiMeiAdd ver= 2
 版本2指向了上面的ipfs文件
 
 
-### **弥媒发布**
+**弥媒发布**  
 发布弥媒信息到网络
 ```bash
 ./Leither mimei publish RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -144,7 +178,7 @@ MiMeiPublish ok
 所有保存弥媒数据的支撑节点会实时更新相应内容。  
   
   
-### **查看弥媒信息**
+**查看弥媒信息**  
 查询本地和网络上的弥媒信息  
 ```bash
 ./Leither mimei  show RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -182,7 +216,7 @@ local version is same with net
 mimei show ok
 ```
 
-### **弥媒同步**
+**弥媒同步**  
 从网络或指定节点上同步弥媒    
 在另一个节点上输入下面指令  
 ```bash
@@ -195,8 +229,7 @@ mimei sync ok
 ```  
 弥媒信息和数据就同步到了本地节点  
 
-
-### **弥媒支撑**
+**弥媒支撑**  
 ```bash
 ./Leither mimei provide RXN74QNeiY08LRSaoeQhx3nOLTC
 ```  
@@ -221,7 +254,7 @@ mimei findprovs ok
 
 用户发布新的弥媒数据时，所有在线的支撑节点的数据会实时同步
 
-### **弥媒使用**
+**弥媒使用**  
 除了api和命令直接读取弥媒中的数据  
 弥媒可以指定应用进行展示    
 详细参见后面的“应用”和“域名显示弥媒”  
