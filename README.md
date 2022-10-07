@@ -221,6 +221,11 @@ mimei findprovs ok
 
 用户发布新的弥媒数据时，所有在线的支撑节点的数据会实时同步
 
+### **弥媒使用**
+除了api和命令直接读取弥媒中的数据  
+弥媒可以指定应用进行展示    
+详细参见后面的“应用”和“域名显示弥媒”  
+
 
 ### **应用**
 用户可以根据api开发应用。api协议基于hprose协议，支持常见大部分开发语言。  
@@ -229,18 +234,18 @@ mimei findprovs ok
 
 **应用备份**  
 ```bash
-Leither lapp backup -a dav -p newuserforlogin.ppt -n http://127.0.0.1:4800/
+./Leither lapp backup -a dav -p newuserforlogin.ppt -n http://127.0.0.1:4800/
 ```  
   
 
 **上传到节点**
 ```bash
-Leither lapp uploadapp -i dist/dav -p newuserforlogin.ppt -n http://127.0.0.1:4800/
+./Leither lapp uploadapp -i dist/dav -p newuserforlogin.ppt -n http://127.0.0.1:4800/
 ```  
 
 **查看应用信息**  
 ```bash
-Leither lapp showapp -a dav -v cur -p newuserforlogin.ppt -n http://127.0.0.1:4800/
+./Leither lapp showapp -a dav -v cur -p newuserforlogin.ppt -n http://127.0.0.1:4800/
 ```  
 
 应用存放在dist/dav目录, 应用名就是目录名dav  
@@ -248,8 +253,13 @@ Leither lapp showapp -a dav -v cur -p newuserforlogin.ppt -n http://127.0.0.1:48
 节点地址是http://127.0.0.1:4800/  
 上面命令可以做成角本，写在开发工具的配置文件中（例如package.json） 
 
-
-
+**指定弥媒缺省应用**  
+弥媒创建的时候，可以指定缺省应用
+```bash
+./Leither mimei create -a 应用id
+```  
+打开弥媒的时候，会缺省使用指定的应用  
+也可以在打开弥媒的时候再指定应用
 
 ### **域名显示弥媒**
 通过域名节点，可以把用户家里的节点通过域名展示给其他人。  
