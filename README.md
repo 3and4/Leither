@@ -74,10 +74,12 @@ curl 127.0.0.1:8000/ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 ```
 
 ### **生成一个弥媒**
-弥媒是一个信息容器,里面可以存放文件或数据库  
+弥媒是一个信息容器,里面可以存放文件或数据库。    
+弥媒实现了数据的存取、展现，弥媒可以在各网络节点间流动  
+弥媒可以通过互相关联实现常见大多数互联网应用功能
 
 
-创建一个弥媒容器
+创建一个弥媒
 ```bash
 ./Leither mimei create
 ```
@@ -94,7 +96,9 @@ id为RXN74QNeiY08LRSaoeQhx3nOLTC
 弥媒生成之后，就可以往弥媒中填充数据  
 
 ### **填充ipfs文件到弥媒**
+弥媒支持ipfs文件和文件系统
 
+把ipfs文件放入弥媒
 ```bash
 ./Leither mimei setcid RXN74QNeiY08LRSaoeQhx3nOLTC QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 ```
@@ -112,7 +116,7 @@ MiMeiSetCid ver= 1
 
 ### **直接填充文件到弥媒**
 ```bash
-./Leither mimei  add RXN74QNeiY08LRSaoeQhx3nOLTC Leither.txt
+./Leither mimei add RXN74QNeiY08LRSaoeQhx3nOLTC Leither.txt
 ```
 
 返回结果
@@ -121,13 +125,14 @@ add /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2 50773
 MiMeiAdd cid= /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 MiMeiAdd ver= 2
 ```
-这时候弥媒的最后版本为2
+这时候弥媒的最后版本为2  
 版本2指向了上面的ipfs文件
+
 
 ### **弥媒发布**
 发布弥媒信息到网络
 ```bash
-./Leither mimei  publish RXN74QNeiY08LRSaoeQhx3nOLTC
+./Leither mimei publish RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
 
 返回：   
@@ -137,14 +142,15 @@ MiMeiPublish ok
 ```
 这时候弥媒的信息发布到了网络上  
 所有保存弥媒数据的支撑节点会实时更新相应内容。  
-
+  
+  
 ### **查看弥媒信息**
 查询本地和网络上的弥媒信息  
 ```bash
 ./Leither mimei  show RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
 
-返回
+返回：
 
 ```bash
 MiMeiShow mid= RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -180,11 +186,11 @@ mimei show ok
 从网络或指定节点上同步弥媒    
 在另一个节点上输入下面指令  
 ```bash
-./Leither mimei  sync RXN74QNeiY08LRSaoeQhx3nOLTC
+./Leither mimei sync RXN74QNeiY08LRSaoeQhx3nOLTC
 ```  
 返回  
 ```bash
-MiMeiSync mid= RXN74QNeiY08LRSaoeQhx3nOLTC
+MiMeiSync mid = RXN74QNeiY08LRSaoeQhx3nOLTC
 mimei sync ok
 ```  
 弥媒信息和数据就同步到了本地节点  
@@ -213,18 +219,54 @@ mimei findprovs  addrs=[{Ngacq50-IRX_DfcndFwZ0c9S0Nh [/ip6/240e:390:86b:f630:290
 mimei findprovs ok
 ```  
 
-当前有两个节点对弥媒提供数据支持  
 用户发布新的弥媒数据时，所有在线的支撑节点的数据会实时同步
 
 
 ### **应用**
-弥媒创建的时候可以绑定一个应用  
-普通用户通过浏览器打开弥媒时，会缺省通过这个应用打开弥媒  
+用户可以根据api开发应用。api协议基于hprose协议，支持常见大部分开发语言。  
+用户可以直接在自己的应用中直接使用系统功能。
+对于html5应用，系统进行了特殊优化。
+
+**应用备份**  
+```bash
+Leither lapp backup -a dav -p newuserforlogin.ppt -n http://127.0.0.1:4800/
+```  
+  
+
+**上传到节点**
+```bash
+Leither lapp uploadapp -i dist/dav -p newuserforlogin.ppt -n http://127.0.0.1:4800/
+```  
+
+**查看应用信息**  
+```bash
+Leither lapp showapp -a dav -v cur -p newuserforlogin.ppt -n http://127.0.0.1:4800/
+```  
+
+应用存放在dist/dav目录, 应用名就是目录名dav  
+开发者签发的通行证是newuserforlogin.ppt  
+节点地址是http://127.0.0.1:4800/  
+上面命令可以做成角本，写在开发工具的配置文件中（例如package.json） 
+
+
 
 
 ### **域名显示弥媒**
 通过域名节点，可以把用户家里的节点通过域名展示给其他人。  
 整个体验象idc机房里主机一样
+链接的格式
+http://域名节点地址/tpt/弥媒id:弥媒版本,应用id:应用版本，参数名0：参数值1.../路径和参数
+
+版本目前缺省为last,表示最后一个值  
+应用id缺省为弥媒绑定的appid  
+正常情况下，链接只有一个mid参数  
+
+以下链接用缺省应用打开一个弥媒，弥媒id为htpoEXiE6IlCAqVbCvjvkY_XNfu
+http://vzhan.cn/tpt/htpoEXiE6IlCAqVbCvjvkY_XNfu/
+
+
+以下链接直接运行一个应用，id为htpoEXiE6IlCAqVbCvjvkY_XNfu
+http://www.leither.cn/tpt/,htpoEXiE6IlCAqVbCvjvkY_XNfu/
 
 
 ### **弥媒数据库**
