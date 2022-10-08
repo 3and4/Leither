@@ -289,6 +289,12 @@ mimei findprovs ok
 ./Leither lapp showapp -a dav -v cur -p newuserforlogin.ppt -n http://127.0.0.1:4800/
 ```  
 
+**发布应用到网络**  
+```bash
+./Leither mimei publish htpoEXiE6IlCAqVbCvjvkY_XNfu -p newuserforlogin.ppt
+```  
+
+
 应用存放在dist/dav目录, 应用名就是目录名dav  
 开发者签发的通行证是newuserforlogin.ppt  
 节点地址是http://127.0.0.1:4800/  
