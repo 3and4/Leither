@@ -222,6 +222,24 @@ local version is same with net
 mimei show ok
 ```
 
+**查看弥媒内容**  
+查询弥媒内容  
+```bash
+./Leither mimei  get RXN74QNeiY08LRSaoeQhx3nOLTC
+```
+返回：  
+```bash
+22:48:54 [I] [frame]session Init
+22:48:54 [I] [frame]LCache.Init
+22:48:54 [I] [frame]InitMMDbMangaer
+22:48:54 [D] [mmdb]MMDbMangaer.init db/mmdb
+22:48:54 [I] [frame]InitOwners
+.......
+略
+.......
+```
+
+
 **弥媒同步**  
 从网络或指定节点上同步弥媒    
 在另一个节点上输入下面指令  
@@ -320,10 +338,10 @@ http://域名节点地址/tpt/弥媒id:弥媒版本,应用id:应用版本，参�
 正常情况下，链接只有一个mid参数  
 
 以下链接用缺省应用打开一个弥媒，弥媒id为htpoEXiE6IlCAqVbCvjvkY_XNfu
-http://vzhan.cn/tpt/htpoEXiE6IlCAqVbCvjvkY_XNfu/
+http://www.leither.cn/tpt/htpoEXiE6IlCAqVbCvjvkY_XNfu/
 
 
-以下链接直接运行一个应用，id为htpoEXiE6IlCAqVbCvjvkY_XNfu
+以下链接直接运行一个应用，应用id为htpoEXiE6IlCAqVbCvjvkY_XNfu
 http://www.leither.cn/tpt/,htpoEXiE6IlCAqVbCvjvkY_XNfu/
 
 
