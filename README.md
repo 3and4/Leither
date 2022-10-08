@@ -34,7 +34,7 @@ chmod +x ./Leither
 
 
 ### **网络**
-节点启动之后，通过引导节点进入网络
+节点启动之后，通过引导节点进入网络  
 显示本节点id  
 ```bash
 ./Leither lpki id
@@ -60,7 +60,7 @@ Ngacq50-IRX_DfcndFwZ0c9S0Nh
 ```bash
 ./Leither swarm addrs
 ```
-返回
+返回:
 ```bash
 Ngacq50-IRX_DfcndFwZ0c9S0Nh (3)
         /ip4/192.168.3.7/tcp/8000
@@ -118,7 +118,7 @@ curl 127.0.0.1:8000/ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 ./Leither mimei create
 ```
 
-返回
+返回:
 ```
 Create MiMei  ok 
 mid= RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -137,7 +137,7 @@ id为RXN74QNeiY08LRSaoeQhx3nOLTC
 ./Leither mimei setcid RXN74QNeiY08LRSaoeQhx3nOLTC QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 ```
 
-返回结果
+返回:
 ```bash
 mid= RXN74QNeiY08LRSaoeQhx3nOLTC
 cid= QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
@@ -153,7 +153,7 @@ MiMeiSetCid ver= 1
 ./Leither mimei add RXN74QNeiY08LRSaoeQhx3nOLTC Leither.txt
 ```
 
-返回结果
+返回:
 ```bash
 add /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2 50773
 MiMeiAdd cid= /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
@@ -222,7 +222,7 @@ mimei show ok
 ```bash
 ./Leither mimei sync RXN74QNeiY08LRSaoeQhx3nOLTC
 ```  
-返回  
+返回:  
 ```bash
 MiMeiSync mid = RXN74QNeiY08LRSaoeQhx3nOLTC
 mimei sync ok
@@ -230,20 +230,22 @@ mimei sync ok
 弥媒信息和数据就同步到了本地节点  
 
 **弥媒支撑**  
+提供弥媒数据的节点我们叫支撑节点，或者叫数据提供者
+provide是向网络广播：本节点提供这个弥媒的所有数据  
 ```bash
 ./Leither mimei provide RXN74QNeiY08LRSaoeQhx3nOLTC
 ```  
-返回
+返回:
 ```bash
 MiMeiProvide cids= [RXN74QNeiY08LRSaoeQhx3nOLTC]
 MiMeiProvide ok
 ```  
 
-查看数据支撑节点  
+查看支撑节点  
 ```bash
 ./Leither mimei findprovs RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
-返回
+返回:
 ```bash
 MiMeiFindProvide mid= RXN74QNeiY08LRSaoeQhx3nOLTC
 mimei findprovs  ver=2
@@ -355,7 +357,7 @@ dht命令集中包含了网络的读写功能
 也可以把数据同步到本地节点    
 用户也可以对他人的弥媒提供数据支撑  
 弥媒的每次变化都会产生一个版本  
-这些变化会实时更新到各个支撑节点上。
+这些变化会实时更新到各个支撑节点（数据提供者）上。
 
 再结合域名和负载均衡机制，可以实现容错和负载均衡功能  
 
