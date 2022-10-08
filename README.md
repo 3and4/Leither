@@ -293,6 +293,7 @@ mimei findprovs ok
 ```bash
 ./Leither mimei publish htpoEXiE6IlCAqVbCvjvkY_XNfu -p newuserforlogin.ppt
 ```  
+发布应用到网络之后，可以通过浏览器访问任何一个节点运行该应用
 
 
 应用存放在dist/dav目录, 应用名就是目录名dav  
