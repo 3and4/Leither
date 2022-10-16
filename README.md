@@ -319,6 +319,19 @@ mimei findprovs ok
 节点地址是http://127.0.0.1:4800/  
 上面命令可以做成角本，写在开发工具的配置文件中（例如package.json） 
 
+**同步应用到节点**  
+从网络或指定节点上同步应用    
+在另一个节点上输入下面指令  
+```bash
+./Leither mimei sync htpoEXiE6IlCAqVbCvjvkY_XNfu
+```  
+返回:  
+```bash
+MiMeiSync mid = htpoEXiE6IlCAqVbCvjvkY_XNfu
+mimei sync ok
+```  
+应用信息和数据就同步到了本地节点  
+
 **指定弥媒缺省应用**  
 弥媒创建的时候，可以指定缺省应用
 ```bash
@@ -330,12 +343,6 @@ mimei findprovs ok
 ### **域名显示弥媒**
 通过域名节点，可以把用户家里的节点通过域名展示给其他人。  
 整个体验象idc机房里主机一样
-链接的格式
-http://域名节点地址/tpt/弥媒id:弥媒版本,应用id:应用版本，参数名0：参数值1.../路径和参数
-
-版本目前缺省为last,表示最后一个值  
-应用id缺省为弥媒绑定的appid  
-正常情况下，链接只有一个mid参数  
 
 以下链接用缺省应用打开一个弥媒，弥媒id为htpoEXiE6IlCAqVbCvjvkY_XNfu
 http://www.leither.cn/tpt/htpoEXiE6IlCAqVbCvjvkY_XNfu/
