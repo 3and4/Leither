@@ -136,7 +136,7 @@ Leither lpki signppt -c ca.cert -p 720 -m "CertFor=Self,Userid=h3PPmr6HVHrmaV_WA
 **5、验证通行证**  
 <a id="verifyppt"></a>
 ```bash  
-$ ./Leither8000.exe lpki verifyppt -c ca.cert  -i test.ppt
+$ ./Leither lpki verifyppt -c ca.cert  -i test.ppt
 ```
 -c 为通行证信息背书的证书  
 
