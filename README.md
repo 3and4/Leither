@@ -335,7 +335,7 @@ mimei sync ok
 **指定弥媒缺省应用**  
 弥媒创建的时候，可以指定缺省应用
 ```bash
-./Leither mimei create -a 应用id
+./Leither mimei create -a 应用idV
 ```  
 打开弥媒的时候，会缺省使用指定的应用  
 也可以在打开弥媒的时候再指定应用
@@ -344,12 +344,12 @@ mimei sync ok
 通过域名节点，可以把用户家里的节点通过域名展示给其他人。  
 整个体验象idc机房里主机一样
 
-以下链接用缺省应用打开一个弥媒，弥媒id为htpoEXiE6IlCAqVbCvjvkY_XNfu
-http://www.leither.cn/tpt/htpoEXiE6IlCAqVbCvjvkY_XNfu/
+以下链接用缺省应用打开一个弥媒，弥媒id为dJM6X7OTmJXbGqPQaFdAZ3kGpBl  
+http://www.leither.cn/tpt/dJM6X7OTmJXbGqPQaFdAZ3kGpBl/  
 
 
-以下链接直接运行一个应用，应用id为htpoEXiE6IlCAqVbCvjvkY_XNfu
-http://www.leither.cn/tpt/,htpoEXiE6IlCAqVbCvjvkY_XNfu/
+以下链接直接运行一个应用，应用id为htpoEXiE6IlCAqVbCvjvkY_XNfu  
+http://www.leither.cn/tpt/,htpoEXiE6IlCAqVbCvjvkY_XNfu/  
 
 
 ### **弥媒数据库**
