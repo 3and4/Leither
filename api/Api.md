@@ -6,7 +6,13 @@ Api文档
 
 **1、命令行接口**
 + <a href="./LPki.md"> 安全认证(lpki)</a>    
++ 网络节点(swarm)
++ 分布式哈希表(dht)</a>
++ 弥媒管理(mimei)
 + <a href="./LApp.md"> 应用部署(lapp)</a>    
++ ipfs命令(ipfs)
++ 本地ipfs文件系统（files）
+
 
 **2、RPC接口**  
 采用Hprose引擎，支持常见四十多种语言  
