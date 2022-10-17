@@ -87,7 +87,10 @@ l86HuY4FuRDezLEPHOHBjnaQczp (2)
 ```
 
 ### **ipfs文件**
-添加ipfs文件到网络
+ipfs是知名的去中心化文件存储系统  
+Leither网络支持ipfs协议，兼容ipfs网络。
+
+**添加ipfs文件到网络**
 ```bash
 ./Leither ipfs add Leither.txt
 ```
