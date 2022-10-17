@@ -347,6 +347,10 @@ http://www.leither.cn/tpt/dJM6X7OTmJXbGqPQaFdAZ3kGpBl/
 以下链接直接运行一个应用，应用id为htpoEXiE6IlCAqVbCvjvkY_XNfu  
 http://www.leither.cn/tpt/,htpoEXiE6IlCAqVbCvjvkY_XNfu/  
 
+注：要确保外网可以访问家用节点    
+所有运营商都支持ipv6,电信运营商支持有动态的ipv4地址  
+两者都要设置本地路由或光猫，确保外部可以访问  
+如果本地没有可访问的地址，可以通过tunnel功能借助他人的网络对外提供服务。    
 
 ### **弥媒数据库**
 弥媒创建的时候可以指定数据库类型  
