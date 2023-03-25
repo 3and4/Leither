@@ -75,8 +75,7 @@ MMBackup(sid, mid, memo string) (ver string, err error)
 |--|--|--|
 |sid|会话id|通过Login获取
 |mid|弥媒id|
-|memo|备注|保留参数，还未启用
-|right|权限|  
+|memo|备注|保留参数，还未启用  
 |返回值|名称|说明|
 |--|--|--|
 |ver|生成的版本|last指向这个版本
