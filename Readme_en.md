@@ -1,6 +1,6 @@
 Leither
 ========
-Leither是一个超轻量级的去中心化的云操作系统，旨在以去中心化的方式肢解和重构传统的互联网业务  
+Leither is a highly efficient and decentralized cloud operating system, designed to deconstruct and rebuild conventional internet services in a decentralized way.  
 
 互联网已经成为我们日常生活不可或缺的一部分，目前互联网被少数寡头公司把持。寡头公司通过垄断数据控制规则，攫取了绝大多数行业利益，整个互联网失去了创新的基础和动力，用户在不知不觉中成了被收割的韭菜和被控制的傀儡。  
 鉴于此，有必要建立一个“用户构建、用户控制、用户享有”的去中心化互联网。  
