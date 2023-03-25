@@ -260,9 +260,6 @@ Programming** and **Procedure Oriented Programming**, respectively.
     There shall be similar opensource platform for collecting user data,
     especially for ***Social Media*** and ***Search Engine***.
 
-```{=html}
-<!-- -->
-```
 -   **Unrestricted data migration**\
     Ensuring the free migration of data should be a widely accepted
     principle and a primary design consideration for operating systems.
@@ -271,13 +268,13 @@ Programming** and **Procedure Oriented Programming**, respectively.
 1.  Promote data-freedom as a mainstream ideology.
 
 2.  Legislation to allow user to migrate personal data from any platform
-    > that collects it. (European Commission proposed a similar
-    > legislation recently)
+    that collects it. (European Commission proposed a similar
+    legislation recently)
 
 3.  Develop open-source tools, such as browser extensions, to enable
-    > users to transfer data to their personal storage devices easily.
-    > By returning data ownership to its creators, the data can be
-    > revitalized and reconnected with each other.
+    users to transfer data to their personal storage devices easily.
+    By returning data ownership to its creators, the data can be
+    revitalized and reconnected with each other.
 
 -   **Rule subordinates to data**\
     When data can be migrated freely, users will have the choice to
@@ -352,7 +349,7 @@ been implemented.
 -   MiMei can run or be saved on multiple nodes
 
 -   MiMei data versioning, similar to Git, to solve problem of data
-    > consistency
+    consistency
 
 -   Synchronization among nodes in real-time or after backup
 
@@ -361,14 +358,14 @@ been implemented.
 -   File system is a special system type, based on database or file.
 
 -   Docker-like data container in database and file system for every
-    > MiMei
+    MiMei
 
 -   Heredity and evolution of MiMei by continuously backing up changes
 
 -   User can also facilitate variation of MiMei by forking
 
 -   Leither is implemented as MiMei container and a decentralized cloud
-    > OS
+    OS
 
 #### 3.2 MiMei Features
 
