@@ -2,96 +2,77 @@ Leither
 ========
 Leither is a highly efficient and decentralized cloud operating system, designed to deconstruct and rebuild conventional internet services in a decentralized way.  
 
-互联网已经成为我们日常生活不可或缺的一部分，目前互联网被少数寡头公司把持。寡头公司通过垄断数据控制规则，攫取了绝大多数行业利益，整个互联网失去了创新的基础和动力，用户在不知不觉中成了被收割的韭菜和被控制的傀儡。  
-鉴于此，有必要建立一个“用户构建、用户控制、用户享有”的去中心化互联网。  
+Nowadays, the internet has become essential to our daily lives, but it is dominated by a small number of powerful corporations. These companies monopolize control over data and rules, capturing a significant portion of the profits across various industries. This has resulted in a loss of innovation and motivation within the internet, with users unknowingly becoming exploited and manipulated.  
+In light of this situation, it is crucial to create a decentralized internet that is built, controlled, and enjoyed by its users.  
 
-通过Leither,用户可以构建或加入一个去中心化的网络，可以从网络中获取或发布应用服务和信息   
-整个网络中，信息（包括应用）的生成、存储、发布、展现、传播都是完全去中心化的  
-这些环节的规则都是透明的，用户都可以自建，没有哪一环是不可替代的  
+Leither allows users to create or join decentralized networks where they can access or provide application services and information.  
+Throughout the network, information (including applications) is generated, stored, published, displayed, and shared in a fully decentralized manner.  
+All of these operations are governed by transparent rules that user can determine, with no single point being indispensable.  
 
-通过弥媒和应用体系，开发者能够以去中心化的方式肢解互联网平台业务  
-通过组织和共识机制，组织者可以协调参与各方的利益，促使更多的人参与进来    
-两者结合，可以从互联网寡头手中把互联网交还给用户        
+By utilizing MiMei and the application system, developers can break down and reconstruct internet platform services in a decentralized fashion.  
+Organizers can employ organizational and consensus mechanisms to balance the interests of all parties involved, encouraging broader participation.  
+Together, these approaches can help reclaim the internet from the grip of oligopolies and return it to the users.        
 
-系统能够以极低的资源实现常见的互联网应用，包括不限于网站，公众号，小程序，APP    
-它的大小只有12兆，可以运行在pc、服务器、手机、NAS、路由、树莓派等各种设备上  
-一个节点，你可以当成轻量级的主机使用，可以在家用网络上跑出idc主机效果  
-两个节点，可以进行互助，包含不限于数据互备、容错和均衡，域名解析和路由  
-多个节点，可以构建去中心化的分布式网络，网络上能够以去中化心化的方式实现常见的互联网应用。  
+The system is capable of running internet applications with minimal resource requirements, including but not limited to websites, public accounts, mini-programs, and apps.  
+With a size of just 12 MB, it can operate on a variety of devices, such as PCs, servers, smartphones, NAS devices, routers, and Raspberry Pis.  
+A single node can serve as a lightweight host, delivering data center-grade performance on home networks.  
+Two nodes can work together, providing services like data backup, fault tolerance, load balancing, domain name resolution, and routing.  
+Multiple nodes can form a decentralized distributed network, allowing the implementation of standard internet applications in a decentralized way.  
 
-系统可以运行在常见的基础操作系统上，包括不限于windows、linux、freebsd、Darwin、Android     
-系统实现了认证体系、应用体系、文件和数据库系统，域名和网络系统  
-开发者可以通过Api开发应用，api支持常见四十多种语言    
-开发者也可以通过命令行或浏览器和系统进行交互  
+Leither can run on popular base operating systems, including Windows, Linux, FreeBSD, Darwin, and Android.  
+Its functionalities include authentication, application system, file system and database, and domain and network system.  
+Developers can create applications using APIs that support over forty common programming languages and can also interact with the system via the command line or a web browser. 
 
-<!--
-和传统区块链项目的区别：   
-一、侧重点不同  
-开一个传统超市，重点是提供丰富的有竞争力的商品和满集的购物体验  
-传统的区块链项目准备了收银系统，然后就通过白皮书大规模宣传，开始出售购物卡  
-大部分区块链项目，业务内容还不足百字，大篇幅的内容就转上了币的描述和销售  
-Leither的绝大部分内容都是互联网业务的构建和优化  
-共识部分也是基于业务需要，有确定标的，有可参考的现实案例，符合现行的法规  
+### **Install**  
+Versions of application program at the following address:  
+<a href="./bin/README.md">Download</a>  
 
-二、价值标的不同  
-传统的区块链项目更多的聚焦在了货币和金融业务，这类业务通常是国家和政府专营  
-传统的政府收取铸币税的同时，提供了大量的公共服务，并且有国家机器保证铸币税的收取  
-所以大部分区块链项目处在灰色角落,活跃在一些灰产项目  
+Download and extract it.  
+For details of each file, refer to <a href="./doc/Directory.md"> System Directory Structure</a>  
 
-Leither通过把数据所有权完全交给用户的方式肢解再重构现有的互联网项目  
--->  
-
-### **安装运行**
-应用的变动和程序在以下网址     
-<a href="./bin/README.md"> 各版本的应用下载</a>  
-
-下载程序到本地，然后解压  
-了解各文件细节参考<a href="./doc/Directory.md"> 系统目录结构</a>  
-
-
-设置好Leither的运行权限  
+Setup permissions for Leither app  
 ```bash
 chmod +x ./Leither
 ```
 
-直接运行  
+Run  
 ```bash
 ./Leither&
 ```
 
-### **功能体验**  
-可以通过命令行，浏览器，api开发应用等多种方式体验功能  
-下面通过命令行直接展示系统功能  
-也可以在TestCase目录中，通过API直接运行相应的角本程序，体验具体的api
+### **Feature Experience**  
+You can experience the features in multiple ways, such as through the command line, browser, and API application development.  
+Below, the system features are demonstrated directly through the command line.  
+You can also experience specific APIs by running the corresponding script programs in the TestCase directory.  
 
-### **网络**
-节点启动之后，通过引导节点进入网络  
-显示本节点id  
+### **Network**
+After the node starts, it enters the network through the bootstrap node.  
+Display local node id  
 ```bash
 ./Leither lpki id
 ```
-返回：
+Return value:
 ```bash
 Ngacq50-IRX_DfcndFwZ0c9S0Nh
 ```
 
-显示本机地址
+Display local node address
 ```bash
 ./Leither swarm local
 ```
 
-返回：  
+Return value:  
 ```bash
 /ip4/192.168.3.7/tcp/8000
 /ip4/60.186.9.237/tcp/8000
 /ip6/240e:390:86b:f630:2900:1e4:50f8:cd6a/tcp/8000
 ```
 
-显示附近的网络节点
+Display neighbour nodes
 ```bash
 ./Leither swarm addrs
 ```
-返回:
+Return value:
 ```bash
 Ngacq50-IRX_DfcndFwZ0c9S0Nh (3)
         /ip4/192.168.3.7/tcp/8000
@@ -100,16 +81,16 @@ Ngacq50-IRX_DfcndFwZ0c9S0Nh (3)
 l86HuY4FuRDezLEPHOHBjnaQczp (2)
         /ip4/172.31.47.58/tcp/80
         /ip4/18.222.243.60/tcp/80
-...
-略
+..
+...  
 ....
 ```
 
-查找节点
+Search a node
 ```bash
 ./Leither dht findpeer tNP93yuZhNXd-om4izWQkYHfS50
 ```
-返回：
+Return value:
 
 ```bash
 /ip4/99.79.46.219/tcp/80
@@ -117,15 +98,15 @@ l86HuY4FuRDezLEPHOHBjnaQczp (2)
 /ip4/10.0.17.253/tcp/80
 ```
 
-### **ipfs文件**
-ipfs是知名的去中心化文件存储系统  
-Leither网络支持ipfs协议，兼容ipfs网络。
+### **IPFS**
+IPFS is a well-known decentralized file storage system.   
+Leither supports IPFS protocol and is compatible with IPFS network.
 
-**添加ipfs文件到网络**
+**Add IPFS file to network**
 ```bash
 ./Leither ipfs add Leither.txt
 ```
-输出结果如下:
+Result:
 ```
 IpfsAdd  /home/pi/sdb/Leither/Leither.txt
 wa.sid= f6503de3a81ee92c2e0c8f04c1c1be71ce6af912
@@ -133,11 +114,11 @@ add /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2 50773
 ipfs add ok  /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 ```
 
-可以在网络内任何一个节点，通过网址查看文件
+Within Leither network, file can be checked on any node by URL:
 ```
 curl 127.0.0.1:8000/ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 ......
-文件内容略
+file content...
 ......
 ```
 ### **弥媒**
