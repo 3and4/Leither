@@ -43,29 +43,29 @@ advantages.
     structure of data storage and operations of associated applications,
     such as create, open, save, read, search, render and user-interact.
 
-> Everything in Leither-based ecosystem is a MiMei, just like everything
-> is an object in Java. The referential relationships among MiMei
-> objects make it possible to define complex data structures.
+    Everything in Leither-based ecosystem is a MiMei, just like everything
+    is an object in Java. The referential relationships among MiMei
+    objects make it possible to define complex data structures.
 
 -   **Leither**\
     is a container of MiMei, an ultra-light decentralized cloud OS. It
     is designed to serve a limited number of users from each node in a
     decentralized network, aka, a distributed application platform.
 
-> Leither applications are designed to function using significantly
-> fewer resources compared to traditional apps, for example to run
-> office applications for a small business on a Raspberry Pi Zero.
->
-> Leither OS has implemented all the subsystems necessary to support
-> internet services, including authentication and authorization, file
-> system, database, application framework, independent domain name
-> service and routing. Leither API supports about 40 kinds of
-> development languages.
->
-> PS: Leither, if written in Kanji character, is 弥媒. 弥 means
-> extremely small and ubiquitous, usually something imperceptible. 媒
-> means media. 弥媒 put together is almost as good as Ether, a substance
-> once believed to be the building block of the universe.
+    Leither applications are designed to function using significantly
+    fewer resources compared to traditional apps, for example to run
+    office applications for a small business on a Raspberry Pi Zero.
+    
+    Leither OS has implemented all the subsystems necessary to support
+    internet services, including authentication and authorization, file
+    system, database, application framework, independent domain name
+    service and routing. Leither API supports about 40 kinds of
+    development languages.
+    
+    PS: Leither, if written in Kanji character, is 弥媒. 弥 means
+    extremely small and ubiquitous, usually something imperceptible. 媒
+    means media. 弥媒 put together is almost as good as Ether, a substance
+    once believed to be the building block of the universe.
 
 -   **Node**\
     Any smart device running Leither OS is a **Node**. As small as 10MB
@@ -693,9 +693,7 @@ valuables from its members.
 -   **Individual credit model**\
     is a type of User-to-User (P2P) L/C or IOU.
 
-```{=html}
-<!-- -->
-```
+
 -   Letter of Credit (L/C) L/C can be understood as the amount of
     services allowed to use before payment, whereas IOU is the amount of
     services that have been used without payment. A L/C includes
@@ -706,9 +704,7 @@ valuables from its members.
     amount, signature of borrower. For borrower, IOU is equivalent to
     issuing **Cryptocurrency**.
 
-```{=html}
-<!-- -->
-```
+
 -   **How to buildup credit**\
     If there were connection between nodes, both parties have a
     foundation of mutual trust and can authorize varying amounts of
