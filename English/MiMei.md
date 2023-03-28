@@ -461,203 +461,172 @@ FSRename(sid, mmfsid, oldpath, newFullName string) error
 |newFullName|new file path|  
 
 
-## 三、数据库  
-弥媒中的数据库  
-### 3.1 事务  
-**3.1.1 开始事务**  
+## III. Database  
+Databse as MiMei  
+### 3.1 Transaction  
+**3.1.1 Start transaction**  
 ```golang
 Begin(dbsid string, timeout int) error 
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|timeout|延时|单位秒，超时自动Rollback
+|dbsid|session id|returned by MMOpen
+|timeout|delay|unit in second, auto rollback when timeout  
 
-**3.1.2 事务递交**  
+**3.1.2 Commit transaction**  
 ```golang
 Commit(dbsid string) error  
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
+|dbsid|session id|returned by MMOpen
 
 
-**3.1.3 事务回滚**  
+**3.1.3 Rollback transaction**  
 ```golang
 Rollback(dbsid string) error 
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
+|dbsid|session id|returned by MMOpen
 
-### 3.2 字符串  
+### 3.2 string  
 **3.2.1 Set**  
 ```golang
 Set(dbsid, key string, value interface{}) error  
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|
-|value|值|
+|dbsid|session id|returned by MMOpen
+|key|key|
+|value|value|
   
 **3.2.2 Get**  
 ```golang
 Get(dbsid, key string) (ret interface{}, err error) 
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|
-|ret|返回值|
+|dbsid|session id|returned by MMOpen
+|key|key|
+|ret|returned value|
 
-**3.2.2 删除**  
+**3.2.2 Delete**  
 ```golang
 Del(dbsid string, key ...string) (int64, error)  
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|
-|ret|成功的个数|
+|dbsid|session id|returned by MMOpen
+|key|key|
+|ret|# of successfully deleted|
 
-**3.2.3 增加**  
+**3.2.3 Increase**  
 ```golang
 Incr(dbsid, key string) (int64, error)  
 IncrBy(dbsid, key string, delta int64) (int64, error)  
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|
-|delta|要增加的值|
+|dbsid|session id|returned by MMOpen
+|key|key|
+|delta|value to be increased|
 
-**3.2.3 取值的长度**  
-值的类型是字节流返回实际长度  
-值的类型是字符串，返回字符串的长度。（utf8格式）
+**3.2.3 String length**  
+For byte stream, return the actual length  
+For string, return the string length (utf8)
 ```golang
 Strlen(dbsid, key string) (int64, error)  
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-<!--
-**3.2.4查询**  
-Scan 根据参数查找符合条件的域名值
-```golang
-Scan(dasid string, begin, match string, count int, inclusive bool, tp byte) (keys []string, err error)
-```
-|参数|名称|说明|
-|--|--|--|
-|dbsid|会话id|MMOpen获取
-|begin|键的起始值|  
-|match|匹配条件| 
-|count|返回的最大个数| 
-|inclusive|包含边界值| 
-|tp|类型| 
+|dbsid|session id|returned by MMOpen
+|key|key|  
 
-**3.2.5逆序查询**  
-scan 根据参数查找符合条件的域名值
-```golang
-RevScan(dasid string, begin, match string, count int, inclusive bool, tp byte) (keys []string, err error)
-```
-|参数|名称|说明|
-|--|--|--|
-|dbsid|会话id|MMOpen获取
-|begin|键的起始值|  
-|match|匹配条件| 
-|count|返回的最大个数| 
-|inclusive|包含边界值| 
-|tp|类型| 
- -->
-### 3.3 哈希表  
-**3.3.1 删除哈希表**  
-删除哈希表 不存在的key将被忽略。  
+### 3.3 Hash table  
+**3.3.1 Delete key from hash table**  
+Delete key from hash table. Non-exist key is ignored.  
 ```golang
 Hmclear(dbsid string, key ...string) (ret int64, err error)  
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-|ret|成功的个数|
+|dbsid|session id|returned by MMOpen
+|key|key|   
+|ret|# of successes|
 
-**3.3.2 删除域**  
-删除哈希表 key 中的一个或多个指定域，不存在的域将被忽略。  
+**3.3.2 Delete field**  
+Given key, delete fields from hash table.  
 ```golang
 Hdel(dbsid, key string, field ...string) (ret int64, err error)  
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-|field|域|  
-|ret|成功的个数|
+|dbsid|session id|returned by MMOpen
+|key|key|   
+|field|fields|  
+|ret|# of successes|
 
-**3.3.3 哈希表大小**  
-返回哈希表 key 中域的数量。
+**3.3.3 Hash table size**  
+Given key, return number of fields.  
 ```golang
 Hlen(dbsid, key string) (ret int64, err error)    
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-|ret|域的数量|
+|dbsid|session id|returned by MMOpen
+|key|key|  
+|ret|# of fields|
 
-**3.3.4 写**  
-将哈希表 hash 中域 field 的值设置为 value 。
+**3.3.4 Set**  
+Given key, set value of a field.  
 ```golang
 Hset(dbsid, key, field string, value interface{}) (ret int64, err error)  
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-|field|域| 
-|value|值| 
-|ret|域的数量|不存在返回1，存在返回0
+|dbsid|session id|returned by MMOpen
+|key|key|  
+|field|field| 
+|value|value| 
+|ret|# of fields|return 1 if non-exist, 0 if exist
 
-**3.3.5 读**  
-返回哈希表中给定域的值。
+**3.3.5 Get**  
+Given key and field, return corresponding value.  
 ```golang
 Hget(dbsid, key, field string) (ret interface{}, err error)    
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-|field|域| 
-|ret|值|
+|dbsid|session id|returned by MMOpen
+|key|key|  
+|field|field| 
+|ret|value|
 
-
-**3.3.6 批量读**  
-返回哈希表 key中，一个或多个给定域的值。
+**3.3.6 Batch get**  
+Given key and fields, return value set.  
 ```golang
 Hmget(dbsid, key string, fields ...string) (ret []interface{}, err error)  
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-|field|域| 
-|ret|值|
+|dbsid|session id|returned by MMOpen
+|key|key|  
+|field|field| 
+|ret|value|
 
-
-**3.3.7 批量写**  
-同时将多个 field-value (域-值)对设置到哈希表 key 中。  
-此命令会覆盖哈希表中已存在的域。
-如果 key 不存在，一个空哈希表被创建并执行 Hmset 操作。
+**3.3.7 Batch set**  
+Given key, set multiple field-value pairs in hash table. Existing field will be overwritten.  
+If key does not exist, an empty hash table is created to execute the command.  
 ```golang
 Hmset(dbsid, key string, values ...FVPair) error  
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-|field|域| 
-|value|域-值| 
+|dbsid|session id|returned by MMOpen
+|key|key|  
+|field|field|  
+|value|value| 
 
 ```golang
 // FVPair is the pair of field and value.
@@ -667,110 +636,72 @@ type FVPair struct {
 }
 ```
 
-**3.3.8 取所有域和值**  
-返回哈希表 key 中，所有的域和值。
+**3.3.8 Get all field-value pairs**  
+Given key, return all field-value pairs.  
 ```golang
 Hgetall(dbsid, key string) (ret []FVPair, err error)    
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-|ret|域-值|  
+|dbsid|session id|returned by MMOpen
+|key|key|  
+|ret|field-value pairs|  
 
-**3.3.9 取所有域**  
-返回哈希表 key 中，所有的域。
+**3.3.9 Get all fields**  
+Given key, return all fields.  
 ```golang
 Hkeys(dbsid, key string) (ret []string, err error)  
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-|ret|域| 
+|dbsid|session id|returned by MMOpen
+|key|key|  
+|ret|fields| 
 
-**3.3.10 增加值**  
-为哈希表 key 中的域 field 的值加上增量 delta 。
+**3.3.10 Increase field value**  
+Given key, increase field by delta.  
 ```golang
 HincrBy(dbsid, key, field string, delta int64) (ret int64, err error)  
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-|delta|增加值|  
-|ret|当前值| 
+|dbsid|session id|returned by MMOpen
+|key|key|  
+|delta|delta|  
+|ret|current value| 
 
-**3.3.11查询**  
-Hscan 根据参数查找符合条件的域名值
+**3.3.11 Scan**  
+Given key and other conditionss, search for field-value pairs.  
 ```golang
 Hscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FVPair, err error)   
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-|beginfield|域的起始值|  
-|match|匹配条件| 
-|count|返回的最大个数| 
-|inclusive|包含边界值| 
-|ret|符合条件的域值| 
+|dbsid|session id|returned by MMOpen
+|key|key|  
+|beginfield|beginning field value|  
+|match|search conditions| 
+|count|max # of returned pairs| 
+|inclusive|boolean to indicate if inclusive on border| 
+|ret|result| 
 
-**3.3.11逆序查询**  
-Hrevscan 根据参数查找符合条件的域名值
+**3.3.11 Reverse scan**  
+Scan in reversed order
 ```golang
 Hrevscan(dbsid, key, beginfield, match string, count int, inclusive bool) (ret []FVPair, err error)   
 ```
-|参数|名称|说明|
+|Parameter|Title|Note|
 |--|--|--|
-|dbsid|会话id|MMOpen获取
-|key|键|  
-|beginfield|域的起始值|  
-|match|匹配条件| 
-|count|返回的最大个数| 
-|inclusive|包含边界值| 
-|ret|符合条件的域值| 
+|dbsid|session id|returned by MMOpen
+|key|key|  
+|beginfield|beginning field value|  
+|match|search conditions| 
+|count|max # of returned pairs| 
+|inclusive|boolean to indicate if inclusive on border| 
+|ret|result| 
 
-### 3.4 列表 
-<!--
-Lpush(dbsid, key string, value ...interface{}) (int64, error)  
-Lpop(dbsid, key string) (interface{}, error)  
-Rpush(dbsid, key string, value ...interface{}) (int64, error)  
-Rpop(dbsid, key string) (interface{}, error)  
-Lrange(dbsid, key string, start, stop int32) ([]interface{}, error)  
-Lclear(dbsid, key string) (int64, error)  
-Lmclear(dbsid string, keys ...string) (int64, error)  
-Lindex(dbsid, k string, index int32) (interface{}, error)  
-Llen(dbsid, k string) (int64, error)  
-Lset(dbsid, k string, index int32, value interface{}) error  
- -->
-### 3.5 集合  
-<!--
-Sadd(dbsid, key string, args ...string) (int64, error)  
-Scard(dbsid, key string) (int64, error)  
-Sclear(dbsid, key string) (int64, error)  
-Sdiff(dbsid string, keys ...string) ([]string, error)  
-Sinter(dbsid string, keys ...string) ([]string, error)  
-Smclear(dbsid string, key ...string) (int64, error)  
-Smembers(dbsid, key string) ([]string, error)  
-Srem(dbsid, key string, m string) (int64, error)  
-Sunion(dbsid string, keys ...string) ([]string, error)  
-Scan(dbsid string, begin, match string, count int, inclusive bool, tp byte) (keys []string, err error)
- -->
-### 3.6 有序集  
-<!--
-Zadd(dbsid, key string, args ...ScorePair) (int64, error)  
-Zcard(dbsid, key string) (int64, error)  
-Zcount(dbsid, key string, mins, maxs int64) (int64, error)  
-Zrem(dbsid, key string, members ...string) (int64, error)  
-Zscore(dbsid, key, member string) (int64, error)  
-Zrank(dbsid, key, member string) (int64, error)  
-Zrange(dbsid, key string, mins, maxs int) ([]ScorePair, error)  
-Zrangebyscore(dbsid, key string, mins, maxs int64, offset int, count int) ([]ScorePair, error)  
-Zremrangebyscore (dbsid, key string, mins, maxs int64) (int64, error)
-Zrevrange(dbsid, key string, start, stop int) (ret []ScorePair, err error)  
-Zrevrangebyscore (dbsid, key string, mins, maxs int64, offset int, count int) (ret []ScorePair, err error)  
-Zmclear(dbsid string, key ...string) (int64, error)  
-Zclear(dbsid, key string) (int64, error)  
-ZincrBy(dbsid, key string, delta int64, member string) (ret int64, err error)  
- -->
+### 3.4 List 
+
+### 3.5 Set  
+
+### 3.6 Ordered set  
