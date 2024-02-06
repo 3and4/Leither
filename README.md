@@ -53,25 +53,25 @@ Leither通过把数据所有权完全交给用户的方式肢解再重构现有�
 把指定版本的程序改为Leither  
 
 设置好Leither的运行权限  
-```bash
+```shell
 chmod +x ./Leither
 ```
 
 第一次运行需要初始化  
-可以通过-p指定端口，不指定缺省为4800
+可以通过-p指定端口，不指定缺省为4800.如果是80端口，需要root权限，命令都要加sudo 
 可以通过-b指定网络入口，不指定为：mimei.org leither.cn vzhan.cn  
 生成的信息保存在Systemvar.json中，可手工修改。
-```bash
+```shell
 Leither init -p 4800 -b mimei.org
 ```
 
 后台服务方式启动  
-```bash
+```shell
 ./Leither run -d
 ```
 
 关闭服务
-```bash
+```shell
 ./Leither stop
 ```
 
@@ -84,11 +84,11 @@ Leither init -p 4800 -b mimei.org
 ### **网络**
 节点启动之后，通过引导节点进入网络  
 显示本节点id  
-```bash
+```shell
 ./Leither swarm id
 ```
 返回：
-```bash
+```shell
 9I6JPEqsxWHN7dr2WG9C0CJ-VnN
 12D3KooWBiuFhtpQL2fs3CasdDZ2yZsHHGWdbGTEuVM3BHaj4Aj
 ```
@@ -97,12 +97,12 @@ Leither中所有的资源都有一个27长度的id,生成规则类似比特币�
 长的id为兼容ipfs网络，生成方式和ipfs网络规则完全相同（multihash）
 
 显示本机地址
-```bash
+```shell
 ./Leither swarm local
 ```
 
 返回：  
-```bash
+```shell
 /ip4/192.168.3.7/tcp/4800
 /ip4/60.186.9.237/tcp/4800
 /ip6/240e:390:86b:f630:2900:1e4:50f8:cd6a/tcp/4800
@@ -110,11 +110,11 @@ Leither中所有的资源都有一个27长度的id,生成规则类似比特币�
 Leither网络的地址为multiaddr格式
 
 显示附近的网络节点
-```bash
+```shell
 ./Leither swarm addrs
 ```
 返回:
-```bash
+```shell
 Ngacq50-IRX_DfcndFwZ0c9S0Nh (3)
         /ip4/192.168.3.7/tcp/4800
         /ip4/60.186.9.237/tcp/4800
@@ -129,12 +129,12 @@ l86HuY4FuRDezLEPHOHBjnaQczp (2)
 
 
 查找节点
-```bash
+```shell
 ./Leither dht findpeer tNP93yuZhNXd-om4izWQkYHfS50
 ```
 返回：
 
-```bash
+```shell
 /ip4/99.79.46.219/tcp/80
 /ip6/2600:1f11:ec1:3001:4d57:55c2:aec6:e279/tcp/80
 /ip4/10.0.17.253/tcp/80
@@ -145,16 +145,17 @@ ipfs是知名的去中心化文件存储系统
 Leither网络支持ipfs协议，兼容ipfs网络。
 
 **添加ipfs文件到网络**
-```bash
+```shell
 ./Leither ipfs add Leither.txt
 ```
 输出结果如下:
-```
+```shell
 ipfs add ok  /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 ```
 
+
 可以在网络内任何一个节点，通过网址查看文件
-```
+```shell
 curl 127.0.0.1:4800/ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 ......
 文件内容略
@@ -172,12 +173,12 @@ curl 127.0.0.1:4800/ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 通过弥媒可以实现大部分传统互联网的功能      
 
 **生成一个弥媒**   
-```bash
+```shell
 ./Leither mimei create
 ```
 
 返回:
-```
+```shell
 Create MiMei  ok 
 mid= RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
@@ -191,12 +192,12 @@ id为RXN74QNeiY08LRSaoeQhx3nOLTC
 弥媒支持ipfs文件和文件系统
 
 把ipfs文件放入弥媒
-```bash
+```shell
 ./Leither mimei setcid RXN74QNeiY08LRSaoeQhx3nOLTC QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 ```
 
 返回:
-```bash
+```shell
 mid= RXN74QNeiY08LRSaoeQhx3nOLTC
 cid= QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 MiMeiSetCid ver= 1
@@ -207,12 +208,12 @@ MiMeiSetCid ver= 1
 
 
 **直接填充文件到弥媒**  
-```bash
+```shell
 ./Leither mimei add RXN74QNeiY08LRSaoeQhx3nOLTC Leither.txt
 ```
 
 返回:
-```bash
+```shell
 add /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2 50773
 MiMeiAdd cid= /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 MiMeiAdd ver= 2
@@ -223,12 +224,12 @@ MiMeiAdd ver= 2
 
 **弥媒发布**  
 发布弥媒信息到网络
-```bash
+```shell
 ./Leither mimei publish RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
 
 返回：   
-```bash
+```shell
 MiMeiPublish mids= [RXN74QNeiY08LRSaoeQhx3nOLTC] EOL = 168h
 MiMeiPublish ok
 ```
@@ -238,13 +239,13 @@ MiMeiPublish ok
   
 **查看弥媒信息**  
 查询本地和网络上的弥媒信息  
-```bash
+```shell
 ./Leither mimei  show RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
 
 返回：
 
-```bash
+```shell
 MiMeiShow mid= RXN74QNeiY08LRSaoeQhx3nOLTC
 Author  : Ngacq50-IRX_DfcndFwZ0c9S0Nh
 AppType :
@@ -276,11 +277,11 @@ mimei show ok
 
 **查看弥媒内容**  
 查询弥媒内容  
-```bash
+```shell
 ./Leither mimei  get RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
 返回：  
-```bash
+```shell
 .......
 文件内容略
 .......
@@ -290,11 +291,11 @@ mimei show ok
 **弥媒同步**  
 从网络或指定节点上同步弥媒    
 在另一个节点上输入下面指令  
-```bash
+```shell
 ./Leither mimei sync RXN74QNeiY08LRSaoeQhx3nOLTC
 ```  
 返回:  
-```bash
+```shell
 MiMeiSync mid = RXN74QNeiY08LRSaoeQhx3nOLTC
 mimei sync ok
 ```  
@@ -304,21 +305,21 @@ mimei sync ok
 提供弥媒数据的节点我们叫支撑节点，或者叫数据提供者
 provide是向网络广播：本节点提供这个弥媒的所有数据  
 
-```bash
+```shell
 ./Leither mimei provide RXN74QNeiY08LRSaoeQhx3nOLTC
 ```  
 返回:
-```bash
+```shell
 MiMeiProvide cids= [RXN74QNeiY08LRSaoeQhx3nOLTC]
 MiMeiProvide ok
 ```  
 
 查看支撑节点  
-```bash
+```shell
 ./Leither mimei findprovs RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
 返回:
-```bash
+```shell
 MiMeiFindProvide mid= RXN74QNeiY08LRSaoeQhx3nOLTC
 mimei findprovs  ver=2
 mimei findprovs  addrs=[{Ngacq50-IRX_DfcndFwZ0c9S0Nh [/ip6/240e:390:86b:f630:2900
@@ -340,23 +341,23 @@ mimei findprovs ok
 对于html5应用，系统进行了特殊优化。
 
 **应用备份**  
-```bash
+```shell
 ./Leither lapp backup -a dav -p newuserforlogin.ppt -n http://127.0.0.1:4800/
 ```  
   
 
 **上传到节点**
-```bash
+```shell
 ./Leither lapp uploadapp -i dist/dav -p newuserforlogin.ppt -n http://127.0.0.1:4800/
 ```  
 
 **查看应用信息**  
-```bash
+```shell
 ./Leither lapp showapp -a dav -v cur -p newuserforlogin.ppt -n http://127.0.0.1:4800/
 ```  
 
 **发布应用到网络**  
-```bash
+```shell
 ./Leither mimei publish htpoEXiE6IlCAqVbCvjvkY_XNfu -p newuserforlogin.ppt
 ```  
 发布应用到网络之后，可以通过浏览器访问任何一个节点运行该应用
@@ -370,11 +371,11 @@ mimei findprovs ok
 **同步应用到节点**  
 从网络或指定节点上同步应用    
 在另一个节点上输入下面指令  
-```bash
+```shell
 ./Leither mimei sync htpoEXiE6IlCAqVbCvjvkY_XNfu
 ```  
 返回:  
-```bash
+```shell
 MiMeiSync mid = htpoEXiE6IlCAqVbCvjvkY_XNfu
 mimei sync ok
 ```  
@@ -382,7 +383,7 @@ mimei sync ok
 
 **指定弥媒缺省应用**  
 弥媒创建的时候，可以指定缺省应用
-```bash
+```shell
 ./Leither mimei create -a 应用id
 ```  
 打开弥媒的时候，会缺省使用指定的应用  
@@ -393,7 +394,7 @@ mimei sync ok
 整个体验象idc机房里主机一样
 
 以下链接用缺省应用打开一个弥媒，弥媒id为dJM6X7OTmJXbGqPQaFdAZ3kGpBl  
-http://www.leither.cn/tpt/dJM6X7OTmJXbGqPQaFdAZ3kGpBl/  
+http://www.vzhan.cn/tpt/dJM6X7OTmJXbGqPQaFdAZ3kGpBl/  
 
 
 以下链接直接运行一个应用，应用id为htpoEXiE6IlCAqVbCvjvkY_XNfu  
