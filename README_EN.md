@@ -383,3 +383,5 @@ Links to project-related information PPT:
 
 <a href="./doc/GongShi.md"> Organization and Consensus Mechanism</a>
 
+<a href="./doc/PaaS.md"> Leither vs Traditional Cloud</a>   
+The system can be used for cloud services, offering a significant reduction in costs related to CPU, memory, and bandwidth compared to virtual hosting and Docker.
