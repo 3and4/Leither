@@ -49,7 +49,7 @@ Returns:
 9I6JPEqsxWHN7dr2WG9C0CJ-VnN
 12D3KooWBiuFhtpQL2fs3CasdDZ2yZsHHGWdbGTEuVM3BHaj4Aj
 ```
-There are two types of IDs: the short one is a 27-character Leither ID, generated in a manner similar to a Bitcoin wallet address. The long one is compatible with the <a href="https://github.com/ipfs/ipfs">IPFS</a> network and is created using the same multihash method as the <a href="https://github.com/ipfs/ipfs">IPFS</a> network.
+There are two types of IDs: the short one is a 27-character Leither ID, generated in a manner similar to a Bitcoin wallet address. The long one is compatible with the <a href="https://github.com/ipfs/ipfs">IPFS</a> network and is created using the same multi-hash method as the <a href="https://github.com/ipfs/ipfs">IPFS</a> network.
 
 Display the local machine address:
 ```shell
@@ -62,7 +62,7 @@ Returns:
 /ip4/60.186.9.237/tcp/4800
 /ip6/240e:390:86b:f630:2900:1e4:50f8:cd6a/tcp/4800
 ```
-Leither network addresses are in multiaddr format.
+Leither network addresses are in multi-addr format.
 
 Display nearby network nodes:
 ```shell
@@ -267,22 +267,22 @@ Users can develop applications based on Leither API. The API is based on the <a 
 
 **Application backup:**
 ```shell
-./Leither lapp backup -a dav -k keyfile.key -n nodeId
+./Leither lapp backup -a appName -k keyfile -n nodeId
 ```
 
 **Upload to node:**
 ```shell
-./Leither lapp uploadapp -i dist/dav -p newuserforlogin.ppt -n http://127.0.0.1:4800/
+./Leither lapp uploadapp -i appName -k keyfile -n nodeId
 ```
 
 **View application information:**
 ```shell
-./Leither lapp showapp -a dav -v cur -p newuserforlogin.ppt -n http://127.0.0.1:4800/
+./Leither lapp showapp -a appName -v cur -k keyfile -n nodeId
 ```
 
 **Publish application to the network:**
 ```shell
-./Leither mimei publish htpoEXiE6IlCAqVbCvjvkY_XNfu -p newuserforlogin.ppt
+./Leither mimei publish htpoEXiE6IlCAqVbCvjvkY_XNfu -k keyfile
 ```
 After publishing the application to the network, it can be accessed and run on any node via a browser.
 
@@ -300,21 +300,27 @@ mimei sync ok
 ```
 Application information and data are now synchronized to the local node.
 
+**Provide a Mimei**
+After the application or Mimei data is synchronized locally, node can provide the data to network calls.
+```shell
+./Leither mimei provide htpoEXiE6IlCAqVbCvjvkY_XNfu
+```
+
 **Specify default application for mimei:**
-When creating a mimei, you can specify a default application:
+When creating a mimei, you can specify a default application to open it:
 ```shell
 ./Leither mimei create -a application_id
 ```
-When opening a mimei, the specified application will be used by default. You can also specify an application when opening a mimei.
+When opening the mimei, the specified application will be used by default. The application can be specified upon opening a mimei.
 
 ### **Domain Name Display of Mimeis**
-Through domain name nodes, users can display their home nodes to others via domain names. The experience is similar to a host in an IDC data center.
+Through DNS nodes, users can display their home nodes to others via domain names. The experience is similar to a host in an IDC data center.
 
 The following link opens a mimei with the default application, mimei ID is dJM6X7OTmJXbGqPQaFdAZ3kGpBl:
 http://www.vzhan.cn/tpt/dJM6X7OTmJXbGqPQaFdAZ3kGpBl/
 
 The following link directly runs an application, application ID is htpoEXiE6IlCAqVbCvjvkY_XNfu:
-http://www.leither.cn/tpt/,htpoEXiE6IlCAqVbCvjvkY_XNfu/
+http://www.leither.cn/tpt/htpoEXiE6IlCAqVbCvjvkY_XNfu/
 
 Note: Ensure that the home node is accessible from the external network. All operators support IPv6, and telecom operators support dynamic IPv4 addresses. Both need to set up local routers or optical modems to ensure external access. If there is no accessible address locally, the tunnel function can be used to provide services externally through others' networks.
 
