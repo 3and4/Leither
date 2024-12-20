@@ -12,7 +12,7 @@ The Mimei system is compatible with most operating systems, like Linux, MacOS, W
 
 ### **Installation and Operation**
 Application changes and programs are available at the following URL:
-<a href="http://vzhan.cn/mm/Fc1BRTFafOGzq5P8KmkVJqwS2v2/"> Download applications of various versions</a>
+<a target="_blank" href="http://vzhan.cn/mm/Fc1BRTFafOGzq5P8KmkVJqwS2v2/"> Download applications of various versions</a>
 
 Download the program locally and then extract it. For details on each file, refer to <a href="./doc/Directory.md"> System Directory Structure</a>.
 
