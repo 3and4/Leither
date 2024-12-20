@@ -110,7 +110,7 @@ or open the url in a web browser.
 ```
 
 ### **Mimei**
-A Mimei is an information container that can store files or databases, and facilitate data presentation. Mimei can flow between network nodes, describe complicated data structure through resource references, and specify associated applications for data operations.
+Mimei is an information container that can store files or database, and facilitate data presentation. Mimei can flow between network nodes, describe complicated data structure through resource references, and specify associated applications for data operations.
 
 Traditional internet services tightly couple data with applications. The main purpose of Mimei is to decouple and reconstruct these relationships.
 
@@ -260,14 +260,14 @@ mimei findprovs ok
 When users publish new mimei data, all online support nodes will synchronize the data in real-time.
 
 **Mimei usage:**
-In addition to reading mimei data directly via API and commands, mimei can specify applications for display. For more details, see the sections on "Applications" and "Domain Name Display of Mimeis."
+In addition to reading mimei data directly via API and commands, applications can be specified to render Mimei. For details, see the sections on "Applications" and "Domain Name Display of Mimeis."
 
 ### **Applications**
-Users can develop applications based on Leither API. The API is based on the Hprose protocol, which support most common development languages. Users can directly use system functions in their applications. The system has special optimizations for HTML5 applications.
+Users can develop applications based on Leither API. The API is based on the <a href="https://github.com/hprose">Hprose</a> protocol, which support most common development languages. Users can directly use system functions in their applications. The system has special optimizations for HTML5 applications.
 
 **Application backup:**
 ```shell
-./Leither lapp backup -a dav -p newuserforlogin.ppt -n http://127.0.0.1:4800/
+./Leither lapp backup -a dav -k keyfile.key -n nodeId
 ```
 
 **Upload to node:**
