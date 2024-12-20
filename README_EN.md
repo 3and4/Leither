@@ -14,14 +14,14 @@ The Leither system is compatible with most operating systems including Linux, Ma
 Application programs are available at:
 <a href="http://vzhan.cn/mm/Fc1BRTFafOGzq5P8KmkVJqwS2v2/" target="_blank"> Download applications of various versions</a>
 
-Download the executable, rename it to *Leither*. and run it in an empty directory. The app will create all the supporting files. For details on each file, refer to <a href="./doc/Directory-en.md"> System Directory Structure</a>.
+Download the executable, rename it to ***Leither***. and run it in an empty directory. The app will create all the supporting files. For details on each file, refer to <a href="./doc/Directory-en.md"> System Directory Structure</a>.
 
-Set the execution permissions before running *Leither*:
+Set the execution permissions before running ***Leither***:
 ```shell
 chmod +x ./Leither
 ```
 
-Initialization is required for the first run. You can specify the port with -p, defaulting to 4800 if not specified. If using port 80, root permissions are required, and commands must be prefixed with sudo. You can specify the network entry with -b, defaulting to: mimei.org leither.cn vzhan.cn. The generated information is saved in Systemvar.json and can be manually modified.
+User can specify the port with -p, defaulting to 4800 if not specified. If port 80, root permissions may be required. You can specify the network entry with -b, defaulting to: mimei.org leither.cn vzhan.cn. The generated information is saved in Systemvar.json and can be manually modified.
 ```shell
 Leither init -p 4800 -b mimei.org
 ```
@@ -37,10 +37,10 @@ Stop the service:
 ```
 
 ### **Feature Experience**
-You can experience features through various methods such as command line, browser, and API development. Below, the system features are directly demonstrated via command line. You can also run corresponding scripts in the TestCase directory through the API to experience specific APIs.
+User can explore various features vie command line, browser, and API development. Below, the system features are directly demonstrated via command line. User can also run corresponding scripts in the TestCase directory to test specific APIs.
 
 ### **Network**
-After a node starts, it enters the network through a bootstrap node. Display the ID of this node:
+After a node starts, it enters the Leither network through a bootstrap node. The following command shows the node's ID:
 ```shell
 ./Leither swarm id
 ```
@@ -49,7 +49,7 @@ Returns:
 9I6JPEqsxWHN7dr2WG9C0CJ-VnN
 12D3KooWBiuFhtpQL2fs3CasdDZ2yZsHHGWdbGTEuVM3BHaj4Aj
 ```
-There are two IDs, short and long. All resources in Leither have a 27-length ID, generated similarly to Bitcoin wallet addresses. The long ID is compatible with the IPFS network, generated in the same way as IPFS network rules (multihash).
+There are two types of IDs: the short one is a 27-character Leither ID, generated in a manner similar to a Bitcoin wallet address. The long one is compatible with the IPFS network and is created using the same multihash method as the IPFS network.
 
 Display the local machine address:
 ```shell
