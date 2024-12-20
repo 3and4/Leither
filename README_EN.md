@@ -11,14 +11,12 @@ Using Mimei and its application system, developers can reconstruct internet appl
 The Leither system is compatible with most operating systems including Linux, MacOS, Windows and Android. It incorporates authentication systems, application systems, file and database systems, as well as domain name and network services. Developers can create applications with Leither API that support over 40 programming languages. Developer can also interact with the system via command line or browser.
 
 ### **Installation and Operation**
-Application changes and programs are available at the following URL:
+Application programs are available at:
 <a href="http://vzhan.cn/mm/Fc1BRTFafOGzq5P8KmkVJqwS2v2/" target="_blank"> Download applications of various versions</a>
 
-Download the program locally and then extract it. For details on each file, refer to <a href="./doc/Directory-en.md"> System Directory Structure</a>.
+Download the executable, rename it to *Leither*. and run it in an empty directory. The app will create all the supporting files. For details on each file, refer to <a href="./doc/Directory-en.md"> System Directory Structure</a>.
 
-Rename the specified version of the program to Leither.
-
-Set the execution permissions for Leither:
+Set the execution permissions before running *Leither*:
 ```shell
 chmod +x ./Leither
 ```
