@@ -14,7 +14,7 @@ The Leither system is compatible with most operating systems including Linux, Ma
 Application changes and programs are available at the following URL:
 <a href="http://vzhan.cn/mm/Fc1BRTFafOGzq5P8KmkVJqwS2v2/" target="_blank"> Download applications of various versions</a>
 
-Download the program locally and then extract it. For details on each file, refer to <a href="./doc/Directory.md"> System Directory Structure</a>.
+Download the program locally and then extract it. For details on each file, refer to <a href="./doc/Directory-en.md"> System Directory Structure</a>.
 
 Rename the specified version of the program to Leither.
 
