@@ -49,7 +49,7 @@ Returns:
 9I6JPEqsxWHN7dr2WG9C0CJ-VnN
 12D3KooWBiuFhtpQL2fs3CasdDZ2yZsHHGWdbGTEuVM3BHaj4Aj
 ```
-There are two types of IDs: the short one is a 27-character Leither ID, generated in a manner similar to a Bitcoin wallet address. The long one is compatible with the <a href="/ipfs/ipfs">IPFS</a> network and is created using the same multihash method as the IPFS network.
+There are two types of IDs: the short one is a 27-character Leither ID, generated in a manner similar to a Bitcoin wallet address. The long one is compatible with the <a href="https://github.com/ipfs/ipfs">IPFS</a> network and is created using the same multihash method as the <a href="https://github.com/ipfs/ipfs">IPFS</a> network.
 
 Display the local machine address:
 ```shell
