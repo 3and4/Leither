@@ -1,18 +1,18 @@
 Leither
 ========
-Leither is an ultra-lightweight, decentralized cloud operating system designed to transform traditional internet services by decentralizing them.
+Leither OS is an ultra-lightweight, decentralized cloud operating system designed to transform traditional internet services by decentralizing them.
 
-Users can either create or join a decentralized network, where they can access or publish application services and information. In this network, the processes of generating, storing, publishing, displaying, and disseminating data (both data and applications) are fully decentralized. The rules governing each step are transparent, allowing users to establish their own, with no single component being irreplaceable. This network is characterized by being user-built, user-controlled, and user-owned.
+Users can either create or join a decentralized network, where they can access or publish application services and information. In Leither network, the processes of generating, storing, publishing, displaying, and disseminating data (both data and applications) are fully decentralized. The rules governing each step are transparent, allowing users to establish their own, with no single component being irreplaceable. This network is characterized by being user-built, user-controlled, and user-owned.
 
-Inspired by the concepts of Gene and Meme, a Mimei represents the smallest unit of information, capable of storing both data and application code. Mimei support file systems and databases, enabling information to flow between different nodes in the form of mimei. Mimei can suppport complex business logics through associations similar to hyperlinks.
+Inspired by the concepts of Gene and Meme, a Mimei represents the smallest unit of information in Leither OS, capable of storing both data and application code. Mimei support file systems and databases, enabling information to flow between different nodes in the form of mimei. Mimei can suppport complex business logics through associations similar to hyperlinks.
 
-Using Mimei and its application system, developers can reconstruct internet applications in a decentralized manner. The Mimei system can support internet applications with minimal resources, such as websites, gateways, mini-programs, and apps. It is only 17 megabytes in size and can run on various devices such as PCs, servers, phones, NAS, routers, and Raspberry Pi. A single node can work as a lightweight server in home office at nearly zero cost. Two nodes can collaborate for data backup, fault tolerance, load balance, domain name resolution, and routing. Multiple nodes can form decentralized network, implementing common internet applications in a decentralized manner .
+Using Mimei and its application system, developers can reconstruct internet applications in a decentralized manner. The Mimei system can support internet applications with minimal resources, such as websites, gateways, mini-programs, and apps. It is only 17 megabytes in size and can run on various devices such as PCs, servers, phones, NAS, routers, and Raspberry Pi. A single Leither node can work as a lightweight server in home office at nearly zero cost. Two nodes can collaborate for data backup, fault tolerance, load balance, domain name resolution, and routing. Multiple nodes can form decentralized network, implementing common internet applications in a decentralized manner .
 
-The Mimei system is compatible with most operating systems, like Linux, MacOS, Windows and Android. It incorporates authentication systems, application systems, file and database systems, as well as domain name and network services. Developers can create applications using APIs that support over 40 programming languages. They can also interact with the system via command line or browser.
+The Leither system is compatible with most operating systems including Linux, MacOS, Windows and Android. It incorporates authentication systems, application systems, file and database systems, as well as domain name and network services. Developers can create applications with Leither API that support over 40 programming languages. Developer can also interact with the system via command line or browser.
 
 ### **Installation and Operation**
 Application changes and programs are available at the following URL:
-<a target="_blank" href="http://vzhan.cn/mm/Fc1BRTFafOGzq5P8KmkVJqwS2v2/"> Download applications of various versions</a>
+<a href="http://vzhan.cn/mm/Fc1BRTFafOGzq5P8KmkVJqwS2v2/" target="_blank"> Download applications of various versions</a>
 
 Download the program locally and then extract it. For details on each file, refer to <a href="./doc/Directory.md"> System Directory Structure</a>.
 
