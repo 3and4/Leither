@@ -92,11 +92,11 @@ Returns:
 ```
 
 ### **IPFS Files**
-IPFS is a well-known decentralized file storage system. The Leither network supports the IPFS protocol and is compatible with the IPFS network.
+IPFS is a decentralized file storage system. Leither network supports the IPFS protocol and is compatible with the IPFS network.
 
-**Add an IPFS file to the network:**
+**Add a file to IPFS network:**
 ```shell
-./Leither ipfs add Leither.txt
+./Leither ipfs add file.txt
 ```
 Output:
 ```shell
@@ -105,13 +105,14 @@ ipfs add ok  /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 
 You can view the file on any node in the network via URL:
 ```shell
-curl 127.0.0.1:4800/ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
+curl http://60.186.9.237:4800/ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
+or open the url in a web browser.
 ```
 
 ### **Mimei**
-A mimei is an information container that can store files or databases. Mimeis facilitate data storage and presentation and can flow between network nodes. They can describe complex content through resource references and specify associated applications for data operations.
+A Mimei is an information container that can store files or databases, and facilitate data presentation. Mimei can flow between network nodes, describe complicated data structure through resource references, and specify associated applications for data operations.
 
-Traditional internet services tightly couple applications and data. The main purpose of mimeis is to deconstruct and reconstruct these contents, enabling most traditional internet functions.
+Traditional internet services tightly couple data with applications. The main purpose of Mimei is to decouple and reconstruct these relationships.
 
 **Create a mimei:**
 ```shell
@@ -123,12 +124,12 @@ Returns:
 Create MiMei  ok 
 mid= RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
-A mimei is created with ID RXN74QNeiY08LRSaoeQhx3nOLTC, default type is file.
+A mimei is created with ID RXN74QNeiY08LRSaoeQhx3nOLTC, default type is file. Another mimei type is a Redis database.
 
 After creation, data can be filled into the mimei.
 
 **Fill an IPFS file into a mimei:**
-Mimeis support IPFS files and file systems.
+Mimei support IPFS files and file systems.
 
 Place an IPFS file into a mimei:
 ```shell
@@ -142,7 +143,7 @@ cid= QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 MiMeiSetCid ver= 1
 ```
 
-The mimei's latest version is now 1, pointing to the above IPFS file.
+Now the mimei's last version is 1, pointing to the above IPFS file.
 
 **Directly fill a file into a mimei:**
 ```shell
@@ -155,7 +156,7 @@ add /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2 50773
 MiMeiAdd cid= /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 MiMeiAdd ver= 2
 ```
-The mimei's latest version is now 2, pointing to the above IPFS file.
+The mimei's last version is 2 now, pointing to the above IPFS file.
 
 **Publish a mimei:**
 Publish mimei information to the network:
@@ -168,7 +169,7 @@ Returns:
 MiMeiPublish mids= [RXN74QNeiY08LRSaoeQhx3nOLTC] EOL = 168h
 MiMeiPublish ok
 ```
-The mimei's information is now published on the network, and all supporting nodes will update the corresponding content in real-time.
+The Mimei is now published on Leither network, and all of its providers, nodes that support the Mimei, will update their content in real-time.
 
 **View mimei information:**
 Query local and network mimei information:
@@ -208,7 +209,7 @@ mimei show ok
 ```
 
 **View mimei content:**
-Query mimei content:
+Query mimei content of File type:
 ```shell
 ./Leither mimei get RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
@@ -220,7 +221,7 @@ File content omitted
 ```
 
 **Mimei synchronization:**
-Synchronize mimeis from the network or specified nodes. Enter the following command on another node:
+Synchronize mimei from the network or specified nodes. Enter the following command on another node:
 ```shell
 ./Leither mimei sync RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
@@ -243,7 +244,7 @@ MiMeiProvide cids= [RXN74QNeiY08LRSaoeQhx3nOLTC]
 MiMeiProvide ok
 ```
 
-View support nodes:
+View supporting nodes, or providers:
 ```shell
 ./Leither mimei findprovs RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
@@ -259,10 +260,10 @@ mimei findprovs ok
 When users publish new mimei data, all online support nodes will synchronize the data in real-time.
 
 **Mimei usage:**
-In addition to reading mimei data directly via API and commands, mimeis can specify applications for display. For more details, see the sections on "Applications" and "Domain Name Display of Mimeis."
+In addition to reading mimei data directly via API and commands, mimei can specify applications for display. For more details, see the sections on "Applications" and "Domain Name Display of Mimeis."
 
 ### **Applications**
-Users can develop applications based on APIs. The API protocol is based on the hprose protocol, supporting most common development languages. Users can directly use system functions in their applications. The system has special optimizations for HTML5 applications.
+Users can develop applications based on Leither API. The API is based on the Hprose protocol, which support most common development languages. Users can directly use system functions in their applications. The system has special optimizations for HTML5 applications.
 
 **Application backup:**
 ```shell
