@@ -12,7 +12,7 @@ The Leither system is compatible with most operating systems including Linux, Ma
 
 ### **Installation and Operation**
 Application programs are available at:
-<a href="http://vzhan.cn/mm/Fc1BRTFafOGzq5P8KmkVJqwS2v2/" target="_blank"> Download applications of various versions</a>
+<a href="http://vzhan.cn/mm/Fc1BRTFafOGzq5P8KmkVJqwS2v2/" target="_blank"> Download Leither executables</a>
 
 Download the executable, rename it to ***Leither***. and run it in an empty directory. The app will create all the supporting files. For details on each file, refer to <a href="./doc/Directory-en.md"> System Directory Structure</a>.
 
