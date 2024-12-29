@@ -21,7 +21,7 @@ Set the execution permissions before running ***Leither***:
 chmod +x ./Leither
 ```
 
-User can specify the port with -p, defaulting to 4800 if not specified. If port 80, root permissions may be required. You can specify the network entry with -b, defaulting to: mimei.org leither.cn vzhan.cn. The generated information is saved in Systemvar.json and can be manually modified.
+User can specify the port with -p, defaulting to 4800 if not specified. If port 80, root permissions may be required. You can specify the network entry with -b, defaulting to: mimei.org leither.cn vzhan.cn. The generated information is saved in SystemVars.json, which can be manually modified or by the following command.
 ```shell
 Leither init -p 4800 -b mimei.org
 ```
@@ -35,7 +35,7 @@ Stop the service:
 ```shell
 ./Leither stop
 ```
-
+If you want the Leither service to start automatically after a reboot, use system services like _systemctl_ to manage Leither.
 ### **Feature Experience**
 User can explore various features vie command line, browser, and API development. Below, the system features are directly demonstrated via command line. User can also run corresponding scripts in the TestCase directory to test specific APIs.
 
