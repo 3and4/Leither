@@ -316,13 +316,13 @@ When opening the mimei, the specified application will be used by default. The a
 ### **Domain Name Display of Mimeis**
 Through DNS nodes, users can display their home nodes to others via domain names. The experience is similar to a host in an IDC data center.
 
-The following link opens a mimei with the default application, mimei ID is dJM6X7OTmJXbGqPQaFdAZ3kGpBl:
-http://www.vzhan.cn/mm/Z5ZbV2tKVzl441nDUbinBITdzCZ/
+The following link opens a mimei with the default application, mimei ID is Z5ZbV2tKVzl441nDUbinBITdzCZ:
+http://www.vzhan.cn/mm/Z5ZbV2tKVzl441nDUbinBITdzCZ
 
 The following link directly runs an application, application ID is FGPaNfKA-RwvJ-_hGN0JDWMbm9R:
 http://fireshare.us/tpt/FGPaNfKA-RwvJ-_hGN0JDWMbm9R
 
-Note: Ensure that the home node is accessible from the external network. All operators support IPv6, and telecom operators support dynamic IPv4 addresses. Both need to set up local routers or optical modems to ensure external access. If there is no accessible address locally, the tunnel function can be used to provide services externally through others' networks.
+Note: Ensure that the home node is accessible from the external network. All operators support IPv6, and telecom operators support dynamic IPv4 addresses. Both need to set up local routers or optical modems to ensure external access. If there is no accessible public address, a tunnel service can be used to facilitate external access through others' networks.
 
 ### **Mimei Database**
 When creating a mimei, you can specify a database type. The database is compatible with most Redis functions. HTML5 database functions are correspondingly implemented. You can operate this database using command line and API. Using the above backup and synchronization, you can publish the database to the network. Support nodes will synchronize database changes in real-time.
