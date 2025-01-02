@@ -317,10 +317,10 @@ When opening the mimei, the specified application will be used by default. The a
 Through DNS nodes, users can display their home nodes to others via domain names. The experience is similar to a host in an IDC data center.
 
 The following link opens a mimei with the default application, mimei ID is dJM6X7OTmJXbGqPQaFdAZ3kGpBl:
-http://www.vzhan.cn/tpt/dJM6X7OTmJXbGqPQaFdAZ3kGpBl/
+http://www.vzhan.cn/mm/Z5ZbV2tKVzl441nDUbinBITdzCZ/
 
-The following link directly runs an application, application ID is htpoEXiE6IlCAqVbCvjvkY_XNfu:
-http://www.leither.cn/tpt/htpoEXiE6IlCAqVbCvjvkY_XNfu/
+The following link directly runs an application, application ID is FGPaNfKA-RwvJ-_hGN0JDWMbm9R:
+http://fireshare.us/tpt/FGPaNfKA-RwvJ-_hGN0JDWMbm9R
 
 Note: Ensure that the home node is accessible from the external network. All operators support IPv6, and telecom operators support dynamic IPv4 addresses. Both need to set up local routers or optical modems to ensure external access. If there is no accessible address locally, the tunnel function can be used to provide services externally through others' networks.
 
