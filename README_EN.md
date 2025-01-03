@@ -37,10 +37,10 @@ Stop the service:
 ```
 If you want the Leither service to start automatically after a reboot, use system services like _systemctl_ to manage Leither.
 ### **Feature Experience**
-User can explore various features vie command line, browser, and API development. Below, the system features are directly demonstrated via command line. User can also run corresponding scripts in the TestCase directory to test specific APIs.
+User can explore various features vie command line, browser, and API development. Below, the system features are directly demonstrated via command line.
 
 ### **Network**
-After a node starts, it enters the Leither network through a bootstrap node. The following command shows the node's ID:
+After a node starts, it joints the Leither network through a bootstrap node. The following command shows the node's ID:
 ```shell
 ./Leither swarm id
 ```
