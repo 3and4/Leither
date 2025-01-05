@@ -115,7 +115,7 @@ Mimei is the core concept and innovation in Leither system. It is an information
 
 Data are tightly coupled with applicaiton in regular internet. The main purpose of Mimei is to decouple and reconstruct these relationships.
 
-**Create a mimei:**\
+**Create a mimei:**
 ```shell
 ./Leither mimei create
 ```
@@ -146,7 +146,7 @@ MiMeiSetCid ver= 1
 
 Now the Mimei's last version is 1, pointing to the above IPFS file.
 
-**Store a file into a Mimei:**\
+**Store a file into a Mimei:**
 ```shell
 ./Leither mimei add RXN74QNeiY08LRSaoeQhx3nOLTC filename.txt
 ```
@@ -339,11 +339,11 @@ http://fireshare.us/tpt/FGPaNfKA-RwvJ-_hGN0JDWMbm9R
 Note: Make sure that the home node is accessible from the external network. All telecom operators support IPv6, and dynamic IPv4 addresses. Users need to set up local routers or optical modems to allow external access. If there is no public accessible address, tunnel service can be used to facilitate external access through others' networks.
 
 ### **Mimei Database**
-User can create a database Mimei, which support most Redis functions. HTML5 database functions are also implemented. User can run database operation using command line and API. Users can publish their database to the network, providers will their copies of data in real-time.
+User can create a database Mimei, which support most Redis functionalities. HTML5 database functions are also implemented. Users can publish their database to the network, providers will their copies of data in real-time automatically.
 
 ### **Load Balancing and Fault Tolerance**
 **Fault Tolerance:**
-Node addresses in a distributed network are complex, with some being IPv4, some IPv6, and some through NAT. When users access a domain name, a template page is returned, detecting the optimal network path to access nodes.
+Node addresses in a distributed network are complex, with some being IPv4, some IPv6, and some through NAT. When users access a domain name, a template webpage is returned, detecting the optimal network path to access nodes.
 
 **Load Balancing:**
 Through the provide mechanism, multiple nodes can support user data and applications. When users access applications via domain names or links, domain and routing nodes will fill all support node information in the template page. Through the browser, the optimal access node is selected locally, achieving load balancing. Users can set or modify the template page to specify different load balancing strategies.
