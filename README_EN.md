@@ -63,9 +63,9 @@ Returns:
 /ip4/60.186.9.237/tcp/4800
 /ip6/240e:390:86b:f630:2900:1e4:50f8:cd6a/tcp/4800
 ```
-Leither network addresses are in multi-addr format.
+Leither network addresses use multi-addr format.
 
-Display nearby network nodes:
+Display nearby Leither nodes:
 ```shell
 ./Leither swarm addrs
 ```
@@ -93,27 +93,27 @@ Returns:
 ```
 
 ### **IPFS Files**
-IPFS is a decentralized file storage system. Leither network supports the IPFS protocol and is compatible with the IPFS network.
+ Leither network supports the <a href="https://github.com/ipfs/ipfs">IPFS</a> protocol and is compatible with the <a href="https://github.com/ipfs/ipfs">IPFS</a> network.
 
 **Add a file to IPFS network:**
 ```shell
-./Leither ipfs add file.txt
+./Leither ipfs add filename.txt
 ```
 Output:
 ```shell
-ipfs add ok  /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
+ipfs add ok /ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 ```
 
-You can view the file on any node in the network via URL:
+User can view the file on any node in the network via URL:
 ```shell
 curl http://60.186.9.237:4800/ipfs/QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 or open the url in a web browser.
 ```
 
 ### **Mimei**
-Mimei is an information container that can store files or database, and facilitate data presentation. Mimei can flow between network nodes, describe complicated data structure through resource references, and specify associated applications for data operations.
+Mimei is the core concept and innovation in Leither system. It is an information container that can store files or databases, and facilitate data presentation. Mimei can be synchronized among network nodes, describe complicated data structure through resource references, and specify associated applications for data operations.
 
-Traditional internet services tightly couple data with applications. The main purpose of Mimei is to decouple and reconstruct these relationships.
+Data are tightly coupled with applicaiton in regular internet. The main purpose of Mimei is to decouple and reconstruct these relationships.
 
 **Create a mimei:**
 ```shell
@@ -125,14 +125,14 @@ Returns:
 Create MiMei  ok 
 mid= RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
-A mimei is created with ID RXN74QNeiY08LRSaoeQhx3nOLTC, default type is file. Another mimei type is a Redis database.
+The command creates a Mimei ID RXN74QNeiY08LRSaoeQhx3nOLTC. The default Mimei type is file. Another type is Redis database.
 
-After creation, data can be filled into the mimei.
+After its creation, data can be stored in the Mimei.
 
-**Fill an IPFS file into a mimei:**
+**Store an IPFS file into a Mimei:**
 Mimei support IPFS files and file systems.
 
-Place an IPFS file into a mimei:
+Set an IPFS file into a Mimei container:
 ```shell
 ./Leither mimei setcid RXN74QNeiY08LRSaoeQhx3nOLTC QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 ```
@@ -144,11 +144,11 @@ cid= QmWiEp87XKT5CLfSGiEeGAgMobXuWVz6n5e8dXv82Uu4U2
 MiMeiSetCid ver= 1
 ```
 
-Now the mimei's last version is 1, pointing to the above IPFS file.
+Now the Mimei's last version is 1, pointing to the above IPFS file.
 
-**Directly fill a file into a mimei:**
+**Store a file into a Mimei:**
 ```shell
-./Leither mimei add RXN74QNeiY08LRSaoeQhx3nOLTC Leither.txt
+./Leither mimei add RXN74QNeiY08LRSaoeQhx3nOLTC filename.txt
 ```
 
 Returns:
@@ -159,8 +159,8 @@ MiMeiAdd ver= 2
 ```
 The mimei's last version is 2 now, pointing to the above IPFS file.
 
-**Publish a mimei:**
-Publish mimei information to the network:
+**Publish a Mimei:**
+Publish Mimei information to the network:
 ```shell
 ./Leither mimei publish RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
@@ -170,10 +170,10 @@ Returns:
 MiMeiPublish mids= [RXN74QNeiY08LRSaoeQhx3nOLTC] EOL = 168h
 MiMeiPublish ok
 ```
-The Mimei is now published on Leither network, and all of its providers, nodes that support the Mimei, will update their content in real-time.
+The Mimei is now published on Leither network. All of its providers, which are nodes that support the Mimei, will update their copies in real-time.
 
-**View mimei information:**
-Query local and network mimei information:
+**View Mimei information:**
+Query local and network Mimei information:
 ```shell
 ./Leither mimei show RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
@@ -186,7 +186,7 @@ AppType :
 Ext     :
 Mark    : 16650373773415379251557603663
 Create  : 2022-10-06T14:22:57+08:00
-Right   :7276704
+Right   : 7276704
 
 from local
 -------------------------------------------------------------       
@@ -210,7 +210,7 @@ mimei show ok
 ```
 
 **View mimei content:**
-Query mimei content of File type:
+Query Mimei of File type:
 ```shell
 ./Leither mimei get RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
@@ -222,7 +222,7 @@ File content omitted
 ```
 
 **Mimei synchronization:**
-Synchronize mimei from the network or specified nodes. Enter the following command on another node:
+Synchronize Mimei from the network or specified nodes. Enter the following command on a different Leither node:
 ```shell
 ./Leither mimei sync RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
@@ -231,10 +231,10 @@ Returns:
 MiMeiSync mid = RXN74QNeiY08LRSaoeQhx3nOLTC
 mimei sync ok
 ```
-Mimei information and data are now synchronized to the local node.
+Mimei information and data are now synchronized to this node.
 
-**Mimei support:**
-Nodes providing mimei data are called support nodes or data providers. The provide command broadcasts to the network that this node provides all data for this mimei.
+**Mimei provider:**
+Node providing data of a Mimei is called its **Provider**. The *provide* command broadcasts to the network that this node provides all data for this Mimei.
 
 ```shell
 ./Leither mimei provide RXN74QNeiY08LRSaoeQhx3nOLTC
