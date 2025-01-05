@@ -235,7 +235,7 @@ data_of_author	map[avatar:QmdwTr6Rf9toV4uTYqtx2grMP7ofGaib35xWK9KYs5J6o5...
 ```
 
 **Mimei synchronization:**\
-Synchronize Mimei from the network or specified nodes. Enter the following command on a different Leither node:
+Synchronize Mimei from the network or specified nodes. Run the following command on a different Leither node:
 ```shell
 ./Leither mimei sync RXN74QNeiY08LRSaoeQhx3nOLTC
 ```
@@ -343,38 +343,38 @@ User can create a database Mimei, which support most Redis functionalities. HTML
 
 ### **Load Balancing and Fault Tolerance**
 **Fault Tolerance:**
-Node addresses in a distributed network are complex, with some being IPv4, some IPv6, and some through NAT. When users access a domain name, a template webpage is returned, detecting the optimal network path to access nodes.
+Node addresses in a distributed network are complex, with some being IPv4, some IPv6, and some through NAT. When users access a domain name, a template webpage is returned, with code detecting the optimal network path to access nodes.
 
 **Load Balancing:**
-Through the provide mechanism, multiple nodes can support user data and applications. When users access applications via domain names or links, domain and routing nodes will fill all support node information in the template page. Through the browser, the optimal access node is selected locally, achieving load balancing. Users can set or modify the template page to specify different load balancing strategies.
+Through the provider mechanism, multiple nodes can supply user data and applications collectively. When visitors access applications via domain names or urls, domain and routing nodes will update providers' information in the template webpage. Through the browser, the optimal access node is selected, achieving load balance. Different load balancing strategies can be customized by modifying JS code in template webpage.
 
 ### **More Functional Usage**
-You can interact with the system through the following methods: system application interface, command line, system API, and browser. For convenience, the document introduces and demonstrates the functions of each module via command line. Developers can use these functions in their applications through the API.
+User can interact with the system through the following methods: system application interface, command line, system API, and browser. For convenience, this document introduces and demonstrates the functions of each module via command line. Developers can use the API in their applications.
 
 For details, refer to <a href="./api/Api.md"> API Documentation</a>.
 
 ### **Security**
-When a node starts, a pair of keys is automatically created, and a user ID is generated based on the keys, which is also the user's identity. The lpki command set includes key management functions and some identity authentication-related operations.
+When a node starts, a pair of keys is automatically created, and a host ID is generated based on the keys, which is also the host's identity. The *lpki* command set includes key management functions and some identity authentication-related operations.
 
 ### **Network**
-When the service starts, it enters the network through the bootstrap node in the configuration. The swarm command set includes node address connection filtering and other functions.
+When the Leither node starts, it enters the network through a bootstrap node specified in the configuration file. The *swarm* command set includes node address connection filtering and other functions.
 
-The entire network is a DHT network. The dht command set includes network read and write functions and node search network routing functions.
+The entire network is a DHT network. The *dht* command set includes network access and routing functions.
 
 ### **Mimei**
-All applications and data in the system are mimei types. Mimeis support file and database types. Mimeis can be published on the network, and other users in the network can directly access mimeis through mimei IDs. Data can also be synchronized to local nodes. Users can also provide data support for others' mimeis. Each change in a mimei generates a version, and these changes are updated in real-time on all support nodes (data providers).
+All applications and data in Leither system are of Mimei types. Mimei support file and database types. Mimei can be published on the network, so users can access it through Mimei's ID. Data can be synchronized to nodes. User can provide data support to others' Mimei. Each change in a Mimei generates a new version, and these changes are updated in real-time on all support nodes (data providers).
 
-Combined with domain names and load balancing mechanisms, fault tolerance and load balancing functions can be achieved.
+Combined with domain names and load balancing mechanisms, fault tolerance and load balancing functions can be implemented.
 
-Mimei command set related operations.
+*mimei* command set related operations.
 
-The system is compatible with the IPFS network. The IPFS command set includes common IPFS commands, and the files command set includes how to operate the local IPFS file system.
+Mimei system is compatible with the IPFS network. The *ipfs* command set includes common IPFS commands, and the *file* command set operates the local IPFS file system.
 
 ### **Application System**
-When creating a mimei, an application type is specified. When users open a mimei, the application is called to display the mimei. The application itself is also a mimei. The lapp command set manages application backup and release, including version and domain management.
+When creating a Mimei, an application type is specified. When users open a Mimei, the application is called to display the Mimei. The application itself is also a Mimei. The *lapp* command set manages application backup and release, including versioning and domain management.
 
 ### **Domain Name and Load Balancing**
-The system can run on home nodes. The advantage of home networks is speed and low cost. The disadvantage is the lack of stable IP and port 80, and stability is not as good as IDC data centers. The system solves this problem through domain name nodes. Users can bind resources (nodes, applications, content) to a domain name and point the domain name resolution to a domain name node. Third-party users access the domain name node through a browser, and the domain name node returns a very small (3k) data packet. The browser parses the data and node information in the packet, selects the best-performing node to provide services to third-party users. The process of the browser selecting nodes is a fault tolerance and load balancing process, completed entirely in the browser without additional traffic from the domain name node.
+Leither can run on almost all home devices. The advantage of home networks is speed and low cost. The disadvantage is the lack of stable IP and port 80, and stability is not as good as IDC data centers. The system solves this problem through domain name nodes. Users can bind resources (nodes, applications, content) to a domain name and point the domain name resolution to a domain name node. Third-party users access the domain name node through a browser, and the domain name node returns a very small (3k) data packet. The browser parses the data and node information in the packet, selects the best-performing node to provide services to third-party users. The process of the browser selecting nodes is a fault tolerance and load balancing process, completed entirely in the browser without additional traffic from the domain name node.
 
 For the viewer, there is no page jump, equivalent to directly accessing the user's node. The experience is comparable to IDC data center services.
 
