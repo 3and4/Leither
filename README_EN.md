@@ -282,7 +282,7 @@ In addition to reading mimei data directly via API and commands, applications ca
 Developers can create applications using the Leither API, which is built on the <a href="https://github.com/hprose">Hprose</a> protocol. Hprose supports a wide range of popular programming languages, allowing users to seamlessly integrate Leither system functions into their applications. Special optimizations have been made for HTML5 applications to enhance performance.
 
 **Create Leither App:**\
-In Leither directory, create a directory. The directory name is the appName used in the folowing sections. Upload *Javascript* or *lua* script, which calls Leither API, into the directory and use the following command to manage the new App.
+In Leither directory, create a sub directory, whose name will be the appName used in the folowing sections. Upload *Javascript* or *lua* scripts, which calls the Leither API, into the sub directory and use the following command to manage the new App.
 
 **Application backup:**
 ```shell
@@ -305,8 +305,8 @@ In Leither directory, create a directory. The directory name is the appName used
 ```
 After publishing the application to the network, it can be accessed and run on any node via a browser.
 
-**Synchronize App to node:**\
-Synchronize applications from Leither network or specified nodes. Enter the following command:
+**Synchronize App to current node:**\
+Synchronize applications from Leither network or specified nodes onto local node.
 ```shell
 ./Leither mimei sync htpoEXiE6IlCAqVbCvjvkY_XNfu
 ```
@@ -315,71 +315,68 @@ Returns:
 MiMeiSync mid = htpoEXiE6IlCAqVbCvjvkY_XNfu
 mimei sync ok
 ```
-Application information and data are now synchronized to current node.
-
 **Provide a Mimei:**\
-After an App or Mimei data are synchronized locally, a node can respond to network calls by providing required information.
+After an App or Mimei synchronized locally, a node can respond to network calls by providing required information.
 ```shell
 ./Leither mimei provide htpoEXiE6IlCAqVbCvjvkY_XNfu
 ```
-
 **Specify default application for a Mimei:**\
 When creating a mimei, User can specify a default application to open it:
 ```shell
 ./Leither mimei create -a application_id
 ```
-When opening a Mimei, the specified application will be used by default. The application can also be specified upon opening a Mimei.
+When opening a Mimei, the specified application will be used by default. It can also be specified upon opening a Mimei.
 
 ### **Domain Name Display of Mimei**
-Through DNS nodes, users can expose their home nodes to others via domain name nodes, similar to a host in an IDC data center.
+Through domain name nodes, users can expose their home nodes to others, similar to a host in an IDC data center.
 
-The following link opens a mimei with the default application, mimei ID is Z5ZbV2tKVzl441nDUbinBITdzCZ:\
+The following link opens a Mimei with its default application. Mimei ID is Z5ZbV2tKVzl441nDUbinBITdzCZ. Domain name node is the node where domain name *www.fireshare.us* is resoved to.\
 http://fireshare.us/mm/Z5ZbV2tKVzl441nDUbinBITdzCZ
 
 The following link runs an application, application ID is FGPaNfKA-RwvJ-_hGN0JDWMbm9R:\
 http://fireshare.us/tpt/FGPaNfKA-RwvJ-_hGN0JDWMbm9R
 
-Note: Make sure that the home node is accessible from the external network. All telecom operators support IPv6, and dynamic IPv4 addresses. Users need to set up local routers or optical modems to allow external access. If there is no public accessible address, tunnel service can be used to facilitate external access through others' networks.
+To ensure the Leither is accessible from the external network, it's important to note that all telecom operators support IPv6 and dynamic IPv4 addresses. Users should configure their local routers or optical modems to enable external access. In cases where a publicly accessible address is unavailable, a tunnel service can be utilized to facilitate external access through other networks.
 
 ### **Mimei Database**
-User can create a database Mimei, which support most Redis functionalities. HTML5 database functions are also implemented. Users can publish their database to the network, providers will their copies of data in real-time automatically.
+Users can create a Mimei database that supports most Redis functionalities. It also implements HTML5 database functions. Users can publish their database to the network, and providers will automatically update their copies of the data in real-time.
 
 ### **Load Balancing and Fault Tolerance**
 **Fault Tolerance:**
-Node addresses in a distributed network are complex, with some being IPv4, some IPv6, and some through NAT. When users access a domain name, a template webpage is returned, with code detecting the optimal network path to access nodes.
+In a distributed network, node addresses can be complex, comprising IPv4, IPv6, and NAT-based addresses. When users access a domain name, a template webpage is returned, featuring code that determines the optimal network path to reach the nodes.
 
 **Load Balancing:**
-Through the provider mechanism, multiple nodes can supply user data and applications collectively. When visitors access applications via domain names or urls, domain and routing nodes will update providers' information in the template webpage. Through the browser, the optimal access node is selected, achieving load balance. Different load balancing strategies can be customized by modifying JS code in template webpage.
+Using the provider mechanism, multiple nodes collaboratively supply user data and applications. When visitors access applications through domain names or URLs, domain and routing nodes update the providers' information on the template webpage. The browser then selects the optimal access node to achieve load balancing. Various load balancing strategies can be customized by modifying the JavaScript code in the template webpage.
 
 ### **More Functional Usage**
-User can interact with the system through the following methods: system application interface, command line, system API, and browser. For convenience, this document introduces and demonstrates the functions of each module via command line. Developers can use the API in their applications.
+User can interact with the system through the following methods: system application interface, command line, system API, and browser. For convenience, this document introduces and demonstrates the functions of each module via command line.
 
 For details, refer to <a href="./api/Api.md"> API Documentation</a>.
 
 ### **Security**
-When a node starts, a pair of keys is automatically created, and a host ID is generated based on the keys, which is also the host's identity. The *lpki* command set includes key management functions and some identity authentication-related operations.
+When a node initiates, it automatically generates a pair of keys, which are used to create a host ID that serves as the host's identity. The ***lpki*** command set encompasses functions for key management and operations related to identity authentication.
 
 ### **Network**
-When the Leither node starts, it enters the network through a bootstrap node specified in the configuration file. The *swarm* command set includes node address connection filtering and other functions.
+Upon node initiation, it joins Leither network through a bootstrap node specified in its configuration file. The ***swarm*** command set encompasses node address connection filtering and other functions.
 
 The entire network is a DHT network. The *dht* command set includes network access and routing functions.
 
 ### **Mimei**
-All applications and data in Leither system are of Mimei types. Mimei support file and database types. Mimei can be published on the network, so users can access it through Mimei's ID. Data can be synchronized to nodes. User can provide data support to others' Mimei. Each change in a Mimei generates a new version, and these changes are updated in real-time on all support nodes (data providers).
+The Leither system utilizes Mimei types for all its applications and data, supporting both file and database formats. Mimei can be published on the network, allowing users to access it via its unique ID. Data synchronization across nodes is possible, enabling users to provide data support to others' Mimei. Each modification in a Mimei creates a new version, with real-time updates on all supporting nodes (data providers). 
 
-Combined with domain names and load balancing mechanisms, fault tolerance and load balancing functions can be implemented.
+By integrating domain names and load balancing mechanisms, the system achieves fault tolerance and load balancing capabilities.
 
-*mimei* command set related operations.
+***Mimei command set***.
 
-Mimei system is compatible with the IPFS network. The *ipfs* command set includes common IPFS commands, and the *file* command set operates the local IPFS file system.
+Mimei system is compatible with IPFS network. The ***ipfs*** command set includes common IPFS commands, and the ***file*** command set works on the local IPFS file system.
 
 ### **Application System**
-When creating Mimei, an application type is specified. When user open the Mimei, the application is called to render it. The application itself is also a Mimei. The *lapp* command set manages application backup and release, including versioning and domain management.
+When creating Mimei, an application can be specified. When user open the Mimei, the application will be called to render it. The application itself is also a Mimei. The ***lapp*** command set manages application backup and release, including versioning and domain management.
 
 ### **Domain Name and Load Balancing**
-Leither can run on all kinds of home devices. The advantages of home networks are speed and low cost. The disadvantages are the lack of stable IP and relatively lower availability. Leither solves the conundrum through domain name nodes (DNN). Users can bind resources (nodes, applications, content. They are all Mimei themselves) to a domain name and resolve the domain name to a DNN. Third-party users can access a DNN through web browser, and the DNN returns a very small (3k) data packet. The browser parses the data and node information in the packet, selects the best-performing node to provide services to third-party users. The process of the browser selecting nodes is a fault tolerance and load balancing process, completed entirely in the browser without additional traffic from the DNN.
+Leither is compatible with various home devices, offering the benefits of speed and low cost in home networks. However, these networks often face challenges like unstable IPs and lower availability. Leither addresses these issues using domain name nodes (DNN). Users can bind resources (nodes, applications, content, which are all Mimei themselves) to a DNN. Third-party users can access a DNN through web browser, and the DNN returns a very small (3k) data packet. The browser interprets this packet to extract data and node details, selecting the optimal node to deliver services to third-party users. This node selection process, which involves fault tolerance and load balancing, is executed entirely within the browser, eliminating additional traffic from the DNN.
 
-For the viewer, there is no page jump, equivalent to directly accessing the user's node. The experience is comparable to IDC data center services.
+For the webpage viewer, there is no page jump, equivalent to directly accessing the user's node. The user experience is comparable to IDC data center services.
 
 ### **Introduction to Related Technical Principles**
 <a href="./doc/MiMei.md"> Mimei and Application System</a>
