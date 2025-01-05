@@ -1,6 +1,6 @@
 Leither
 ========
-Leither OS is an ultra-lightweight, decentralized cloud operating system designed to transform traditional internet services by decentralizing them.
+Leither OS is *an ultra-lightweight, decentralized cloud operating system* designed to transform traditional internet services by decentralizing them.
 
 Users can either create or join a decentralized network, where they can publish application services and information. In Leither network, the processes of generating, storing, publishing, displaying, and disseminating data (both data and applications) are fully decentralized. The rules of governing each step are transparent, with no single component irreplaceable, which means the users can establish their own rules. This network is characterized by user-built, user-controlled, and user-owned.
 
