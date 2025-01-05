@@ -279,7 +279,7 @@ When users publish new mimei data, all online support nodes will synchronize the
 In addition to reading mimei data directly via API and commands, applications can be specified to render Mimei. For details, see the sections on "Applications" and "Domain Name Display of Mimeis."
 
 ### **Applications**
-Users can develop applications based on Leither API. The API is based on the <a href="https://github.com/hprose">Hprose</a> protocol, which support most common development languages. Users can directly use system functions in their applications. The system has special optimizations for HTML5 applications.
+Users can develop applications based on Leither API that is based on the <a href="https://github.com/hprose">Hprose</a> protocol. Hprose support most common development languages. Users can directly use Leither system functions in their applications. Optimizations for HTML5 applications has been especially made.
 
 **Application backup:**
 ```shell
