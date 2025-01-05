@@ -327,7 +327,7 @@ When creating a mimei, User can specify a default application to open it:
 ```
 When opening a Mimei, the specified application will be used by default. It can also be specified upon opening a Mimei.
 
-### **Domain Name Display of Mimei**
+### **Rendering Mimei by Domain Name**
 Through domain name nodes, users can expose their home nodes to others, similar to a host in an IDC data center.
 
 The following link opens a Mimei with its default application. Mimei ID is Z5ZbV2tKVzl441nDUbinBITdzCZ. Domain name node is the node where domain name *www.fireshare.us* is resoved to.\
@@ -378,29 +378,29 @@ Leither is compatible with various home devices, offering the benefits of speed 
 
 For the webpage viewer, there is no page jump, equivalent to directly accessing the user's node. The user experience is comparable to IDC data center services.
 
-### **Introduction to Related Technical Principles**
-<a href="./doc/MiMei.md"> Mimei and Application System</a>
-How to dismantle internet platform businesses through decentralized applications.
-<a href="./doc/GongShi.md"> Organization and Consensus Mechanism</a>
+### **Introduction to Key Concepts**
+<a href="./doc/MiMei-en.md">**Mimei and Application System**</a>\
+How to dismantle internet platform businesses through decentralized applications.\
+<a href="./doc/GongShi-en.md">**Organization and Consensus Mechanism**</a>\
 How to coordinate the interests of all parties through consensus mechanism to encourage participation and cooperation.
 
 ### **Related Documents**
 Links to project-related information PPT:
 <https://zhuanlan.zhihu.com/p/330261216>
 
-<a href="./doc/Pki.md"> Security System</a>
+<a href="./doc/Pki.md">**Security System**</a>
 
-<a href="./doc/Applition.md"> Application System</a>
+<a href="./doc/Applition.md">**Application System**</a>
 
-<a href="./doc/Setup.md"> Node and Application Installation</a>
+<a href="./doc/Setup.md">**Node and Application Installation**</a>
 
-<a href="./opt/dav/"> Example Application Code</a>
+<a href="./opt/dav/">**Example Application Code**</a>
 
-<a href="./api/Api.md"> API Documentation</a>
+<a href="./api/Api.md">**API Documentation**</a>
 
-<a href="./doc/MiMei.md"> Mimei and Application System</a>
+<a href="./doc/MiMei.md">**Mimei and Application System**</a>
 
-<a href="./doc/GongShi.md"> Organization and Consensus Mechanism</a>
+<a href="./doc/GongShi.md">**Organization and Consensus Mechanism**</a>
 
-<a href="./doc/PaaS.md"> Leither vs Traditional Cloud</a>   
-The system can be used for cloud services, offering a significant reduction in costs related to CPU, memory, and bandwidth compared to virtual hosting and Docker.
+<a href="./doc/PaaS.md">**Leither vs Traditional Cloud**</a>   
+Leither system can be used for cloud services, offering a significant reduction in costs related to CPU, memory, and bandwidth compared to virtual hosting and Docker.
