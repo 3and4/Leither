@@ -380,7 +380,7 @@ For the viewer, there is no page jump, equivalent to directly accessing the user
 
 ### **Introduction to Related Technical Principles**
 <a href="./doc/MiMei.md"> Mimei and Application System</a>
-Introduces how to dismantle internet platform businesses through decentralized applications.
+How to dismantle internet platform businesses through decentralized applications.
 <a href="./doc/GongShi.md"> Organization and Consensus Mechanism</a>
 How to coordinate the interests of all parties through consensus mechanism to encourage participation and cooperation.
 
