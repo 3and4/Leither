@@ -10,33 +10,33 @@ The Leither executable is only 17MB in size and can run on various devices, incl
 
 Leither OS is compatible with most operating systems, including Linux, MacOS, Windows, and Android. It incorporates authentication systems, application systems, file and database systems, as well as domain name and network services. Developers can create applications using the Leither API, which supports over 40 programming languages. They can also interact with Leither via command line or browser.
 
-### **Installation and Operation**
-Leither executables are available at:
-<a href="http://vzhan.cn/mm/Fc1BRTFafOGzq5P8KmkVJqwS2v2/" target="_blank"> Download Leither executables</a>
+### **Install**
+Obtain the Leither executable from 
+<a href="http://vzhan.cn/mm/Fc1BRTFafOGzq5P8KmkVJqwS2v2/" target="_blank">Leither executables</a>
 
-Download an executable, rename it to ***Leither***. and run it in an empty directory. Leither will create all the supporting files and the current directory becomes the home directory of this Leither instance. For details on each file, refer to <a href="./doc/Directory-en.md"> System Directory Structure</a>.
+Rename the downloaded file to ***Leither*** and place it in an empty directory. This directory will serve as the home directory for this Leither instance. Leither will automatically generate all necessary supporting files in this directory. For more information on these files, refer to <a href="./doc/Directory-en.md"> System Directory Structure</a>.
 
-Set the execution permissions before running ***Leither***:
+Before running Leither, ensure it has the correct execution permissions.
 ```shell
 chmod +x ./Leither
 ```
 
-When starting a Leither instance, user can specify a port number with -p, defaulting to *4800*. The network entry can be specified with -b, defaulting to *mimei.org, leither.cn, vzhan.cn*. The configuration is saved in SystemVars.json within Leither directory, which can be manually modified or by the following command.
+When starting Leither, user can specify a port number with -p, defaulting to *4800*, and network entry with -b, defaulting to *mimei.org, leither.cn, vzhan.cn*. The settings are saved in SystemVars.json within Leither directory, which can be manually modified or by the following command.
 ```shell
 ./Leither init -p 4800 -b mimei.org
 ```
-The above command starts a Leither instance on Port 4800 and register it at a bootstap node running on mimei.org. Any Leither node can be a bootstrap node.
+This command initializes a Leither instance on Port 4800 and register it with a bootstap node at mimei.org. Note that any Leither node can function as a bootstrap node.
 
-Start as a background service:
+Running as a background service:
 ```shell
 ./Leither run -d
 ```
 
-Stop the service:
+Stopping the service:
 ```shell
 ./Leither stop
 ```
-If you want the Leither service to start automatically after a reboot, use system services like _systemctl_.
+To ensure the Leither service starts automatically after a system reboot, configure it using system services like _systemctl_.
 ### **Feature Experience**
 User can explore various features vie command line, browser, and API development. In the following sections, the system features are demonstrated via command line.
 
