@@ -371,10 +371,10 @@ Combined with domain names and load balancing mechanisms, fault tolerance and lo
 Mimei system is compatible with the IPFS network. The *ipfs* command set includes common IPFS commands, and the *file* command set operates the local IPFS file system.
 
 ### **Application System**
-When creating a Mimei, an application type is specified. When users open a Mimei, the application is called to display the Mimei. The application itself is also a Mimei. The *lapp* command set manages application backup and release, including versioning and domain management.
+When creating Mimei, an application type is specified. When user open the Mimei, the application is called to render it. The application itself is also a Mimei. The *lapp* command set manages application backup and release, including versioning and domain management.
 
 ### **Domain Name and Load Balancing**
-Leither can run on almost all home devices. The advantage of home networks is speed and low cost. The disadvantage is the lack of stable IP and port 80, and stability is not as good as IDC data centers. The system solves this problem through domain name nodes. Users can bind resources (nodes, applications, content) to a domain name and point the domain name resolution to a domain name node. Third-party users access the domain name node through a browser, and the domain name node returns a very small (3k) data packet. The browser parses the data and node information in the packet, selects the best-performing node to provide services to third-party users. The process of the browser selecting nodes is a fault tolerance and load balancing process, completed entirely in the browser without additional traffic from the domain name node.
+Leither can run on all kinds of home devices. The advantages of home networks are speed and low cost. The disadvantages are the lack of stable IP and relatively lower availability. Leither solves the conundrum through domain name nodes (DNN). Users can bind resources (nodes, applications, content. They are all Mimei themselves) to a domain name and resolve the domain name to a DNN. Third-party users can access a DNN through web browser, and the DNN returns a very small (3k) data packet. The browser parses the data and node information in the packet, selects the best-performing node to provide services to third-party users. The process of the browser selecting nodes is a fault tolerance and load balancing process, completed entirely in the browser without additional traffic from the DNN.
 
 For the viewer, there is no page jump, equivalent to directly accessing the user's node. The experience is comparable to IDC data center services.
 
@@ -382,7 +382,7 @@ For the viewer, there is no page jump, equivalent to directly accessing the user
 <a href="./doc/MiMei.md"> Mimei and Application System</a>
 Introduces how to dismantle internet platform businesses through decentralized applications.
 <a href="./doc/GongShi.md"> Organization and Consensus Mechanism</a>
-How to coordinate the interests of all parties through consensus mechanisms to encourage more participation.
+How to coordinate the interests of all parties through consensus mechanism to encourage participation and cooperation.
 
 ### **Related Documents**
 Links to project-related information PPT:
