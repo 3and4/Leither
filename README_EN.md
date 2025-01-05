@@ -37,11 +37,11 @@ Stopping the service:
 ./Leither stop
 ```
 To ensure the Leither service starts automatically after a system reboot, configure it using system services like _systemctl_.
-### **Feature Experience**
-User can explore various features vie command line, browser, and API development. In the following sections, the system features are demonstrated via command line.
+### **Features**
+User can explore various features vie command line, browser, and development API. In the following sections, the system features are demonstrated via command line.
 
 ### **Network**
-After a node starts, it joints the Leither network through a bootstrap node. The following command shows current node's ID:
+After a Leither node starts, it joints the Leither network by registering at a bootstrap node. The following command shows current node's ID:
 ```shell
 ./Leither swarm id
 ```
@@ -50,9 +50,9 @@ Returns:
 9I6JPEqsxWHN7dr2WG9C0CJ-VnN
 12D3KooWBiuFhtpQL2fs3CasdDZ2yZsHHGWdbGTEuVM3BHaj4Aj
 ```
-There are two types of IDs: the shorter one is a 27-character Leither ID, generated in a manner similar to a Bitcoin wallet address. The longer one is compatible with the <a href="https://github.com/ipfs/ipfs">IPFS</a> network and is created using the same multi-hash method as the <a href="https://github.com/ipfs/ipfs">IPFS</a> network.
+There are two types of IDs: the shorter one is a 27-character Leither ID, generated with algorithm similar to Bitcoin wallet. The longer one is compatible with the <a href="https://github.com/ipfs/ipfs">IPFS</a> protocol and is created using the same multi-hash method.
 
-Display the local machine's IP addresses:
+***Local machine's IP addresses:***
 ```shell
 ./Leither swarm local
 ```
@@ -65,7 +65,7 @@ Returns:
 ```
 Leither network addresses use multi-addr format.
 
-Display nearby Leither nodes:
+***Nearby Leither nodes:***
 ```shell
 ./Leither swarm addrs
 ```
@@ -81,7 +81,7 @@ l86HuY4FuRDezLEPHOHBjnaQczp (2)
 ...
 ```
 
-Find a node:
+***Find a node:***
 ```shell
 ./Leither dht findpeer tNP93yuZhNXd-om4izWQkYHfS50
 ```
@@ -93,9 +93,9 @@ Returns:
 ```
 
 ### **IPFS Files**
- Leither network supports the <a href="https://github.com/ipfs/ipfs">IPFS</a> protocol and is compatible with the <a href="https://github.com/ipfs/ipfs">IPFS</a> network.
+ Leither network supports <a href="https://github.com/ipfs/ipfs">IPFS</a> protocol and is compatible with <a href="https://github.com/ipfs/ipfs">IPFS</a> network.
 
-**Add a file to IPFS network:**
+***Add a file to IPFS network:***
 ```shell
 ./Leither ipfs add filename.txt
 ```
@@ -115,7 +115,7 @@ Mimei is the core concept and innovation in Leither system. It is an information
 
 Data are tightly coupled with applicaiton in regular internet. The main purpose of Mimei is to decouple and reconstruct these relationships.
 
-**Create a mimei:**
+***Create a mimei:***
 ```shell
 ./Leither mimei create
 ```
@@ -129,7 +129,7 @@ The command creates a Mimei ID RXN74QNeiY08LRSaoeQhx3nOLTC. The default Mimei ty
 
 After its creation, data can be stored in the Mimei.
 
-**Store an IPFS file into a Mimei:**\
+***Store an IPFS file into a Mimei:***\
 Mimei support IPFS files and file systems.
 
 Set an IPFS file into a Mimei container:
@@ -146,7 +146,7 @@ MiMeiSetCid ver= 1
 
 Now the Mimei's last version is 1, pointing to the above IPFS file.
 
-**Store a file into a Mimei:**
+***Store a file into a Mimei:***
 ```shell
 ./Leither mimei add RXN74QNeiY08LRSaoeQhx3nOLTC filename.txt
 ```
@@ -159,7 +159,7 @@ MiMeiAdd ver= 2
 ```
 The mimei's last version is 2 now, pointing to the above IPFS file.
 
-**Publish a Mimei:**\
+***Publish a Mimei:***\
 Publish Mimei information to the network:
 ```shell
 ./Leither mimei publish RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -172,7 +172,7 @@ MiMeiPublish ok
 ```
 The Mimei is now published on Leither network. All of its providers, which are nodes that support the Mimei, will update their copies in real-time.
 
-**View Mimei information:**\
+***View Mimei information:***\
 Query local and network Mimei information:
 ```shell
 ./Leither mimei show RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -209,7 +209,7 @@ local version is same with net
 mimei show ok
 ```
 
-**View Mimei content:**\
+***View Mimei content:***\
 Query Mimei of File type:
 ```shell
 ./Leither mimei get RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -234,7 +234,7 @@ data_of_author	map[avatar:QmdwTr6Rf9toV4uTYqtx2grMP7ofGaib35xWK9KYs5J6o5...
 .......
 ```
 
-**Mimei synchronization:**\
+***Mimei synchronization:***\
 Synchronize Mimei from the network or specified nodes. Run the following command on a different Leither node:
 ```shell
 ./Leither mimei sync RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -246,7 +246,7 @@ mimei sync ok
 ```
 Mimei information and data are now synchronized to current node.
 
-**Mimei provider:**\
+***Mimei provider:***\
 Node providing data of a Mimei is called its **Provider**. The *provide* command broadcasts to the network that this node provides all data for this Mimei.
 
 ```shell
@@ -258,7 +258,7 @@ MiMeiProvide cids= [RXN74QNeiY08LRSaoeQhx3nOLTC]
 MiMeiProvide ok
 ```
 
-View supporting nodes, or providers:
+*View supporting nodes, or providers*:
 ```shell
 ./Leither mimei findprovs 9OCLYP-SXzen3e171-Ei_6N3Gwl
 ```
@@ -275,7 +275,7 @@ Addrs	:[/ip6/2001:b011:e606:7bf5:2e0:1dff:feed:3d1/tcp/8080 /ip4/125.229.161.122
 
 When users publish new mimei data, all online support nodes will synchronize the data in real-time.
 
-**Mimei usage:**\
+***Mimei usage:***\
 In addition to reading mimei data directly via API and commands, applications can be specified to render Mimei. For details, see the sections on "Applications" and "Domain Name Display of Mimeis."
 
 ### **Applications**
