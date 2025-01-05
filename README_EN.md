@@ -115,7 +115,7 @@ Mimei is the core concept and innovation in Leither system. It is an information
 
 Data are tightly coupled with applicaiton in regular internet. The main purpose of Mimei is to decouple and reconstruct these relationships.
 
-**Create a mimei:**
+**Create a mimei:**\
 ```shell
 ./Leither mimei create
 ```
@@ -129,7 +129,7 @@ The command creates a Mimei ID RXN74QNeiY08LRSaoeQhx3nOLTC. The default Mimei ty
 
 After its creation, data can be stored in the Mimei.
 
-**Store an IPFS file into a Mimei:**
+**Store an IPFS file into a Mimei:**\
 Mimei support IPFS files and file systems.
 
 Set an IPFS file into a Mimei container:
@@ -146,7 +146,7 @@ MiMeiSetCid ver= 1
 
 Now the Mimei's last version is 1, pointing to the above IPFS file.
 
-**Store a file into a Mimei:**
+**Store a file into a Mimei:**\
 ```shell
 ./Leither mimei add RXN74QNeiY08LRSaoeQhx3nOLTC filename.txt
 ```
@@ -159,7 +159,7 @@ MiMeiAdd ver= 2
 ```
 The mimei's last version is 2 now, pointing to the above IPFS file.
 
-**Publish a Mimei:**
+**Publish a Mimei:**\
 Publish Mimei information to the network:
 ```shell
 ./Leither mimei publish RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -172,7 +172,7 @@ MiMeiPublish ok
 ```
 The Mimei is now published on Leither network. All of its providers, which are nodes that support the Mimei, will update their copies in real-time.
 
-**View Mimei information:**
+**View Mimei information:**\
 Query local and network Mimei information:
 ```shell
 ./Leither mimei show RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -209,7 +209,7 @@ local version is same with net
 mimei show ok
 ```
 
-**View mimei content:**
+**View Mimei content:**\
 Query Mimei of File type:
 ```shell
 ./Leither mimei get RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -217,11 +217,24 @@ Query Mimei of File type:
 Returns:
 ```shell
 .......
-File content omitted
+File content shown here
+.......
+```
+Query Mimei of Database type:
+```shell
+./Leither mimei grep Wg5Bgcs3B3j_kWtz1rJF3XvP24N
+```
+Returns:
+```shell
+mid: Wg5Bgcs3B3j_kWtz1rJF3XvP24N
+ver: last
+MMOpen ok mmsid= 89825eac2a87ab03d716c227a15fda354bcb084f
+Data Type KV
+data_of_author	map[avatar:QmdwTr6Rf9toV4uTYqtx2grMP7ofGaib35xWK9KYs5J6o5...
 .......
 ```
 
-**Mimei synchronization:**
+**Mimei synchronization:**\
 Synchronize Mimei from the network or specified nodes. Enter the following command on a different Leither node:
 ```shell
 ./Leither mimei sync RXN74QNeiY08LRSaoeQhx3nOLTC
@@ -231,9 +244,9 @@ Returns:
 MiMeiSync mid = RXN74QNeiY08LRSaoeQhx3nOLTC
 mimei sync ok
 ```
-Mimei information and data are now synchronized to this node.
+Mimei information and data are now synchronized to current node.
 
-**Mimei provider:**
+**Mimei provider:**\
 Node providing data of a Mimei is called its **Provider**. The *provide* command broadcasts to the network that this node provides all data for this Mimei.
 
 ```shell
@@ -247,20 +260,22 @@ MiMeiProvide ok
 
 View supporting nodes, or providers:
 ```shell
-./Leither mimei findprovs RXN74QNeiY08LRSaoeQhx3nOLTC
+./Leither mimei findprovs 9OCLYP-SXzen3e171-Ei_6N3Gwl
 ```
 Returns:
 ```shell
-MiMeiFindProvide mid= RXN74QNeiY08LRSaoeQhx3nOLTC
-mimei findprovs  ver=2
-mimei findprovs  addrs=[{Ngacq50-IRX_DfcndFwZ0c9S0Nh [/ip6/240e:390:86b:f630:2900
-:1e4:50f8:cd6a/tcp/4800 /ip4/192.168.3.7/tcp/4800 /ip4/60.186.9.237/tcp/4800]}]
-mimei findprovs ok
+findprovs mid= 9OCLYP-SXzen3e171-Ei_6N3Gwl
+Version:12
+PeerID	: 12D3KooWN1J2uCHfNfGetGf7dhVkCtRxuZHrNGF2bVo5941yhBqh
+Addrs	:[/ip4/54.151.221.76/tcp/8080 /ip4/172.31.27.218/tcp/8080]
+
+PeerID	: 5TVMyFk-DsUH8n_FeF927OEoZSZ
+Addrs	:[/ip6/2001:b011:e606:7bf5:2e0:1dff:feed:3d1/tcp/8080 /ip4/125.229.161.122/tcp/8080 /ip4/192.168.5.4/tcp/8080]
 ```
 
 When users publish new mimei data, all online support nodes will synchronize the data in real-time.
 
-**Mimei usage:**
+**Mimei usage:**\
 In addition to reading mimei data directly via API and commands, applications can be specified to render Mimei. For details, see the sections on "Applications" and "Domain Name Display of Mimeis."
 
 ### **Applications**
@@ -276,21 +291,19 @@ Users can develop applications based on Leither API. The API is based on the <a 
 ./Leither lapp uploadapp -i appName -k keyfile -n nodeId
 ```
 
-**View application information:**
+**View App information:**
 ```shell
 ./Leither lapp showapp -a appName -v cur -k keyfile -n nodeId
 ```
 
-**Publish application to the network:**
+**Publish an App to Leither network:**
 ```shell
 ./Leither mimei publish htpoEXiE6IlCAqVbCvjvkY_XNfu -k keyfile
 ```
 After publishing the application to the network, it can be accessed and run on any node via a browser.
 
-Applications are stored in the dist/dav directory, with the application name being the directory name dav. The developer's issued pass is newuserforlogin.ppt. The node address is http://127.0.0.1:4800/. The above commands can be scripted and written in the configuration file of the development tool (e.g., package.json).
-
-**Synchronize application to node:**
-Synchronize applications from the network or specified nodes. Enter the following command on another node:
+**Synchronize App to node:**\
+Synchronize applications from Leither network or specified nodes. Enter the following command:
 ```shell
 ./Leither mimei sync htpoEXiE6IlCAqVbCvjvkY_XNfu
 ```
@@ -299,34 +312,34 @@ Returns:
 MiMeiSync mid = htpoEXiE6IlCAqVbCvjvkY_XNfu
 mimei sync ok
 ```
-Application information and data are now synchronized to the local node.
+Application information and data are now synchronized to current node.
 
-**Provide a Mimei**
-After the application or Mimei data is synchronized locally, node can provide the data to network calls.
+**Provide a Mimei:**\
+After an App or Mimei data are synchronized locally, a node can respond to network calls by providing required information.
 ```shell
 ./Leither mimei provide htpoEXiE6IlCAqVbCvjvkY_XNfu
 ```
 
-**Specify default application for mimei:**
-When creating a mimei, you can specify a default application to open it:
+**Specify default application for a Mimei:**\
+When creating a mimei, User can specify a default application to open it:
 ```shell
 ./Leither mimei create -a application_id
 ```
-When opening the mimei, the specified application will be used by default. The application can be specified upon opening a mimei.
+When opening a Mimei, the specified application will be used by default. The application can also be specified upon opening a Mimei.
 
-### **Domain Name Display of Mimeis**
-Through DNS nodes, users can display their home nodes to others via domain names. The experience is similar to a host in an IDC data center.
+### **Domain Name Display of Mimei**
+Through DNS nodes, users can expose their home nodes to others via domain name nodes, similar to a host in an IDC data center.
 
 The following link opens a mimei with the default application, mimei ID is Z5ZbV2tKVzl441nDUbinBITdzCZ:\
 http://fireshare.us/mm/Z5ZbV2tKVzl441nDUbinBITdzCZ
 
-The following link directly runs an application, application ID is FGPaNfKA-RwvJ-_hGN0JDWMbm9R:\
+The following link runs an application, application ID is FGPaNfKA-RwvJ-_hGN0JDWMbm9R:\
 http://fireshare.us/tpt/FGPaNfKA-RwvJ-_hGN0JDWMbm9R
 
-Note: Ensure that the home node is accessible from the external network. All operators support IPv6, and telecom operators support dynamic IPv4 addresses. Both need to set up local routers or optical modems to ensure external access. If there is no accessible public address, a tunnel service can be used to facilitate external access through others' networks.
+Note: Make sure that the home node is accessible from the external network. All telecom operators support IPv6, and dynamic IPv4 addresses. Users need to set up local routers or optical modems to allow external access. If there is no public accessible address, tunnel service can be used to facilitate external access through others' networks.
 
 ### **Mimei Database**
-When creating a mimei, you can specify a database type. The database is compatible with most Redis functions. HTML5 database functions are correspondingly implemented. You can operate this database using command line and API. Using the above backup and synchronization, you can publish the database to the network. Support nodes will synchronize database changes in real-time.
+User can create a database Mimei, which support most Redis functions. HTML5 database functions are also implemented. User can run database operation using command line and API. Users can publish their database to the network, providers will their copies of data in real-time.
 
 ### **Load Balancing and Fault Tolerance**
 **Fault Tolerance:**
