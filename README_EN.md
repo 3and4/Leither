@@ -14,17 +14,18 @@ The Leither system is compatible with most operating systems including Linux, Ma
 Leither executables are available at:
 <a href="http://vzhan.cn/mm/Fc1BRTFafOGzq5P8KmkVJqwS2v2/" target="_blank"> Download Leither executables</a>
 
-Download the executable, rename it to ***Leither***. and run it in an empty directory. The app will create all the supporting files. For details on each file, refer to <a href="./doc/Directory-en.md"> System Directory Structure</a>.
+Download an executable, rename it to ***Leither***. and run it in an empty directory. Leither will create all the supporting files and the current directory becomes the home directory of this Leither instance. For details on each file, refer to <a href="./doc/Directory-en.md"> System Directory Structure</a>.
 
 Set the execution permissions before running ***Leither***:
 ```shell
 chmod +x ./Leither
 ```
 
-User can specify the port with -p, defaulting to 4800 if not specified. If port 80, root permissions may be required. You can specify the network entry with -b, defaulting to: mimei.org leither.cn vzhan.cn. The generated information is saved in SystemVars.json, which can be manually modified or by the following command.
+When starting a Leither instance, user can specify a port number with -p, defaulting to *4800*. The network entry can be specified with -b, defaulting to *mimei.org, leither.cn, vzhan.cn*. The configuration is saved in SystemVars.json within Leither directory, which can be manually modified or by the following command.
 ```shell
-Leither init -p 4800 -b mimei.org
+./Leither init -p 4800 -b mimei.org
 ```
+The above command starts a Leither instance on Port 4800 and register it at a bootstap node running on mimei.org. Any Leither node can be a bootstrap node.
 
 Start as a background service:
 ```shell
@@ -35,12 +36,12 @@ Stop the service:
 ```shell
 ./Leither stop
 ```
-If you want the Leither service to start automatically after a reboot, use system services like _systemctl_ to manage Leither.
+If you want the Leither service to start automatically after a reboot, use system services like _systemctl_.
 ### **Feature Experience**
-User can explore various features vie command line, browser, and API development. Below, the system features are directly demonstrated via command line.
+User can explore various features vie command line, browser, and API development. In the following sections, the system features are demonstrated via command line.
 
 ### **Network**
-After a node starts, it joints the Leither network through a bootstrap node. The following command shows the node's ID:
+After a node starts, it joints the Leither network through a bootstrap node. The following command shows current node's ID:
 ```shell
 ./Leither swarm id
 ```
@@ -49,9 +50,9 @@ Returns:
 9I6JPEqsxWHN7dr2WG9C0CJ-VnN
 12D3KooWBiuFhtpQL2fs3CasdDZ2yZsHHGWdbGTEuVM3BHaj4Aj
 ```
-There are two types of IDs: the short one is a 27-character Leither ID, generated in a manner similar to a Bitcoin wallet address. The long one is compatible with the <a href="https://github.com/ipfs/ipfs">IPFS</a> network and is created using the same multi-hash method as the <a href="https://github.com/ipfs/ipfs">IPFS</a> network.
+There are two types of IDs: the shorter one is a 27-character Leither ID, generated in a manner similar to a Bitcoin wallet address. The longer one is compatible with the <a href="https://github.com/ipfs/ipfs">IPFS</a> network and is created using the same multi-hash method as the <a href="https://github.com/ipfs/ipfs">IPFS</a> network.
 
-Display the local machine address:
+Display the local machine's IP addresses:
 ```shell
 ./Leither swarm local
 ```
