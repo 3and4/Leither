@@ -390,17 +390,17 @@ Links to project-related information PPT:
 
 <a href="./doc/Pki-en.md">**Security System**</a>
 
-<a href="./doc/Applition.md">**Application System**</a>
+<a href="./doc/Application-en.md">**Application System**</a>
 
-<a href="./doc/Setup.md">**Node and Application Installation**</a>
+<a href="./doc/Setup-en.md">**Node and Application Installation**</a>
 
 <a href="./opt/dav/">**Example Application Code**</a>
 
-<a href="./api/Api.md">**API Documentation**</a>
+<a href="./api/Api-en.md">**API Documentation**</a>
 
-<a href="./doc/MiMei.md">**Mimei and Application System**</a>
+<a href="./doc/MiMei-en.md">**Mimei and Application System**</a>
 
-<a href="./doc/GongShi.md">**Organization and Consensus Mechanism**</a>
+<a href="./doc/GongShi-en.md">**Organization and Consensus Mechanism**</a>
 
 <a href="./doc/PaaS.md">**Leither vs Traditional Cloud**</a>   
 Leither system can be used for cloud services, offering a significant reduction in costs related to CPU, memory, and bandwidth compared to virtual hosting and Docker.
