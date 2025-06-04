@@ -49,4 +49,4 @@ func InitLApiStubByUrl(url string) *LApiStub {
 	return &stub
 }
 
-//测试标签，应该是v0.16
+//测试标签，应该是v0.1.7 上一级加go.mod
