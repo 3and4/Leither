@@ -1,3 +1,0 @@
-[submodule "rpc"]
-	path = rpc
-	url = https://github.com/3and4/rpc.git
