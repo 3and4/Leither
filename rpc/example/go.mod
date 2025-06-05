@@ -2,11 +2,10 @@ module github.com/3and4/Leither/rpc/example
 
 go 1.20
 
-// replace (
-// 	github.com/3and4/Leither/rpc => ../
-// )
+//本地测试时加上，上传时屏蔽
+// replace github.com/3and4/Leither => ../../../Leither
 
-require github.com/3and4/Leither/rpc v0.0.0-20250603102800-61ab6d75718b
+require github.com/3and4/Leither v0.1.11
 
 require (
 	github.com/andot/complexconv v1.0.0 // indirect
