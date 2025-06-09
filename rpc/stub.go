@@ -9,8 +9,13 @@ import (
 type LApiStub struct {
 	AuthStub
 	VarActStub
-	MFileStub
+	MiMeiStub
 	FilesStub
+}
+type MiMeiStub struct {
+	MFileStub
+	MMOpenUrl func(sid, ps string) (string, error)
+	MMClose   func(mmsid string) error
 }
 
 // NOTE:这个sid是有有效期的

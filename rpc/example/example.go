@@ -54,8 +54,15 @@ func main() {
 
 	fmt.Println("fsid", fsid)
 
-	//这个api后续加入
-	//defer stub.MMClose(fsid)
+	//退出时关闭这个文件
+	defer stub.MMClose(fsid)
+
+	//写入数据
+	count, err := stub.MFSetData(fsid, []byte("hello world"), 0)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("count", count)
 
 	//把临时文件复制到files的根目录，路径为"/testfiles.txt"
 	ipfsid, err := stub.MFTemp2Files(fsid, testFile)
@@ -65,6 +72,20 @@ func main() {
 		fmt.Println("err:", err.Error())
 	}
 	fmt.Println("ipfsid", ipfsid)
+
+	//这里测试读取
+	// files/ps 		/ps	=	files/ps
+	fsid2, err := stub.MMOpenUrl(sid, testFile)
+	if err != nil {
+		panic(err)
+	}
+	defer stub.MMClose(fsid2)
+
+	data, err := stub.MFGetData(fsid2, 0, 100)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("data:", string(data))
 
 	//再删除files中的测试文件
 	err = stub.FilesRm(sid, testFile, false, true)
