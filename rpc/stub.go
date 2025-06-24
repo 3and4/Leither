@@ -160,7 +160,7 @@ type FilesStub struct {
 	FilesCopy  func(sid, src, dst string, flush bool) error
 	FilesLs    func(sid, ps string) ([]LsLink, error)
 	FilesMkdir func(sid, ps string, flush bool) error
-	FilesRm    func(sid, ps string, recursive /*force,*/, flush bool) error
+	FilesRm    func(sid, ps string, recursive, flush bool) error
 	FilesMv    func(sid, src, dst string, flush bool) error
 	FilesFlush func(sid, ps string) (string, error)
 	FilesStat  func(sid, ps string) (*StatInfo, error)

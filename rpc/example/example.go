@@ -3,11 +3,13 @@ package main
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/3and4/Leither/rpc"
 )
 
 const testFile = "/testfiles.txt"
+const testDir = "/testdir/"
 
 func main() {
 	//以下是不需要认证身份的示例
@@ -86,6 +88,30 @@ func main() {
 		panic(err)
 	}
 	fmt.Println("data:", string(data))
+
+	//测试目录
+	//检查目录是否存在，如果存在删除
+	fi, err := stub.FilesStat(sid, testDir)
+	if err == nil {
+		fmt.Println("fi:", fi)
+		//目录存在
+		stub.FilesRm(sid, testDir, true, true)
+	} else if !strings.Contains(err.Error(), "no link named") {
+		//排除IPFS的标准错误："no link named {name} under {node}"
+		panic(err)
+	}
+
+	//创建目录
+	err = stub.FilesMkdir(sid, testDir, true)
+	if err != nil {
+		panic(err)
+	}
+	//列出目录，这里列上一级
+	links, err := stub.FilesLs(sid, "/")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("links:", links)
 
 	//再删除files中的测试文件
 	err = stub.FilesRm(sid, testFile, false, true)
