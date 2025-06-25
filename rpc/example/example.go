@@ -15,12 +15,13 @@ func main() {
 	//以下是不需要认证身份的示例
 	//节点的地址端口是127.0.0.1:4800
 	stub := rpc.InitLApiStubByUrl("127.0.0.1:4800")
-	ver, err := stub.GetVar("", "ver")
+	var ver string
+	err := stub.GetVarObj(&ver, "", "ver")
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Println("ver:", ver)
+	fmt.Println("cur ver:", ver)
 
 	//获取一个通行证
 	//这是通过127.0.0.1:4800,向本地节点申请的
@@ -111,7 +112,12 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("links:", links)
+
+	fmt.Println("links count：", len(links))
+	for _, link := range links {
+		fmt.Printf("%s\t%s\t%d\n",
+			link.Name, link.Hash, link.Type)
+	}
 
 	//再删除files中的测试文件
 	err = stub.FilesRm(sid, testFile, false, true)

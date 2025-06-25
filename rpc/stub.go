@@ -1,6 +1,8 @@
 package rpc
 
 import (
+	"bytes"
+	"encoding/gob"
 	"os"
 	"time"
 )
@@ -34,6 +36,17 @@ type VarActStub struct {
 	GetVarByContext func(sid, name string, mapOpt map[string]string) (any, error)
 	Act             func(sid, name string, args ...string) error
 	GetGobVar       func(sid, name string, args ...string) ([]byte, error)
+}
+
+func (wa *VarActStub) GetVarObj(obj any, sid string, name string, args ...string) error {
+	data, err := wa.GetGobVar(sid, name, args...)
+	if err != nil {
+		return err
+	}
+
+	buf := bytes.NewBuffer(data)
+	dec := gob.NewDecoder(buf)
+	return dec.Decode(obj)
 }
 
 // 弥媒文件相关的操作
