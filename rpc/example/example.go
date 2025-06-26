@@ -16,7 +16,7 @@ func main() {
 	//节点的地址端口是127.0.0.1:4800
 	stub := rpc.InitLApiStubByUrl("127.0.0.1:4800")
 	var ver string
-	err := stub.GetVarObj(&ver, "", "ver")
+	err := stub.GetVarObj(&ver, "", rpc.ApiVarVersion)
 	if err != nil {
 		panic(err)
 	}
