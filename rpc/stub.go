@@ -14,10 +14,31 @@ type LApiStub struct {
 	MiMeiStub
 	FilesStub
 }
+
+// 后续应该是单独文件，先放这里
+type MiMeiRefs = map[string]map[string]int
+type Refs = map[string]int
+
 type MiMeiStub struct {
 	MFileStub
-	MMOpenUrl func(sid, ps string) (string, error)
-	MMClose   func(mmsid string) error
+	MDbStub
+
+	MMCreate   func(sid, appid, ext, mark string, tp byte, right uint64) (mid string, err error)
+	MMOpen     func(sid, mid, ver string, opt ...string) (string, error)
+	MMOpenUrl  func(sid, ps string) (string, error)
+	MMClose    func(mmsid string) error
+	MMSetRight func(sid, mid, member string, right uint64) error
+	MMGetRight func(sid, mmid, uid string) (right uint64, err error)
+	MMBackup   func(sid, mid, memo string, opt ...string) (string, error) //snapshot
+	MMRestore  func(sid, mid, ver string) error
+	MMDelVers  func(sid, mid string, vers ...string) (int64, error)
+	MMRelease  func(sid, mid, ver string) (string, error)
+	MMAddRef   func(sid, mid string, fileids ...string) (int, error)
+	MMDelRef   func(sid, mid string, fileids ...string) (int, error)
+	MMGetRef   func(sid, mid, ver string) (ret Refs, err error)
+	MMGetRefs  func(sid, mid string, vers ...string) (MiMeiRefs, error)
+	MMSum      func(sid, mid, ver, tp string) (string, error) //
+
 }
 
 // NOTE:这个sid是有有效期的
