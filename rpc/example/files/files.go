@@ -73,6 +73,7 @@ func main() {
 
 	//这里测试读取
 	// files/ps 		/ps	=	files/ps
+	// ipfs/ipfsid
 	fsid2, err := stub.MMOpenUrl(sid, testFile)
 	if err != nil {
 		panic(err)
