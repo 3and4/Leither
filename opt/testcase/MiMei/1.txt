@@ -1,7 +1,0 @@
-16:42:59 [D] [lap]mimei sid=b9b8d2893bcb6c382d5d2b8d78092b28f4d6df1d
-16:42:59 [D] [lap]create mimei
-16:42:59 [D] [lap]MMCreate mid=qWmRfpMcGoCqLJZHEPYY71DuLyG
-16:42:59 [D] [lap]MMOpen mmsid=b671b2624f928c0e42cb61c58fd91df8d6901aa5
-16:42:59 [D] [lap]Get key0 value=value0
-11:52:38 [D] [lap]tmp.Len() =4
-11:58:31 [D] [lap]gv=map[1:lua1 2:lua2 4:lua4 6:lua6]

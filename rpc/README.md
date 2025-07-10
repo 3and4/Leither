@@ -1,8 +1,5 @@
-# Leither RPC
-
-RPC package for the Leither project.
-
-## Installation
+相关定义都转到了lapi包中
 
 ```bash
-go get github.com/3and4/Leither/rpc
+go get github.com/3and4/Leither/lapi
+```

@@ -4,7 +4,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/3and4/Leither/rpc"
+	"github.com/3and4/Leither/lapi"
 )
 
 // 这个示例演示了数据库的相关操作
@@ -14,12 +14,12 @@ import (
 func main() {
 	//以下是不需要认证身份的示例
 	//节点的地址端口是127.0.0.1:4800
-	stub := rpc.InitLApiStubByUrl("127.0.0.1:4800")
+	stub := lapi.InitLApiStubByUrl("127.0.0.1:4800")
 
 	//获取一个通行证
 	//这是通过127.0.0.1:4800,向本地节点申请的
 	//有效期是24小时
-	strPPT, err := rpc.GetLocalPassport(4800, 24)
+	strPPT, err := lapi.GetLocalPassport(4800, 24)
 	if err != nil {
 		panic(err)
 	}
@@ -37,7 +37,7 @@ func main() {
 	}
 }
 
-func testmdb(lapi *rpc.LApiStub, sid string) error {
+func testmdb(lapi *lapi.LApiStub, sid string) error {
 	fmt.Println("testmdb")
 
 	mid, err := lapi.MMCreate(sid, "", "ext", "mark testmdbbase", 2, 0x07276705)

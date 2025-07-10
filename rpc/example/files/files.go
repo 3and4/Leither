@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/3and4/Leither/rpc"
+	"github.com/3and4/Leither/lapi"
 )
 
 const testFile = "/testfiles.txt"
@@ -16,12 +16,12 @@ const testDir = "/testdir/"
 
 func main() {
 	//节点的地址端口是127.0.0.1:4800
-	stub := rpc.InitLApiStubByUrl("127.0.0.1:4800")
+	stub := lapi.InitLApiStubByUrl("127.0.0.1:4800")
 
 	//获取一个通行证
 	//这是通过127.0.0.1:4800,向本地节点申请的
 	//有效期是24小时
-	strPPT, err := rpc.GetLocalPassport(4800, 24)
+	strPPT, err := lapi.GetLocalPassport(4800, 24)
 	if err != nil {
 		panic(err)
 	}

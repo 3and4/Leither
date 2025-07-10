@@ -4,7 +4,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/3and4/Leither/rpc"
+	"github.com/3and4/Leither/lapi"
 )
 
 // 这个示例演示了数据库备份相关的功能
@@ -15,12 +15,12 @@ import (
 func main() {
 	//以下是不需要认证身份的示例
 	//节点的地址端口是127.0.0.1:4800
-	stub := rpc.InitLApiStubByUrl("127.0.0.1:4800")
+	stub := lapi.InitLApiStubByUrl("127.0.0.1:4800")
 
 	//获取一个通行证
 	//这是通过127.0.0.1:4800,向本地节点申请的
 	//有效期是24小时
-	strPPT, err := rpc.GetLocalPassport(4800, 24)
+	strPPT, err := lapi.GetLocalPassport(4800, 24)
 	if err != nil {
 		panic(err)
 	}
@@ -38,7 +38,7 @@ func main() {
 	}
 }
 
-func testBackup(lapi *rpc.LApiStub, sid string) error {
+func testBackup(lapi *lapi.LApiStub, sid string) error {
 	fmt.Println("testBackup")
 	mid, err := lapi.MMCreate(sid, "", "ext", "mark testmdbBackup", 2, 0x07276705)
 	if err != nil {
@@ -87,7 +87,7 @@ func testBackup(lapi *rpc.LApiStub, sid string) error {
 }
 
 // 这里用list类型
-func write(lapi *rpc.LApiStub, mmsid string) (err error) {
+func write(lapi *lapi.LApiStub, mmsid string) (err error) {
 	fmt.Println("write")
 	key := "key"
 	for i := 0; i < 10; i++ {
@@ -102,7 +102,7 @@ func write(lapi *rpc.LApiStub, mmsid string) (err error) {
 	return nil
 }
 
-func read(lapi *rpc.LApiStub, mmsid string) (err error) {
+func read(lapi *lapi.LApiStub, mmsid string) (err error) {
 	fmt.Println("read")
 	key := "key"
 
