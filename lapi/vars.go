@@ -14,7 +14,15 @@ const (
 	ApiVarDisk          = "disk"          //获取cpu的状态
 	ApiVarVirtualMemory = "virtualmemory" //获取虚拟内存的状态
 	ApiVarMiMeiInfo     = "mminfo"        //弥媒信息
+)
 
+// 系统弥媒id
+const (
+	LeitherApp       = "Fc1BRTFafOGzq5P8KmkVJqwS2v2" //memo:leitherapp
+	MExplorerID      = "1ZLw8a9HvMnlnDzvo9JtktjW_3j" //memo:mExplorer Leither mimei create -m mExplorer -e app -k l.key
+	LeitherDoc       = "BWqzK1UxomhsLnxj6U1OZncvdux" //Leither mimei create -m leitherdocment -k l.key -a 1ZLw8a9HvMnlnDzvo9JtktjW_3j
+	LeitherServiceID = "9QHDgCSdxWYPFyd4XxJz7DQasam" //系统应用LeitherService
+	LeitherService2  = "x-zuVGwiGXZvq7q9FbojNldrjSD" //系统应用LeitherService2
 )
 
 type StatCPU = []float64

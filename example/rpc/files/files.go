@@ -8,8 +8,8 @@ import (
 	"github.com/3and4/Leither/lapi"
 )
 
-const testFile = "/testfiles.txt"
-const testDir = "/testdir/"
+const testFile = "/testfiles.txt" //等同"files://testfiles.txt","files/testfiles.txt"
+const testDir = "/testdir/"       //等同"files://testdir/","files/testdir/"
 
 // 这个示例演示了files的相关操作
 // files是Leither节点上基于ipfs的文件系统。

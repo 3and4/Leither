@@ -3,3 +3,7 @@
 ```bash
 go get github.com/3and4/Leither/lapi
 ```
+示例转到了example
+```bash
+go get github.com/3and4/Leither/example
+```
