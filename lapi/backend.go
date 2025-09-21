@@ -15,22 +15,27 @@ BackEndStub
 后端Api目前有两部分，后端Session（SessionStub）和应用数据操作（BEAppDataStub）
 */
 
+var _ IRPC = &LApiStub{}
+
+var _ LApi = &BackEndStub{}
+
 type BackEndStub struct {
 	*LApiStub
 	*SessionStub
 	*BEAppDataStub
+	*LogStub
 }
 
 // 用于xgo,调用前会替换
-func Api() LApi {
-	return nil
-}
+// func Api() LApi {
+// 	return nil
+// }
 
-func RPC() *BackEndStub {
-	return nil
-}
+// func RPC() *BackEndStub {
+// 	return nil
+// }
 
-func GetLApi() *BackEndStub {
+func GetLApi() LApi {
 	return nil
 }
 
@@ -141,7 +146,7 @@ var _ ISession = (*BackEndStub)(nil)
 // IBEAppData 接口定义了应用数据操作的所有方法
 type IBEAppData interface {
 	// BEOpenAppDataNode 打开节点的弥媒数据
-	BEOpenAppDataNode(ver string) (mmsid string, err error)
+	BEOpenAppDataNode(ver, mark string) (mmsid string, err error)
 
 	// BEOpenAppDataApp 打开应用的弥媒数据
 	BEOpenAppDataApp(ver, mark string) (mmsid string, err error)
@@ -162,12 +167,35 @@ type IBEAppData interface {
 	BESign(info map[string]string) (string, error)
 }
 
-var _ IBEAppData = (*BackEndStub)(nil)
+var _ IBackEnd = (*BackEndStub)(nil)
+
+// ILogStub 接口定义了日志操作的所有方法
+type ILogStub interface {
+	// Trace 记录跟踪级别日志
+	Trace(format string, v ...interface{})
+	
+	// Debug 记录调试级别日志
+	Debug(format string, v ...interface{})
+	
+	// Info 记录信息级别日志
+	Info(format string, v ...interface{})
+	
+	// Warn 记录警告级别日志
+	Warn(format string, v ...interface{})
+	
+	// Error 记录错误级别日志
+	Error(format string, v ...interface{})
+	
+	// Critical 记录严重级别日志
+	Critical(format string, v ...interface{})
+}
+
+var _ ILogStub = (*BackEndStub)(nil)
 
 // BEOpenAppDataNode 打开节点的弥媒数据
-func (s *BackEndStub) BEOpenAppDataNode(ver string) (mmsid string, err error) {
+func (s *BackEndStub) BEOpenAppDataNode(ver, mark string) (mmsid string, err error) {
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BEOpenAppDataNode != nil {
-		return s.BEAppDataStub.BEOpenAppDataNode(ver, "")
+		return s.BEAppDataStub.BEOpenAppDataNode(ver, mark)
 	}
 	return "", nil
 }
@@ -225,7 +253,7 @@ BEAppDataStub
 
 这里面放的是应用中后端数据操作的api接口。
 
-一、BEOpenAppDataNode(ver string) (mmsid string, err error)
+一、BEOpenAppDataNode(ver, mark string) (mmsid string, err error)
 简介：
 
 	这是应用在节点上的打开节点的弥媒
@@ -269,4 +297,61 @@ type BEAppDataStub struct {
 	BELoginAsApp      func() (sid string, err error)
 	BESignPPT         func(info map[string]string, period int) (string, error)
 	BESign            func(info map[string]string) (string, error)
+}
+
+/*
+LogStub
+
+这里面放的是应用中日志操作的api接口。
+*/
+type LogStub struct {
+	Trace    func(format string, v ...interface{})
+	Debug    func(format string, v ...interface{})
+	Info     func(format string, v ...interface{})
+	Warn     func(format string, v ...interface{})
+	Error    func(format string, v ...interface{})
+	Critical func(format string, v ...interface{})
+}
+
+
+// Trace 记录跟踪级别日志
+func (s *BackEndStub) Trace(format string, v ...interface{}) {
+	if s.LogStub != nil && s.LogStub.Trace != nil {
+		s.LogStub.Trace(format, v...)
+	}
+}
+
+// Debug 记录调试级别日志
+func (s *BackEndStub) Debug(format string, v ...interface{}) {
+	if s.LogStub != nil && s.LogStub.Debug != nil {
+		s.LogStub.Debug(format, v...)
+	}
+}
+
+// Info 记录信息级别日志
+func (s *BackEndStub) Info(format string, v ...interface{}) {
+	if s.LogStub != nil && s.LogStub.Info != nil {
+		s.LogStub.Info(format, v...)
+	}
+}
+
+// Warn 记录警告级别日志
+func (s *BackEndStub) Warn(format string, v ...interface{}) {
+	if s.LogStub != nil && s.LogStub.Warn != nil {
+		s.LogStub.Warn(format, v...)
+	}
+}
+
+// Error 记录错误级别日志
+func (s *BackEndStub) Error(format string, v ...interface{}) {
+	if s.LogStub != nil && s.LogStub.Error != nil {
+		s.LogStub.Error(format, v...)
+	}
+}
+
+// Critical 记录严重级别日志
+func (s *BackEndStub) Critical(format string, v ...interface{}) {
+	if s.LogStub != nil && s.LogStub.Critical != nil {
+		s.LogStub.Critical(format, v...)
+	}
 }

@@ -13,7 +13,6 @@ type LApiStub struct {
 	VarActStub
 	MiMeiStub
 	NetStub
-	// FilesStub
 }
 
 // 后续应该是单独文件，先放这里
@@ -56,7 +55,7 @@ type AuthStub struct {
 type VarActStub struct {
 	GetVar          func(sid, name string, args ...string) (any, error)
 	GetVarByContext func(sid, name string, mapOpt map[string]string) (any, error)
-	Act             func(sid, name string, args ...string) error
+	Act             func(sid, name string, args ...string) (any, error)
 	GetGobVar       func(sid, name string, args ...string) ([]byte, error)
 }
 
@@ -212,13 +211,11 @@ type IAuthStub interface {
 	Logout(sid, info string) error
 }
 
-// IVarActStub 接口定义了变量操作相关的方法
 type IVarActStub interface {
 	GetVar(sid, name string, args ...string) (any, error)
-	GetVarByContext(sid, name string, mapOpt map[string]string) (any, error)
-	Act(sid, name string, args ...string) error
+	Act(sid, name string, args ...string) (any, error)
 	GetGobVar(sid, name string, args ...string) ([]byte, error)
-	GetVarObj(obj any, sid string, name string, args ...string) error
+	// GetGobVar(sid, name string, args ...string) ([]byte, error)
 }
 
 // IMiMeiStub 接口定义了弥媒相关的操作方法
@@ -244,6 +241,10 @@ type IMiMeiStub interface {
 
 // INetStub 接口定义了网络相关的操作方法
 type INetStub interface {
+	IFilesStub
+}
+
+type IFilesStub interface {
 	FilesCopy(sid, src, dst string, flush bool) error
 	FilesLs(sid, ps string) ([]LsLink, error)
 	FilesMkdir(sid, ps string, flush bool) error
@@ -283,11 +284,11 @@ func (s *LApiStub) GetVarByContext(sid, name string, mapOpt map[string]string) (
 	return nil, nil
 }
 
-func (s *LApiStub) Act(sid, name string, args ...string) error {
+func (s *LApiStub) Act(sid, name string, args ...string) (any, error) {
 	if s.VarActStub.Act != nil {
 		return s.VarActStub.Act(sid, name, args...)
 	}
-	return nil
+	return nil, nil
 }
 
 func (s *LApiStub) GetGobVar(sid, name string, args ...string) ([]byte, error) {
