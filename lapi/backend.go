@@ -53,6 +53,7 @@ const (
 	Request_Sid     = "sid" //内部必然有一个
 	Request_NodeID  = "nid"
 	Request_SidApp  = "sidapp" //应用sid,作者身份
+	Request_MMRoot  = "mmroot" //应用对外根目录，由节点注入
 
 	ApiVarNodeAppCode = "nodeappcode"
 )
