@@ -57,7 +57,10 @@ func (s *LApiStub) MMCreate(sid, appid, ext, mark string, tp byte, right uint64)
 }
 
 func (s *LApiStub) MMOpen(sid, mid, ver string, opt ...string) (string, error) {
-	return s.MiMeiStub.MMOpen(sid, mid, ver, opt...)
+	if s.MiMeiStub.MMOpen != nil {
+		return s.MiMeiStub.MMOpen(sid, mid, ver, opt...)
+	}
+	return "", nil
 }
 
 func (s *LApiStub) MMOpenUrl(sid, ps string) (string, error) {
@@ -174,10 +177,10 @@ func (s *LApiStub) FilesMkdir(sid, ps string, flush bool) error {
 }
 
 func (s *LApiStub) FilesRm(sid, ps string, recursive, flush bool) error {
-	// if s.NetStub.FilesRm != nil {
-	return s.NetStub.FilesRm(sid, ps, recursive, flush)
-	// }
-	// return nil
+	if s.NetStub.FilesRm != nil {
+		return s.NetStub.FilesRm(sid, ps, recursive, flush)
+	}
+	return nil
 }
 
 func (s *LApiStub) FilesMv(sid, src, dst string, flush bool) error {

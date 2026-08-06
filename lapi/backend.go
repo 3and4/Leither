@@ -54,40 +54,40 @@ var _ ISession = (*BackEndStub)(nil)
 
 // CreateSession 创建一个session并返回id
 func (s *BackEndStub) CreateSession() (sid string) {
-	if s.CreateSession != nil {
-		return s.CreateSession()
+	if s.SessionStub != nil && s.SessionStub.CreateSession != nil {
+		return s.SessionStub.CreateSession()
 	}
 	return ""
 }
 
 // SessionSet 设置session中指定key的值
 func (s *BackEndStub) SessionSet(sid, key string, value any) error {
-	if s.SessionSet != nil {
-		return s.SessionSet(sid, key, value)
+	if s.SessionStub != nil && s.SessionStub.SessionSet != nil {
+		return s.SessionStub.SessionSet(sid, key, value)
 	}
 	return nil
 }
 
 // SessionGet 获取session中指定key的值
 func (s *BackEndStub) SessionGet(sid, key string) (value any, err error) {
-	if s.SessionGet != nil {
-		return s.SessionGet(sid, key)
+	if s.SessionStub != nil && s.SessionStub.SessionGet != nil {
+		return s.SessionStub.SessionGet(sid, key)
 	}
 	return nil, nil
 }
 
 // SessionDelete 删除session中指定key的值
 func (s *BackEndStub) SessionDelete(sid, key string) error {
-	if s.SessionDelete != nil {
-		return s.SessionDelete(sid, key)
+	if s.SessionStub != nil && s.SessionStub.SessionDelete != nil {
+		return s.SessionStub.SessionDelete(sid, key)
 	}
 	return nil
 }
 
 // ReleaseSession 释放指定的session
 func (s *BackEndStub) ReleaseSession(sid string) error {
-	if s.ReleaseSession != nil {
-		return s.ReleaseSession(sid)
+	if s.SessionStub != nil && s.SessionStub.ReleaseSession != nil {
+		return s.SessionStub.ReleaseSession(sid)
 	}
 	return nil
 }
@@ -96,11 +96,10 @@ var _ ILog = (*BackEndStub)(nil)
 
 // BEOpenAppDataNode 打开节点的弥媒数据
 func (s *BackEndStub) BEOpenAppDataNode(ver, mark string) (mmsid string, err error) {
-	// if s.BEAppDataStub != nil && s.BEAppDataStub.BEOpenAppDataNode != nil {
-	//fmt.Println("BackEndStub BEOpenAppDataNode")
-	return s.BEAppDataStub.BEOpenAppDataNode(ver, mark)
-	// }
-	// return "", nil
+	if s.BEAppDataStub != nil && s.BEAppDataStub.BEOpenAppDataNode != nil {
+		return s.BEAppDataStub.BEOpenAppDataNode(ver, mark)
+	}
+	return "", nil
 }
 
 // BEOpenAppDataApp 打开应用的弥媒数据
