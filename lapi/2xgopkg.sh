@@ -1,1 +1,0 @@
- ixgo export -outdir ../../../../Leither/app/pkg github.com/3and4/Leither/lapi

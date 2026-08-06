@@ -1,46 +1,22 @@
 // backend.go
 package lapi
 
-/*
-BackEndStub
+import (
+	//	"fmt"
+	"io"
+)
 
-一个应用执行的时候有前端模式和后端模式
+var _ IRPC = (*LApiStub)(nil)
 
-前端模式通过rpc操作执行api，运行在节点之外，浏览器，控制台，app等
+var _ LApi = (*BackEndStub)(nil)
 
-后端模式执行在节点内，通过一个全局变量lapi来操作Api
-
-后端除了拥有所有的前端功能（ApiStub）外，还有独有的后端api
-
-后端Api目前有两部分，后端Session（SessionStub）和应用数据操作（BEAppDataStub）
-*/
-
-var _ IRPC = &LApiStub{}
-
-var _ LApi = &BackEndStub{}
+var _ IBackEnd = (*BackEndStub)(nil)
 
 type BackEndStub struct {
 	*LApiStub
 	*SessionStub
 	*BEAppDataStub
 	*LogStub
-}
-
-// 用于xgo,调用前会替换
-// func Api() LApi {
-// 	return nil
-// }
-
-// func RPC() *BackEndStub {
-// 	return nil
-// }
-
-func GetLApi() LApi {
-	return nil
-}
-
-func GetArgs() []any {
-	return nil
 }
 
 const (
@@ -62,37 +38,9 @@ func GetRequest() map[string]string {
 	return nil
 }
 
-// ISession 接口定义了Session操作的所有方法
-type ISession interface {
-	// CreateSession 创建一个session并返回id
-	CreateSession() (sid string)
-
-	// SessionSet 设置session中指定key的值
-	SessionSet(sid, key string, value any) error
-
-	// SessionGet 获取session中指定key的值
-	SessionGet(sid, key string) (value any, err error)
-
-	// SessionDelete 删除session中指定key的值
-	SessionDelete(sid, key string) error
-
-	// ReleaseSession 释放指定的session
-	ReleaseSession(sid string) error
+func GetWriter() io.Writer {
+	return nil
 }
-
-/*
-SessionStub
-
-# Session功能类似于cookie，区别点在于前者作用于后端，后者作用于前端
-
-Session可以保存用户的状态和上下文信息。
-
-CreateSession创建一个session并返回id.
-
-通过这个id可以在后端程序中读写删除状态，不同的后端模块之间也可以共享信息
-
-这个状态是存放在内存中的，超过1小时不访问就会被GC清作
-*/
 
 type SessionStub struct {
 	CreateSession  func() (sid string)
@@ -101,6 +49,8 @@ type SessionStub struct {
 	SessionDelete  func(sid, key string) error
 	ReleaseSession func(sid string) error
 }
+
+var _ ISession = (*BackEndStub)(nil)
 
 // CreateSession 创建一个session并返回id
 func (s *BackEndStub) CreateSession() (sid string) {
@@ -142,63 +92,15 @@ func (s *BackEndStub) ReleaseSession(sid string) error {
 	return nil
 }
 
-var _ ISession = (*BackEndStub)(nil)
-
-// IBEAppData 接口定义了应用数据操作的所有方法
-type IBEAppData interface {
-	// BEOpenAppDataNode 打开节点的弥媒数据
-	BEOpenAppDataNode(ver, mark string) (mmsid string, err error)
-
-	// BEOpenAppDataApp 打开应用的弥媒数据
-	BEOpenAppDataApp(ver, mark string) (mmsid string, err error)
-
-	// BEMMSync 同步弥媒数据
-	BEMMSync(strdhts string, mid string, param map[string]string) error
-
-	// BELoginAsAuthor 以作者身份登录
-	BELoginAsAuthor() (sid string, err error)
-
-	// BELoginAsApp 以应用身份登录
-	BELoginAsApp() (sid string, err error)
-
-	// BESignPPT 签名PPT文档
-	BESignPPT(info map[string]string, period int) (string, error)
-
-	// BESign 签名操作
-	BESign(info map[string]string) (string, error)
-}
-
-var _ IBackEnd = (*BackEndStub)(nil)
-
-// ILogStub 接口定义了日志操作的所有方法
-type ILogStub interface {
-	// Trace 记录跟踪级别日志
-	Trace(format string, v ...interface{})
-	
-	// Debug 记录调试级别日志
-	Debug(format string, v ...interface{})
-	
-	// Info 记录信息级别日志
-	Info(format string, v ...interface{})
-	
-	// Warn 记录警告级别日志
-	Warn(format string, v ...interface{})
-	
-	// Error 记录错误级别日志
-	Error(format string, v ...interface{})
-	
-	// Critical 记录严重级别日志
-	Critical(format string, v ...interface{})
-}
-
-var _ ILogStub = (*BackEndStub)(nil)
+var _ ILog = (*BackEndStub)(nil)
 
 // BEOpenAppDataNode 打开节点的弥媒数据
 func (s *BackEndStub) BEOpenAppDataNode(ver, mark string) (mmsid string, err error) {
-	if s.BEAppDataStub != nil && s.BEAppDataStub.BEOpenAppDataNode != nil {
-		return s.BEAppDataStub.BEOpenAppDataNode(ver, mark)
-	}
-	return "", nil
+	// if s.BEAppDataStub != nil && s.BEAppDataStub.BEOpenAppDataNode != nil {
+	//fmt.Println("BackEndStub BEOpenAppDataNode")
+	return s.BEAppDataStub.BEOpenAppDataNode(ver, mark)
+	// }
+	// return "", nil
 }
 
 // BEOpenAppDataApp 打开应用的弥媒数据
@@ -294,10 +196,10 @@ type BEAppDataStub struct {
 	BEOpenAppDataNode func(string, string) (mmsid string, err error)
 	BEOpenAppDataApp  func(string, string) (mmsid string, err error)
 	BEMMSync          func(strdhts string, mid string, param map[string]string) error
-	BELoginAsAuthor   func() (sid string, err error)
 	BELoginAsApp      func() (sid string, err error)
 	BESignPPT         func(info map[string]string, period int) (string, error)
 	BESign            func(info map[string]string) (string, error)
+	BELoginAsAuthor   func() (sid string, err error)
 }
 
 /*
@@ -313,7 +215,6 @@ type LogStub struct {
 	Error    func(format string, v ...interface{})
 	Critical func(format string, v ...interface{})
 }
-
 
 // Trace 记录跟踪级别日志
 func (s *BackEndStub) Trace(format string, v ...interface{}) {

@@ -2,7 +2,7 @@ package lapi
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 	"time"
@@ -57,7 +57,7 @@ func GetLocalPassport(port int, validPeriod int) (string, error) {
 		return "", fmt.Errorf("获取通行证失败，状态码: %d", resp.StatusCode)
 	}
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return "", fmt.Errorf("读取响应失败: %v", err)
 	}
