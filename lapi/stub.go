@@ -97,6 +97,9 @@ type MiMeiStub struct {
 	// 返回值: 摘要字符串
 	MMSum func(sid, mid, ver, tp string) (string, error) //
 
+	// InlineAppCss 将 html 中引用应用内文件的 CSS 内联为 <style>，返回转换后 html。
+	// 参数: sid-会话ID, appid-应用ID, mid-弥媒ID, ver-版本号, root-应用对外根目录, html-原始html
+	InlineAppCss func(sid, appid, mid, ver, root string, html []byte) ([]byte, error)
 }
 
 // NOTE:这个sid是有有效期的
