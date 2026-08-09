@@ -2,7 +2,7 @@
 package lapi
 
 import (
-	//	"fmt"
+	"fmt"
 	"io"
 )
 
@@ -17,6 +17,7 @@ type BackEndStub struct {
 	*SessionStub
 	*BEAppDataStub
 	*LogStub
+	*BEWebStub
 }
 
 const (
@@ -255,4 +256,12 @@ func (s *BackEndStub) Critical(format string, v ...interface{}) {
 	if s.LogStub != nil && s.LogStub.Critical != nil {
 		s.LogStub.Critical(format, v...)
 	}
+}
+
+// BEReadFile 读取应用 mmroot 文件并可选预处理（nil 安全：未接线返回错误）。
+func (s *BackEndStub) BEReadFile(name string, ops ...string) ([]byte, error) {
+	if s.BEWebStub != nil && s.BEWebStub.BEReadFile != nil {
+		return s.BEWebStub.BEReadFile(name, ops...)
+	}
+	return nil, fmt.Errorf("BEReadFile: 未接线")
 }

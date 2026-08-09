@@ -27,6 +27,7 @@ type IBackEnd interface {
 	ISession
 	IBEAppData
 	ILog
+	IBEWeb
 }
 
 /*
