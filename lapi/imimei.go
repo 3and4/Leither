@@ -84,11 +84,6 @@ type IMiMei interface {
 	// 参数: sid-会话ID, mid-弥媒ID, ver-版本号, tp-摘要类型
 	// 返回值: 摘要字符串
 	MMSum(sid, mid, ver, tp string) (string, error)
-
-	// InlineAppCss 将 html 中引用应用内文件的 CSS 内联为 <style>，返回转换后 html。
-	// appid/root: 应用 mmroot 定位（mm://<appid>/<root>/<name>），用于读应用内 CSS。
-	// mid/ver: 构造 url() 改写基准 /mm/<mid>:<ver>/。
-	InlineAppCss(sid, appid, mid, ver, root string, html []byte) ([]byte, error)
 }
 
 type FVPair struct {

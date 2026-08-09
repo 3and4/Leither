@@ -154,13 +154,6 @@ func (s *LApiStub) MMSum(sid, mid, ver, tp string) (string, error) {
 	return "", nil
 }
 
-func (s *LApiStub) InlineAppCss(sid, appid, mid, ver, root string, html []byte) ([]byte, error) {
-	if s.MiMeiStub.InlineAppCss != nil {
-		return s.MiMeiStub.InlineAppCss(sid, appid, mid, ver, root, html)
-	}
-	return html, nil
-}
-
 // 在LApiStub上实现INet接口方法
 func (s *LApiStub) FilesCopy(sid, src, dst string, flush bool) error {
 	if s.NetStub.FilesCopy != nil {
