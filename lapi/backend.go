@@ -12,6 +12,12 @@ var _ LApi = (*BackEndStub)(nil)
 
 var _ IBackEnd = (*BackEndStub)(nil)
 
+// errUnwired 未接线错误（D1）：后端方法函数字段为 nil（宿主未接线）时返回，
+// 把"未模拟/未接线"显式报错，不允许静默零值成功——排障时不再伪装成成功。
+func errUnwired(method string) error {
+	return fmt.Errorf("%s: 未接线", method)
+}
+
 type BackEndStub struct {
 	*LApiStub
 	*SessionStub
@@ -54,6 +60,8 @@ type SessionStub struct {
 var _ ISession = (*BackEndStub)(nil)
 
 // CreateSession 创建一个session并返回id
+// 注意：签名无 error 返回值，未接线时返回空 sid（调用方可判 sid==""）；
+// 其余可返回 error 的方法一律显式报"未接线"（D1）。
 func (s *BackEndStub) CreateSession() (sid string) {
 	if s.SessionStub != nil && s.SessionStub.CreateSession != nil {
 		return s.SessionStub.CreateSession()
@@ -66,7 +74,7 @@ func (s *BackEndStub) SessionSet(sid, key string, value any) error {
 	if s.SessionStub != nil && s.SessionStub.SessionSet != nil {
 		return s.SessionStub.SessionSet(sid, key, value)
 	}
-	return nil
+	return errUnwired("SessionSet")
 }
 
 // SessionGet 获取session中指定key的值
@@ -74,7 +82,7 @@ func (s *BackEndStub) SessionGet(sid, key string) (value any, err error) {
 	if s.SessionStub != nil && s.SessionStub.SessionGet != nil {
 		return s.SessionStub.SessionGet(sid, key)
 	}
-	return nil, nil
+	return nil, errUnwired("SessionGet")
 }
 
 // SessionDelete 删除session中指定key的值
@@ -82,7 +90,7 @@ func (s *BackEndStub) SessionDelete(sid, key string) error {
 	if s.SessionStub != nil && s.SessionStub.SessionDelete != nil {
 		return s.SessionStub.SessionDelete(sid, key)
 	}
-	return nil
+	return errUnwired("SessionDelete")
 }
 
 // ReleaseSession 释放指定的session
@@ -90,7 +98,7 @@ func (s *BackEndStub) ReleaseSession(sid string) error {
 	if s.SessionStub != nil && s.SessionStub.ReleaseSession != nil {
 		return s.SessionStub.ReleaseSession(sid)
 	}
-	return nil
+	return errUnwired("ReleaseSession")
 }
 
 var _ ILog = (*BackEndStub)(nil)
@@ -100,7 +108,7 @@ func (s *BackEndStub) BEOpenAppDataNode(ver, mark string) (mmsid string, err err
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BEOpenAppDataNode != nil {
 		return s.BEAppDataStub.BEOpenAppDataNode(ver, mark)
 	}
-	return "", nil
+	return "", errUnwired("BEOpenAppDataNode")
 }
 
 // BEOpenAppDataApp 打开应用的弥媒数据
@@ -108,7 +116,7 @@ func (s *BackEndStub) BEOpenAppDataApp(ver, mark string) (mmsid string, err erro
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BEOpenAppDataApp != nil {
 		return s.BEAppDataStub.BEOpenAppDataApp(ver, mark)
 	}
-	return "", nil
+	return "", errUnwired("BEOpenAppDataApp")
 }
 
 // BEMMSync 同步弥媒数据
@@ -116,7 +124,7 @@ func (s *BackEndStub) BEMMSync(strdhts string, mid string, param map[string]stri
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BEMMSync != nil {
 		return s.BEAppDataStub.BEMMSync(strdhts, mid, param)
 	}
-	return nil
+	return errUnwired("BEMMSync")
 }
 
 // BELoginAsAuthor 以作者身份登录
@@ -124,7 +132,7 @@ func (s *BackEndStub) BELoginAsAuthor() (sid string, err error) {
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BELoginAsAuthor != nil {
 		return s.BEAppDataStub.BELoginAsAuthor()
 	}
-	return "", nil
+	return "", errUnwired("BELoginAsAuthor")
 }
 
 // BELoginAsApp 以应用身份登录
@@ -132,7 +140,7 @@ func (s *BackEndStub) BELoginAsApp() (sid string, err error) {
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BELoginAsApp != nil {
 		return s.BEAppDataStub.BELoginAsApp()
 	}
-	return "", nil
+	return "", errUnwired("BELoginAsApp")
 }
 
 // BESignPPT 签名PPT文档
@@ -140,7 +148,7 @@ func (s *BackEndStub) BESignPPT(info map[string]string, period int) (string, err
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BESignPPT != nil {
 		return s.BEAppDataStub.BESignPPT(info, period)
 	}
-	return "", nil
+	return "", errUnwired("BESignPPT")
 }
 
 // BESign 签名操作
@@ -148,7 +156,7 @@ func (s *BackEndStub) BESign(info map[string]string) (string, error) {
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BESign != nil {
 		return s.BEAppDataStub.BESign(info)
 	}
-	return "", nil
+	return "", errUnwired("BESign")
 }
 
 /*
