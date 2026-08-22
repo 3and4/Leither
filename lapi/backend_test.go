@@ -80,16 +80,56 @@ func TestBackEndStub_ReleaseSession_DelegatesToSessionStub(t *testing.T) {
 	}
 }
 
-// 未初始化时调用不应 panic，应返回零值（恢复 nil 守卫后）。
-func TestBackEndStub_BEOpenAppDataNode_NoPanicWhenUnset(t *testing.T) {
+// 未接线时不应 panic，且应显式报"未接线"错误（D1：不允许静默零值成功）。
+func TestBackEndStub_BEOpenAppDataNode_UnwiredReturnsError(t *testing.T) {
 	stub := &BackEndStub{} // 不含 BEAppDataStub
 
 	got, err := stub.BEOpenAppDataNode("cur", "mark")
-	if err != nil {
-		t.Fatalf("BEOpenAppDataNode() error: %v", err)
+	if err == nil {
+		t.Fatal("BEOpenAppDataNode() unwired: want explicit error, got nil")
 	}
 	if got != "" {
 		t.Fatalf("BEOpenAppDataNode() = %q, want empty", got)
+	}
+}
+
+// 未接线的后端方法应统一显式报错（D1），而非静默返回零值。
+func TestBackEndStub_UnwiredMethodsReturnError(t *testing.T) {
+	stub := &BackEndStub{}
+
+	if _, err := stub.BEOpenAppDataApp("cur", "mark"); err == nil {
+		t.Error("BEOpenAppDataApp() unwired: want error")
+	}
+	if err := stub.BEMMSync("dhts", "mid", nil); err == nil {
+		t.Error("BEMMSync() unwired: want error")
+	}
+	if _, err := stub.BELoginAsAuthor(); err == nil {
+		t.Error("BELoginAsAuthor() unwired: want error")
+	}
+	if _, err := stub.BELoginAsApp(); err == nil {
+		t.Error("BELoginAsApp() unwired: want error")
+	}
+	if _, err := stub.BESignPPT(nil, 1); err == nil {
+		t.Error("BESignPPT() unwired: want error")
+	}
+	if _, err := stub.BESign(nil); err == nil {
+		t.Error("BESign() unwired: want error")
+	}
+	if err := stub.SessionSet("s", "k", nil); err == nil {
+		t.Error("SessionSet() unwired: want error")
+	}
+	if _, err := stub.SessionGet("s", "k"); err == nil {
+		t.Error("SessionGet() unwired: want error")
+	}
+	if err := stub.SessionDelete("s", "k"); err == nil {
+		t.Error("SessionDelete() unwired: want error")
+	}
+	if err := stub.ReleaseSession("s"); err == nil {
+		t.Error("ReleaseSession() unwired: want error")
+	}
+	// CreateSession 无 error 返回值：未接线返回空 sid（调用方判 sid==""）
+	if sid := stub.CreateSession(); sid != "" {
+		t.Errorf("CreateSession() unwired = %q, want empty", sid)
 	}
 }
 
