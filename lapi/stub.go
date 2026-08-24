@@ -107,6 +107,12 @@ type LoginReply struct {
 type AuthStub struct {
 	LoginWithPPT func(strPPT string) (*LoginReply, error)
 	Logout       func(sid, info string) error
+	// —— 以下自 api.AuthStub2 开放下沉（Wave B auth2，评审通过）——
+	SetUserInfo  func(sid string, param map[string]string) error
+	SignPPT      func(sid string, info map[string]string, period int) (string, error)
+	Sign         func(sid string, message []byte) (sig []byte, err error)
+	PPTStr2Map   func(strPPT string) (map[string]string, error)
+	SignInfo2Map func(strInfo string) (map[string]string, error)
 }
 
 type VarActStub struct {
@@ -222,6 +228,17 @@ type FilesStub struct {
 type IAuth interface {
 	LoginWithPPT(strPPT string) (*LoginReply, error)
 	Logout(sid, info string) error
+	// —— 以下自 api.IAuth 开放下沉（Wave B auth2，评审通过）——
+	// SetUserInfo 设置当前会话用户的公开信息
+	SetUserInfo(sid string, param map[string]string) error
+		// SignPPT 以会话用户身份签名 PPT（period 单位：分钟，与服务端实现一致）
+	SignPPT(sid string, info map[string]string, period int) (string, error)
+	// Sign 以会话用户身份签名消息
+	Sign(sid string, message []byte) (sig []byte, err error)
+	// PPTStr2Map 将 PPT 字符串解析为 Map（纯解析，无状态）
+	PPTStr2Map(strPPT string) (map[string]string, error)
+	// SignInfo2Map 将签名信息字符串解析为 Map（纯解析，无状态）
+	SignInfo2Map(strInfo string) (map[string]string, error)
 }
 
 type IVarAct interface {
