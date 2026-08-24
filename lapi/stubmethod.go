@@ -52,6 +52,89 @@ func (s *LApiStub) SignInfo2Map(strInfo string) (map[string]string, error) {
 	return nil, nil
 }
 
+// —— Wave B msg：自 api.MsgStub 开放下沉的方法实现 ——
+
+func (s *LApiStub) SendMsg(sid string, msg *Message) error {
+	if s.MsgStub.SendMsg != nil {
+		return s.MsgStub.SendMsg(sid, msg)
+	}
+	return nil
+}
+
+func (s *LApiStub) ReadMsg(sid string) ([]*Message, error) {
+	if s.MsgStub.ReadMsg != nil {
+		return s.MsgStub.ReadMsg(sid)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) PullMsg(sid string, timeout int) (*Message, error) {
+	if s.MsgStub.PullMsg != nil {
+		return s.MsgStub.PullMsg(sid, timeout)
+	}
+	return nil, nil
+}
+
+// —— Wave B stat：自 api.StatStub 开放下沉的方法实现 ——
+
+func (s *LApiStub) GetUserMids(sid, uid string, start int64, count int) ([]ScorePair, error) {
+	if s.StatStub.GetUserMids != nil {
+		return s.StatStub.GetUserMids(sid, uid, start, count)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) GetMiMeiStat(sid, mid string) (stats MiMeiStats, err error) {
+	if s.StatStub.GetMiMeiStat != nil {
+		return s.StatStub.GetMiMeiStat(sid, mid)
+	}
+	return nil, nil
+}
+
+// —— Wave B appdata：自 api.AppDataStub 开放下沉的方法实现 ——
+
+func (s *LApiStub) MMGetAppDataID(sid, aid, tp, owner, mark string, check bool) (appdataid string, err error) {
+	if s.MiMeiStub.AppDataStub.MMGetAppDataID != nil {
+		return s.MiMeiStub.AppDataStub.MMGetAppDataID(sid, aid, tp, owner, mark, check)
+	}
+	return "", nil
+}
+
+func (s *LApiStub) MMCreateAppData(sid, aid, tp, defOwner, mark string, right uint64) (did string, err error) {
+	if s.MiMeiStub.AppDataStub.MMCreateAppData != nil {
+		return s.MiMeiStub.AppDataStub.MMCreateAppData(sid, aid, tp, defOwner, mark, right)
+	}
+	return "", nil
+}
+
+func (s *LApiStub) MMOpenAppData(sid, aid, tp, owner, ver, mark string) (mmsid string, err error) {
+	if s.MiMeiStub.AppDataStub.MMOpenAppData != nil {
+		return s.MiMeiStub.AppDataStub.MMOpenAppData(sid, aid, tp, owner, ver, mark)
+	}
+	return "", nil
+}
+
+func (s *LApiStub) MMOpenAppDataApp(sid, aid, ver, mark string) (mmsid string, err error) {
+	if s.MiMeiStub.AppDataStub.MMOpenAppDataApp != nil {
+		return s.MiMeiStub.AppDataStub.MMOpenAppDataApp(sid, aid, ver, mark)
+	}
+	return "", nil
+}
+
+func (s *LApiStub) MMOpenAppDataNode(sid, aid, ver, mark string) (mmsid string, err error) {
+	if s.MiMeiStub.AppDataStub.MMOpenAppDataNode != nil {
+		return s.MiMeiStub.AppDataStub.MMOpenAppDataNode(sid, aid, ver, mark)
+	}
+	return "", nil
+}
+
+func (s *LApiStub) MMOpenAppDataUser(sid, aid, owner, ver, mark string) (mmsid string, err error) {
+	if s.MiMeiStub.AppDataStub.MMOpenAppDataUser != nil {
+		return s.MiMeiStub.AppDataStub.MMOpenAppDataUser(sid, aid, owner, ver, mark)
+	}
+	return "", nil
+}
+
 // 在LApiStub上实现IVarAct接口方法
 func (s *LApiStub) GetVar(sid, name string, args ...string) (any, error) {
 	if s.VarActStub.GetVar != nil {

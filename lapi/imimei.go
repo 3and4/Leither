@@ -12,6 +12,7 @@ import (
 type IMiMei interface {
 	IMDb
 	IMFile
+	IAppData //应用数据（Wave B appdata 开放下沉）
 
 	// MMCreate 创建新的弥媒对象
 	// 参数: sid-会话ID, appid-应用ID, ext-扩展标识, mark-标记字符串, tp-弥媒类型, right-权限位掩码

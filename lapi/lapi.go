@@ -14,6 +14,8 @@ type LApi interface {
 	IVarAct //封装了大批Api，GetVar是获取系统变量, Act一类是执行一个动作，这个动作有需求但还没有到需要单独封装为Api的程度。
 	IMiMei  //弥媒，封装了文件和数据库操作
 	INet    //网络，封装了所有的网络相关操作
+	IMsg    //消息（Wave B 开放）
+	IStat   //状态查询（Wave B 开放）
 }
 
 // 跨节点获取的api,通过rpc方式获取生成

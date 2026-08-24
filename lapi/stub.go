@@ -11,6 +11,38 @@ type LApiStub struct {
 	VarActStub
 	MiMeiStub
 	NetStub
+	MsgStub  // Wave B msg：自 api.MsgStub 开放下沉
+	StatStub // Wave B stat：自 api.StatStub 开放下沉
+}
+
+// MsgStub 消息接口（Wave B msg：自 api.MsgStub 开放下沉）
+type MsgStub struct {
+	// SendMsg 消息发送
+	// 参数：发送者ID，from；接收者ID：to；appID:消息所属应用ID；msg:消息文本内容；
+	//		data:消息对象内容；ppt:消息的校验信息
+	// 返回值：正常则为空，出错则返回错误信息
+	SendMsg func(sid string, msg *Message) error
+	// ReadMsg 消息接收
+	// 返回值：消息数组；返回不为空就需要重新读数据
+	ReadMsg func(sid string) ([]*Message, error)
+	// PullMsg 拉取消息（阻塞至 timeout）
+	PullMsg func(sid string, timeout int) (*Message, error)
+}
+
+// StatStub 状态查询（Wave B stat：自 api.StatStub 开放下沉）
+type StatStub struct {
+	GetUserMids  func(sid, uid string, start int64, count int) ([]ScorePair, error)
+	GetMiMeiStat func(sid, mid string) (stats MiMeiStats, err error)
+}
+
+// AppDataStub 应用数据操作（Wave B appdata：自 api.AppDataStub 开放下沉）
+type AppDataStub struct {
+	MMGetAppDataID    func(sid, aid, tp, owner, mark string, check bool) (appdataid string, err error)
+	MMCreateAppData   func(sid, aid, tp, defOwner, mark string, right uint64) (did string, err error)
+	MMOpenAppData     func(sid, aid, tp, owner, ver, mark string) (mmsid string, err error)
+	MMOpenAppDataApp  func(sid, aid, ver, mark string) (mmsid string, err error)
+	MMOpenAppDataNode func(sid, aid, ver, mark string) (mmsid string, err error)
+	MMOpenAppDataUser func(sid, aid, owner, ver, mark string) (mmsid string, err error)
 }
 
 // MiMeiRefs 表示弥媒引用关系，键为版本号，值为文件ID到引用计数的映射
@@ -96,6 +128,9 @@ type MiMeiStub struct {
 	// 参数: sid-会话ID, mid-弥媒ID, ver-版本号, tp-摘要类型
 	// 返回值: 摘要字符串
 	MMSum func(sid, mid, ver, tp string) (string, error) //
+
+	// Wave B appdata：自 api.AppDataStub 开放下沉（置于末尾保持既有位置字面量兼容）
+	AppDataStub
 }
 
 // NOTE:这个sid是有有效期的
@@ -251,6 +286,29 @@ type IVarAct interface {
 // INetStub 接口定义了网络相关的操作方法
 type INet interface {
 	IFilesStub
+}
+
+// IMsg 消息接口（Wave B msg：自 api.IMsg 开放下沉）
+type IMsg interface {
+	SendMsg(sid string, msg *Message) error
+	ReadMsg(sid string) ([]*Message, error)
+	PullMsg(sid string, timeout int) (*Message, error)
+}
+
+// IStat 状态查询接口（Wave B stat：自 api.IStat 开放下沉）
+type IStat interface {
+	GetUserMids(sid, uid string, start int64, count int) ([]ScorePair, error)
+	GetMiMeiStat(sid, mid string) (stats MiMeiStats, err error)
+}
+
+// IAppData 应用数据接口（Wave B appdata：自 api.IAppData 开放下沉）
+type IAppData interface {
+	MMGetAppDataID(sid, aid, tp, owner, mark string, check bool) (appdataid string, err error)
+	MMCreateAppData(sid, aid, tp, defOwner, mark string, right uint64) (did string, err error)
+	MMOpenAppData(sid, aid, tp, owner, ver, mark string) (mmsid string, err error)
+	MMOpenAppDataApp(sid, aid, ver, mark string) (mmsid string, err error)
+	MMOpenAppDataNode(sid, aid, ver, mark string) (mmsid string, err error)
+	MMOpenAppDataUser(sid, aid, owner, ver, mark string) (mmsid string, err error)
 }
 
 type IFilesStub interface {
