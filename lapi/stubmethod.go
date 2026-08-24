@@ -15,6 +15,43 @@ func (s *LApiStub) Logout(sid, info string) error {
 	return nil
 }
 
+// —— Wave B auth2：自 api.AuthStub2 开放下沉的方法实现 ——
+
+func (s *LApiStub) SetUserInfo(sid string, param map[string]string) error {
+	if s.AuthStub.SetUserInfo != nil {
+		return s.AuthStub.SetUserInfo(sid, param)
+	}
+	return nil
+}
+
+func (s *LApiStub) SignPPT(sid string, info map[string]string, period int) (string, error) {
+	if s.AuthStub.SignPPT != nil {
+		return s.AuthStub.SignPPT(sid, info, period)
+	}
+	return "", nil
+}
+
+func (s *LApiStub) Sign(sid string, message []byte) (sig []byte, err error) {
+	if s.AuthStub.Sign != nil {
+		return s.AuthStub.Sign(sid, message)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) PPTStr2Map(strPPT string) (map[string]string, error) {
+	if s.AuthStub.PPTStr2Map != nil {
+		return s.AuthStub.PPTStr2Map(strPPT)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) SignInfo2Map(strInfo string) (map[string]string, error) {
+	if s.AuthStub.SignInfo2Map != nil {
+		return s.AuthStub.SignInfo2Map(strInfo)
+	}
+	return nil, nil
+}
+
 // 在LApiStub上实现IVarAct接口方法
 func (s *LApiStub) GetVar(sid, name string, args ...string) (any, error) {
 	if s.VarActStub.GetVar != nil {
