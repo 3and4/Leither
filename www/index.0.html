@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <meta name="description" content="vzhan — 给 Agent 一个数据和应用容器。去中心化 P2P 网络，应用和数据可在容器间流动。本网站由 Agent 设计、开发，部署于容器，并持续维护。">
+    <meta property="og:title" content="vzhan — 给 Agent 一个数据和应用容器">
+    <meta property="og:description" content="容器互通互联，构造出一个去中心化的网络。应用和数据可在容器间流动，互相协作出复杂的群体应用。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vzhan.cn/">
+    <meta name="twitter:card" content="summary">
+    <title>vzhan — 给 Agent 一个数据和应用容器</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── 演示走廊 ── */
+
+        .corridor {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 2rem clamp(48px, 6vw, 80px);
+        }
+
+        /* ── 区段过渡：全宽渐变线 ── */
+        .corridor::before {
+            content: '';
+            display: block;
+            width: 100vw;
+            height: 1px;
+            margin: 0 calc(-50vw + 50%) clamp(32px, 4vw, 44px);
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(37, 99, 235, 0.05) 15%,
+                rgba(37, 99, 235, 0.14) 35%,
+                rgba(37, 99, 235, 0.14) 65%,
+                rgba(37, 99, 235, 0.05) 85%,
+                transparent 100%
+            );
+        }
+
+        /* ── 步骤卡片 ── */
+        .corridor-step {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 28px 32px;
+            margin-bottom: 36px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.04);
+            transition: box-shadow 0.25s ease;
+        }
+        .corridor-step:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .corridor-step:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── 步号内联标 ── */
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            margin-right: 10px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 700;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+        }
+        .step-heading {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        .step-body {
+            font-size: 1.05rem;
+            color: #6b7280;
+            line-height: 1.8;
+        }
+
+        /* ── 代码块 ── */
+        .cmd-block {
+            margin-top: 16px;
+            background: #1a1a2e;
+            border-radius: 8px;
+            padding: 18px 22px;
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .cmd-block code {
+            font-family: 'SF Mono','Fira Code','Cascadia Code','Consolas',monospace;
+            font-size: 0.92rem;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+        .cmd-output {
+            color: #8b949e;
+        }
+
+        /* ── Prompt 框下方衔接文字 ── */
+        .step-expect {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin: 18px 0 0;
+        }
+
+        /* ── 自指证明 ── */
+        .corridor-proof {
+            text-align: center;
+            margin-top: 56px;
+            font-size: 0.95rem;
+            color: #9ca3af;
+            padding: 24px 0 0;
+        }
+        .corridor-proof::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            margin: 0 auto 20px;
+            background: linear-gradient(90deg, transparent, #d1d5db, transparent);
+            border-radius: 1px;
+        }
+
+        /* ── CTA ── */
+        .corridor-cta {
+            text-align: center;
+            margin-top: 36px;
+        }
+
+        /* ── 响应式 ── */
+        @media (max-width: 768px) {
+            .corridor {
+                padding: 0 1.25rem 40px;
+            }
+            .corridor::before {
+                margin-bottom: 28px;
+            }
+            .corridor-step {
+                padding: 18px 16px;
+                margin-bottom: 24px;
+                border-radius: 8px;
+            }
+            .step-heading {
+                font-size: 1.15rem;
+            }
+            .step-body {
+                font-size: 1rem;
+            }
+            .cmd-block {
+                padding: 14px 16px;
+            }
+            .cmd-block code {
+                font-size: 0.85rem;
+            }
+            .corridor-proof {
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#" class="logo-link">vzhan</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="capabilities.html" class="nav-link">能力</a>
+                </li>
+                <li class="nav-item">
+                    <a href="doc.html" class="nav-link">文档</a>
+                </li>
+                <li class="nav-item">
+                    <a href="start.html" class="nav-link">安装</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ====== 上半页：核心定义 ====== -->
+    <main class="main-content">
+        <div class="hero-section">
+            <div class="hero-container">
+                <h1 class="hero-title">vzhan</h1>
+
+                <h2 class="hero-slogan">给 Agent 一个数据和应用容器</h2>
+
+                <p class="hero-description">
+                    容器互通互联，构造出一个去中心化的网络。<br>
+                    应用和数据可以在容器间流动，互相协作出复杂的群体应用。
+                </p>
+            </div>
+        </div>
+
+        <!-- ====== 下半页：演示走廊 ====== -->
+        <div class="corridor">
+
+            <!-- Step 1: 获得容器（Agent Prompt） -->
+            <div class="corridor-step">
+                <h2 class="step-heading"><span class="step-num">1</span>获得容器</h2>
+                <p class="step-body">
+                    复制下面这段话，发给 AI Agent（Hermes、OpenClaw、Claude Code 等）。<br>
+                    Agent 会自动完成安装、阅读文档、生成 Skill——之后用自然语言就能操控容器。
+                </p>
+                <div class="step-prompt-box">
+                    <button class="step-copy-btn" aria-label="复制">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <pre class="step-prompt-text">帮我在当前机器上安装 vzhan 去中心化容器。
+
+1. 执行安装：
+   curl -fsSL http://vzhan.cn/install.sh | bash
+2. 启动节点：
+   ./Leither run -d
+3. 验证：
+   curl http://127.0.0.1:4800/getvar?name=ver
+   返回版本号即安装成功
+
+4. 阅读文档并生成 Skill：
+   - 访问 http://vzhan.cn/doc.html 了解 CLI 操作
+   - 访问 http://vzhan.cn/start.html 了解完整部署流程
+   - 将文档内容转化为你的 Skill，之后我用自然语言操作容器
+
+完成后告诉我。</pre>
+                </div>
+            </div>
+
+            <!-- Step 2: 探索能力 -->
+            <div class="corridor-step">
+                <h2 class="step-heading"><span class="step-num">2</span>探索能力</h2>
+                <p class="step-body">
+                    Agent 已拥有 Skill。先不急着操作——让 Agent 展示容器的能力全景。<br>
+                    复制下面的话发给 Agent，它会列出所有可用的能力分类和关键命令。
+                </p>
+                <div class="step-prompt-box">
+                    <button class="step-copy-btn" aria-label="复制">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <pre class="step-prompt-text">列出 vzhan 容器的全部能力——按分类展示关键命令，不需要执行。</pre>
+                </div>
+                <p class="step-expect">Agent 会整理出类似以下的能力全景：</p>
+                <div class="cmd-block">
+                    <code>【网络】</code><br>
+                    <code class="cmd-output">swarm peers     — 查看已连接的对等节点</code><br>
+                    <code class="cmd-output">swarm connect   — 连接指定节点</code><br>
+                    <code class="cmd-output">swarm addrs     — 列出已知节点地址</code><br>
+                    <br>
+                    <code>【文件】</code><br>
+                    <code class="cmd-output">files ls        — 浏览文件系统</code><br>
+                    <code class="cmd-output">files stat      — 查看文件详细信息</code><br>
+                    <code class="cmd-output">files cp        — 复制文件</code><br>
+                    <br>
+                    <code>【应用】</code><br>
+                    <code class="cmd-output">lapp showapp    — 列出可用应用</code><br>
+                    <code class="cmd-output">lapp uploadapp  — 上传新应用</code><br>
+                    <code class="cmd-output">lpki runapp     — 执行应用</code><br>
+                    <br>
+                    <code>【身份】</code><br>
+                    <code class="cmd-output">lpki genkey     — 生成密钥对</code><br>
+                    <code class="cmd-output">lpki gencert    — 签发证书</code><br>
+                    <br>
+                    <code>【诊断】</code><br>
+                    <code class="cmd-output">mimei diagnose  — MiMei 数据健康检查</code><br>
+                    <code class="cmd-output">getvar          — 查询节点运行状态</code>
+                </div>
+            </div>
+
+            <!-- Step 3: 应用执行 + 自指证明 -->
+            <div class="corridor-step">
+                <h2 class="step-heading"><span class="step-num">3</span>应用执行</h2>
+                <p class="step-body">
+                    了解了能力全景，现在亲自体验。<br>
+                    复制下面的话发给 Agent，让它同步网站 MApp 到本地运行——<br>
+                    这个网站本身就是容器内的一个 MApp，Agent 同步后即可本地运行，形成自指证明闭环。
+                </p>
+                <div class="step-prompt-box">
+                    <button class="step-copy-btn" aria-label="复制">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <pre class="step-prompt-text">将 vzhan 官网的 MApp 同步安装到我的容器，运行并核查结果。</pre>
+                </div>
+                <p class="step-expect">Agent 会执行类似以下操作：</p>
+                <div class="cmd-block">
+                    <code>Leither lapp showapp</code><br>
+                    <code class="cmd-output">Author: Nsduu_BPm...  AppName: mExplorer     Ver: 35</code><br>
+                    <code class="cmd-output">Author: h7Nkwe4r...  AppName: helloworld    Ver: 21</code><br>
+                    <code class="cmd-output">Author: 9I6JPEqs...  AppName: tzprobe       Ver: 9</code><br>
+                    <code class="cmd-output">... 18 apps total</code><br>
+                    <br>
+                    <code>Leither mimei sync &lt;mid&gt;</code><br>
+                    <code class="cmd-output"># MApp 即 MiMei，通过 mimei sync 从 P2P 网络同步到本地</code><br>
+                    <br>
+                    <code>curl http://127.0.0.1:4800/entry?aid=&lt;id&gt;&amp;ver=cur</code><br>
+                    <code class="cmd-output"># MApp 在容器内执行并返回结果</code>
+                </div>
+            </div>
+
+            <!-- 自指证明 -->
+            <div class="corridor-proof">
+                <p>本网站由 Agent 设计、开发，部署于容器，并持续维护。</p>
+            </div>
+
+            <!-- CTA -->
+            <div class="corridor-cta">
+                <a href="start.html" class="btn btn-primary">查看完整部署文档 →</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 vzhan · Powered by Leither</p>
+        </div>
+    </footer>
+
+    <!-- 复制按钮（class-based，覆盖全部三步） -->
+    <script>
+        (function () {
+            'use strict';
+            var copyIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+            var checkIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+
+            document.querySelectorAll('.step-copy-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var box = btn.closest('.step-prompt-box');
+                    var pre = box ? box.querySelector('.step-prompt-text') : null;
+                    if (!pre) return;
+                    var text = pre.textContent || pre.innerText || '';
+
+                    function done() {
+                        btn.classList.add('copied');
+                        btn.innerHTML = checkIcon;
+                        setTimeout(function () {
+                            btn.classList.remove('copied');
+                            btn.innerHTML = copyIcon;
+                        }, 2000);
+                    }
+
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(done).catch(function () {
+                            fallback(text);
+                        });
+                    } else {
+                        fallback(text);
+                    }
+
+                    function fallback(t) {
+                        var ta = document.createElement('textarea');
+                        ta.value = t;
+                        ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px';
+                        document.body.appendChild(ta);
+                        ta.focus();
+                        ta.select();
+                        try { document.execCommand('copy'); done(); } catch (e) {}
+                        document.body.removeChild(ta);
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
