@@ -135,6 +135,177 @@ func (s *LApiStub) MMOpenAppDataUser(sid, aid, owner, ver, mark string) (mmsid s
 	return "", nil
 }
 
+// —— Wave B net_dns：自 api.DNSStub 开放下沉的方法实现 ——
+
+func (s *LApiStub) SetDomain(sid, domain string, info map[string]string) error {
+	if s.NetStub.DNSStub.SetDomain != nil {
+		return s.NetStub.DNSStub.SetDomain(sid, domain, info)
+	}
+	return nil
+}
+
+func (s *LApiStub) DelDomain(sid, domain string) error {
+	if s.NetStub.DNSStub.DelDomain != nil {
+		return s.NetStub.DNSStub.DelDomain(sid, domain)
+	}
+	return nil
+}
+
+func (s *LApiStub) ShowDomain(sid string) ([]string, error) {
+	if s.NetStub.DNSStub.ShowDomain != nil {
+		return s.NetStub.DNSStub.ShowDomain(sid)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) SetRoute(sid, path, target string) error {
+	if s.NetStub.DNSStub.SetRoute != nil {
+		return s.NetStub.DNSStub.SetRoute(sid, path, target)
+	}
+	return nil
+}
+
+func (s *LApiStub) DelRoute(sid, path string) error {
+	if s.NetStub.DNSStub.DelRoute != nil {
+		return s.NetStub.DNSStub.DelRoute(sid, path)
+	}
+	return nil
+}
+
+func (s *LApiStub) ShowRoute(sid string) (map[string]string, error) {
+	if s.NetStub.DNSStub.ShowRoute != nil {
+		return s.NetStub.DNSStub.ShowRoute(sid)
+	}
+	return nil, nil
+}
+
+// —— Wave B net_swarm：只读 4 方法（写操作不开放）——
+
+func (s *LApiStub) SwarmAddrs(sid string, pids ...string) (map[string][]string, error) {
+	if s.NetStub.SwarmStub.SwarmAddrs != nil {
+		return s.NetStub.SwarmStub.SwarmAddrs(sid, pids...)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) SwarmLocal(sid string) ([]string, error) {
+	if s.NetStub.SwarmStub.SwarmLocal != nil {
+		return s.NetStub.SwarmStub.SwarmLocal(sid)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) SwarmListen(sid string) ([]string, error) {
+	if s.NetStub.SwarmStub.SwarmListen != nil {
+		return s.NetStub.SwarmStub.SwarmListen(sid)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) SwarmPeers(sid string) ([]string, error) {
+	if s.NetStub.SwarmStub.SwarmPeers != nil {
+		return s.NetStub.SwarmStub.SwarmPeers(sid)
+	}
+	return nil, nil
+}
+
+// —— Swarm 写操作：仅供节点侧接口（api.ISwarm）使用，lapi.INet 不含，不对 MApp 开放 ——
+
+func (s *LApiStub) SwarmConnect(sid, addr string) error {
+	if s.NetStub.SwarmStub.SwarmConnect != nil {
+		return s.NetStub.SwarmStub.SwarmConnect(sid, addr)
+	}
+	return nil
+}
+
+func (s *LApiStub) SwarmDisconnect(sid, addr string) error {
+	if s.NetStub.SwarmStub.SwarmDisconnect != nil {
+		return s.NetStub.SwarmStub.SwarmDisconnect(sid, addr)
+	}
+	return nil
+}
+
+func (s *LApiStub) FiltersAdd(sid string, cidrs []string) error {
+	if s.NetStub.SwarmStub.FiltersAdd != nil {
+		return s.NetStub.SwarmStub.FiltersAdd(sid, cidrs)
+	}
+	return nil
+}
+
+func (s *LApiStub) FiltersRm(sid string, cidrs []string) error {
+	if s.NetStub.SwarmStub.FiltersRm != nil {
+		return s.NetStub.SwarmStub.FiltersRm(sid, cidrs)
+	}
+	return nil
+}
+
+// —— Wave B net_ipfs：IpfsNode/Dag/IpfsAdd ——
+
+func (s *LApiStub) INOpen(sid, ps string, level int) ([]byte, error) {
+	if s.NetStub.IpfsNodeStub.INOpen != nil {
+		return s.NetStub.IpfsNodeStub.INOpen(sid, ps, level)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) INGetData(sid, ps string, start int64, count int) ([]byte, error) {
+	if s.NetStub.IpfsNodeStub.INGetData != nil {
+		return s.NetStub.IpfsNodeStub.INGetData(sid, ps, start, count)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) DagGet(sid, ps string) (DagNodeData, error) {
+	if s.NetStub.DagStub.DagGet != nil {
+		return s.NetStub.DagStub.DagGet(sid, ps)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) DagStat(sid, ps string) (*DagStats, error) {
+	if s.NetStub.DagStub.DagStat != nil {
+		return s.NetStub.DagStub.DagStat(sid, ps)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) IpfsAdd(sid, ps string) (string, error) {
+	if s.NetStub.IpfsAdd != nil {
+		return s.NetStub.IpfsAdd(sid, ps)
+	}
+	return "", nil
+}
+
+// —— Wave B mimei_cmd 本地语义部分 ——
+
+func (s *LApiStub) MiMeiIsProvider(sid, mid string) (bool, error) {
+	if s.MiMeiStub.MiMeiIsProvider != nil {
+		return s.MiMeiStub.MiMeiIsProvider(sid, mid)
+	}
+	return false, nil
+}
+
+func (s *LApiStub) MFLs(sid, ps string) ([]LsLink, error) {
+	if s.MiMeiStub.MFLs != nil {
+		return s.MiMeiStub.MFLs(sid, ps)
+	}
+	return nil, nil
+}
+
+func (s *LApiStub) MFCopy(sid, src, dst string, bFlush, bForce bool) error {
+	if s.MiMeiStub.MFCopy != nil {
+		return s.MiMeiStub.MFCopy(sid, src, dst, bFlush, bForce)
+	}
+	return nil
+}
+
+func (s *LApiStub) MFMkdir(sid, ps string, flush bool) error {
+	if s.MiMeiStub.MFMkdir != nil {
+		return s.MiMeiStub.MFMkdir(sid, ps, flush)
+	}
+	return nil
+}
+
 // 在LApiStub上实现IVarAct接口方法
 func (s *LApiStub) GetVar(sid, name string, args ...string) (any, error) {
 	if s.VarActStub.GetVar != nil {

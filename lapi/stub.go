@@ -131,6 +131,13 @@ type MiMeiStub struct {
 
 	// Wave B appdata：自 api.AppDataStub 开放下沉（置于末尾保持既有位置字面量兼容）
 	AppDataStub
+
+	// Wave B mimei_cmd 本地语义接口下沉（原 api.MiMeiCmdStub 中的本地部分；
+	// 网络部分 Publish/Provide/FindProvs/Show/Sync 依赖 DHT，仍不开放）
+	MiMeiIsProvider func(sid, mid string) (bool, error)
+	MFLs            func(sid, ps string) ([]LsLink, error)
+	MFCopy          func(sid, src, dst string, bFlush, bForce bool) error
+	MFMkdir         func(sid, ps string, flush bool) error
 }
 
 // NOTE:这个sid是有有效期的
@@ -246,6 +253,47 @@ func (link *StatInfo) IsDir() bool {
 
 type NetStub struct {
 	FilesStub
+	// —— Wave B 批次 3：自 api.NetStub2/IpfsStub 开放下沉（评审通过部分）——
+	DNSStub       //域名与路由（net_dns）
+	SwarmStub     //节点网络（字段全量下沉；接口仅开放只读 4 方法）
+	IpfsNodeStub  //IPFS 节点数据读取（net_ipfs）
+	DagStub       //DAG 查询（net_ipfs）
+	IpfsAdd func(sid, ps string) (string, error)
+}
+
+// DNSStub 域名与路由配置（Wave B net_dns：自 api.DNSStub 开放下沉）
+type DNSStub struct {
+	SetDomain  func(sid, domain string, info map[string]string) error
+	DelDomain  func(sid, domain string) error
+	ShowDomain func(sid string) ([]string, error)
+	SetRoute   func(sid, path, target string) error
+	DelRoute   func(sid, path string) error
+	ShowRoute  func(sid string) (map[string]string, error)
+}
+
+// SwarmStub 节点网络操作（Wave B net_swarm：整体下沉；lapi.INet 接口仅开放只读 4 方法，
+// Connect/Disconnect/Filters* 仍不对 MApp 开放）
+type SwarmStub struct {
+	SwarmAddrs      func(sid string, pids ...string) (map[string][]string, error)
+	SwarmLocal      func(sid string) ([]string, error)
+	SwarmListen     func(sid string) ([]string, error)
+	SwarmPeers      func(sid string) ([]string, error)
+	SwarmConnect    func(sid, addr string) error
+	SwarmDisconnect func(sid, addr string) error
+	FiltersAdd      func(sid string, cidrs []string) error
+	FiltersRm       func(sid string, cidrs []string) error
+}
+
+// IpfsNodeStub IPFS 节点数据读取（Wave B net_ipfs：自 api.IpfsNodeStub 开放下沉）
+type IpfsNodeStub struct {
+	INOpen    func(sid, ps string, level int) ([]byte, error)
+	INGetData func(sid, ps string, start int64, count int) ([]byte, error)
+}
+
+// DagStub DAG 查询（Wave B net_ipfs：自 api.DagStub 开放下沉）
+type DagStub struct {
+	DagGet  func(sid, ps string) (DagNodeData, error)
+	DagStat func(sid, ps string) (*DagStats, error)
 }
 
 type FilesStub struct {
@@ -286,6 +334,43 @@ type IVarAct interface {
 // INetStub 接口定义了网络相关的操作方法
 type INet interface {
 	IFilesStub
+	IDNS      //域名与路由（Wave B 开放）
+	ISwarm    //节点网络只读 4 方法（Wave B 开放；写操作不开放）
+	IIpfsNode //IPFS 节点数据读取（Wave B 开放）
+	IDag      //DAG 查询（Wave B 开放）
+	// IpfsAdd 添加本地文件到 IPFS（Wave B 开放）
+	IpfsAdd(sid, ps string) (string, error)
+}
+
+// IDNS 域名与路由配置接口（Wave B net_dns：自 api.IDNS 开放下沉）
+type IDNS interface {
+	SetDomain(sid, domain string, info map[string]string) error
+	DelDomain(sid, domain string) error
+	ShowDomain(sid string) ([]string, error)
+	SetRoute(sid, path, target string) error
+	DelRoute(sid, path string) error
+	ShowRoute(sid string) (map[string]string, error)
+}
+
+// ISwarm 节点网络只读查询接口（Wave B net_swarm：仅开放只读方法，
+// Connect/Disconnect/Filters* 不对 MApp 开放）
+type ISwarm interface {
+	SwarmAddrs(sid string, pids ...string) (map[string][]string, error)
+	SwarmLocal(sid string) ([]string, error)
+	SwarmListen(sid string) ([]string, error)
+	SwarmPeers(sid string) ([]string, error)
+}
+
+// IIpfsNode IPFS 节点数据读取接口（Wave B net_ipfs：自 api.IIpfsNode 开放下沉）
+type IIpfsNode interface {
+	INOpen(sid, ps string, level int) ([]byte, error)
+	INGetData(sid, ps string, start int64, count int) ([]byte, error)
+}
+
+// IDag DAG 查询接口（Wave B net_ipfs：自 api.IDag 开放下沉）
+type IDag interface {
+	DagGet(sid, ps string) (DagNodeData, error)
+	DagStat(sid, ps string) (*DagStats, error)
 }
 
 // IMsg 消息接口（Wave B msg：自 api.IMsg 开放下沉）

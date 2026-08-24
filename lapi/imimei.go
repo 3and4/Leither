@@ -85,6 +85,20 @@ type IMiMei interface {
 	// 参数: sid-会话ID, mid-弥媒ID, ver-版本号, tp-摘要类型
 	// 返回值: 摘要字符串
 	MMSum(sid, mid, ver, tp string) (string, error)
+
+	// —— Wave B mimei_cmd 本地语义接口（自 api.IMiMeiCmd 下沉；网络部分仍不开放）——
+
+	// MiMeiIsProvider 检查当前节点是否是指定弥媒的提供者（本地查询，不走网络）
+	MiMeiIsProvider(sid, mid string) (bool, error)
+
+	// MFLs 查询弥媒文件系统目录（针对 ipfs 文件系统路径）
+	MFLs(sid, ps string) ([]LsLink, error)
+
+	// MFCopy 弥媒文件系统内复制
+	MFCopy(sid, src, dst string, bFlush, bForce bool) error
+
+	// MFMkdir 弥媒文件系统建目录
+	MFMkdir(sid, ps string, flush bool) error
 }
 
 type FVPair struct {
