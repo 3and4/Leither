@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leither - 开始使用</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 开始页面特定样式 */
+        .feature-section {
+            padding: 3rem 0;
+            background-color: #f9fafb;
+        }
+        
+        .feature-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .feature-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .content-section {
+            padding: 3rem 0;
+        }
+        
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .content-section h2 {
+            font-size: 2rem;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .content-section h3 {
+            font-size: 1.5rem;
+            color: #2563eb;
+            margin: 1.5rem 0 1rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .content-section ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .command-example {
+            background-color: #f3f4f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-title {
+                font-size: 2rem;
+            }
+            
+            .content-section h2 {
+                font-size: 1.75rem;
+            }
+            
+            .content-section h3 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">Leither</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">文档</a>
+                </li>
+                <li class="nav-item">
+                    <a href="start.html" class="nav-link active">开始</a>
+                </li>
+                <li class="nav-item">
+                    <a href="install.html" class="nav-link">安装</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 介绍部分 -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <h1 class="hero-title">开始使用 Leither</h1>
+                <p class="hero-description">
+                    Leither是一个数据和应用的容器系统，通过容器间的互通互联共同构建出一个去中心化的互联网，
+                    应用和数据可以在网络间流动，应用之间，容器之间，可以协作出复杂的生态应用。
+                </p>
+                <div class="hero-buttons">
+                    <a href="install.html" class="btn btn-primary">立即安装</a>
+                    <a href="#features" class="btn btn-secondary">了解特性</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 特性部分 -->
+        <section id="features" class="feature-section">
+            <div class="feature-container">
+                <h2 class="feature-title">系统特性</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>轻量级容器系统</h3>
+                        <p>系统目前大约20M，支持常见操作系统（Windows、Linux、Darwin等），可以运行在服务器、PC、手机、NAS、路由等常见的设备上。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>功能完备</h3>
+                        <p>系统实现了认证体系、应用体系、文件和数据库系统，域名和网络系统。提供200多个API接口，可以实现常见的互联网应用。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>多种交互</h3>
+                        <p>容器内可以运行Go/XGo、JS、Lua等语言，也可以使用RPC方式开发传统应用，支持常见四十种语言，还可以使用命令行浏览器等方式访问容器。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>弥媒系统</h3>
+                        <p>参考基因和弥因，系统增加了核心模块弥媒。弥媒是最基本的数据和应用单元，每个弥媒都包含了一个文件系统或数据库，可以在容器间流转。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>AI赋能</h3>
+                        <p>把容器作为工作台提供给大模型，然后指定大模型的工作内容。在这种情况下，大模型是你的员工，所有的工作内容和成果都代表你的意志。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>去中心化网络</h3>
+                        <p>用户可以构建或加入一个去中心化的网络，可以从网络中获取或发布应用服务和信息。整个网络的特点是：用户构建、用户控制、用户享有。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 功能体验部分 -->
+        <section class="content-section">
+            <div class="content-container">
+                <h2>功能体验</h2>
+                <p>可以通过命令行、浏览器、API开发应用等多种方式体验功能。以下是一些基本功能的命令行示例：</p>
+                
+                <h3>网络功能</h3>
+                <p>节点启动之后，通过引导节点进入网络。显示本节点ID：</p>
+                <div class="command-example">
+                    ./Leither swarm id
+                </div>
+                <p>显示本机地址：</p>
+                <div class="command-example">
+                    ./Leither swarm local
+                </div>
+                <p>显示附近的网络节点：</p>
+                <div class="command-example">
+                    ./Leither swarm addrs
+                </div>
+                
+                <h3>弥媒功能</h3>
+                <p>弥媒是一个信息容器，里面可以存放文件或数据库。生成一个弥媒：</p>
+                <div class="command-example">
+                    ./Leither mimei create
+                </div>
+                <p>填充文件到弥媒：</p>
+                <div class="command-example">
+                    ./Leither mimei add [弥媒ID] [文件路径]
+                </div>
+                <p>发布弥媒信息到网络：</p>
+                <div class="command-example">
+                    ./Leither mimei publish [弥媒ID]
+                </div>
+                
+                <h3>应用功能</h3>
+                <p>上传一个应用到容器：</p>
+                <div class="command-example">
+                    ./Leither lapp uploadapp -i [应用目录] -p [通行证] -n [节点地址]
+                </div>
+                <p>发布应用到网络：</p>
+                <div class="command-example">
+                    ./Leither mimei publish [应用ID] -p [通行证]
+                </div>
+            </div>
+        </section>
+        
+        <!-- 开始使用部分 -->
+        <section class="content-section">
+            <div class="content-container">
+                <h2>开始使用</h2>
+                <h3>下载安装</h3>
+                <p>支持bash的终端下可以直接执行以下脚本安装在当前目录:</p>
+                <div class="command-example">
+                    curl -fsSL http://vzhan.cn/install.sh | bash
+                </div>
+                
+                <h3>初始化</h3>
+                <p>第一次运行需要初始化：</p>
+                <div class="command-example">
+                    ./Leither init -p 4800 -b vzhan.cn
+                </div>
+                
+                <h3>启动服务</h3>
+                <p>后台服务方式启动：</p>
+                <div class="command-example">
+                    ./Leither run -d
+                </div>
+                
+                <div class="hero-buttons" style="margin-top: 2rem;">
+                    <a href="install.html" class="btn btn-primary">详细安装指南</a>
+                    <a href="#" class="btn btn-secondary">查看API文档</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Leither. 构建属于我们的去中心化生态。</p>
+        </div>
+    </footer>
+</body>
+</html>

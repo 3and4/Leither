@@ -1,0 +1,409 @@
+/* 重置和基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #1f2937;
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 导航栏样式 */
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo .logo-link {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-logo .logo-link:hover {
+    color: #1d4ed8;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #6b7280;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #2563eb;
+    background-color: #f3f4f6;
+}
+
+.nav-link.active {
+    color: #2563eb;
+    background-color: #eff6ff;
+}
+
+/* 主要内容区域 */
+.main-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.hero-section {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* 主标题样式 */
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Slogan样式 */
+.hero-slogan {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* 描述文字样式 */
+.hero-description {
+    font-size: 1.25rem;
+    color: #6b7280;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+/* 按钮容器 */
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+/* 按钮基础样式 */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* 主要按钮样式 */
+.btn-primary {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.4);
+    transform: translateY(-2px);
+}
+
+/* 次要按钮样式 */
+.btn-secondary {
+    background: transparent;
+    color: #2563eb;
+    border: 2px solid #2563eb;
+}
+
+.btn-secondary:hover {
+    background: #2563eb;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.3);
+}
+
+/* 页脚样式 */
+.footer {
+    background-color: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.footer p {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1rem;
+        height: 60px;
+    }
+    
+    .nav-menu {
+        gap: 1rem;
+    }
+    
+    .nav-link {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero-container {
+        padding: 2rem 1rem;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-slogan {
+        font-size: 1.5rem;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-menu {
+        gap: 0.5rem;
+    }
+    
+    .nav-link {
+        font-size: 0.8rem;
+        padding: 0.25rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-slogan {
+        font-size: 1.25rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+}
+
+/* 高级视觉效果 */
+.hero-section {
+    background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+}
+
+/* 按钮点击效果 */
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px 0 rgba(37, 99, 235, 0.2);
+}
+
+/* 导航链接活跃状态指示器 */
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background-color: #2563eb;
+    border-radius: 1px;
+}
+
+
+/* 安装页面样式 */
+.install-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.install-section {
+    margin-bottom: 3rem;
+}
+
+.install-section h2 {
+    font-size: 1.5rem;
+    color: #2563eb;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.code-block {
+    background-color: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+}
+
+.code-block pre {
+    font-family: 'Courier New', Courier, monospace;
+    color: #1f2937;
+    white-space: pre-wrap;
+}
+
+.download-link {
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 0.75rem 1.5rem;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.download-link:hover {
+    background-color: #1d4ed8;
+}
+
+
+/* 下载表格样式 */
+.download-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+}
+
+.download-table th, .download-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.download-table th {
+    background-color: #f3f4f6;
+    font-weight: 600;
+    color: #374151;
+}
+
+.download-table tr:hover {
+    background-color: #f9fafb;
+}
+
+.download-table a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.download-table a:hover {
+    text-decoration: underline;
+}

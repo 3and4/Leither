@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leither - 下载</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav li {
+            margin-right: 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="docs.html">文档</a></li>
+            <li><a href="example.html">示例</a></li>
+            <li><a href="dl.html">下载</a></li>
+        </ul>
+    </nav>
+    <main>
+        <p>应用的变动和程序在以下网址</p>
+        <p><a href="./Install.md">各版本的应用下载</a></p>
+        
+        <h1>快速安装</h1>
+        <p>支持bash的终端下可以直接执行以下脚本安装在当前目录:</p>
+        <pre><code>curl -fsSL http://vzhan.cn/install.sh | bash</code></pre>
+        
+        <h1>手动安装</h1>
+        <ol>
+            <li>下载程序到本地</li>
+            <li>把指定版本的程序改为Leither</li>
+            <li>设置运行权限: <code>chmod +x ./Leither</code></li>
+        </ol>
+        
+        <p>了解各文件细节参考<a href="./doc/Directory.md">系统目录结构</a></p>
+        
+        <h1>初始化</h1>
+        <p>第一次运行需要初始化:</p>
+        <pre><code>Leither init -p 4800 -b mimei.org</code></pre>
+        <p>参数说明:</p>
+        <ul>
+            <li>-p 指定端口(默认4800)</li>
+            <li>-b 指定网络入口(默认:mimei.org vzhan.cn)</li>
+        </ul>
+        <p>生成的信息保存在Systemvar.json中，可手工修改。</p>
+        
+        <h1>启动服务</h1>
+        <p>后台服务方式启动:</p>
+        <pre><code>./Leither run -d</code></pre>
+        
+        <h1关闭服务</h1>
+        <pre><code>./Leither stop</code></pre>
+    </main>
+</body>
+</html>

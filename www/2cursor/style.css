@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+    background: #f8f9fb;
+    color: #222;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 0 40px;
+    height: 64px;
+}
+
+.nav-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2d72d9;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #222;
+    font-size: 1.1rem;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.nav-links li a.active,
+.nav-links li a:hover {
+    color: #2d72d9;
+    border-bottom: 2px solid #2d72d9;
+}
+
+.main-content {
+    max-width: 800px;
+    margin: 60px auto 0 auto;
+    padding: 40px 24px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: #2d72d9;
+    letter-spacing: 4px;
+}
+
+.slogan {
+    font-size: 1.5rem;
+    color: #222;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.slogan-desc {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 32px;
+    line-height: 2;
+}
+
+.intro {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 36px;
+    text-align: left;
+    line-height: 2;
+}
+
+.main-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 24px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 36px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(45,114,217,0.08);
+}
+
+.btn-primary {
+    background: #2d72d9;
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #1856a6;
+}
+
+.btn-secondary {
+    background: #f3f6fa;
+    color: #2d72d9;
+    border: 1px solid #2d72d9;
+}
+
+.btn-secondary:hover {
+    background: #e6eef8;
+    color: #1856a6;
+    border-color: #1856a6;
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        padding: 20px 6px;
+    }
+    .main-title {
+        font-size: 2.2rem;
+    }
+    .navbar {
+        padding: 0 12px;
+    }
+    .nav-links {
+        gap: 16px;
+    }
+    .main-buttons {
+        flex-direction: column;
+        gap: 16px;
+    }
+} 
