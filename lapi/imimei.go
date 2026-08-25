@@ -92,6 +92,8 @@ type IMiMei interface {
 	MiMeiIsProvider(sid, mid string) (bool, error)
 
 	// MFLs 查询弥媒文件系统目录（针对 ipfs 文件系统路径）
+	// 注意（B18 契约）: 返回 LsLink.Type 为 unixfs 枚举——文件=2(TFile)/目录=1；
+	// 与 FilesLs（mfs 枚举：文件=0/目录=1）不一致，应用须按 API 分别处理。
 	MFLs(sid, ps string) ([]LsLink, error)
 
 	// MFCopy 弥媒文件系统内复制
@@ -290,6 +292,9 @@ type IMFile interface {
 	// MFGetObject 从文件中读取并反序列化对象
 	// 参数: fsid-文件会话ID
 	// 返回值: 反序列化后的对象
+	// 注意（B10 契约）: 返回 map 的键类型随执行模式变化——local（hprose RPC）为
+	// map[interface{}]interface{}，container（json /entry）为 map[string]interface{}；
+	// 应用必须做键类型归一（fmt.Sprint(key) 或显式转换），勿直接断言 map[string]any。
 	MFGetObject(fsid string) (any, error)
 
 	// MFSetData 在文件指定位置写入数据
