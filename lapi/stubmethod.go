@@ -306,6 +306,15 @@ func (s *LApiStub) MFMkdir(sid, ps string, flush bool) error {
 	return nil
 }
 
+// —— Wave B lapp：RunMApp 应用间调用 ——
+
+func (s *LApiStub) RunMApp(entry string, request map[string]string, args []any, opt ...string) (ret any, err error) {
+	if s.AppStub.RunMApp != nil {
+		return s.AppStub.RunMApp(entry, request, args, opt...)
+	}
+	return nil, nil
+}
+
 // 在LApiStub上实现IVarAct接口方法
 func (s *LApiStub) GetVar(sid, name string, args ...string) (any, error) {
 	if s.VarActStub.GetVar != nil {

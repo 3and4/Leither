@@ -16,6 +16,7 @@ type LApi interface {
 	INet    //网络，封装了所有的网络相关操作
 	IMsg    //消息（Wave B 开放）
 	IStat   //状态查询（Wave B 开放）
+	ILApp   //应用调用 RunMApp（Wave B 开放）
 }
 
 // 跨节点获取的api,通过rpc方式获取生成

@@ -92,12 +92,9 @@ type App struct {
 	Last    string //last ver
 }
 
+// ILApp 应用调用接口（Wave B lapp：仅开放 RunMApp 应用间组合；
+// UploadApp/UploadAppfile/UninstallApp 供应链写操作评审不开放，保留在 api.ILApp 节点侧）
 type ILApp interface {
-	UploadApp(sid, fileid, tp string) (*App, error)
-	UploadAppfile(sid, AppName string, filename, fileid string) error
-	UninstallApp(sid, AppName string) error
-	//RunScript参数有冲突，暂时屏蔽，后续调整
-	//RunScript     (ext, script string, request map[string]string, args []any) (ret any, err error)
 	RunMApp(entry string, request map[string]string, args []any, opt ...string) (ret any, err error)
 }
 type ScriptInfo struct {

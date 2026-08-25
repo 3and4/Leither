@@ -13,6 +13,14 @@ type LApiStub struct {
 	NetStub
 	MsgStub  // Wave B msg：自 api.MsgStub 开放下沉
 	StatStub // Wave B stat：自 api.StatStub 开放下沉
+	AppStub  // Wave B lapp：仅 RunMApp 开放下沉
+}
+
+// AppStub 应用操作（Wave B lapp：仅开放 RunMApp 应用间调用；
+// UploadApp/UploadAppfile/UninstallApp 供应链写操作、RunScript 任意脚本执行，评审不开放）
+type AppStub struct {
+	// RunMApp 调用应用的指定入口（app 由运行上下文决定）
+	RunMApp func(entry string, request map[string]string, args []any, opt ...string) (ret any, err error)
 }
 
 // MsgStub 消息接口（Wave B msg：自 api.MsgStub 开放下沉）
@@ -395,6 +403,9 @@ type IAppData interface {
 	MMOpenAppDataNode(sid, aid, ver, mark string) (mmsid string, err error)
 	MMOpenAppDataUser(sid, aid, owner, ver, mark string) (mmsid string, err error)
 }
+
+// ILApp 应用调用接口：见 lapi2.go（Wave B 起仅开放 RunMApp；
+// UploadApp/UploadAppfile/UninstallApp 供应链写操作评审不开放，保留在 api.ILApp）
 
 type IFilesStub interface {
 	FilesCopy(sid, src, dst string, flush bool) error
