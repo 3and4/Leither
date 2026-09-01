@@ -144,7 +144,7 @@ type IBEAppData interface {
 
 	// BESignPPT 签名PPT文档
 	// info: 签名信息
-	// period: 有效期（小时）
+	// period: 有效期（分钟，T1 F2 全表面统一）
 	// 返回: 签名的PPT字符串
 	BESignPPT(info map[string]string, period int) (string, error)
 
