@@ -128,6 +128,9 @@ func (s *BackEndStub) BEMMSync(strdhts string, mid string, param map[string]stri
 }
 
 // BELoginAsAuthor 以作者身份登录
+// Deprecated: 2026-09-03 冻结（冻而不废）：对外不再演进、禁止新增依赖；
+// 接口接线不变、零行为变更，删除走观测驱动，见 docs/KEY_AUTH_MECHANISM_AUDIT.md §2 F4 与
+// planning-artifacts/milestone-2026-09/T1/f4-belogin-author-freeze-2026-09-02.md。
 func (s *BackEndStub) BELoginAsAuthor() (sid string, err error) {
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BELoginAsAuthor != nil {
 		return s.BEAppDataStub.BELoginAsAuthor()
@@ -199,6 +202,10 @@ BELoginAsAuthor()(sid string, err error)
 返回值:
 
 	Sessionid，可用于所有需要会话id的api，执行的时候代表作者身份
+
+【冻结标记 2026-09-03】DEPRECATED（冻而不废）：对外不再演进、禁止新增依赖；
+删除走观测驱动，见 docs/KEY_AUTH_MECHANISM_AUDIT.md §2 F4 与
+planning-artifacts/milestone-2026-09/T1/f4-belogin-author-freeze-2026-09-02.md。
 */
 type BEAppDataStub struct {
 	BEOpenAppDataNode func(string, string) (mmsid string, err error)
@@ -207,6 +214,9 @@ type BEAppDataStub struct {
 	BELoginAsApp      func() (sid string, err error)
 	BESignPPT         func(info map[string]string, period int) (string, error)
 	BESign            func(info map[string]string) (string, error)
+	// Deprecated: 2026-09-03 冻结（冻而不废）：对外不再演进、禁止新增依赖；
+	// 删除走观测驱动，见 docs/KEY_AUTH_MECHANISM_AUDIT.md §2 F4 与
+	// planning-artifacts/milestone-2026-09/T1/f4-belogin-author-freeze-2026-09-02.md。
 	BELoginAsAuthor   func() (sid string, err error)
 }
 

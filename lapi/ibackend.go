@@ -113,6 +113,10 @@ BELoginAsAuthor()(sid string, err error)
 返回值:
 
 	Sessionid，可用于所有需要会话id的api，执行的时候代表作者身份
+
+【冻结标记 2026-09-03】DEPRECATED（冻而不废）：对外不再演进、禁止新增依赖；
+删除走观测驱动，见 docs/KEY_AUTH_MECHANISM_AUDIT.md §2 F4 与
+planning-artifacts/milestone-2026-09/T1/f4-belogin-author-freeze-2026-09-02.md。
 */
 
 type IBEAppData interface {
@@ -155,6 +159,10 @@ type IBEAppData interface {
 
 	// BELoginAsAuthor 以作者身份登录
 	// 返回会话ID，可用于需要会话的API操作
+	// Deprecated: 2026-09-03 冻结（冻而不废）：对外不再演进、禁止新增依赖；
+	// 接口接线不变、零行为变更，删除走观测驱动（节点侧调用日志打点确认无外部调用后废弃），
+	// 见 docs/KEY_AUTH_MECHANISM_AUDIT.md §2 F4 与
+	// planning-artifacts/milestone-2026-09/T1/f4-belogin-author-freeze-2026-09-02.md。
 	BELoginAsAuthor() (sid string, err error)
 }
 
