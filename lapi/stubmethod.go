@@ -24,18 +24,20 @@ func (s *LApiStub) SetUserInfo(sid string, param map[string]string) error {
 	return nil
 }
 
-func (s *LApiStub) SignPPT(sid string, info map[string]string, period int) (string, error) {
+func (s *LApiStub) SignPPT(sid string, req *SignPPTRequest) (string, error) {
 	if s.AuthStub.SignPPT != nil {
-		return s.AuthStub.SignPPT(sid, info, period)
+		return s.AuthStub.SignPPT(sid, req)
 	}
-	return "", nil
+	// Y1 修复（F4b）：nil 函数字段不再静默假成功，对齐 BE 面 errUnwired 先例
+	return "", errUnwired("SignPPT")
 }
 
-func (s *LApiStub) Sign(sid string, message []byte) (sig []byte, err error) {
+func (s *LApiStub) Sign(sid string, req *SignRequest) (sig []byte, err error) {
 	if s.AuthStub.Sign != nil {
-		return s.AuthStub.Sign(sid, message)
+		return s.AuthStub.Sign(sid, req)
 	}
-	return nil, nil
+	// Y1 修复（F4b）：同上
+	return nil, errUnwired("Sign")
 }
 
 func (s *LApiStub) PPTStr2Map(strPPT string) (map[string]string, error) {

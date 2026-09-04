@@ -154,13 +154,32 @@ type LoginReply struct {
 	Uid string
 }
 
+// SignRequest F4b 结构化签名请求（G5 契约变更，2026-09-04 裁决 D10/D11）。
+// 盲签裸 message 入口自 lapi 面移除（D11 变体 A'：api 层另留 api-only SignRaw）。
+// AidDecl 为「调用方声明的 app id」——服务端以可信导出值（容器=AppDataer、
+// app 会话=SessionKey_AppID）为准交叉验证，不一致即 deny（rule=signacl:aid-spoof）。
+type SignRequest struct {
+	Content []byte //被签内容
+	Purpose string //签名用途声明（供审计/UX 展示），可空
+	AidDecl string //调用方声明的 app id（可空；与服务端导出不一致即拒绝）
+}
+
+// SignPPTRequest F4b 结构化 SignPPT 请求（D10：与 Sign 同代一次付清）。
+// G2 防护语义不变：非系统用户会话经 filterSignPPTInfo 过滤保留键 + 有效期钳制。
+type SignPPTRequest struct {
+	Info    map[string]string //PPT 信息键值
+	Period  int               //有效期（分钟，服务端钳制）
+	Purpose string            //签名用途声明，可空
+	AidDecl string            //调用方声明的 app id（可空；与服务端导出不一致即拒绝）
+}
+
 type AuthStub struct {
 	LoginWithPPT func(strPPT string) (*LoginReply, error)
 	Logout       func(sid, info string) error
 	// —— 以下自 api.AuthStub2 开放下沉（Wave B auth2，评审通过）——
 	SetUserInfo  func(sid string, param map[string]string) error
-	SignPPT      func(sid string, info map[string]string, period int) (string, error)
-	Sign         func(sid string, message []byte) (sig []byte, err error)
+	SignPPT      func(sid string, req *SignPPTRequest) (string, error)
+	Sign         func(sid string, req *SignRequest) (sig []byte, err error)
 	PPTStr2Map   func(strPPT string) (map[string]string, error)
 	SignInfo2Map func(strInfo string) (map[string]string, error)
 }
@@ -322,10 +341,10 @@ type IAuth interface {
 	// —— 以下自 api.IAuth 开放下沉（Wave B auth2，评审通过）——
 	// SetUserInfo 设置当前会话用户的公开信息
 	SetUserInfo(sid string, param map[string]string) error
-		// SignPPT 以会话用户身份签名 PPT（period 单位：分钟，与服务端实现一致）
-	SignPPT(sid string, info map[string]string, period int) (string, error)
-	// Sign 以会话用户身份签名消息
-	Sign(sid string, message []byte) (sig []byte, err error)
+		// SignPPT 以会话用户身份签名 PPT（req.Period 单位：分钟，与服务端实现一致）
+	SignPPT(sid string, req *SignPPTRequest) (string, error)
+	// Sign 以会话用户身份签名消息（F4b 结构化请求；盲签裸 message 入口已移除）
+	Sign(sid string, req *SignRequest) (sig []byte, err error)
 	// PPTStr2Map 将 PPT 字符串解析为 Map（纯解析，无状态）
 	PPTStr2Map(strPPT string) (map[string]string, error)
 	// SignInfo2Map 将签名信息字符串解析为 Map（纯解析，无状态）
