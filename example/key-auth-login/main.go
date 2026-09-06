@@ -28,11 +28,11 @@ import (
 	"github.com/hprose/hprose-golang/v3/rpc/websocket"
 )
 
-// LoginReply 对应文档 §3 的登录返回结构。
+// LoginReply 对应文档 §3 的登录返回结构（线格式仅 Uid/Sid 两字段，
+// 无 Isystem——勿在客户端依赖该字段）。
 type LoginReply struct {
-	Uid     string
-	Sid     string
-	Isystem bool
+	Uid string
+	Sid string
 }
 
 // nodeStub 是节点 IAuth/GetVar RPC 的类型化代理（方法名与文档 §3/§4 一致）。
@@ -81,7 +81,7 @@ func main() {
 	if reply == nil || reply.Sid == "" {
 		fail("LoginWithPPT 返回为空 sid（reply=%+v）", reply)
 	}
-	fmt.Printf("LoginWithPPT OK: uid=%s sid=%s isystem=%v\n", reply.Uid, reply.Sid, reply.Isystem)
+	fmt.Printf("LoginWithPPT OK: uid=%s sid=%s\n", reply.Uid, reply.Sid)
 
 	// 2) 读取身份
 	uid, err := stub.GetVar(reply.Sid, "userid")

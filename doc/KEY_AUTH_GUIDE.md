@@ -1,6 +1,8 @@
 # Leither 密钥认证接入指南
 
-> 版本：2026-09-06（T1 发布契约面，lapi v0.3.0 结构化签名请求已并入）。本文档自包含：外部应用/agent **仅凭本文档**
+> 版本：2026-09-06（T1 发布契约面，lapi v0.3.0 结构化签名请求已并入；F1/F3/F4a/b/c
+> 修订已并入正文；线格式勘误：LoginReply 无 Isystem 字段——以 §3 结构为准）。
+> 本文档自包含：外部应用/agent **仅凭本文档**
 > 即可完成「密钥即身份」的用户认证接入。文档中所有命令均经真实 CLI 实测。
 
 ## 0. 承诺范围
@@ -19,7 +21,7 @@
 **正向事实（可依赖）：**
 
 - **同一密钥可在任意节点登录**——认证是纯密码学验签，无需注册、无中心；
-- **userid 全网一致**——userid 由公钥单向推导（见 §8），与节点无关。
+- **userid 全网一致**——userid 由公钥单向推导（见 §9），与节点无关。
 
 **不在承诺面（内部/实验，勿依赖）：** Bind 型第三方身份绑定登录（`CertFor=Bind`）、
 byname 用户名密码登录。相关说明见 §7 安全须知。
@@ -46,13 +48,15 @@ PPT 是**有时效的签名 JSON 文档**，结构：
   "SignerInfo": "<base64 编码的签名者证书>",
   "KeyType":    "sodiumv2",
   "Version":    1,
-  "Data":       "CertFor=Self;EndTime=20260901183818CST;SignTime=20260901173818CST;"
+  "Data":       "CertFor=Self;EndTime=2026-09-01T10:38:18Z;SignTime=2026-09-01T09:38:18Z;"
 }
 ```
 
-- `Data` 为 `k=v;` 形式的排序拼接（保留键见 §8）。
+- `Data` 为 `k=v;` 形式的排序拼接（保留键见 §9）。
 - **登录用 PPT 必须含 `CertFor=Self`**；服务端验签后 userid 即取 `SignerID`。
-- `SignTime`/`EndTime` 格式 `yyyyMMddHHmmss` + 本机时区缩写；有效期防重放。
+- `SignTime`/`EndTime` 为 **RFC3339 UTC**（如 `2026-09-01T10:38:18Z`），签发统一
+  写 UTC，含显式 UTC 标识，跨节点无歧义；旧格式（`yyyyMMddHHmmss` + 时区缩写）
+  仍可被校验端兼容读取（2026-09-02 前的存量 PPT）。有效期防重放。
 
 ### 1.3 会话（sid）
 
@@ -67,7 +71,8 @@ PPT 是**有时效的签名 JSON 文档**，结构：
 
 ## 2. 五分钟接入（CLI 路径，语言无关）
 
-以下命令用 2026-09-01 构建的二进制逐一实测通过：
+以下命令用 2026-09-01 构建的二进制逐一实测通过；签发时间格式后随 F1（2026-09-02）
+统一为 §1.2 的 RFC3339 UTC（命令与旗标不变，仅输出时间格式更新）：
 
 ```bash
 # 1) 生成私钥（文件自动 0600 权限；JSON 两段式明文，妥善保管）
@@ -106,11 +111,11 @@ import (
 )
 
 // LoginReply 是 RPC 返回的线格式（JSON 字段名首字母大写，与 Go 导出字段一致）：
-//   {"Uid":"<userid>","Sid":"<40 位 hex 会话 id>","Isystem":false}
+//   {"Uid":"<userid>","Sid":"<40 位 hex 会话 id>"}
+// （无 Isystem 字段——系统用户判定不通过登录返回，勿依赖。）
 type LoginReply struct {
-    Uid     string // 当前用户 id（CertFor=Self 登录时 = 密钥 id）
-    Sid     string // 会话 id，后续所有 RPC 调用的首参
-    Isystem bool   // 是否节点系统用户（普通密钥登录为 false）
+    Uid string // 当前用户 id（CertFor=Self 登录时 = 密钥 id）
+    Sid string // 会话 id，后续所有 RPC 调用的首参
 }
 
 // nodeStub 用 v3 类型化代理：字段即方法名，签名与节点方法一一对应
@@ -148,7 +153,7 @@ err = stub.Logout(reply.Sid, "")             // 异步释放（§1.3）
 **PPT 字符串来源**：`lpki signppt -o login.ppt` 产出的文件内容即 JSON 原文，
 原样读入字符串传入即可（容忍首尾空白/换行，建议 `strings.TrimSpace`）。
 
-**完整可运行参考实现**：`docs/examples/key-auth-login/`（`main.go` + `go.mod`，
+**完整可运行参考实现**：`example/key-auth-login/`（`main.go` + `go.mod`，
 经真实节点实测：LoginWithPPT → GetVar("userid") → Logout 全链路通过）。
 
 **等价的 `Login` 形式**：`Login(ppt, "", "byppt")` 与 `LoginWithPPT(ppt)` 同效。
@@ -176,8 +181,8 @@ err = stub.Logout(reply.Sid, "")             // 异步释放（§1.3）
 | `LoginWithPPT(strPPT string) (*LoginReply, error)` | PPT 登录。服务端验签 + 有效期检查；`CertFor=Self` 时身份=签名者 key id。PPT 无效/过期/类型非法均报错 |
 | `Logout(sid, info string) error` | 登出（异步释放，见 §1.3） |
 | `SetUserInfo(sid string, info map[string]string) error` | 更新用户档案字段。**已知行为：固定键名（如 `name` 以外的保留字段）可能报错**；仅写自定义业务字段 |
-| `SignPPT(sid string, req *SignPPTRequest) (string, error)` | 以当前登录用户身份签 PPT（**F4b 起结构化请求**（lapi v0.3.0 起）：`req.Info` 信息键值、`req.Period` 有效期——**分钟，合法区间 (0, 10080]（7 天）**、`req.Purpose` 用途声明入审计、`req.AidDecl` 应用身份声明——与服务端导出值不一致即拒绝）；普通用户会话中保留键（`Userid`/`BindID`/`BindType`/`SubType`/`CertPK`/`CertPKID`/`SignTime`/`EndTime`/`AppID`/`NodeId`）会被服务端剥离——客户端不得依赖经此通道铸造这些字段 |
-| `Sign(sid string, req *SignRequest) ([]byte, error)` | 以当前用户私钥对消息签名（Ed25519；**F4b 起结构化请求**（lapi v0.3.0 起）：`req.Content` 被签内容、`req.Purpose`/`req.AidDecl` 同上。**盲签裸 message 入口已移除**——api 层另留 api-only `SignRaw`，不属对外承诺面） |
+| `SignPPT(sid string, req *SignPPTRequest) (string, error)` | 以当前登录用户身份签 PPT（**F4b 起结构化请求**：`req.Info` 信息键值、`req.Period` 有效期——**分钟，合法区间 (0, 10080]（7 天）**、`req.Purpose` 用途声明入审计、`req.AidDecl` 应用身份声明——与服务端导出值不一致即拒绝）。普通用户会话中保留键（`Userid`/`BindID`/`BindType`/`SubType`/`CertPK`/`CertPKID`/`SignTime`/`EndTime`/`AppID`/`NodeId`）会被服务端剥离——客户端不得依赖经此通道铸造这些字段 |
+| `Sign(sid string, req *SignRequest) ([]byte, error)` | 以当前用户私钥对消息签名（Ed25519；**F4b 起结构化请求**：`req.Content` 被签内容、`req.Purpose`/`req.AidDecl` 同上。**盲签裸 message 入口已移除**——api 层另留 api-only `SignRaw`，不属对外承诺面） |
 | `PPTStr2Map(strPPT string) (map[string]string, error)` | 解析 PPT 的 Data 为键值 map（本地操作，不验签） |
 | `SignInfo2Map(strSignInfo string) (map[string]string, error)` | 解析签名文档为 map |
 
@@ -219,18 +224,88 @@ curl "http://127.0.0.1:4800/getvar?name=ppt&arg0=1440&nojson"   # arg0=有效期
 2. **PPT 是 bearer token**：有效期内任何持有者可用；**不绑定签发/使用节点**，
    有效期内可跨节点重放。请使用短时效（建议分钟级，如 15–60 分钟），
    过期后重新签发。
-3. **时间字段**：`SignTime`/`EndTime` 使用签发机器本机时区缩写——实测
-   中国时区为 `CST`（如 `20260901183818CST`）、UTC 环境为 `UTC`。签发与校验
-   在同一套规则下自洽（均按本机时区解析）；跨时区场景建议把 PPT 有效期设短，
-   规避时区缩写歧义窗口（已知限制：时区缩写在不同区域可能重名，见 §7.5）。
+3. **时间字段**：`SignTime`/`EndTime` 自 2026-09-02 起签发统一为 **RFC3339 UTC**
+   （如 `2026-09-01T10:38:18Z`），含显式 UTC 标识，无时区缩写歧义，跨节点可移植。
+   校验端对旧格式（`yyyyMMddHHmmss` + 时区缩写，如 `20260901183818CST`）仍按
+   兼容读取；旧格式按签发机时区表解析，跨时区场景仍建议把 PPT 有效期设短。
 4. **byname（用户名密码）为遗留路径，不在本期承诺面**：口令存储自
    2026-09-01 起为 argon2id 哈希（存量明文记录在首次成功登录时透明迁移）；
    空口令不可注册也不可登录。新应用请使用密钥方案。
-5. **已知限制（已立项 backlog，本期不修）**：临时用户创建无容量上限
-   （勿向不可信来源开放注册）；会话为内存态无持久化；PPT 时间格式时区
-   缩写跨区歧义。
+5. **临时用户与登录有节流保护（2026-09-02 起）**：临时用户（未注册身份首次登录
+   自动创建）有并发配额上限（节点内 4096 个，满额淘汰最久者，TTL 30 分钟惰性回收）；
+   登录接口按身份指纹（10 次/分钟）、节点全局（120 次/分钟）与新建临时用户
+   （30 次/分钟）三档限流，超限返回 `login rate limit exceeded`。会话仍为内存态
+   无持久化。
+6. **签名审计（F4c，2026-09-04 起）**：节点对 RPC `Sign`/`SignPPT` 全量审计
+   （成功/失败均记；记录含被签内容全文 + sha256 摘要 + 会话来源标注），JSONL 落
+   `logs/signaudit.log`（独立轮转，缺省 64MB×90 天）。线上调用 `aid` 恒空
+   （仅容器内 MApp 调用经遮蔽注入导出值）。审计查询：
 
-## 8. 附录：PPT 线格式（供非 Go 实现者）
+   ```bash
+   Leither lpki signaudit --uid <uid> --limit 20          # 文本模式
+   Leither lpki signaudit --op signppt --since 24h --json # JSON envelope
+   ```
+
+   普通用户只能查自己的记录（服务端强制）；系统用户可查全部。
+   审计写入失败会降级进主日志（`[SIGNAUDIT]`）而不阻断签名。
+7. **aid 级签名授权（F4b，2026-09-04 起）**：节点对每个「用户 × 应用」的代签做
+   名单判定。本期缺省**姿态 b（deny 名单读法）**——无记录=放行（零迁移 grandfather）；
+   应用会话（app 会话）代签**本期一律拒绝**（`uid=appid` 歧义防绕过），容器内 MApp
+   以调用方用户会话执行、不受影响。声明身份与导出不符即拒绝
+   （审计 `rule=signacl:aid-spoof`）。管理面（每用户自助域）：
+
+   ```bash
+   Leither lpki signacl deny  <aid> -k user.key   # 拒绝该应用代我签名
+   Leither lpki signacl unset <aid> -k user.key   # 撤销
+   Leither lpki signacl list  --json -k user.key  # 查看我的名单
+   ```
+
+   deny 诊断：`Leither lpki signaudit --decision deny [--rule signacl:deny-list]`。
+   收紧姿态（`SystemVars.json` 的 `SignACL.Mode="a"` + `TightenSince` cutoff）与
+   安装期勾选 UX 待 GrantServices 授权体系设计定稿后开放，本期勿切。
+
+## 8. addkey 私钥驻留边界（F4a，2026-09-03 起）
+
+`lpki addkey` 用于把**私钥**上传给节点（落库为用户私钥，供节点代签）。为收窄私钥驻留
+边界，节点端按**调用来源**分层受理（裁决：`T1/f4a-implementation-plan.md` §2.1）：
+
+| 来源 | 处置 |
+|---|---|
+| 进程内直调（容器 MApp/宿主，无 RPC 上下文） | 放行（与节点同机同信任域） |
+| 回环/本机（127.0.0.1、::1、本机网卡地址） | 放行，**明文直传**（现状不变） |
+| 同网段（客户端 IP ∈ 本机任一接口子网） | 默认放行，但**只受理信封形态**（`addkeysealed`）；`SystemVars.AddkeyAllowLAN=false` 即关闭（偏执模式） |
+| 其余（跨网段私网/公网/不可分类，即 WAN 远程） | **拒绝**（保持关闭） |
+
+**信封（LAK1）**：目标节点的 X25519 加密子钥由节点 Ed25519 身份私钥纯 stdlib 派生
+（SHA-512(seed) 钳制，`crypto/ecdh`），经 `GetVar(sid,"hostpk","","x25519")` 发布；
+信封 = ECDH 临时钥 + HKDF-SHA256（info/AAD 绑定 hostid）+ chacha20poly1305。
+**误投他节点必然解密失败**（hostid 进 AAD）。CLI 侧 TOFU 指纹钉住加密公钥
+（`<WorkPath>/known_nodes.json`，0600）：首连展示指纹交互确认（脚本用 `--yes` 免确认），
+公钥变更即拒绝（需显式删除记录行再信任）。
+
+CLI 行为一览：
+
+```bash
+Leither lpki addkey keyfile                      # 本机回环：明文直传（现状）
+Leither lpki addkey keyfile --local              # 显式声明最严档：锁死本机回环目标
+Leither lpki addkey keyfile -n 192.168.1.10:4800 # 同网段：TOFU 首连确认 → 信封上传
+Leither lpki addkey keyfile -n <公网节点>        # 拒绝（WAN 远程 addkey 关闭）
+```
+
+兼容性注意：
+
+- **旧 CLI → 新节点**：同网段明文上传被节点端拒绝（信封强制），报
+  `plaintext addkey from LAN rejected`——需升级 CLI。
+- **新 CLI → 旧节点**：`hostpk x25519` 不被识别，报"目标节点版本过旧"。
+- **身份白名单**（`SystemVars.AddkeyAllowUsers`，会话 uid 列表）：裁决为"仅入文档、
+  默认空、有需求再实现"——字段已定义，判定**未实现**。
+- `/ws3/`（hprose v3）上 `SetUserInfo` 因注入参数改变方法表（树内无 v3 调用方）；
+  `/ws/`、`/webapi/` 线签名不变。
+- 残余风险：节点前有反代/隧道时 `RemoteAddr` 是代理地址（来源判定语义需重估）；
+  docker bridge 等容器网络下"同机子网"可能把同宿主容器算同网段——偏执模式可关闭。
+- 观测：受理/拒绝审计日志打 `[F4A-ADDKEY]` 标签（来源 IP、会话 uid、层级、明文/信封）。
+
+## 9. 附录：PPT 线格式（供非 Go 实现者）
 
 自行实现 PPT 签发/校验时的精确规则：
 
@@ -242,6 +317,9 @@ curl "http://127.0.0.1:4800/getvar?name=ppt&arg0=1440&nojson"   # arg0=有效期
 - **Data 序列化**：全部键值按键名字典序排序，拼接为 `k1=v1;k2=v2;…`
   （每个键值对以 `;` 结尾；**键与值均不得含 `=` `;`**，无转义机制；
   重复键解析即报错）。
+- **时间字段**：`SignTime`/`EndTime` 为 **RFC3339 UTC**（如 `2026-09-02T04:00:00Z`），
+  签发时按 UTC 归一化写入；校验方须同时兼容读取旧格式 `yyyyMMddHHmmss` + 时区缩写
+  （2026-09-02 前的存量 PPT，按签发机时区表解析）。
 - **签名**：Ed25519 对「Data 序列化串」签名（服务端实现细节：`Signature`
   覆盖排序后的 Data 字符串）。
 - **PPT JSON 字段**：`Signature`（base64 标准编码）、`SignerID`、

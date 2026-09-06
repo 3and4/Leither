@@ -1,6 +1,6 @@
 # key-auth-login — 密钥认证最小参考实现
 
-《Leither 密钥认证接入指南》（`../../KEY_AUTH_GUIDE.md`）的配套可运行示例，
+《Leither 密钥认证接入指南》（`../../doc/KEY_AUTH_GUIDE.md`）的配套可运行示例，
 2026-09-01 经真实节点（V0.24.10）实测全链路通过：
 genkey → gencert → signppt(CertFor=Self) → verifyppt → LoginWithPPT →
 GetVar("userid") → Logout。
@@ -10,6 +10,8 @@ GetVar("userid") → Logout。
 ```bash
 # 1) 生成测试身份与登录 PPT（CLI 路径）
 LEITHER_BIN=/path/to/Leither ./integrate.sh        # 产物在 out/
+# 可选环境变量：PPT_MINUTES（有效期分钟，默认 60）、USER_NAME（档案 name，默认 example-user）、WORKDIR（产物目录）
+LEITHER_BIN=/path/to/Leither PPT_MINUTES=15 USER_NAME=alice ./integrate.sh
 
 # 2) 起节点（或复用已有节点），拿到 ws 地址（默认端口 4800）
 
@@ -20,7 +22,7 @@ NODE_WS=ws://127.0.0.1:4800/ws/ go run . -ppt out/login.ppt
 成功输出形如：
 
 ```
-LoginWithPPT OK: uid=GxeV... sid=0429... isystem=false
+LoginWithPPT OK: uid=GxeV... sid=0429...
 GetVar userid = GxeV...        # == uid == 密钥 id
 Logout OK
 ```

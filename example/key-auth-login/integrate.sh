@@ -2,9 +2,10 @@
 # integrate.sh — 端到端生成测试用户密钥与登录 PPT（依据《Leither 密钥认证接入指南》§2）。
 #
 # 输入环境变量：
-#   LEITHER_BIN  Leither CLI 二进制路径（必填）
-#   WORKDIR      产物输出目录（默认：脚本所在目录下的 out/）
-#   PPT_MINUTES  PPT 有效期（分钟，默认 60）
+#   LEITHER_BIN      Leither CLI 二进制路径（必填）
+#   WORKDIR          产物输出目录（默认：脚本所在目录下的 out/）
+#   PPT_MINUTES      PPT 有效期（分钟，正整数，默认 60）
+#   USER_NAME        用户档案 name 字段（默认 example-user）
 #
 # 产物（$WORKDIR 下）：
 #   user.key  私钥（0600，JSON 两段式明文，妥善保管）
@@ -12,8 +13,8 @@
 #   login.ppt 登录 PPT（CertFor=Self）
 #   user.pub  公钥（分发/登记用）
 #
-# 之后用 login_client 实测登录：
-#   NODE_WS=ws://127.0.0.1:4800/ws/ go run ./login_client -ppt "$WORKDIR/login.ppt"
+# 之后实测登录（入口在示例目录根，即本脚本所在目录，不是 login_client 子目录）：
+#   cd "$SCRIPT_DIR" && NODE_WS=ws://127.0.0.1:4800/ws/ go run . -ppt "$WORKDIR/login.ppt"
 
 set -euo pipefail
 
@@ -29,6 +30,14 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKDIR="${WORKDIR:-$SCRIPT_DIR/out}"
 PPT_MINUTES="${PPT_MINUTES:-60}"
+USER_NAME="${USER_NAME:-example-user}"
+
+# PPT 有效期必须是正整数：0/负数会产出立即过期或异常的 PPT，超大值会放大
+# bearer 重放窗口（见 doc/KEY_AUTH_GUIDE.md §7.2「PPT 是 bearer token」）。
+if ! [[ "$PPT_MINUTES" =~ ^[1-9][0-9]*$ ]]; then
+    echo "ERROR: PPT_MINUTES 必须是正整数，当前值: $PPT_MINUTES" >&2
+    exit 2
+fi
 
 mkdir -p "$WORKDIR"
 cd "$WORKDIR"
@@ -37,7 +46,7 @@ echo "==> [1/5] 生成私钥 (Ed25519/sodiumv2, genkey 默认即 v2)"
 "$LEITHER_BIN" lpki genkey -o user.key
 
 echo "==> [2/5] 生成自签名证书"
-"$LEITHER_BIN" lpki gencert -k user.key -m "name=t1-rehearsal-user" -o user.ca
+"$LEITHER_BIN" lpki gencert -k user.key -m "name=$USER_NAME" -o user.ca
 
 echo "==> [3/5] 签发登录 PPT (CertFor=Self, 有效期 ${PPT_MINUTES} 分钟)"
 "$LEITHER_BIN" lpki signppt -c user.ca -p "$PPT_MINUTES" -m "CertFor=Self" -o login.ppt
@@ -52,4 +61,5 @@ echo
 echo "完成。产物位于 $WORKDIR:"
 ls -l user.key user.ca login.ppt user.pub
 echo
-echo "下一步：NODE_WS=ws://127.0.0.1:4800/ws/ go run $SCRIPT_DIR/login_client -ppt $WORKDIR/login.ppt"
+echo "下一步（入口在示例目录根）："
+echo "  cd $SCRIPT_DIR && NODE_WS=ws://127.0.0.1:4800/ws/ go run . -ppt $WORKDIR/login.ppt"
