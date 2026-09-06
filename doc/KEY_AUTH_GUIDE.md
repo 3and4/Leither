@@ -1,6 +1,6 @@
 # Leither 密钥认证接入指南
 
-> 版本：2026-09-01（T1 发布契约面）。本文档自包含：外部应用/agent **仅凭本文档**
+> 版本：2026-09-06（T1 发布契约面，lapi v0.3.0 结构化签名请求已并入）。本文档自包含：外部应用/agent **仅凭本文档**
 > 即可完成「密钥即身份」的用户认证接入。文档中所有命令均经真实 CLI 实测。
 
 ## 0. 承诺范围
@@ -176,8 +176,8 @@ err = stub.Logout(reply.Sid, "")             // 异步释放（§1.3）
 | `LoginWithPPT(strPPT string) (*LoginReply, error)` | PPT 登录。服务端验签 + 有效期检查；`CertFor=Self` 时身份=签名者 key id。PPT 无效/过期/类型非法均报错 |
 | `Logout(sid, info string) error` | 登出（异步释放，见 §1.3） |
 | `SetUserInfo(sid string, info map[string]string) error` | 更新用户档案字段。**已知行为：固定键名（如 `name` 以外的保留字段）可能报错**；仅写自定义业务字段 |
-| `SignPPT(sid string, info map[string]string, period int) (string, error)` | 以当前登录用户身份签 PPT。**period 单位分钟，合法区间 (0, 10080]（7 天）**；普通用户会话中保留键（`Userid`/`BindID`/`BindType`/`SubType`/`CertPK`/`CertPKID`/`SignTime`/`EndTime`/`AppID`/`NodeId`）会被服务端剥离——客户端不得依赖经此通道铸造这些字段 |
-| `Sign(sid string, message []byte) ([]byte, error)` | 以当前用户私钥对任意消息签名（Ed25519） |
+| `SignPPT(sid string, req *SignPPTRequest) (string, error)` | 以当前登录用户身份签 PPT（**F4b 起结构化请求**（lapi v0.3.0 起）：`req.Info` 信息键值、`req.Period` 有效期——**分钟，合法区间 (0, 10080]（7 天）**、`req.Purpose` 用途声明入审计、`req.AidDecl` 应用身份声明——与服务端导出值不一致即拒绝）；普通用户会话中保留键（`Userid`/`BindID`/`BindType`/`SubType`/`CertPK`/`CertPKID`/`SignTime`/`EndTime`/`AppID`/`NodeId`）会被服务端剥离——客户端不得依赖经此通道铸造这些字段 |
+| `Sign(sid string, req *SignRequest) ([]byte, error)` | 以当前用户私钥对消息签名（Ed25519；**F4b 起结构化请求**（lapi v0.3.0 起）：`req.Content` 被签内容、`req.Purpose`/`req.AidDecl` 同上。**盲签裸 message 入口已移除**——api 层另留 api-only `SignRaw`，不属对外承诺面） |
 | `PPTStr2Map(strPPT string) (map[string]string, error)` | 解析 PPT 的 Data 为键值 map（本地操作，不验签） |
 | `SignInfo2Map(strSignInfo string) (map[string]string, error)` | 解析签名文档为 map |
 
