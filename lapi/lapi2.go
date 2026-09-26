@@ -131,7 +131,13 @@ func (msg *Message) IsEmpty() bool {
 	return msg == nil || (len(msg.Msg) == 0 && msg.Data == nil)
 }
 
-// 自己发给自己的消息
+// IsSelf 自己发给自己的消息（`From == To`）。
+//
+// Deprecated: 看板 #329（2026-09-26）起，消息域**不再**按 `From == To` 判定。服务端改按
+// `Message.To` 的**地址形式**选路由表：27 字符用户短 id ⇒ 用户域（发给该用户，其任一会话
+// 都能收到）；hex 会话 id（32/40）⇒ 会话域（只发给该会话，操作进度/中间状态属这一类）。
+// `To` 为空或形式非法一律报错（fail closed），不再兜底成 self。
+// 本方法保留一版以兼容存量 MApp，下一版删除；新代码请按 `To` 形式决定目的地。
 func (msg *Message) IsSelf() bool {
 	return msg.From == msg.To
 }

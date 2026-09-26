@@ -5,8 +5,8 @@
 ```golang 
 type Message struct {
 	Tm    time.Time //消息发生的时间
-	From  string
-	To    string
+	From  string    //发送者；为空时由服务端填当前会话的认证身份
+	To    string    //接收者**地址**，其形式决定消息域（见下）
 	AppID string      //空表示系统消息
 	Msg   string      //表示命令，是由appid约定的，如果appid为空，则是系统消息?
 	Data  interface{} //应用自定义的数据格式
@@ -20,7 +20,25 @@ type Msgs []*Message
 //		data:消息对象内容；ppt:消息的校验信息
 //返回值：正常则为空，出错则返回错误信息
 SendMsg(sid string, msg *Message) error
-```  
+```
+
+### `To` 的地址形式＝消息域（2026-09-26 起，#329）
+
+`To` 不是昵称而是**地址**，两种地址对应两种投递域，由服务端按**字符串形式**判定：
+
+| `To` 形式 | 消息域 | 含义 |
+|---|---|---|
+| 27 字符用户短 id（`len(To) == 27`） | **用户域** | 发给该用户：该用户当前在收消息的任一会话都能收到 |
+| hex 会话 id（32 = md5 / 40 = sha1，全小写 0-9a-f） | **会话域** | 只发给该会话：操作进度 / 中间状态用这一类 |
+
+- **空 `To` 或其它形式一律报错**（fail closed，不再兜底成"发给自己"）。原来的「`From == To`
+  即会话域」隐式约定**已弃用**；`Message.IsSelf()` 仅作兼容保留（`Deprecated`），下一版移除。
+- 「发给自己」不再需要特例：想发给当前会话就写 `To = sid`（会话域）；想发给用户就写 `To = uid`。
+- 类型只选路由表，**不作授权判据**——能不能发仍由会话身份（`sid`）与相应权限决定。
+- 会话域是 best-effort 通道（容量 10、满则每条等 3 秒超时、空闲关闭）：调用 `IpfsPinAdd` /
+  `UploadApp` / `RepoLs` 等会产生进度消息的接口时，**必须并发 `PullMsg` 排水**，否则会
+  `send on closed channel` 让节点崩溃（见 `tests/API_E2E_MATRIX.md`）。
+
 
 ## 二、读取消息 
 ```golang
