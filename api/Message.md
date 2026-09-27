@@ -38,6 +38,9 @@ SendMsg(sid string, msg *Message) error
 - 会话域是 best-effort 通道（容量 10、满则每条等 3 秒超时、空闲关闭）：调用 `IpfsPinAdd` /
   `UploadApp` / `RepoLs` 等会产生进度消息的接口时，**必须并发 `PullMsg` 排水**，否则会
   `send on closed channel` 让节点崩溃（见 `tests/API_E2E_MATRIX.md`）。
+- **持久性口径（2026-09-27 起，#345）**：会话域**只**承载中间状态/进度；通道满或会话已关闭时消息
+  **直接丢弃**——服务端**不重试、不落库**，客户端**不得把会话消息当作必达的终结结果**。操作的成功/失败
+  以**接口返回值**为准；节点侧另有可查面（`logs/signaudit.log` 的 `op=` 行）供运维追溯终结结果。
 
 
 ## 二、读取消息 
