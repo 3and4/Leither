@@ -1220,50 +1220,92 @@ A storage-oriented application can initially restrict its runtime dependency to 
 
 On gen8, recursive traversal of every `Available Commands` section from
 `./Leither -h` inspected **159 help entries**, including parent commands, on
-V0.24.63 (amd64, API 1). The installed help exposes:
+V0.24.63 (amd64, API 1). A subsequent direct read on the same version confirmed
+that **`ipfs get` prints file contents when `-o` is omitted**.
 
-| Operation | Command | Output or boundary |
-|---|---|---|
-| List a File MiMei | `./Leither mimei ls <mid-or-path>` | Child names, CIDs, types and sizes; not file contents |
-| Retrieve an IPFS DAG node | `./Leither dag get /ipfs/<cid>` | DAG JSON representation, including encoded `Data` and `Links` for DAG-PB nodes |
-| Retrieve a file to a local path | `./Leither ipfs get /ipfs/<cid> -o <local-file>` | `get` and `--outfile` are exposed by help; the requested tweet CID was unavailable on the inspected node, so its download was not verified |
-| Retrieve through a MiMei path | `./Leither mimei get <path> -o <local-file>` | `get` and `--outfile` are exposed by help; use the target runtime's supported path form |
-
-For the `core.json` CID from the tweet listing discussed on this date:
+To print the tweet's UTF-8 `core.json` directly:
 
 ```bash
-./Leither dag get /ipfs/QmXQ9LjYkvQYyASnAzRkA5kvv5Hw9kL5t6wEWEDAPAUZvv
+./Leither ipfs get ipfs/QmXQ9LjYkvQYyASnAzRkA5kvv5Hw9kL5t6wEWEDAPAUZvv
 ```
 
-This is a DAG inspection command, not a plain-text JSON-file reader. A successful
-read of an existing directory DAG on the inspected node returned:
+This command returned the original JSON, including `kind: "tweet"`,
+`schema: "tweet-file-v1"`, MID `JTILxNW0FFCdolNf4hvPsRjsWfP` and the Chinese
+text in `value.content`, matching the user's HTTP retrieval of the same CID.
+It requires neither curl nor a separate IPFS CLI, nor an output-file workaround.
 
-```json
-{"Data":{"/":{"bytes":"CAE"}},"Links":[]}
+**The path spelling matters in this installed version:** use `ipfs/<cid>` with
+no leading slash for `ipfs get`. The following outcomes were observed for the
+same file on gen8:
+
+| Command | Observed output |
+|---|---|
+| `./Leither ipfs get ipfs/<cid>` | Prints the original file contents; exit 0 |
+| `./Leither ipfs get /ipfs/<cid>` | `MFile2Local MMOpenUrl ... file does not exist`; exit 1 |
+| `./Leither ipfs get ipfs://<cid>` | `invalid path ... unknown namespace: "ipfs:"`; exit 1 |
+| `./Leither ipfs get <cid>` | Invalid path: not enough components |
+| `./Leither dag get /ipfs/<cid>` | DAG JSON with encoded `Data` and `Links`, rather than the text file contents |
+
+The HTTP route `/ipfs/<cid>` and the `dag get` argument retain their leading
+slash; do not copy that spelling into `ipfs get`. The command-specific results
+above do not define path rules for every Leither operation.
+
+**Correction to the earlier inspection:** the `file does not exist` error came
+from passing `/ipfs/<cid>` to `ipfs get`. It did not establish that the CID was
+unavailable on gen8. The successful read with `ipfs/<cid>` supersedes that
+conclusion. `dag get` was the wrong recommendation for printing a text file.
+
+`dag get` remains useful for inspecting the underlying DAG representation. In
+the user's output for this file, `Data["/"]["bytes"]` encodes a UnixFS structure
+containing the JSON; it is not the decoded file payload. Larger UnixFS files
+may also require following child links. Use `ipfs get` for assembled file bytes
+instead of manually decoding DAG output.
+
+For related operations, `mimei ls <mid-or-path>` lists directory entries, while
+`ipfs get -h` and `mimei get -h` expose the optional `-o`/`--outfile` flag for a
+local output file. The direct-print command above was verified without that flag;
+`-o /dev/stdout` is unnecessary. The earlier help traversal found no separate
+`cat` or `read` subcommand, which does not imply that `get` cannot print contents.
+
+#### Listing a directory inside the same MiMei
+
+Use a versioned MiMei URL to list a directory below the root:
+
+```bash
+./Leither mimei ls mm://JTILxNW0FFCdolNf4hvPsRjsWfP:last/comments
 ```
 
-The `Data` field is encoded DAG data. For a UnixFS file, decoding its base64 bytes
-alone can still leave a UnixFS structure; a multi-block file also requires following
-its links. Do not describe this output as the original `core.json` text.
+This exact command succeeded on gen8 on 2026-10-16 and listed three JSON files
+inside `comments`, with each entry's CID, type, size and filename. It lists
+directory entries rather than reading their contents.
 
-No dedicated `cat` or `read` command appeared anywhere in that installed command
-tree. `ipfs get -o /dev/stdout` is an output-file workaround, not a separately
-exposed print command; successful content retrieval through that workaround was
-not established. A bare CID was rejected by both `dag get` and `ipfs get` during
-inspection, so retain the `/ipfs/` prefix for these commands. This observation is
-specific to these read commands and does not replace the different `files cp`
-source-path rules recorded in section 5.6.
+The general form is:
 
-To check another installation, follow each command family recursively rather than
-assuming that `ipfs -h` lists every content-inspection operation:
+```bash
+./Leither mimei ls mm://<mid>:<version>/<directory-path>
+```
+
+`last` selects the latest committed version. Replace `comments` with another
+directory path, or select a retained numbered version when historical contents
+are required. To list this MiMei's root, the original listing command is:
+
+```bash
+./Leither mimei ls JTILxNW0FFCdolNf4hvPsRjsWfP
+```
+
+Read a listed text file by passing its CID to `ipfs get ipfs/<cid>` as shown
+above. The `mm://` directory URL and the `ipfs/` content path are different
+command inputs; preserve the spelling appropriate to each command.
+
+When checking another installation, record its version and inspect the relevant
+help before assuming that its path or output conventions match this version:
 
 ```bash
 ./Leither version
 ./Leither -h
-./Leither dag -h
-./Leither dag get -h
 ./Leither ipfs get -h
 ./Leither mimei get -h
+./Leither dag get -h
 ```
 
 ## 13. Verification Sources
