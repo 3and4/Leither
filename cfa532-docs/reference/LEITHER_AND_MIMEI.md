@@ -1269,17 +1269,23 @@ local output file. The direct-print command above was verified without that flag
 
 #### Listing a directory inside the same MiMei
 
-Use a versioned MiMei URL to list a directory below the root:
+Use a versioned MiMei path to list a directory below the root:
 
 ```bash
-./Leither mimei ls mm://JTILxNW0FFCdolNf4hvPsRjsWfP:last/comments
+./Leither mimei ls JTILxNW0FFCdolNf4hvPsRjsWfP:last/comments
 ```
 
-This exact command succeeded on gen8 on 2026-10-16 and listed three JSON files
-inside `comments`, with each entry's CID, type, size and filename. It lists
-directory entries rather than reading their contents.
+The user confirmed this shorter form on gen8 on 2026-10-16. It listed the same
+three JSON files as the previously verified `mm://` form, with each entry's CID,
+type, size and filename. It lists directory entries rather than file contents.
 
 The general form is:
+
+```bash
+./Leither mimei ls <mid>:<version>/<directory-path>
+```
+
+The `mm://` prefix is optional for `mimei ls`; the explicit URL form also works:
 
 ```bash
 ./Leither mimei ls mm://<mid>:<version>/<directory-path>
@@ -1294,8 +1300,8 @@ are required. To list this MiMei's root, the original listing command is:
 ```
 
 Read a listed text file by passing its CID to `ipfs get ipfs/<cid>` as shown
-above. The `mm://` directory URL and the `ipfs/` content path are different
-command inputs; preserve the spelling appropriate to each command.
+above. A MiMei directory path (with or without `mm://`) and an `ipfs/` content
+path are different command inputs; preserve the spelling for each command.
 
 When checking another installation, record its version and inspect the relevant
 help before assuming that its path or output conventions match this version:
