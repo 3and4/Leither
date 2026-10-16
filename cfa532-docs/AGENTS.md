@@ -4,7 +4,8 @@
 - Read README.md and MAINTENANCE.md before reorganizing or reconciling it.
 - Maintain canonical general Leither documentation here; keep upstream paths intact.
 - Preserve dated evidence and distinguish runtime verification from source claims.
-- Keep application-specific designs in their application repositories and link them.
+- Consolidate Leither/MiMei evidence and Leither-specific integration contracts here.
+  General application design, implementation and release runbooks stay with their apps.
 - Preserve the English reference as authoritative; label translation gaps.
 - Never discard fork-owned work to resolve an upstream sync. Report any same-path
   conflict; do not hide it with a blanket merge strategy or force reset.

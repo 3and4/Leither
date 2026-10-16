@@ -54,10 +54,13 @@ this branch, and is outside this layout.
    historical notes. Do not mark an unavailable file download as verified.
 3. Keep source links pinned when a statement depends on a particular revision.
    Use local relative links for navigation to current source files.
-4. Keep application-specific material in its application repository; use links
-   for context. Repair relative links when moving material between repositories.
-5. Label translation coverage explicitly. Preserve LifeAlbum's archived snapshots;
-   subsequent canonical updates belong here rather than in both repositories.
+4. Consolidate Leither/MiMei reference material, runtime evidence and Leither-specific
+   integration contracts here. Keep general product designs and release runbooks in
+   their application repositories. Repair relative links during cross-repo moves.
+5. Label translation coverage explicitly. Old application-repository paths contain
+   relocation notices only; preserve earlier bodies through Git history. Maintain
+   each document once here, and preserve section fragments in incoming links.
+   Follow MIGRATION.md for canonical destinations and source revisions.
 6. Refresh the source index when the tracked documentation inventory changes.
 7. Review Markdown links, headings, code fences and `git diff --check`. Do not run
    tests unless the user asks. Do not commit or push without user authorization.

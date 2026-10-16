@@ -31,15 +31,20 @@ at their original paths so their links, examples and future merges continue to w
 | Node operations | [macOS autostart](../leither-autostart-macos-guide.md), [macOS TUS setup](../doc/tus-server-macos-setup.md) |
 | Historical context | [Install notes and changelog](../Install.md); its listed version is historical |
 
-## Application evidence and integration notes
+## Consolidated evidence and integration contracts
 
-These remain owned by their application repositories; the links centralize discovery
-without creating a second maintained copy:
+| Document | Scope and status |
+|---|---|
+| [Runtime issues](reference/RUNTIME_ISSUES.md) | Versioned historical Leither interpreter, API and operational evidence from TweetBackendApp |
+| [Tweet data and synchronization contract](integrations/tweet/DATA_AND_SYNC_CONTRACT.md) | Canonical current cross-client ownership, references, routing and recovery invariants |
+| [TweetWeb connection management](integrations/tweet/WEB_CONNECTION.md) | Historical server-side connection integration notes; examples are not newly revalidated |
+| [LifeDrive key-auth review (中文)](integrations/lifedrive/KEY_AUTH_REVIEW.zh-CN.md) | Historical native-key design and V0.24.12 observations; not the current household auth design |
+| [Migration record](MIGRATION.md) | Source revisions and the single maintained destination for every moved document |
 
-- [LifeAlbum archive](https://github.com/cfa532/LifeAlbum/blob/main/docs/LEITHER_AND_MIMEI.md): the source snapshot moved into this collection.
-- [Backend runtime issues](https://github.com/cfa532/TweetBackendApp/blob/main/LEITHER_ISSUES.md): Leither interpreter, API and runtime observations.
-- [Shared Tweet data and sync contract](https://github.com/cfa532/TweetBackendApp/blob/main/docs/LEITHER_DATA_AND_SYNC_CONTRACT.md): application-specific cross-client invariants.
-- [TweetWeb connection notes](https://github.com/cfa532/TweetWeb/blob/main/docs/LEITHER_CONNECTION.md): browser integration context.
+The English and Chinese technical foundations above are maintained here as well.
+Old document paths in LifeAlbum, TweetBackendApp and TweetWeb contain only
+relocation notices. Repository indexes, section links and agent instructions point
+to the central documents; there are no full archived copies to update separately.
 
 ## Ownership and scope
 
@@ -48,16 +53,15 @@ Markdown and runnable examples outside this directory remain inputs to review;
 they are not automatically the contract of the installed binary. Prefer installed
 help and verified API behavior when a source document disagrees with the runtime.
 
-LifeAlbum retains dated English and Chinese snapshots with links here. Application
-architecture, credentials, deployment details and product-specific contracts remain
-in their application repositories. References to those applications in the technical
-foundation preserve the provenance of Leither observations; links to private
-repositories require the reader's existing access.
+Leither-specific integration contracts and evidence are consolidated here, grouped
+by application. General product architecture, application implementation and release
+runbooks stay with their applications. Links back to implementation context preserve
+provenance and require the reader's existing access to private repositories.
 
 Normal merge-based fork syncs preserve committed fork-only additions. This directory
 is not immune to a force reset or a future conflict at the same path. Follow the
 maintenance guide rather than assuming that its name or an ignore rule protects it.
 
 The first consolidation is dated 2026-10-16. The source baseline and full document
-inventory are recorded in the source index. These links become available on GitHub
-when the documentation changes are committed and pushed to this fork.
+inventory are recorded in the source index. New document links become available on GitHub
+when the consolidation changes are committed and pushed to this fork.

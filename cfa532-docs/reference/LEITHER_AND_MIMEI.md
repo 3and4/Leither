@@ -1,7 +1,7 @@
 # Leither and MiMei Technical Foundation
 
 **Maintained by:** `cfa532/Leither`, in the fork-owned `cfa532-docs/` collection.
-**Moved:** 2026-10-16 from LifeAlbum; the original remains a dated archive.
+**Moved:** 2026-10-16 from LifeAlbum; the old path contains only a relocation notice.
 
 **Status:** Application-independent technical reference
 **Leither CLI reviewed:** V0.24.02, API contract version 1; commit, pin and node-Files behavior rechecked on V0.24.23 (2026-09-16, section 5.6) and on V0.24.27 (2026-09-19, section 5.7)
@@ -10,6 +10,11 @@
 **CLI inspection refreshed:** gen8 `/home/pi/demo/Leither`, V0.24.63, amd64, API 1, 2026-10-16; all 159 help entries inspected recursively (section 12.1). Earlier runtime observations retain their own version and date.
 **Reference implementation reviewed:** TweetBackendApp JavaScript and Go MApps, plus TweetWeb's browser RPC client
 **Purpose:** Explain Leither, MiMei, storage types, versioning, distribution, identity, and the boundary between applications and a Leither node.
+
+**Related canonical documents:** [runtime issue evidence](RUNTIME_ISSUES.md),
+[Tweet data and synchronization contract](../integrations/tweet/DATA_AND_SYNC_CONTRACT.md),
+[TweetWeb connection notes](../integrations/tweet/WEB_CONNECTION.md), and
+[historical LifeDrive key-auth review](../integrations/lifedrive/KEY_AUTH_REVIEW.zh-CN.md).
 
 ## 1. Executive Summary
 
