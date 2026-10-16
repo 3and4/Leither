@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leither - 系统介绍</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 介绍页面特定样式 */
+        .intro-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 2rem;
+        }
+        
+        .intro-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .intro-header h2 {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .intro-header p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #6b7280;
+        }
+        
+        /* 修改卡片式布局样式 */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);  /* 强制3列 */
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* 调整卡片最小宽度以适应3列布局 */
+        .feature-card {
+            background-color: #ffffff;
+            border-radius: 0.8rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            animation: fadeInUp 0.8s ease-out;
+            min-width: 0;  /* 防止内容溢出 */
+        }
+        
+        /* 响应式调整 - 在小屏幕上改为单列 */
+        @media (max-width: 1024px) {
+            .feature-cards {
+                grid-template-columns: repeat(2, 1fr);  /* 中等屏幕2列 */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .feature-cards {
+                grid-template-columns: 1fr;  /* 小屏幕单列 */
+            }
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-card h3 {
+            color: #2563eb;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .feature-card .feature-title {
+            font-weight: 600;
+            color: #1d4ed8;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .feature-card .feature-description {
+            color: #6b7280;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: #374151;
+            margin: 3rem 0 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #2563eb, #60a5fa);
+            border-radius: 3px;
+        }
+        
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #6b7280;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* 按钮容器居中 */
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .feature-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro-header h2 {
+                font-size: 2rem;
+            }
+            
+            .intro-header p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">Leither</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="introduce.html" class="nav-link">介绍</a>
+                </li>
+                <li class="nav-item">
+                    <a href="introduce1.html" class="nav-link active">卡片介绍</a>
+                </li>
+                <li class="nav-item">
+                    <a href="install.html" class="nav-link">安装</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <div class="intro-content">
+            <!-- 介绍头部 -->
+            <div class="intro-header">
+                <h2>Leither 系统介绍</h2>
+                <p>Leither是一个数据和应用的容器系统。系统通过容器间的互通互联共同构建出一个去中心化的互联网，应用和数据可以在网络间流动，应用之间，容器之间，可以协作出复杂的生态应用。</p>
+            </div>
+            
+            <!-- 轻量级容器系统部分 -->
+            <h3 class="section-title">一个轻量级的容器系统</h3>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <h3>多平台适配</h3>
+                    <p class="feature-description">系统目前大约20M，支持常见操作系统（Windows、Linux、Darwin等），可以运行在服务器、PC、手机、NAS、路由等常见的设备上。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>功能完备</h3>
+                    <p class="feature-description">系统实现了认证体系、应用体系、文件和数据库系统，域名和网络系统。系统提供200多个API接口，可以实现常见的互联网应用。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>多种交互</h3>
+                    <p class="feature-description">容器内可以运行Go/XGo、JS、Lua等语言，也可以使用RPC方式开发传统应用，支持常见四十种语言，也可以使用命令行浏览器等方式访问容器。</p>
+                </div>
+            </div>
+            
+            <!-- 模仿大自然和人类社会部分 -->
+            <h3 class="section-title">模仿大自然和人类社会</h3>
+            <p class="section-description">大自然和人类社会是这个世界最复杂的系统。这两个复杂的系统核心的是由基因和模因构成的。Leither参考了这两个系统的设计，提出了弥媒的概念。</p>
+            
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <h3>基因（Gene）</h3>
+                    <p class="feature-description">大自然由各种生命构成，每个生命都是一系列基因的容器，基因是生命的基本单位。生命通过遗传和变异进行演化，一代一代流传。不同的基因组合构建出整个大自然。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>模因（Meme）</h3>
+                    <p class="feature-description">整个社会由人构成，人的大脑是弥因的容器，弥因是文明信息的基本单位，表现为知识点、价值观等，弥因在个体之间流转，构建出不同的人、组织乃至整个社会。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>弥媒（Mimei）</h3>
+                    <p class="feature-description">整个网络是由节点构成，节点是一个弥媒容器，弥媒是最基本的数据和应用单元。如同基因和弥因一样，弥媒可以流转协作，构建出更加复杂的应用和内容形态</p>
+                </div>
+            </div>
+            
+            <!-- 全面拥抱AI走向新文明部分 -->
+            <h3 class="section-title">全面拥抱AI走向新文明</h3>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <h3>大模型的机会和危机</h3>
+                    <p class="feature-description">GPT3.5之后，大模型不断有能力涌现，获得了飞速的发展，作为辅助工具，给很多人的工作带来了效率的提升。但另一方面，越来越多的行业和公司出现了使用大模型替代人的案例，这造成了大量的失业，特别是互联网相关的行业。分析其原因，大企业掌握完整的生产资料和完整的业务链，员工只是整个链条中的可替代一环。作为应对，大部分人应该使用大模型去拆除企业的壁垒，去反向争取属于自己的机会。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>构建自己的生态网络</h3>
+                    <p class="feature-description">在Leither中，用户可以构建或加入一个去中心化的网络，可以从网络中获取或发布应用服务和信息。整个网络中，信息（包括应用）的生成、存储、发布、展现、传播都是完全去中心化的。各个环节的规则都是透明的，用户都可以自建，没有哪一环是不可替代的。整个网络的特点是：用户构建、用户控制、用户享有。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>给大模型搭建工作台</h3>
+                    <p class="feature-description">把容器作为工作台提供给大模型，然后指定大模型的工作内容。在这种情况下，大模型是你的员工，所有的工作内容和成果，都代表你的意志，产权和收益都是你的。这些内容可以在网络间流动，认同的人越多，流传的就越广，价值越大，流传的越久。你提出的规则可以附加在群体应用上，价值越大，认同的人越多，就越能构建出更复杂更大规模的应用。</p>
+                </div>                
+            </div>
+            
+            <!-- 行动按钮 -->
+            <div class="hero-buttons">
+                <a href="install.html" class="btn btn-primary">立即安装</a>
+                <a href="#" class="btn btn-secondary">了解更多</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Leither. 构建属于我们的去中心化生态。</p>
+        </div>
+    </footer>
+</body>
+</html>

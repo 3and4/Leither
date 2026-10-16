@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leither - 安装指南</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">Leither</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">文档</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">示例</a>
+                </li>
+                <li class="nav-item">
+                    <a href="install.html" class="nav-link active">安装</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <div class="hero-section">
+            <div class="hero-container">
+                <!-- 主标题 -->
+                <h1 class="hero-title">Leither安装指南</h1>
+                
+                <!-- 安装内容 -->
+                <div class="install-content">
+                    <section class="install-section">
+                        <h2>一、脚本安装</h2>
+                        <p>支持bash的终端下可以直接执行以下脚本安装在当前目录:</p>
+                        <div class="code-block">
+                            <pre>curl -fsSL http://vzhan.cn/install.sh | bash</pre>
+                        </div>
+                    </section>
+
+                    <section class="install-section">
+                        <h2>二、手工安装</h2>
+                        <p>到以下网址下载程序到本地</p>
+                        <a href="./dl.html" class="download-link">各版本的应用</a>
+                        <p>把指定版本的程序改为Leither</p>
+                        <div class="code-block">
+                            <pre>chmod +x ./Leither</pre>
+                        </div>
+                        <p>了解各文件细节参考<a href="./doc/Directory.md">系统目录结构</a></p>
+                    </section>
+
+                    <section class="install-section">
+                        <h2>三、初始化</h2>
+                        <p>第一次运行需要初始化</p>
+                        <p>可以通过-p指定端口，不指定缺省为4800.如果是80端口，需要root权限，命令都要加sudo</p>
+                        <p>可以通过-b指定网络入口，不指定为：mimei.org vzhan.cn</p>
+                        <p>生成的信息保存在Systemvar.json中，可手工修改。</p>
+                        <div class="code-block">
+                            <pre>Leither init -p 4800 -b mimei.org</pre>
+                        </div>
+                    </section>
+
+                    <section class="install-section">
+                        <h2>四、管理服务</h2>
+                        <p>后台服务方式启动</p>
+                        <div class="code-block">
+                            <pre>./Leither run -d</pre>
+                        </div>
+                        <p>关闭服务</p>
+                        <div class="code-block">
+                            <pre>./Leither stop</pre>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Leither. 构建属于我们的去中心化生态。</p>
+        </div>
+    </footer>
+</body>
+</html>

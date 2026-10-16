@@ -1,15 +1,5 @@
 package lapi
 
-type FVPair struct {
-	Field string
-	Value any
-}
-
-type ScorePair struct {
-	Score  int64
-	Member string
-}
-
 // 原来两处引用，现在只剩下一处了
 func ScorePairs2Members(sps []ScorePair) []string {
 	ret := make([]string, 0, len(sps))

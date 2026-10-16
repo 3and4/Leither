@@ -1,46 +1,29 @@
 // backend.go
 package lapi
 
-/*
-BackEndStub
+import (
+	"fmt"
+	"io"
+)
 
-一个应用执行的时候有前端模式和后端模式
+var _ IRPC = (*LApiStub)(nil)
 
-前端模式通过rpc操作执行api，运行在节点之外，浏览器，控制台，app等
+var _ LApi = (*BackEndStub)(nil)
 
-后端模式执行在节点内，通过一个全局变量lapi来操作Api
+var _ IBackEnd = (*BackEndStub)(nil)
 
-后端除了拥有所有的前端功能（ApiStub）外，还有独有的后端api
-
-后端Api目前有两部分，后端Session（SessionStub）和应用数据操作（BEAppDataStub）
-*/
-
-var _ IRPC = &LApiStub{}
-
-var _ LApi = &BackEndStub{}
+// errUnwired 未接线错误（D1）：后端方法函数字段为 nil（宿主未接线）时返回，
+// 把"未模拟/未接线"显式报错，不允许静默零值成功——排障时不再伪装成成功。
+func errUnwired(method string) error {
+	return fmt.Errorf("%s: 未接线", method)
+}
 
 type BackEndStub struct {
 	*LApiStub
 	*SessionStub
 	*BEAppDataStub
 	*LogStub
-}
-
-// 用于xgo,调用前会替换
-// func Api() LApi {
-// 	return nil
-// }
-
-// func RPC() *BackEndStub {
-// 	return nil
-// }
-
-func GetLApi() LApi {
-	return nil
-}
-
-func GetArgs() []any {
-	return nil
+	*BEWebStub
 }
 
 const (
@@ -53,6 +36,7 @@ const (
 	Request_Sid     = "sid" //内部必然有一个
 	Request_NodeID  = "nid"
 	Request_SidApp  = "sidapp" //应用sid,作者身份
+	Request_MMRoot  = "mmroot" //应用对外根目录，由节点注入
 
 	ApiVarNodeAppCode = "nodeappcode"
 )
@@ -61,37 +45,9 @@ func GetRequest() map[string]string {
 	return nil
 }
 
-// ISession 接口定义了Session操作的所有方法
-type ISession interface {
-	// CreateSession 创建一个session并返回id
-	CreateSession() (sid string)
-
-	// SessionSet 设置session中指定key的值
-	SessionSet(sid, key string, value any) error
-
-	// SessionGet 获取session中指定key的值
-	SessionGet(sid, key string) (value any, err error)
-
-	// SessionDelete 删除session中指定key的值
-	SessionDelete(sid, key string) error
-
-	// ReleaseSession 释放指定的session
-	ReleaseSession(sid string) error
+func GetWriter() io.Writer {
+	return nil
 }
-
-/*
-SessionStub
-
-# Session功能类似于cookie，区别点在于前者作用于后端，后者作用于前端
-
-Session可以保存用户的状态和上下文信息。
-
-CreateSession创建一个session并返回id.
-
-通过这个id可以在后端程序中读写删除状态，不同的后端模块之间也可以共享信息
-
-这个状态是存放在内存中的，超过1小时不访问就会被GC清作
-*/
 
 type SessionStub struct {
 	CreateSession  func() (sid string)
@@ -101,103 +57,58 @@ type SessionStub struct {
 	ReleaseSession func(sid string) error
 }
 
+var _ ISession = (*BackEndStub)(nil)
+
 // CreateSession 创建一个session并返回id
+// 注意：签名无 error 返回值，未接线时返回空 sid（调用方可判 sid==""）；
+// 其余可返回 error 的方法一律显式报"未接线"（D1）。
 func (s *BackEndStub) CreateSession() (sid string) {
-	if s.CreateSession != nil {
-		return s.CreateSession()
+	if s.SessionStub != nil && s.SessionStub.CreateSession != nil {
+		return s.SessionStub.CreateSession()
 	}
 	return ""
 }
 
 // SessionSet 设置session中指定key的值
 func (s *BackEndStub) SessionSet(sid, key string, value any) error {
-	if s.SessionSet != nil {
-		return s.SessionSet(sid, key, value)
+	if s.SessionStub != nil && s.SessionStub.SessionSet != nil {
+		return s.SessionStub.SessionSet(sid, key, value)
 	}
-	return nil
+	return errUnwired("SessionSet")
 }
 
 // SessionGet 获取session中指定key的值
 func (s *BackEndStub) SessionGet(sid, key string) (value any, err error) {
-	if s.SessionGet != nil {
-		return s.SessionGet(sid, key)
+	if s.SessionStub != nil && s.SessionStub.SessionGet != nil {
+		return s.SessionStub.SessionGet(sid, key)
 	}
-	return nil, nil
+	return nil, errUnwired("SessionGet")
 }
 
 // SessionDelete 删除session中指定key的值
 func (s *BackEndStub) SessionDelete(sid, key string) error {
-	if s.SessionDelete != nil {
-		return s.SessionDelete(sid, key)
+	if s.SessionStub != nil && s.SessionStub.SessionDelete != nil {
+		return s.SessionStub.SessionDelete(sid, key)
 	}
-	return nil
+	return errUnwired("SessionDelete")
 }
 
 // ReleaseSession 释放指定的session
 func (s *BackEndStub) ReleaseSession(sid string) error {
-	if s.ReleaseSession != nil {
-		return s.ReleaseSession(sid)
+	if s.SessionStub != nil && s.SessionStub.ReleaseSession != nil {
+		return s.SessionStub.ReleaseSession(sid)
 	}
-	return nil
+	return errUnwired("ReleaseSession")
 }
 
-var _ ISession = (*BackEndStub)(nil)
-
-// IBEAppData 接口定义了应用数据操作的所有方法
-type IBEAppData interface {
-	// BEOpenAppDataNode 打开节点的弥媒数据
-	BEOpenAppDataNode(ver, mark string) (mmsid string, err error)
-
-	// BEOpenAppDataApp 打开应用的弥媒数据
-	BEOpenAppDataApp(ver, mark string) (mmsid string, err error)
-
-	// BEMMSync 同步弥媒数据
-	BEMMSync(strdhts string, mid string, param map[string]string) error
-
-	// BELoginAsAuthor 以作者身份登录
-	BELoginAsAuthor() (sid string, err error)
-
-	// BELoginAsApp 以应用身份登录
-	BELoginAsApp() (sid string, err error)
-
-	// BESignPPT 签名PPT文档
-	BESignPPT(info map[string]string, period int) (string, error)
-
-	// BESign 签名操作
-	BESign(info map[string]string) (string, error)
-}
-
-var _ IBackEnd = (*BackEndStub)(nil)
-
-// ILogStub 接口定义了日志操作的所有方法
-type ILogStub interface {
-	// Trace 记录跟踪级别日志
-	Trace(format string, v ...interface{})
-	
-	// Debug 记录调试级别日志
-	Debug(format string, v ...interface{})
-	
-	// Info 记录信息级别日志
-	Info(format string, v ...interface{})
-	
-	// Warn 记录警告级别日志
-	Warn(format string, v ...interface{})
-	
-	// Error 记录错误级别日志
-	Error(format string, v ...interface{})
-	
-	// Critical 记录严重级别日志
-	Critical(format string, v ...interface{})
-}
-
-var _ ILogStub = (*BackEndStub)(nil)
+var _ ILog = (*BackEndStub)(nil)
 
 // BEOpenAppDataNode 打开节点的弥媒数据
 func (s *BackEndStub) BEOpenAppDataNode(ver, mark string) (mmsid string, err error) {
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BEOpenAppDataNode != nil {
 		return s.BEAppDataStub.BEOpenAppDataNode(ver, mark)
 	}
-	return "", nil
+	return "", errUnwired("BEOpenAppDataNode")
 }
 
 // BEOpenAppDataApp 打开应用的弥媒数据
@@ -205,7 +116,7 @@ func (s *BackEndStub) BEOpenAppDataApp(ver, mark string) (mmsid string, err erro
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BEOpenAppDataApp != nil {
 		return s.BEAppDataStub.BEOpenAppDataApp(ver, mark)
 	}
-	return "", nil
+	return "", errUnwired("BEOpenAppDataApp")
 }
 
 // BEMMSync 同步弥媒数据
@@ -213,15 +124,18 @@ func (s *BackEndStub) BEMMSync(strdhts string, mid string, param map[string]stri
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BEMMSync != nil {
 		return s.BEAppDataStub.BEMMSync(strdhts, mid, param)
 	}
-	return nil
+	return errUnwired("BEMMSync")
 }
 
 // BELoginAsAuthor 以作者身份登录
+// Deprecated: 2026-09-03 冻结（冻而不废）：对外不再演进、禁止新增依赖；
+// 接口接线不变、零行为变更，删除走观测驱动，见 docs/KEY_AUTH_MECHANISM_AUDIT.md §2 F4 与
+// planning-artifacts/milestone-2026-09/T1/f4-belogin-author-freeze-2026-09-02.md。
 func (s *BackEndStub) BELoginAsAuthor() (sid string, err error) {
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BELoginAsAuthor != nil {
 		return s.BEAppDataStub.BELoginAsAuthor()
 	}
-	return "", nil
+	return "", errUnwired("BELoginAsAuthor")
 }
 
 // BELoginAsApp 以应用身份登录
@@ -229,7 +143,7 @@ func (s *BackEndStub) BELoginAsApp() (sid string, err error) {
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BELoginAsApp != nil {
 		return s.BEAppDataStub.BELoginAsApp()
 	}
-	return "", nil
+	return "", errUnwired("BELoginAsApp")
 }
 
 // BESignPPT 签名PPT文档
@@ -237,7 +151,7 @@ func (s *BackEndStub) BESignPPT(info map[string]string, period int) (string, err
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BESignPPT != nil {
 		return s.BEAppDataStub.BESignPPT(info, period)
 	}
-	return "", nil
+	return "", errUnwired("BESignPPT")
 }
 
 // BESign 签名操作
@@ -245,7 +159,7 @@ func (s *BackEndStub) BESign(info map[string]string) (string, error) {
 	if s.BEAppDataStub != nil && s.BEAppDataStub.BESign != nil {
 		return s.BEAppDataStub.BESign(info)
 	}
-	return "", nil
+	return "", errUnwired("BESign")
 }
 
 /*
@@ -288,15 +202,22 @@ BELoginAsAuthor()(sid string, err error)
 返回值:
 
 	Sessionid，可用于所有需要会话id的api，执行的时候代表作者身份
+
+【冻结标记 2026-09-03】DEPRECATED（冻而不废）：对外不再演进、禁止新增依赖；
+删除走观测驱动，见 docs/KEY_AUTH_MECHANISM_AUDIT.md §2 F4 与
+planning-artifacts/milestone-2026-09/T1/f4-belogin-author-freeze-2026-09-02.md。
 */
 type BEAppDataStub struct {
 	BEOpenAppDataNode func(string, string) (mmsid string, err error)
 	BEOpenAppDataApp  func(string, string) (mmsid string, err error)
 	BEMMSync          func(strdhts string, mid string, param map[string]string) error
-	BELoginAsAuthor   func() (sid string, err error)
 	BELoginAsApp      func() (sid string, err error)
 	BESignPPT         func(info map[string]string, period int) (string, error)
 	BESign            func(info map[string]string) (string, error)
+	// Deprecated: 2026-09-03 冻结（冻而不废）：对外不再演进、禁止新增依赖；
+	// 删除走观测驱动，见 docs/KEY_AUTH_MECHANISM_AUDIT.md §2 F4 与
+	// planning-artifacts/milestone-2026-09/T1/f4-belogin-author-freeze-2026-09-02.md。
+	BELoginAsAuthor   func() (sid string, err error)
 }
 
 /*
@@ -312,7 +233,6 @@ type LogStub struct {
 	Error    func(format string, v ...interface{})
 	Critical func(format string, v ...interface{})
 }
-
 
 // Trace 记录跟踪级别日志
 func (s *BackEndStub) Trace(format string, v ...interface{}) {
@@ -354,4 +274,12 @@ func (s *BackEndStub) Critical(format string, v ...interface{}) {
 	if s.LogStub != nil && s.LogStub.Critical != nil {
 		s.LogStub.Critical(format, v...)
 	}
+}
+
+// BEReadFile 读取应用 mmroot 文件并可选预处理（nil 安全：未接线返回错误）。
+func (s *BackEndStub) BEReadFile(name string, ops ...string) ([]byte, error) {
+	if s.BEWebStub != nil && s.BEWebStub.BEReadFile != nil {
+		return s.BEWebStub.BEReadFile(name, ops...)
+	}
+	return nil, fmt.Errorf("BEReadFile: 未接线")
 }
