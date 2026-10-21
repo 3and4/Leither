@@ -4,7 +4,7 @@
 **Moved:** 2026-10-16 from LifeAlbum; the old path contains only a relocation notice.
 
 **Status:** Application-independent technical reference
-**Leither CLI reviewed:** V0.24.02, API contract version 1; commit, pin and node-Files behavior rechecked on V0.24.23 (2026-09-16, section 5.6) and on V0.24.27 (2026-09-19, section 5.7)
+**Leither CLI reviewed:** V0.24.02, API contract version 1; commit, pin and node-Files behavior rechecked on V0.24.23 (2026-09-16, section 5.6) and on V0.24.27 (2026-09-19, section 5.7); public node variables (`GetVar`/`/getvar`) verified on V0.24.64 (2026-10-20, section 9.8)
 **Online documentation reviewed:** `vzhan.cn/#doc.html`, August 2026
 **Source repository reviewed:** [3and4/Leither](https://github.com/3and4/Leither), originally August 2026; documentation index, README, historical changelog and key-authentication guide refreshed on 2026-10-16 at commit `90362aef401c4d7ff53eb3573443f031f0be880f`
 **CLI inspection refreshed:** gen8 `/home/pi/demo/Leither`, V0.24.63, amd64, API 1, 2026-10-16; all 159 help entries inspected recursively (section 12.1). Earlier runtime observations retain their own version and date.
@@ -1174,6 +1174,93 @@ The application directory name identifies the source supplied to `uploadapp`. Th
 An operator script should preserve this ordering, stop on a failed upload or backup, query the application with the same publisher identity, validate its name, and publish only the returned `appId`. It must not embed a deployment-specific publication ID. Deployment credentials remain outside the application source and source-control repository.
 
 Application backup and application publication are distinct from an application's own data lifecycle. For a file-oriented application, `lapp backup` packages the application, while `mimei backup --mid <data-mid>` commits a File-type data tree.
+
+### 9.8 Public Node Variables: `GetVar` and `/getvar` (verified on V0.24.64, 2026-10-20)
+
+A node answers questions about itself through `GetVar(sid, name, args...)`, the call
+documented for MiMei information in the upstream `api/MiMei.md` (section 1.8). Some
+names need no session: pass an empty `sid` and the node answers anonymously, which is
+how an application finds and recognises a node before it has any credentials. Two
+transports carry the same variables, and they do **not** encode the answer the same way.
+
+| Transport | Request | Encoding of the answer |
+|---|---|---|
+| Plain HTTP | `GET /getvar?name=<name>` | JSON, or a JSON string for a scalar |
+| Hprose | `GetVar("", "<name>")` posted to `/webapi/` with `Content-Type: application/hprose` | Hprose value; a structured answer is a class definition followed by an object |
+
+Verified on gen8 (V0.24.64, amd64) from a host on its LAN, through the node's HTTP port:
+
+| Name | Answer | Notes |
+|---|---|---|
+| `hostid` | the node ID, for example `"ReyCUFHHZmk0N5w_wxUeEuoY5Xr"` | The same value over both transports. A client that has been given a route checks it by comparing this with the node ID it expects. |
+| `ver` | the Leither version, for example `"V0.24.64"` | The LifeDrive installer reads this to find the running node. |
+| `nodeinfo` | the node's name, version and tunnel state | See below. |
+
+The answer is this Go structure (the maintainer's definition, supplied 2026-10-20;
+the comments are translated from the Chinese originals):
+
+```go
+type NodeInfo struct {
+	NodeName string // the node's name
+	AppVer   string // the application's version
+	Tunnel   bool   // whether the node supports tunnel
+	// IpfsID   string // the IPFS ID, which carries the public key; commented out in the source
+	//
+	// Addresses are to be considered later.
+}
+```
+
+`IpfsID` is commented out and addresses are explicitly deferred, so neither is returned
+today and a client must not expect them. A node's addresses are still obtained with
+`GetVar("", "ips", nodeID)`, listed below.
+
+`nodeinfo` over plain HTTP:
+
+```text
+GET /getvar?name=nodeinfo
+{"NodeName":"gen8","AppVer":"V0.24.64","Tunnel":false}
+```
+
+`nodeinfo` over Hprose, request and reply as bytes (`R` is a result, `c` a class
+definition, `o` an object of that class):
+
+```text
+C s6"GetVar" a2{ e s8"nodeinfo" } z
+Rc8"NodeInfo"3{s8"nodeName"s6"appVer"s6"tunnel"}o0{s4"gen8"s8"V0.24.64"f}z
+```
+
+- **Field names differ by transport.** The JSON uses `NodeName`, `AppVer` and `Tunnel`;
+  the Hprose class names its fields `nodeName`, `appVer` and `tunnel`. A client written
+  against one will find nothing under the other's names.
+- **An Hprose client must read class definitions.** The reply is not a map. A reader that
+  only understands maps, lists and scalars fails on the `c` tag. The browser library
+  `hprose-html5` was run on the reply above on 2026-10-20 and returned
+  `{nodeName: "gen8", appVer: "V0.24.64", tunnel: false}`. The LifeDrive iOS and Android
+  readers handle class definitions and objects by their code, as maps keyed by the same
+  lower-camel names; they were compiled but not run against `nodeinfo`.
+- `NodeName` is the name given to the node, not its ID. An application should show the
+  name where a person has to recognise their node, and keep the ID for routing, cache
+  keys and links, since the name is not documented as unique or immutable.
+- `Tunnel` says whether the node supports tunnel. gen8 reported `false`.
+- `AppVer` is the application's version. On gen8 it equals the Leither version that `ver`
+  returns (`V0.24.64`); the structure does not say whether the two can differ.
+- Which Leither version introduced `nodeinfo` was not established, and an older node was
+  not tried. Treat V0.24.64 as the earliest version known to support it.
+
+Other names that LifeDrive calls, each with its use. They come from the upstream
+documentation or from a running application and were **not** rechecked on this date:
+
+| Name | Arguments | Use |
+|---|---|---|
+| `userid` | session ID | the user ID of a signed-in session (upstream key-authentication guide) |
+| `mminfo` | MiMei ID | MiMei information (upstream `api/MiMei.md`, section 1.8) |
+| `mmversions` | MiMei ID | the versions of a MiMei (section 4 above) |
+| `ips` | node ID | the addresses a node advertises, used to reach it |
+| `mmprovsips` | MiMei ID | the addresses of a MiMei's providers |
+
+Applications that run inside the interpreter reach the same variables through the
+`api` object (`c.api.GetVar(...)` in LifeDrive's Go MApp), which is the surface
+section 9.2 describes.
 
 ## 10. Operational Model for File-Oriented Applications
 
