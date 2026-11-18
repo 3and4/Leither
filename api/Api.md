@@ -21,6 +21,7 @@ Api文档
    
 接口包含以下部分：
 + <a href="./Auth.md"> 认证部分</a>  
++ <a href="./Identity.md"> 身份、会话与跨节点调用</a>  
 + <a href="./App.md" > 应用部分</a> 
 + <a href="./MiMei.md"> 弥媒部分</a>  
 + <a href="./Net.md" > 网络部分</a>    
